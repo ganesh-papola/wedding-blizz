@@ -31,7 +31,10 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: '"Gotham" ',
+    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic" ',
+    button: {
+      textTransform: "none"
+    }
   },
   palette
 });

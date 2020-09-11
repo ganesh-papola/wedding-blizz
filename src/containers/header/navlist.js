@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { landing } from 'styles';
-import { Toolbar, Button, Typography, AppBar, List, ListItem, ListItemText } from '@material-ui/core';
+import React, { useState } from 'react';
+import { headerStyle } from 'styles';
+import { Button, Typography, List, ListItem, ListItemText } from '@material-ui/core';
 import { Strings } from 'constant';
-import { LogoText, WeddingRings } from 'assets';
+import MenuIcon from './menuicon';
+import Drawer from './drawer';
+import Logo from './logo'
+
 const { auth, header } = Strings;
-
-
 const navlists = [
     { title: header.Planning },
     { title: header.LocalVendors },
@@ -15,17 +15,9 @@ const navlists = [
     { title: header.RingsPlDresses },
 ];
 
-const Logo = () => {
-    const classes = landing();
-    return (
-        <div className={classes.logoView}>
-            <img src={WeddingRings} />
-            <img src={LogoText} />
-        </div>
-    )
-}
-const NavList = () => {
-    const classes = landing();
+export default props => {
+    const classes = headerStyle();
+    const [open, openDrawer] = useState(false);
     return (
         <List component="nav" className={classes.header}>
             <ListItem className={classes.header} component="nav" variant="dense">
@@ -33,7 +25,7 @@ const NavList = () => {
                 <div className={classes.linksView}>
                     {
                         navlists.map(nav => (
-                            <ListItemText>
+                            <ListItemText key={Math.random()} >
                                 <Typography color="inherit" variant="button" className={`${classes.headerLinks}`}>
                                     {nav.title}
                                 </Typography>
@@ -49,25 +41,11 @@ const NavList = () => {
                         {auth.SignUp}
                     </Button>
                 </div>
+                <div className={classes.drawerView}>
+                    <MenuIcon openDrawerHandler={()=>openDrawer(true)} />
+                    <Drawer open={open} toggleDrawerHandler={()=>openDrawer(false)} />
+                </div>
             </ListItem>
-
         </List>
     )
 }
-export default function Header(props) {
-
-    const classes = landing();
-    return (
-        <React.Fragment>
-            <AppBar position="static" boxShadow={0} className={classes.headerView}>
-                <Toolbar className={classes.toolbar}>
-                    <NavList />
-                </Toolbar>
-            </AppBar>
-        </React.Fragment>
-    );
-}
-
-Header.propTypes = {
-
-};

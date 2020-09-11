@@ -3,3 +3,15 @@
   font-family: 'Gotham';
   src: local('Gotham'), url(./assets/fonts/Gotham-Medium.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'GothamLight';
+  src: local('GothamLight'), url(./assets/fonts/GothamLight.otf) format('truetype');
+}
+@font-face {
+  font-family: 'CormorantBold';
+  src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'CormorantBoldItalic';
+  src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-BoldItalic.ttf) format('truetype');
+}

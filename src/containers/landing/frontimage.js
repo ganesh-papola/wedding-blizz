@@ -26,8 +26,8 @@ const Image = ({ image }) => {
                     </Box>
                 </Typography>
                 <Box className={`${classes.downloadImageView}`}>
-                    <img src={downloadApple} className={classes.downloadImage} />
-                    <img src={downloadAndroid} className={classes.downloadImage} />
+                    <img src={downloadApple} className={classes.downloadImage} onClick={()=>alert('In progress..')} />
+                    <img src={downloadAndroid} className={classes.downloadImage} onClick={()=>alert('In progress..')} />
                 </Box>
 
             </div>

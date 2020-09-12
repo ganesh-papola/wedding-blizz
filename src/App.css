@@ -15,3 +15,9 @@
   font-family: 'CormorantBoldItalic';
   src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-BoldItalic.ttf) format('truetype');
 }
+
+
+
+body::-webkit-scrollbar {
+  display: none;
+}

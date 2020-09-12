@@ -12,10 +12,27 @@ const Image = ({image, index=0}) => {
     const classes = landingStyle();
     let change = { 0 : classes.pLetsPlanView, 1 : classes.sLetsPlanView}
     return (
-        <div className={change[index]}>
-            {/* <img src={image} className={classes.frontImage} /> */}
-
-        </div>
+           <Grid container justify="center" className={change[index]}>
+                <Grid item sm={12} xs={12} md={6} className={classes.letsPlanImageV}>
+                    <img src={image} className={classes.letsPlanImage} />
+                </Grid>
+                <Grid item sm={12} xs={12} md={6} className={classes.letsPlanDesc}>
+                    <Typography component="div" className={classes.letsPlanTexts}>
+                        <Box fontFamily='CormorantBoldItalic' className={`${classes.LetsPlanHeading}`}>
+                            {landing.LetsPlanHeading}
+                        </Box>
+                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage1}`}>
+                            {landing.LetsPlanMessage1}
+                        </Box>
+                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage2}`}>
+                            {landing.LetsPlanMessage2}
+                        </Box>
+                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage3}`}>
+                            {landing.LetsPlanMessage3}
+                        </Box>
+                    </Typography>
+                </Grid>
+        </Grid>
     )
 }
 export default (props) => {

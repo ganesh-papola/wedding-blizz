@@ -14,3 +14,19 @@ export { default as gridImage } from "./grid.svg";
 export { default as usersImage } from "./users.svg";
 export { default as perfectWedding1 } from "./perfectWedding1.png";
 export { default as perfectWedding2 } from "./perfectWedding2.png";
+
+export { default as weddingTheme } from "./WeddingTheme.png";
+export { default as weddingService } from "./WeddingService.png";
+export { default as weddingReception } from "./WeddingReception.png";
+export { default as planningBasics } from "./PlanningBasics.png";
+export { default as familyFriends } from "./FamilyFriends.png";
+export { default as weddingFashion } from "./WeddingFashion.png";
+
+export { default as weddingVendor } from "./weddingVendor.png";
+
+export { default as downloadPrApple } from "./downloadPrApple.svg";
+export { default as downloadPrAndroid } from "./downloadPrAndroid.svg";
+
+
+//footer
+export { default as logoF } from "./logoF.svg";

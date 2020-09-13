@@ -6,7 +6,7 @@ import { Strings } from 'constant';
 import { Icon } from '@material-ui/core';
 import { MailOutlineOutlined, CallOutlined, LocationOnOutlined } from '@material-ui/icons';
 
-const iconStyle = { marginRight : '10px', marginTop : '5px'}
+const iconStyle = { marginRight : '10px', marginTop : '5px', fontSize: 15}
 const icons = [ null, <MailOutlineOutlined style={iconStyle}/>, <CallOutlined style={iconStyle}/>, <LocationOnOutlined style={iconStyle}/> ]
 const { footer } = Strings;
 

@@ -31,7 +31,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic" ',
+    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic", "GothamBook" ',
     button: {
       textTransform: "none"
     }

@@ -37,13 +37,13 @@ export const footerStyle =  makeStyles((theme) => ({
     },
     footerLinksT : {
         color : colors.grey,
-        fontSize : 15,
+        fontSize : 13,
         lineHeight : 2.2,
         cursor : 'pointer'
     },
     footerLinksT0:{
         color : colors.white,
-        fontSize : 14,
+        fontSize : 13,
         lineHeight : 2.2
     },
     ListView : {
@@ -55,7 +55,7 @@ export const footerStyle =  makeStyles((theme) => ({
     },
     footerLinksTCU : {
         color : colors.grey,
-        fontSize : 15,
+        fontSize : 13,
         lineHeight : 2.2,
         cursor : 'pointer',
         display : 'flex'

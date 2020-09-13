@@ -17,7 +17,7 @@ export default (props) => {
                         <Box fontFamily='CormorantBoldItalic' className={`${classes.weddingVLHeadT}`}>
                             {landing.WeddingVendors}
                         </Box>
-                        <Box fontFamily='GothamLight' className={`${classes.weddingVLHeadInfoT}`}>
+                        <Box fontFamily='GothamBook' className={`${classes.weddingVLHeadInfoT}`}>
                             {landing.WeddingVendorInfo}
                         </Box>
                         <Box className={classes.WVLListView}>

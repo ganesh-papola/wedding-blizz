@@ -176,6 +176,16 @@ export const landingStyle =  makeStyles((theme) => ({
     LetsPlanHeading:{
       fontSize : 48,
       lineHeight : 1,
+      color : colors.white,
+      [theme.breakpoints.down("md")]: {
+        fontSize : 20,
+        lineHeight : 2
+      }
+    },
+    LetsPlanHeading1 :{
+      fontSize : 48,
+      lineHeight : 1,
+      color : colors.main2,
       [theme.breakpoints.down("md")]: {
         fontSize : 20,
         lineHeight : 2

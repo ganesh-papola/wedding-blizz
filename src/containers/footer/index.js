@@ -29,7 +29,7 @@ const LinksView = () => {
         <div className={classes.ListView}>
             <List className={classes.footerList}>
                 {LinksTexts1.map((list, index) => (
-                    <Typography fontFamily={index ? 'GothamLight' : 'Gotham'} key={`${Math.random()}-${index}-L1`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
+                    <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-L1`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
                         <Box component="span" className={index ? classes.footerLinksT : classes.footerLinksT0}>
                             {list.title}
                         </Box>
@@ -38,7 +38,7 @@ const LinksView = () => {
             </List>
             <List className={classes.footerList}>
                 {LinksTexts2.map((list, index) => (
-                    <Typography fontFamily={index ? 'GothamLight' : 'Gotham'} key={`${Math.random()}-${index}-L2`}>
+                    <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-L2`}>
                         <Box component="span" className={index ? classes.footerLinksT : classes.footerLinksT0}>
                             {list.title}
                         </Box>
@@ -55,7 +55,7 @@ const ContactView = () => {
         <div className={classes.ListView}>
             <List className={classes.footerList}>
                 {SocialTexts.map((list, index) => (
-                    <Typography fontFamily={index ? 'GothamLight' : 'Gotham'} key={`${Math.random()}-${index}-C1`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
+                    <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-C1`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
                         <Box component="span" className={index ? classes.footerLinksT : classes.footerLinksT0}>
                             {list.title}
                         </Box>
@@ -64,7 +64,7 @@ const ContactView = () => {
             </List>
             <List className={classes.footerList}>
                 {ContactTexts.map((list, index) => (
-                    <Typography fontFamily={index ? 'GothamLight' : 'Gotham'} key={`${Math.random()}-${index}-C2`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
+                    <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-C2`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
                         <Box component="span" className={index ? classes.footerLinksTCU : classes.footerLinksT0}>
                             {icons[index]}
                             {list.title}
@@ -92,7 +92,7 @@ export default props => {
                 </Grid>
             </Grid>
             <Typography component="span" className={classes.footerCopyRightV}>
-                <Box fontFamily='GothamLight' className={`${classes.footerCopyRightT}`}>
+                <Box fontFamily='GothamBook' className={`${classes.footerCopyRightT}`}>
                     {footer.CopyRight}
                 </Box>
             </Typography>

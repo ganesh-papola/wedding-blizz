@@ -18,16 +18,16 @@ const Image = ({image, index=0}) => {
                 </Grid>
                 <Grid item sm={12} xs={12} md={6} className={classes.letsPlanDesc}>
                     <Typography component="div" className={classes.letsPlanTexts}>
-                        <Box fontFamily='CormorantBoldItalic' className={`${classes.LetsPlanHeading}`}>
+                        <Box fontFamily='CormorantBoldItalic' className={`${index?classes.LetsPlanHeading1:classes.LetsPlanHeading}`}>
                             {landing.LetsPlanHeading}
                         </Box>
-                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage1}`}>
+                        <Box fontFamily='GothamBook' className={`${classes.LetsPlanMessage1}`}>
                             {landing.LetsPlanMessage1}
                         </Box>
-                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage2}`}>
+                        <Box fontFamily='GothamBook' className={`${classes.LetsPlanMessage2}`}>
                             {landing.LetsPlanMessage2}
                         </Box>
-                        <Box fontFamily='GothamLight' className={`${classes.LetsPlanMessage3}`}>
+                        <Box fontFamily='GothamBook' className={`${classes.LetsPlanMessage3}`}>
                             {landing.LetsPlanMessage3}
                         </Box>
                     </Typography>

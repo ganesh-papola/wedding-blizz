@@ -61,7 +61,7 @@ export default () => {
                     <Box fontFamily='CormorantBoldItalic' className={`${classes.IdeasNTipsText}`}>
                         {landing.IdeasNTips}
                     </Box>
-                    <Box fontFamily='GothamLight' className={`${classes.IdeasNTipsMsgText}`}>
+                    <Box fontFamily='GothamBook' className={`${classes.IdeasNTipsMsgText}`}>
                         {landing.IdeasNTipsMssg}
                     </Box>
                 </Typography>

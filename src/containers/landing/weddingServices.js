@@ -43,7 +43,7 @@ const SubItem = ({ message = '', title = '', icon = '' }) => {
                 <Box fontFamily='CormorantBoldItalic' className={`${classes.listTitle}`}>
                     {title}
                 </Box>
-                <Box fontFamily='Gotham' className={`${classes.listMessage}`}>
+                <Box fontFamily='GothamBook' className={`${classes.listMessage}`}>
                     {message}
                 </Box>
             </Box>

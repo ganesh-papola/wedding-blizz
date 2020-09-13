@@ -244,6 +244,8 @@ export const landingStyle =  makeStyles((theme) => ({
         display : 'flex',
         justifyContent : 'center',
         alignItems : 'center',
+      transform: 'scale(1)',
+      transition: 'transform .2s',
         "&:hover": {
           transform: 'scale(1.15)',
           transition: 'transform .2s'

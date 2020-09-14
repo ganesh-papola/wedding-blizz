@@ -16,7 +16,7 @@ export default () => {
                     <Box fontFamily='CormorantBold' className={`${classes.headingImageText1}`}>
                         {vendors.MeetWeddingTeam}
                     </Box>
-                    <DropBoxs/>
+                    <DropBoxs />
                 </Typography>
 
             </div>

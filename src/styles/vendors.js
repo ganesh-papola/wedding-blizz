@@ -31,12 +31,11 @@ export const vendorStyle =  makeStyles((theme) => ({
       width: '32%',
       height: '80%',
       borderRadius : 10,
-      top : '10%',
+      top : '5%',
       left : '56%',
       background : colors.white,
       display : 'flex',
       justifyContent : 'flex-end',
-    //   alignItems : 'center',
       position : 'absolute',
       padding : 20
      
@@ -47,6 +46,15 @@ export const vendorStyle =  makeStyles((theme) => ({
         width : '70%'
     },
     formControl:{
-        minWidth : 120
+        minWidth : 120,
+        width : '100%',
+    },
+    formControlV : {
+        paddingBottom : 15,
+    },
+    buttonV : {
+        width : '100%',
+        display : 'flex',
+        justifyContent : 'flex-end'
     }
 }))

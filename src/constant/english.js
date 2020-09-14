@@ -94,12 +94,18 @@ export default {
         'fullname' : 'Please enter valid full name',
         'email' : 'Please enter valid email',
         'phone' : 'Please enter valid phone no',
-        'password' : 'Please enter a valid password with min 8 char alphanumeric',
+        'password' : 'Please enter a valid password with min 8 chars alphanumeric',
         'cpassword' : 'Password does not match',
         'emailLogin' : 'Enter email address',
         'passwordLogin' : 'Enter password',
     },
     'vendors':{
-        'MeetWeddingTeam' : 'Meet Your Wedding Vendor Team'
+        'MeetWeddingTeam' : 'Meet Your Wedding Vendor Team',
+        'SelectCategory' : 'Select Category',
+        'SelectCountry' : 'Select Country',
+        'SelectCity' : 'Select City'
+    },
+    'common' : {
+        'Search' : 'Search'
     }
 }

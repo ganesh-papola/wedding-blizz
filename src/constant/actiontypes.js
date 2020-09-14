@@ -1,6 +1,6 @@
 const format = ['_REQUEST', '_COMPLETE', '_FAILED'];
 const types = [
-  'LOGIN',
+  'AUTH'
 ];
 
 const manuals = {

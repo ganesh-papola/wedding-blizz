@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { downloadPrApple, downloadPrAndroid } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box, Divider } from '@material-ui/core'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
 
 export default (props) => {
     const classes = landingStyle();

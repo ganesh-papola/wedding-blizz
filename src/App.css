@@ -16,8 +16,12 @@
   src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-Bold.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'CormorantSemiBold';
+  src: local('CormorantSemiBold'), url(./assets/fonts/CormorantInfant-SemiBold.ttf) format('truetype');
+}
+@font-face {
   font-family: 'CormorantBoldItalic';
-  src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-BoldItalic.ttf) format('truetype');
+  src: local('CormorantBoldItalic'), url(./assets/fonts/CormorantInfant-BoldItalic.ttf) format('truetype');
 }
 
 

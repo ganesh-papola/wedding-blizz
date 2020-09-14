@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { weddingFashion, weddingReception, weddingService, weddingTheme, planningBasics, familyFriends } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box, Container, Zoom } from '@material-ui/core'
-import { Strings } from 'constant';
-const { landing } = Strings;
+import { strings } from 'constant';
+const { landing } = strings;
 
 
 const images = [

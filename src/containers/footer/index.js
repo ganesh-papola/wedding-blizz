@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { logoF } from 'assets';
 import { footerStyle } from 'styles';
 import { Typography, Grid, Box, List } from '@material-ui/core'
-import { Strings } from 'constant';
-import { Icon } from '@material-ui/core';
+import { strings } from 'constant';
 import { MailOutlineOutlined, CallOutlined, LocationOnOutlined } from '@material-ui/icons';
 
 const iconStyle = { marginRight : '10px', marginTop : '5px', fontSize: 15}
 const icons = [ null, <MailOutlineOutlined style={iconStyle}/>, <CallOutlined style={iconStyle}/>, <LocationOnOutlined style={iconStyle}/> ]
-const { footer } = Strings;
+const { footer } = strings;
 
 const LinksTexts1 = [{title : footer.Links}, {title : footer.Planning}, {title : footer.LocalVendors}, {title : footer.WeddingWebsite}, {title : footer.Invitations}, {title : footer.RingsNDresses}]
 const LinksTexts2 = [{title : footer.Links}, {title : footer.AboutUs}, {title : footer.Contact}, {title : footer.CovidTerms}, {title : footer.TnC}, {title : footer.PnP}]

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { weddingVendor } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box, Divider } from '@material-ui/core'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
 
 const LText =  [landing.Photography, landing.BeautyNHealth, landing.Catering, landing.Videography, landing.Invitation],
      RText = [landing.Photography, landing.BeautyNHealth, landing.Catering, landing.Videography, landing.Invitation]

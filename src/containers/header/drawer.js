@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { headerStyle } from 'styles';
 import { Drawer, Divider, List, ListItem, ListItemText } from '@material-ui/core';
-import { Strings } from 'constant';
-const { auth, header } = Strings;
+import { strings } from 'constant';
+const { auth, header } = strings;
 
 
 const navlists = [

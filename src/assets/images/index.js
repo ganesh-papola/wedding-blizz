@@ -30,3 +30,6 @@ export { default as downloadPrAndroid } from "./downloadPrAndroid.svg";
 
 //footer
 export { default as logoF } from "./logoF.svg";
+
+//vendors
+export { default as vendorFrontImage } from "./venderFrontImage.png";

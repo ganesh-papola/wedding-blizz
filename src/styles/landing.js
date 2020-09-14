@@ -4,18 +4,33 @@ export const landingStyle =  makeStyles((theme) => ({
     frontImage : {
         // opacity: 0.5,
         width: '100%',
-        height: 630,
+        height: '100%',
         position : 'relative',
         backgroundSize : 'cover',
         backgroundColor: colors.black,
         [theme.breakpoints.down("sm")]: {
             width: '100%',
             height: 200
-          }
+          },
+    },
+    frontImageView:{
+      [theme.breakpoints.down("xl")]: {
+        width: '100%',
+        height: 800
+      },
+      [theme.breakpoints.down("lg")]: {
+        width: '100%',
+        height: 630,
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: '100%',
+        height: 200
+      },
     },
     frontImageTextView : {
       width: '100%',
       height: 630,
+      paddingTop : 80,
       top : 0,
       color : colors.white,
       display : 'flex',
@@ -23,10 +38,24 @@ export const landingStyle =  makeStyles((theme) => ({
       justifyContent : 'center',
       alignItems : 'center',
       position : 'absolute',
+      [theme.breakpoints.down("xl")]: {
+        width: '100%',
+        height: 800,
+        paddingTop : 80
+      },
+      [theme.breakpoints.down("lg")]: {
+        width: '100%',
+        height: 630,
+        paddingTop : 80
+      },
       [theme.breakpoints.down("sm")]: {
-          width: '100%',
-          height: 200
-        }
+        width: '100%',
+        height: 200,
+        paddingTop : 40
+      },
+    },
+    headingBox:{
+
     },
     headingImageText1 : {
       fontFamily : 'CormorantBold',
@@ -62,7 +91,7 @@ export const landingStyle =  makeStyles((theme) => ({
     },
     downloadImageView:{
       display : 'flex',
-      marginTop : 50,
+      marginTop : 100,
       [theme.breakpoints.down("sm")]: {
         marginTop : 25,
       }

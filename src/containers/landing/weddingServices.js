@@ -2,9 +2,9 @@ import React from 'react';
 import { heartImage, calculatorImage, userTieImage, gridImage, clipboardImage, usersImage } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box } from '@material-ui/core'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
 const list1 = [
     { title: landing.WeddingVision, message: landing.WeddingVisionMessage, icon: heartImage },
     { title: landing.GuestList, message: landing.GuestListMessage, icon: usersImage },

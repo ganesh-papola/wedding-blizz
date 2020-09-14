@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Landing, Login, Home } from 'containers';
+import { Landing, Home, Vendors } from 'containers';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -18,7 +18,7 @@ const PrivateRoutes = ({ auth }) => {
     <>
       {
         privateRoues.map(route => (
-          <Route path={route.path} component={auth ? route.component : Login} key={route.path} />
+          <Route exact path={route.path} component={auth ? route.component : Landing} key={route.path} />
         ))
       }
     </>
@@ -31,7 +31,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic", "GothamBook" ',
+    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic", "GothamBook", "CormorantSemiBold" ',
     button: {
       textTransform: "none"
     }
@@ -45,8 +45,8 @@ export default props => {
   return (
     <ThemeProvider theme={theme}>
       <Wrapper auth={auth}>
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Landing} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/vendors" component={Vendors} />
         <PrivateRoutes auth={auth} />
       </Wrapper>
     </ThemeProvider>

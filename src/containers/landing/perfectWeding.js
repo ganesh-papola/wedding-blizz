@@ -3,9 +3,9 @@ import { perfectWedding1, perfectWedding2 } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
 const images = [perfectWedding1, perfectWedding2];
 
 const Image = ({image, index=0}) => {

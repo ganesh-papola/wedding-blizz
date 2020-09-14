@@ -1,7 +1,17 @@
 export default {
     'auth' : {
         'Login' : 'Login',
-        'SignUp' : 'Sign Up'
+        'SignUp' : 'Sign Up',
+        'FullName' : 'Full Name',
+        'EmailAddress' : 'Email Address',
+        'Phone' : 'Phone',
+        'Password' : 'Password',
+        'ConfirmPassword' : 'Confirm Password',
+        'AlreadyHaveAC' : 'Already have an account?',
+        'SignIn' : 'Sign In',
+        'DontHaveAc' : "Don't have an account?",
+        'ForgotPassword' : 'Forgot Password?',
+        'VendorLogin' : 'Vendor Login'
     },
     'header' : {
         'Planning' : 'Planning',
@@ -79,6 +89,17 @@ export default {
         'FooterEmail' : 'info@weddingblizz.com',
         'FooterPhone' : '123 456 7890',
         'FooterAddrss' : '63, Adekunle Fajuyi, Ikeja, Lagos, Nigeria 542684'
-            
+    },
+    'errors' : {
+        'fullname' : 'Please enter valid full name',
+        'email' : 'Please enter valid email',
+        'phone' : 'Please enter valid phone no',
+        'password' : 'Please enter a valid password with min 8 char alphanumeric',
+        'cpassword' : 'Password does not match',
+        'emailLogin' : 'Enter email address',
+        'passwordLogin' : 'Enter password',
+    },
+    'vendors':{
+        'MeetWeddingTeam' : 'Meet Your Wedding Vendor Team'
     }
 }

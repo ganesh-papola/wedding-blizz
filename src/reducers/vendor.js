@@ -2,7 +2,8 @@ import { ACTION_TYPES } from 'constant';
 const INITIAL_STATE = {
     catLoader : false,
     cntrLoader : false,
-    ctLoader : false
+    ctLoader : false,
+    loader : false
 };
 
 export default function login(state = INITIAL_STATE, action) {

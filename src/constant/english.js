@@ -103,9 +103,45 @@ export default {
         'MeetWeddingTeam' : 'Meet Your Wedding Vendor Team',
         'SelectCategory' : 'Select Category',
         'SelectCountry' : 'Select Country',
-        'SelectCity' : 'Select City'
+        'SelectCity' : 'Select City',
+
+        'TopVenCategory' : 'Top Wedding Vendor Categories',
+        'ReceptionVenue' : 'Reception Venue',
+        'WeddingPhotographers' : 'Wedding Photographers',
+        'Videographers' : 'Videographers',
+        'BridalSalons' : 'Bridal Salons',
+        'Beauty' : 'Beauty',
+        'DJs' : 'DJs',
+        'WedingBands' : 'Wending Bands',
+        'WeddingPlanners' : 'Wedding Planners',
+        'WeddingCakes' : 'Wedding Cakes',
+
+        'FindingaVendorH': 'Finding a Wedding Vendor',
+        'FindingaVendorSubH': 'Lorem ipsum dolor sit ametest conse ctetur adipiscing elit.',
+        'StartYourStyle' : 'Start with Your Style',
+        'StartYourStyleInfo' : 'Lorem ipsum dolor sit ametest conse ctetur adipiscing elit. Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. ',
+        'UnderstandOptions' : 'Understand the Options',
+        'UnderstandOptionsInfo' : 'Lorem ipsum dolor sit ametest conse ctetur adipiscing elit. Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. ',
+        'StartConversation' : 'Start Conversation',
+        'StartConversationInfo' : 'Lorem ipsum dolor sit ametest conse ctetur adipiscing elit. Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. ',
+
+        'AllVendorCategories' : 'All Wedding Vendor Categories',
+        'AllVendorCategoriesSub' : 'Lorem ipsum dolor sit ametest conse ctetur adipiscing elit.',
+
+        'Venue' : 'Venue',
+        'Catering' : 'Catering',
+        'Photography' : 'Photography',
+        'Invitation' : 'Invitation',
+        'WeddingGifts' : 'Wedding Gifts',
+        'Transportation' : 'Transportation',
+
+        'WeddingVendorsState' : 'Wedding Vendors by State',
+        'AbiaWeddings' : 'Abia Weddings'
+
+
     },
     'common' : {
-        'Search' : 'Search'
+        'Search' : 'Search',
+        'ViewAll' : 'View All'
     }
 }

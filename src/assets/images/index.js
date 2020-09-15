@@ -33,3 +33,26 @@ export { default as logoF } from "./logoF.svg";
 
 //vendors
 export { default as vendorFrontImage } from "./venderFrontImage.png";
+
+export { default as ReceptionVenue } from "./ReceptionVenue.png";
+export { default as WeddingPhotographers } from "./WeddingPhotographers.png";
+export { default as Videographers } from "./Videographers.png";
+export { default as BridalSalons } from "./BridalSalons.png";
+export { default as Beauty } from "./Beauty.png";
+export { default as DJs } from "./DJs.png";
+export { default as WedingBands } from "./WedingBands.png";
+export { default as WeddingPlanners } from "./WeddingPlanners.png";
+export { default as WeddingCakes } from "./WeddingCakes.png";
+
+export { default as bulbIcon } from "./bulbIcon.svg";
+export { default as cardIcon } from "./cardIcon.svg";
+export { default as groupMessageIcon } from "./groupMessageIcon.svg";
+
+export { default as venueRoundImage } from "./venue.png";
+export { default as weddingBandRoundImage } from "./weddingBandRound.png";
+export { default as weddingcateringRoundImage } from "./weddingcatering.png";
+export { default as weddingDressRoundImage } from "./weddingDress.png";
+export { default as weddinggiftImage } from "./weddinggift.png";
+export { default as transportRoundImage } from "./transportation.png";
+export { default as photographyRoundImage } from "./photography.png";
+export { default as invitationRoundImage } from "./invitation.png";

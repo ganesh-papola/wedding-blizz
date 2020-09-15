@@ -41,16 +41,9 @@ const ImageGrid = ({ img = [] }) => {
     )
 }
 const ImagesGrid = () => {
-
-
-    return (
-        <>
-            { images.map(img => (
+    return  images.map(img => (
                 <ImageGrid img={img} key={Math.random()} />
-            ))}
-        </>
-
-    )
+            ))
 }
 export default () => {
     const classes = landingStyle();

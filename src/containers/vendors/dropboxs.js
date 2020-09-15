@@ -23,6 +23,7 @@ export default props => {
     const [state, setState] = useState({
         category:'', country:'', city:''
     })
+    
     const onSeacrh = () =>{
 
     }
@@ -40,9 +41,6 @@ export default props => {
                                 value={state[item.key]}
                                 onChange={({target:{value}}) => setState({...state, [item.key] : value })}
                                 label={item.title}>
-                                {/* <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem> */}
                                 {item.data.map(it=><MenuItem value={it.value}>{it.label}</MenuItem>)}
                             </Select>
                         </FormControl>
@@ -50,11 +48,10 @@ export default props => {
                 ))
             }
             <div className={classes.buttonV}>
-            <Button onClick={onSeacrh} variant="contained" size="large" color='primary' >
-                    {loader ? <Loader size={15} /> : common.Search}
-            </Button>
+                <Button onClick={onSeacrh} variant="contained" size="large" color='primary' >
+                        {loader ? <Loader size={15} /> : common.Search}
+                </Button>
             </div>
-            
         </div>
     )
 }

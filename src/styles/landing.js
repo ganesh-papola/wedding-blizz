@@ -48,7 +48,7 @@ export const landingStyle =  makeStyles((theme) => ({
         height: 630,
         paddingTop : 80
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         width: '100%',
         height: 200,
         paddingTop : 40
@@ -63,10 +63,10 @@ export const landingStyle =  makeStyles((theme) => ({
       lineHeight : 0.7,
       color : colors.white,
       marginLeft : 30,
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize : 40,
         marginLeft : 10,
-        marginTop : 20
+        marginTop : 0
       }
     },
     headingImageText2 : {
@@ -74,7 +74,7 @@ export const landingStyle =  makeStyles((theme) => ({
       fontSize : 150,
       lineHeight : 0.7,
       color : colors.white,
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize : 40,
       }
     },
@@ -92,19 +92,28 @@ export const landingStyle =  makeStyles((theme) => ({
     downloadImageView:{
       display : 'flex',
       marginTop : 100,
-      [theme.breakpoints.down("sm")]: {
-        marginTop : 25,
+      [theme.breakpoints.down("md")]: {
+        marginTop : -10,
       }
     },
     downloadImage : {
-      width: 150,
-      height: 55,
+      
       cursor : 'pointer',
       marginLeft : 20,
-      [theme.breakpoints.down("sm")]: {
-        width: 60,
-      height: 30,
-      marginLeft : 10,
+      [theme.breakpoints.down("md")]: {
+        width: 40,
+        height: 20,
+        marginLeft : 10,
+      },
+      [theme.breakpoints.down("lg")]: {
+        width: 80,
+        height: 40,
+        marginLeft : 10,
+      },
+      [theme.breakpoints.up("lg")]: {
+        width: 150,
+        height: 60,
+        marginLeft : 10,
       }
     },
     serviceView:{
@@ -393,31 +402,56 @@ export const landingStyle =  makeStyles((theme) => ({
       marginLeft : 50,
       marginRight : 50,
       background : colors.blue2,
-      width : 1
+      width : 1,
+      [theme.breakpoints.down("md")]: {
+        marginLeft : 20,
+        marginRight : 20,
+      }
     },
-    weddingAppView : {
-      height : 550
+    weddingAppView : {      
+      [theme.breakpoints.down("lg")]: {
+          paddingTop : 100,
+      },
+      [theme.breakpoints.down("md")]: {
+        paddingTop : 20,
+    },
     },
     weddingAppImageV : {
       display : 'flex',
-      // marginTop : 50,
+      justifyContent :' center',
+      alignItems : 'center',
+      width : '100%',
+      
+      [theme.breakpoints.down("lg")]: {
+        paddingTop : 80,
+      },
+      [theme.breakpoints.down("xl")]: {
+        paddingTop : 100,
+      },
       [theme.breakpoints.down("md")]: {
-        marginTop : 25
-      }
+        paddingTop : 20,
+    },
     },
     weddingAppTV : {
-        // marginTop : 100,
+        height : '50%',
         width : '100%',
         display : 'flex',
         flexDirection : 'column',
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        [theme.breakpoints.down("md")]: {
+          
+        }
     },
     weddingAppT : {
         fontSize : 40,
+        color : colors.primary,
         [theme.breakpoints.down("md")]: {
-          fontSize : 25
-        }
+          fontSize : 16
+        },
+        [theme.breakpoints.up("md")]: {
+          fontSize : 40
+        },
     }
 
   }));

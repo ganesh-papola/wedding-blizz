@@ -1,11 +1,9 @@
 import React from "react";
 import FrontImage from './frontimage';
-import { landingStyle } from 'styles';
 import WeddingServices from './weddingServices';
 import PerfectWedding from './perfectWeding';
 import IdeasNTips from './ideasNTips';
 import WeddingVendor from './weddingVendor';
-import WeddingApp from './weddingApp';
 
 export default () => {
     return (
@@ -15,7 +13,6 @@ export default () => {
             <PerfectWedding/>
             <IdeasNTips/>
             <WeddingVendor/>
-            <WeddingApp/>
         </div>
     )
 }

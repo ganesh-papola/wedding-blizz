@@ -6,14 +6,34 @@ export const footerStyle =  makeStyles((theme) => ({
 
     },
     footerView :{
-        height: 300,
-        width : '100%',
+        marginTop : 10,
+        width:'100%',
         background : colors.dark,
         [theme.breakpoints.down("md")]: {
-            height : 700,
-            paddingLeft : 20,
+            marginTop:550,
+            paddingLeft : 10,
             paddingRight : 10
-        }
+        },
+        [theme.breakpoints.down("sm")]: {
+            marginTop:650,
+            paddingLeft : 10,
+            paddingRight : 10
+        },
+        [theme.breakpoints.down("xs")]: {
+            marginTop:650,
+            paddingLeft : 10,
+            paddingRight : 10
+        },
+        [theme.breakpoints.down("xl")]: {
+            marginTop:350,
+            paddingLeft : 10,
+            paddingRight : 10
+        },
+        [theme.breakpoints.down("lg")]: {
+            marginTop:550,
+            paddingLeft : 10,
+            paddingRight : 10
+        },
     },
     footerLogo : {
         width: 138,
@@ -58,6 +78,9 @@ export const footerStyle =  makeStyles((theme) => ({
         fontSize : 13,
         lineHeight : 2.2,
         cursor : 'pointer',
-        display : 'flex'
+        display : 'flex',
+        [theme.breakpoints.down("md")]: {
+            fontSize : 11,
+        }
     }
 }) )

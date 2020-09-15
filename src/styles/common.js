@@ -8,4 +8,10 @@ export const commonStyle =  makeStyles(() => ({
         alignItems : 'center',
         justifyContent : 'center'
     },
+    space50 : {
+        height : 50
+    },
+    space100 : {
+        height : 100
+    },
 }))

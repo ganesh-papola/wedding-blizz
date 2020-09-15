@@ -25,7 +25,7 @@ const ImageGrid = ({ img = [] }) => {
         <Grid container justify="center" className={classes.imagesGridV}>
             {
                 img.map(image => (
-                    <>
+                    <div key={image.title}>
                         <Grid item justify="center" align='center' sm={12} xs={12} md={4} className={classes.ideaTipImgV}>
                             <img src={image.image} className={classes.ideaTipImg} />
                             <Typography component="div"  className={classes.imageGridTV}>
@@ -34,7 +34,7 @@ const ImageGrid = ({ img = [] }) => {
                                 </Box>
                             </Typography>
                         </Grid>
-                    </>
+                    </div>
                 ))
             }
         </Grid>

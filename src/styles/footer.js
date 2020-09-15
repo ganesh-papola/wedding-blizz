@@ -9,31 +9,7 @@ export const footerStyle =  makeStyles((theme) => ({
         marginTop : 10,
         width:'100%',
         background : colors.dark,
-        [theme.breakpoints.down("md")]: {
-            marginTop:550,
-            paddingLeft : 10,
-            paddingRight : 10
-        },
-        [theme.breakpoints.down("sm")]: {
-            marginTop:650,
-            paddingLeft : 10,
-            paddingRight : 10
-        },
-        [theme.breakpoints.down("xs")]: {
-            marginTop:650,
-            paddingLeft : 10,
-            paddingRight : 10
-        },
-        [theme.breakpoints.down("xl")]: {
-            marginTop:350,
-            paddingLeft : 10,
-            paddingRight : 10
-        },
-        [theme.breakpoints.down("lg")]: {
-            marginTop:550,
-            paddingLeft : 10,
-            paddingRight : 10
-        },
+        paddingLeft : 10
     },
     footerLogo : {
         width: 138,

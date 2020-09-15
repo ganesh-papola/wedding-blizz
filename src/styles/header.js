@@ -28,7 +28,8 @@ export const headerStyle =  makeStyles((theme) => ({
         marginRight : '20px'
     },
     logoView:{
-        width : '35%'
+        width : '35%',
+        cursor:'pointer'
     },
     linksView : {
         width : '50%',

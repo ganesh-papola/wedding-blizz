@@ -21,8 +21,9 @@ export const eventStyle = makeStyles((theme) => ({
         paddingBottom : 30
     },
     eventT:{
-        fontSize : 30,
+        fontSize : 35,
         color : colors.main,
+        padding:10,
         [theme.breakpoints.down("md")]: {
             fontSize : 16,
         }

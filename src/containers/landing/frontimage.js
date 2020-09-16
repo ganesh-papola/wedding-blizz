@@ -3,15 +3,15 @@ import { weddingPlanner1, weddingPlanner2, downloadAndroid, downloadApple } from
 import { landingStyle } from 'styles';
 import { Typography, Box } from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
 
 const images = [weddingPlanner1, weddingPlanner2];
 const Image = ({ image }) => {
     const classes = landingStyle();
     return (
-        <div>
+        <div className={classes.frontImageView}>
             <img src={image} className={classes.frontImage} />
             <div className={classes.frontImageTextView}>
                 <Typography component="div" className={classes.headingBox}>
@@ -26,8 +26,8 @@ const Image = ({ image }) => {
                     </Box>
                 </Typography>
                 <Box className={`${classes.downloadImageView}`}>
-                    <img src={downloadApple} className={classes.downloadImage} />
-                    <img src={downloadAndroid} className={classes.downloadImage} />
+                    <img src={downloadApple} className={classes.downloadImage} onClick={()=>alert('In progress..')} />
+                    <img src={downloadAndroid} className={classes.downloadImage} onClick={()=>alert('In progress..')} />
                 </Box>
 
             </div>

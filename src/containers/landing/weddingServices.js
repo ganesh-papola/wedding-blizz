@@ -2,9 +2,23 @@ import React from 'react';
 import { heartImage, calculatorImage, userTieImage, gridImage, clipboardImage, usersImage } from 'assets';
 import { landingStyle } from 'styles';
 import { Typography, Grid, Box } from '@material-ui/core'
-import { Strings } from 'constant';
+import { strings } from 'constant';
 
-const { landing } = Strings;
+const { landing } = strings;
+const list1 = [
+    { title: landing.WeddingVision, message: landing.WeddingVisionMessage, icon: heartImage },
+    { title: landing.GuestList, message: landing.GuestListMessage, icon: usersImage },
+    { title: landing.Budget, message: landing.BudgetMessage, icon: calculatorImage },
+];
+
+const list2 = [
+    { title: landing.Checklist, message: landing.ChecklistMessage, icon: clipboardImage },
+    { title: landing.VendorManager, message: landing.VendorManagerMessage, icon: userTieImage },
+    { title: landing.WedingWebsite, message: landing.WedingWebsiteMessage, icon: gridImage },
+]
+
+
+
 
 const WPDecor = () => {
     const classes = landingStyle();
@@ -19,17 +33,7 @@ const WPDecor = () => {
         </Typography>
     )
 }
-const list1 = [
-    { title: landing.WeddingVision, message: landing.WeddingVisionMessage, icon: heartImage },
-    { title: landing.GuestList, message: landing.GuestListMessage, icon: usersImage },
-    { title: landing.Budget, message: landing.BudgetMessage, icon: calculatorImage },
-];
 
-const list2 = [
-    { title: landing.Checklist, message: landing.ChecklistMessage, icon: clipboardImage },
-    { title: landing.VendorManager, message: landing.VendorManagerMessage, icon: userTieImage },
-    { title: landing.WedingWebsite, message: landing.WedingWebsiteMessage, icon: gridImage },
-]
 const SubItem = ({ message = '', title = '', icon = '' }) => {
     const classes = landingStyle();
     return (
@@ -39,7 +43,7 @@ const SubItem = ({ message = '', title = '', icon = '' }) => {
                 <Box fontFamily='CormorantBoldItalic' className={`${classes.listTitle}`}>
                     {title}
                 </Box>
-                <Box fontFamily='Gotham' className={`${classes.listMessage}`}>
+                <Box fontFamily='GothamBook' className={`${classes.listMessage}`}>
                     {message}
                 </Box>
             </Box>
@@ -57,7 +61,7 @@ const WPServices = () => {
             </Grid>
             <Grid item sm={6} xs={12} md={6} className={classes.serviceListView}>
                 {
-                    list1.map(item => <SubItem {...item} key={item.title} />)
+                    list2.map(item => <SubItem {...item} key={item.title} />)
                 }
             </Grid>
         </Grid>

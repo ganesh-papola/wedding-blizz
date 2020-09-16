@@ -28,7 +28,14 @@ export const headerStyle =  makeStyles((theme) => ({
         marginRight : '20px'
     },
     logoView:{
-        width : '35%'
+        width : '35%',
+        cursor:'pointer',
+        display : 'flex',
+        justifyContent : 'flex-start',
+        alignItems: 'flex-start',
+        [theme.breakpoints.down("md")]: {
+          width : 'auto',
+        }
     },
     linksView : {
         width : '50%',
@@ -81,10 +88,20 @@ export const headerStyle =  makeStyles((theme) => ({
 
       logo1 : {
         width: 45,
-        height: 40
+        height: 40,
+        [theme.breakpoints.down("md")]: {
+          width: 30,
+          height: 20,
+        }
       },
       logo2 : {
         width: 227,
-        height: 33
+        height: 33,
+        marginTop:10,
+        [theme.breakpoints.down("md")]: {
+          width: 100,
+          height: 22,
+          marginTop:0
+        }
       }
   }));

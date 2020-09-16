@@ -5,11 +5,12 @@ const INITIAL_STATE = {
 
 export default function login(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case ACTION_TYPES.LOGIN_REQUEST:
+
+        case ACTION_TYPES.AUTH_REQUEST:
             return { ...state, loader: true }
-        case ACTION_TYPES.LOGIN_COMPLETE:
+        case ACTION_TYPES.AUTH_COMPLETE:
             return { ...state, loader: false }
-        case ACTION_TYPES.LOGIN_FAILED:
+        case ACTION_TYPES.AUTH_FAILED:
             return { ...state, loader: false }
 
         case ACTION_TYPES.RESET:

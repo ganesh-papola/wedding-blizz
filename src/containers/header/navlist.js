@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { headerStyle } from 'styles';
 import { Button, Typography, List, ListItem, ListItemText } from '@material-ui/core';
-import { Strings } from 'constant';
+import { strings } from 'constant';
 import MenuIcon from './menuicon';
 import Drawer from './drawer';
 import Logo from './logo'
-
-const { auth, header } = Strings;
+import { SignupModal, LoginModal } from "components";
+const { auth, header } = strings;
 const navlists = [
     { title: header.Planning },
     { title: header.LocalVendors },
@@ -18,6 +18,21 @@ const navlists = [
 export default props => {
     const classes = headerStyle();
     const [open, openDrawer] = useState(false);
+    const [login, setLoginModal] = useState(false);
+    const [signup, setSignupModal] = useState(false);
+    const onSignIn = ()=>{
+        setSignupModal(false);
+        setTimeout(() => {
+            setLoginModal(true)
+        }, 300);
+    }
+    const onSignUp = ()=>{
+        setLoginModal(false);
+        setTimeout(() => {
+            setSignupModal(true);
+        }, 300);
+    }
+    
     return (
         <List component="nav" className={classes.header}>
             <ListItem className={classes.header} component="nav" variant="dense">
@@ -34,10 +49,10 @@ export default props => {
                     }
                 </div>
                 <div className={classes.buttonView}>
-                    <Button variant="outlined" size="small" color='primary' className={classes.button} mr={4}>
+                    <Button onClick={()=>setLoginModal(true)} variant="outlined" size="small" color='primary' className={classes.button} mr={4}>
                         {auth.Login}
                     </Button>
-                    <Button variant="contained" size="small" color='primary' className={classes.button} mr={4}>
+                    <Button onClick={()=>setSignupModal(true)}  variant="contained" size="small" color='primary' className={classes.button} mr={4}>
                         {auth.SignUp}
                     </Button>
                 </div>
@@ -46,6 +61,8 @@ export default props => {
                     <Drawer open={open} toggleDrawerHandler={()=>openDrawer(false)} />
                 </div>
             </ListItem>
+            {login&&<LoginModal modal={login} setModal={setLoginModal} onSignUp={onSignUp} />}
+            {signup&&<SignupModal modal={signup} setModal={setSignupModal} onSignIn={onSignIn}/>}
         </List>
     )
 }

@@ -14,4 +14,20 @@ export const commonStyle =  makeStyles(() => ({
     space100 : {
         height : 100
     },
+
+    inputFieldsV : {
+        padding : 20,
+        paddingBottom : 15,
+        paddingTop : 5
+      },
+      inputFields : {
+        width : '100%',
+        height : 60,
+      },
+      inputFLabelT : {
+        fontSize : 14,
+        color : colors.dark,
+        marginBottom : 10
+      },
+      
 }))

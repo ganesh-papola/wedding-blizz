@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Landing, Home, Vendors, About } from 'containers';
+import { Landing, Home, Vendors, About, Events, AddEventsForm } from 'containers';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -49,6 +49,9 @@ export default props => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/vendors" component={Vendors} />
         <Route exact path="/about" component={About} />
+
+        <Route exact path="/event" component={Events} />
+        <Route exact path="/addevent" component={AddEventsForm} />
         <PrivateRoutes auth={auth} />
       </Wrapper>
     </ThemeProvider>

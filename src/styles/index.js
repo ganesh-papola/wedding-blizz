@@ -5,3 +5,4 @@ export * from './authModalStyle';
 export * from './vendors';
 export * from './common';
 export * from './about';
+export * from './events';

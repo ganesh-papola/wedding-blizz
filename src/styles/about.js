@@ -16,11 +16,10 @@ export const aboutStyle = makeStyles((theme) => ({
 
     },
     weddingServicesTV : {
-        paddingLeft : 40,
-        paddingRight : 40,
     },
     weddingServicesIV : {
         ...center,
+        padding : 10
     },
     weddingServicesT : {
         fontSize : 48,
@@ -39,8 +38,8 @@ export const aboutStyle = makeStyles((theme) => ({
         width: 420,
         height: 420,
         [theme.breakpoints.down("md")]: {
-            width: 250,
-            height: 250,
+            width: 180,
+            height: 190,
         }
     },
     frontCoverMain:{
@@ -52,16 +51,82 @@ export const aboutStyle = makeStyles((theme) => ({
     frontCoverI:{
         height: 350,
         width : '100%',
-        background : colors.black
+        background : colors.black,
+        [theme.breakpoints.down("md")]: {
+            height : 150
+        }
     },
     frontCoverTMV:{
         position : 'absolute',
         width : '100%',
-        background : 'red'
+        height: 350,
+        [theme.breakpoints.down("md")]: {
+            height : 150
+        }
     },
-    frontCoverTMSV:{},
+    frontCoverTMSV:{
+        ...center
+    },
     frontCoverTV:{},
-    frontCoverHT:{},
-    frontCoverHST:{}
+    frontCoverHT:{
+        color : colors.white,
+        fontSize : 50,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 20,
+        }
+    },
+    frontCoverHST:{
+        color : colors.white,
+        fontSize : 15,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 8,
+        }
+    },
+    planBookWedMain:{
+        padding : 50,
+        background : colors.main3,
+        [theme.breakpoints.down("md")]: {
+            padding : 20,
+        }
+    },
+    planBookWedI:{
+        width: 500,
+        height: 400,
+        [theme.breakpoints.down("md")]: {
+            width: 180,
+            height: 190,
+        }
+    },
+    planBookWedIV:{
+        padding : 10,
+        ...center
+    },
+    planBookWedV:{},
+    planBookWedTV:{},
+    planBookWedHT:{
+        width:'70%',
+        fontSize : 45,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 20,
+        }
+    },
+    attentionDetailI:{
+        width: 490,
+        height: 390,
+        [theme.breakpoints.down("md")]: {
+            width: 180,
+            height: 180,
+        }
+    },
+    attentionDetailMain :{
+        padding : 50,
+        paddingTop:80,
+        paddingBottom:80,
+        [theme.breakpoints.down("md")]: {
+            padding : 20,
+            paddingTop:30,
+            paddingBottom:30,
+        }
+    }
 
 }) )

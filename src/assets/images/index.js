@@ -60,3 +60,11 @@ export { default as invitationRoundImage } from "./invitation.png";
 // about
 export { default as laptopWork } from "./laptopWork.png";
 export { default as weddingServicesCover } from "./weddingServiceAboutCover.png";
+export { default as aboutCouple } from "./aboutCouple.png";
+export { default as largeHallRestrau } from "./largeHallRestrau.png";
+export { default as flowersPotDec } from "./flowersPotDec.png";
+export { default as dressingBride } from "./dressingBride.png";
+
+//events
+export { default as plusIcon } from "./plusIcon.svg"
+

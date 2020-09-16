@@ -147,9 +147,53 @@ export default {
         'TotalUsers' : 'Total Users',
         'TotalVendors' : 'Total Vendors',
         'TotalReviews' : 'Total Reviews',
+
+        'PlannBookWedding' : 'Plan And Book Your Wedding',
+        'PlannBookWeddingS1' : 'Lorem ipsum dolor sit amet.',
+        'PlannBookWeddingS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
+        'PlannBookWeddingS3' : 'Cras turpis augue, elementum pellentesque porttitor suscipit, consequat ac neque. Nullam condimentum tellus a tortor gravida lacinia. Aliquam finibus augue vitae posuere mattis.',
+        'PlannBookWeddingS3' : 'Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id.',
+        'Attention2Detail' : 'Attention to Detail',
+        'Attention2DetailS1' : 'Lorem ipsum dolor sit amet.',
+        'Attention2DetailS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
+        'InvestorRelations' : 'Investor Relations',
+        'InvestorRelationsS1' : 'Lorem ipsum dolor sit amet.',
+        'InvestorRelationsS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
+        'AmazingValue' : 'Amazing Value',
+        'AmazingValueS1' : 'Lorem ipsum dolor sit amet.',
+        'AmazingValueS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
+        'AmazingValueS3' : 'Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id.',
+
+    },
+    'events' : {
+        'WeddingEvent' : 'Wedding Event',
+        'AddUrWeddingEvent' : 'Add your Wedding Event',
+        'NewWeddingEvent' : 'New Wedding Event',
+        'SpouseName' : 'Spouse Name',
+        'WeddingDate' : 'Wedding Date',
+        'WeddingLocation' : 'Wedding Location',
+        'GuestCount' : 'Guest Count',
+        'EventType' : 'Event Type',
+        'WeddingFunction' : 'Wedding Function',
+        'WeddingTheme' : 'Wedding Theme',
+
+
     },
     'common' : {
         'Search' : 'Search',
-        'ViewAll' : 'View All'
+        'ViewAll' : 'View All',
+        'City' : 'City',
+        'State' : 'State',
+        'Country' : 'Country',
+        'Zipcode':'Zipcode',
+        'Private' : 'Private',
+        'Public' : 'Public',
+        'Traditional' : 'Traditional',
+        'Family' : 'Family',
+        'Images' : 'Images',
+        'Image' : 'Image',
+        'Browse' : 'Browse',
+        'Submit' : 'Submit',
+        'Cancel' : 'Cancel'
     }
 }

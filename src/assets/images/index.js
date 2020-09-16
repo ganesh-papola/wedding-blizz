@@ -56,3 +56,7 @@ export { default as weddinggiftImage } from "./weddinggift.png";
 export { default as transportRoundImage } from "./transportation.png";
 export { default as photographyRoundImage } from "./photography.png";
 export { default as invitationRoundImage } from "./invitation.png";
+
+// about
+export { default as laptopWork } from "./laptopWork.png";
+export { default as weddingServicesCover } from "./weddingServiceAboutCover.png";

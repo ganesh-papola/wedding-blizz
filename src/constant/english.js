@@ -94,7 +94,7 @@ export default {
         'fullname' : 'Please enter valid full name',
         'email' : 'Please enter valid email',
         'phone' : 'Please enter valid phone no',
-        'password' : 'Please enter a valid password with min 8 chars alphanumeric',
+        'password' : 'Please enter a valid password with min 8 alphanumeric chars.',
         'cpassword' : 'Password does not match',
         'emailLogin' : 'Enter email address',
         'passwordLogin' : 'Enter password',
@@ -137,8 +137,16 @@ export default {
 
         'WeddingVendorsState' : 'Wedding Vendors by State',
         'AbiaWeddings' : 'Abia Weddings'
-
-
+    },
+    'about' : {
+        'ProvidesWeddingServices' : 'Provides wedding services',
+        'ProvidesWeddingServicesS1' : 'Lorem ipsum dolor sit amet.',
+        'ProvidesWeddingServicesS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
+        'ProvidesWeddingServicesS3' : 'Cras turpis augue, elementum pellentesque porttitor suscipit, consequat ac neque. Nullam condimentum tellus a tortor gravida lacinia. Aliquam finibus augue vitae posuere mattis.',
+        'ProvidesWeddingServicesS3' : 'Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id.',
+        'TotalUsers' : 'Total Users',
+        'TotalVendors' : 'Total Vendors',
+        'TotalReviews' : 'Total Reviews',
     },
     'common' : {
         'Search' : 'Search',

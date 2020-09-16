@@ -43,11 +43,6 @@ export default (props) => {
                     </Box>
                 </Typography>
             </Grid>
-            
-            <Grid item sm={12} xs={12} md={12} lg={12}>
-                <WeddingApp/>
-            </Grid>
-
         </Grid>
     );
 };

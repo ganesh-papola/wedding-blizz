@@ -16,7 +16,11 @@ export const commonStyle =  makeStyles(() => ({
     },
 
     inputFieldsV : {
-        padding : 20,
+        width : '100%',
+        paddingBottom : 15,
+        paddingTop : 5
+      },
+      dateFieldsV:{
         paddingBottom : 15,
         paddingTop : 5
       },
@@ -27,7 +31,19 @@ export const commonStyle =  makeStyles(() => ({
       inputFLabelT : {
         fontSize : 14,
         color : colors.dark,
-        marginBottom : 10
+        paddingBottom : 10
       },
+
+      formControlDropD: {
+        minWidth: 120,
+        minWidth : '96%',
+        width: '100%',
+        height: 60,
+    },
+    dropdownV:{
+      paddingBottom : 15,
+      paddingTop : 5,
+      width: '100%',
+    }
       
 }))

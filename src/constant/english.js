@@ -194,6 +194,7 @@ export default {
         'Image' : 'Image',
         'Browse' : 'Browse',
         'Submit' : 'Submit',
-        'Cancel' : 'Cancel'
+        'Cancel' : 'Cancel',
+        'Map' : 'Map'
     }
 }

@@ -51,10 +51,26 @@ export const eventStyle = makeStyles((theme) => ({
         paddingBottom : 10
     },
     addNewEventFormV : {
-        width : '70%',
+        width : '60%',
         ...center
     },
     addNewEventFormGV : {
-        
+        position : 'relative',
+        paddingRight :20,
+        paddingLeft : 20
+    },
+    mapTV:{
+        position : 'absolute',
+        display : 'flex',
+        right : 20,
+        color : colors.blue4,
+        cursor:'pointer'
+    },
+    mapT:{
+        color:colors.blue4,
+        fontSize : 13
+    },
+    spaceH20:{
+        width : 20
     }
 }))

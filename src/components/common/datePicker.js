@@ -4,11 +4,11 @@ import {
     MuiPickersUtilsProvider,
     KeyboardTimePicker,
     KeyboardDatePicker,
-  } from '@material-ui/pickers';
-  import DateFnsUtils from '@date-io/date-fns';
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
 import { commonStyle } from "styles";
 
-export default ({ value=null, onChange=()=>{}, label, maxLength, error, secure = false, ...tprops }) => {
+export default ({ value = null, onChange = () => { }, label, maxLength, error, secure = false, ...tprops }) => {
     const classes = commonStyle();
     const [val, setValue] = useState(value);
     const onDateChange = v => {
@@ -16,24 +16,27 @@ export default ({ value=null, onChange=()=>{}, label, maxLength, error, secure =
         onChange(v)
     }
     return (
-        <MuiPickersUtilsProvider utils={DateFnsUtils} className={classes.inputFieldsV}>
-            <Typography fontFamily="Gotham" component={'span'}>
-                <Box className={classes.inputFLabelT}>{label}</Box>
-            </Typography>
-            <KeyboardDatePicker
-                className={classes.inputFields}
-                margin="normal"
-                id={label}
-                label={label}
-                value={val}
-                format="MM/dd/yyyy"
-                variant="outlined"
-                {...tprops}
-                onChange={onDateChange}
-                KeyboardButtonProps={{
-                    'aria-label': 'change date',
-                }}
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <div className={classes.dateFieldsV}>
+                <Typography fontFamily="Gotham" component={'span'}>
+                    <Box className={classes.inputFLabelT}>{label}</Box>
+                </Typography>
+                <KeyboardDatePicker
+                    className={classes.inputFields}
+                    id={label}
+                    label={label}
+                    value={val}
+                    format="MM/dd/yyyy"
+                    variant="inline"
+                    inputVariant="outlined"
+                    {...tprops}
+                    onChange={onDateChange}
+                    height={60}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
                 />
+            </div>
         </MuiPickersUtilsProvider>
     )
 }

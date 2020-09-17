@@ -176,7 +176,22 @@ export default {
         'EventType' : 'Event Type',
         'WeddingFunction' : 'Wedding Function',
         'WeddingTheme' : 'Wedding Theme',
-
+        'CoupleName' : 'Couple Name',
+        'EventDate' : 'Event Date',
+        'Vendors' : 'Vendors',
+        'Guests' : 'Guests',
+        'Guest' : 'Guest',
+        'Gifts' : 'Gifts'
+    },
+    'guest':{
+        'AddNGuest' : 'Add New Guest',
+        'GuestName' : 'Guest Name',
+        'SelectGroup' : 'Select Group',
+        
+    },
+    'gift':{
+        'GiftList' : 'Gift List',
+        'AddGift' : 'Add Gift',
 
     },
     'common' : {
@@ -186,6 +201,9 @@ export default {
         'State' : 'State',
         'Country' : 'Country',
         'Zipcode':'Zipcode',
+        'PhoneNumber' : 'Phone Number',
+        'EmailAddress' : 'Email Address',
+        'Address' : 'Address',
         'Private' : 'Private',
         'Public' : 'Public',
         'Traditional' : 'Traditional',
@@ -195,6 +213,8 @@ export default {
         'Browse' : 'Browse',
         'Submit' : 'Submit',
         'Cancel' : 'Cancel',
-        'Map' : 'Map'
+        'Map' : 'Map',
+        'outOf' : 'out of',
+        'ViewDetails' : 'View Details'
     }
 }

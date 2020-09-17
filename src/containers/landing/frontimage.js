@@ -36,7 +36,7 @@ const Image = ({ image }) => {
 }
 const frontimage = () => {
     return (
-        <Carousel navButtonsAlwaysVisible={false} navButtonsAlwaysInvisible={false} indicators={false} autoPlay={true} timeout={100}>
+        <Carousel navButtonsAlwaysInvisible={true} indicators={false} autoPlay={true} timeout={100}>
             {images.map(image => <Image key={Math.random()} image={image} />)}
         </Carousel>
     );

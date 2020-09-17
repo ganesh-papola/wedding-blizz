@@ -11,7 +11,7 @@ export default ({ value = '', onChange=()=>{}, label, maxLength, error, secure =
     }
     return (
         <div className={classes.inputFieldsV}>
-            <Typography fontFamily="Gotham" component={'span'}>
+            <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
             </Typography>
             <TextField

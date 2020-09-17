@@ -12,7 +12,7 @@ export default ({label='', value='', title='', data=[], onChange=()=>{} }) => {
     }
     return (
         <div className={classes.dropdownV}>
-            <Typography fontFamily="Gotham" component={'span'}>
+            <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
             </Typography>
             <FormControl variant="outlined" className={classes.formControlDropD}>

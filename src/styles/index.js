@@ -6,3 +6,5 @@ export * from './vendors';
 export * from './common';
 export * from './about';
 export * from './events';
+export * from './guest';
+export * from './gift';

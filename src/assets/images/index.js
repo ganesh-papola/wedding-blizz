@@ -67,4 +67,10 @@ export { default as dressingBride } from "./dressingBride.png";
 
 //events
 export { default as plusIcon } from "./plusIcon.svg"
+export { default as couple } from "./couple.png"
+
+
+export { default as giftIcon } from "./giftIcon.png"
+export { default as usersIcon } from "./usersIcon.png"
+
 

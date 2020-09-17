@@ -4,6 +4,7 @@ export default {
     main1 : '#DBB562',
     main2 : '#FCECCB',
     main3 : '#FCF5EB',
+    main4 : '#F7EFE5',
     
     white : '#FFFFFF',
     
@@ -18,7 +19,8 @@ export default {
     grey3 : '#73736B',
     grey4 : '#707070',
     grey5 : '#666666',
-
+    grey6 : '#D4D4D4',
+    
     blue1:'#666B7E',
     blue2 : '#7F8293',
     blue3 : '#0146AD',

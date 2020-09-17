@@ -53,7 +53,10 @@ export const eventStyle = makeStyles((theme) => ({
     },
     addNewEventFormV : {
         width : '60%',
-        ...center
+        ...center,
+        [theme.breakpoints.down("md")]: {
+            width : '100%'
+        }
     },
     addNewEventFormGV : {
         position : 'relative',
@@ -73,5 +76,129 @@ export const eventStyle = makeStyles((theme) => ({
     },
     spaceH20:{
         width : 20
-    }
-}))
+    },
+    addNewEventFormGBtV:{
+        width : '100%', 
+        display:'flex',
+        justifyContent : 'space-between',
+        paddingRight :20,
+        paddingLeft : 20,
+        paddingTop : 20,
+        paddingBottom : 20
+    },
+    cancelButton : {
+        marginLeft : 50
+    },
+
+    eventDetailsCRImge:{
+        height : 500,
+        height : 300,
+        [theme.breakpoints.down("md")]: {
+            height : 250,
+            height : 150,
+        }
+    },
+    eventInfoV : {
+        paddingTop : 20,
+        width : '50%'
+    },
+    eventInfoHT:{
+        fontSize : 14
+    },
+    eventInfoIT:{
+        fontSize : 14
+    },
+    eventInfoGV:{
+        paddingTop : 30,
+        paddingBottom : 30,
+        [theme.breakpoints.down("md")]: {
+            paddingTop : 20,
+            paddingBottom : 20,
+        }
+    },
+    crEventMain:{
+        ...center,
+        width : '35%',
+        [theme.breakpoints.down("md")]: {
+            width : '100%'
+        }
+    },
+    crImageV:{
+        ...center
+    },
+    eventVendorsV:{
+        ...center,
+        flexDirection : 'column',
+        paddingRight : 20,
+        paddingLeft : 20,
+    },
+    vendorImg :{
+        height : 80,
+        width : 80
+    },
+    centWid100:{
+        ...center,
+        width :'100%'
+    },
+    vendorImgAlt:{
+        color:colors.dark,
+        fontSize : 14,
+        paddingTop : 10,
+        paddingBottom : 10,
+    },
+    vendorHorV:{
+        ...center,
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+        width : '35%',
+        [theme.breakpoints.down("md")]: {
+            width : '100%',
+            justifyContent: 'center'
+        }
+    },
+    roundVenV:{
+        width: 80,
+        height: 80,
+        borderRadius : 100,
+        borderWidth:1,
+        borderColor : colors.grey4,
+        borderStyle : 'dashed',
+        opacity : 0.8,
+        background : colors.main3,
+        ...center,
+        flexDirection : 'column',
+        cursor : 'pointer',
+        marginBottom : 25
+    },
+    plusIcon1:{
+        height : 25,
+        width : 25,
+    },
+    eventStatBox:{
+        width : '50%',
+        height: 50,
+        borderRadius : 5,
+        background : colors.main4,
+        ...center
+    },
+    eventstatsT:{
+       fontSize : 14,
+       paddingLeft:10 
+    },
+    
+}));
+
+
+
+
+
+
+export const cancelButtonStyle = {
+        // marginLeft : 30,
+        width: 150,
+        height: 45
+}
+export const primaryButtonStyle = {
+    width: 150,
+    height: 45
+}

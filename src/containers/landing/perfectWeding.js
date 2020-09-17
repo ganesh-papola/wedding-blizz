@@ -39,7 +39,7 @@ export default (props) => {
     const [index, setIndex] = useState(0);
 
     return (
-        <Carousel navButtonsAlwaysVisible={false} navButtonsAlwaysInvisible={false} 
+        <Carousel navButtonsAlwaysInvisible={true} 
             onChange={(index)=>setIndex(index)} indicators={false} autoPlay={true} timeout={100}>
             {images.map(image => <Image key={Math.random()} index={index} image={image} />)}
         </Carousel>

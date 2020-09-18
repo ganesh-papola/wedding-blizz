@@ -4,7 +4,8 @@ export const headerStyle =  makeStyles((theme) => ({
     headerView : {
         background : colors.white,
         display : 'flex',
-        justifyContent : 'space-between'
+        justifyContent : 'space-between',
+        // position : 'fixed'
     },
     toolbar: {
         background : colors.white,

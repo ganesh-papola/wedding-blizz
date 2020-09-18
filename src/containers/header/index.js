@@ -8,7 +8,7 @@ export default (props) => {
     const classes = headerStyle();
     return (
         <React.Fragment>
-            <AppBar position="static" className={classes.headerView} elevation={0}>
+            <AppBar position="fixed" className={classes.headerView} elevation={0}>
                 <Toolbar className={classes.toolbar}>
                     <NavList />
                 </Toolbar>

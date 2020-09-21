@@ -7,8 +7,8 @@ const center = {
 }
 export const accountStyle = makeStyles((theme) => ({
     accountMain : {
-        padding : 50,
         paddingTop : 100,
+        paddingBottom : 50,
         width : '100%',
         ...center,
         justifyContent : 'flex-start',

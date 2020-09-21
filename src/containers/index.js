@@ -15,3 +15,8 @@ export { default as AddNewGuest } from "./guest/addGuest";
 export { default as Gifts } from "./gift";
 export { default as AddNewGift } from "./gift/addGift";
 
+
+export { default as Account } from "./account";
+
+
+

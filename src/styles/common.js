@@ -134,4 +134,20 @@ export const commonStyle =  makeStyles((theme) => ({
       ...center
     }
       
-}))
+}));
+
+export const commonButtonStyle = {
+  margin : 10,
+  width: 150,
+  height: 45
+}
+export const deleteButtonStyle = {
+  margin : 10,
+  marginLeft : 5,
+  width: 150,
+  height: 45,
+  border : `1px solid ${colors.red}`,
+  background : colors.white,
+  color : colors.red,
+  boxShadow : '0 0 black'
+}

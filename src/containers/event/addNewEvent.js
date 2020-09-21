@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
-import { eventStyle, cancelButtonStyle, primaryButtonStyle } from 'styles';
+import { eventStyle, commonButtonStyle } from 'styles';
 import { TextField, DatePicker, DropDown, Radio, FilePicker } from "components";
 import { Room } from '@material-ui/icons';
 import { strings } from 'constant';
@@ -73,10 +73,10 @@ export default props => {
                         <FilePicker label={common.Images} onImage={images => { }} />
                     </Grid>
                     <Grid item sm={6} xs={6} md={6} lg={6} className={classes.addNewEventFormGBtV}>
-                        <Button variant="contained" size="large" color='primary' style={primaryButtonStyle}>
+                        <Button variant="contained" size="large" color='primary' style={commonButtonStyle}>
                             {common.Submit}
                         </Button>
-                        <Button variant="contained" size="large" style={cancelButtonStyle}>
+                        <Button variant="contained" size="large" style={commonButtonStyle}>
                             {common.Cancel}
                         </Button>
                     </Grid>

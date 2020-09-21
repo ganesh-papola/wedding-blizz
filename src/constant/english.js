@@ -199,7 +199,20 @@ export default {
         'Giftedby' : 'Gifted by',
         'AddNewGift' : 'Add New Gift',
         'GiftTitle' : 'Gift Title'
-
+    },
+    'account' :{
+        'AccountSettings' : 'Account Settings',
+        'PersonalDetails' : 'Personal Details',
+        'WeddingDetails' : 'Wedding Details',
+        'AccountManagement' : 'Account Management',
+        'EmailPreferences' : 'Email Preferences',
+        'WeddingDetails' : 'Wedding Details',
+        'EditEmail' : 'Edit Email',
+        'UpdateYourPassword' : 'Update Your Password',
+        'CurrentPassword' : 'Current Password',
+        'NewPassword' : 'New Password',
+        'ConfirmNewPassword' : 'Confirm New Password',
+        'DeleteYourAccount' : 'Delete Your Account'
     },
     'common' : {
         'Search' : 'Search',
@@ -226,6 +239,11 @@ export default {
         'Quantity' : 'Quantity',
         'Description' : 'Description',
         'DeliveryAddress' : 'Delivery Address',
+        'FirstName' : 'First Name',
+        'LastName' : 'Last Name',
+        'Phone' : 'Phone',
+        'Update' : 'Update',
+        'Delete' : 'Delete'
 
     }
 }

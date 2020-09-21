@@ -187,18 +187,3 @@ export const eventStyle = makeStyles((theme) => ({
     },
     
 }));
-
-
-
-
-
-
-export const cancelButtonStyle = {
-        // marginLeft : 30,
-        width: 150,
-        height: 45
-}
-export const primaryButtonStyle = {
-    width: 150,
-    height: 45
-}

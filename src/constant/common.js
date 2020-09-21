@@ -35,6 +35,9 @@ export const palette = {
       main: colors.main
     },
     white : {
-      maine : colors.white
+      main : colors.white
+    },
+    danger : {
+      main : colors.red
     }
   }

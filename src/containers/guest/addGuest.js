@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
-import { eventStyle, cancelButtonStyle, primaryButtonStyle } from 'styles';
+import { eventStyle, commonButtonStyle } from 'styles';
 import { TextField, DropDown } from "components";
 import { strings } from 'constant';
 const { guest, common } = strings;
@@ -49,10 +49,10 @@ export default props => {
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}/>
 
                     <Grid item sm={6} xs={6} md={6} lg={6} className={classes.addNewEventFormGBtV}>
-                        <Button variant="contained" size="large" color='primary' style={primaryButtonStyle}>
+                        <Button variant="contained" size="large" color='primary' style={commonButtonStyle}>
                             {common.Submit}
                         </Button>
-                        <Button variant="contained" size="large" style={cancelButtonStyle}>
+                        <Button variant="contained" size="large" style={commonButtonStyle}>
                             {common.Cancel}
                         </Button>
                     </Grid>

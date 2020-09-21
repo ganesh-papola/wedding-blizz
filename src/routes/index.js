@@ -43,7 +43,6 @@ const theme = createMuiTheme({
 export default props => {
   const { user } = useSelector(({ user }) => user)
   const auth = !!user.token;
-  console.log("propspropsprops ",props)
   return (
     <ThemeProvider theme={theme}>
       <Wrapper auth={auth}>

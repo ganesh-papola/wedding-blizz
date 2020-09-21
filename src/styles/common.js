@@ -22,7 +22,6 @@ export const commonStyle =  makeStyles((theme) => ({
       width : '70%',
       height : 60,
       [theme.breakpoints.down("md")]: {
-        // height : 40
       }
     }
     ,
@@ -30,6 +29,11 @@ export const commonStyle =  makeStyles((theme) => ({
         width : '100%',
         paddingBottom : 15,
         paddingTop : 5
+      },
+      textAreaTV : {
+        width : '100%',
+        [theme.breakpoints.down("md")]: {
+        }
       },
       dateFieldsV:{
         paddingBottom : 15,
@@ -39,7 +43,6 @@ export const commonStyle =  makeStyles((theme) => ({
         width : '100%',
         height : 60,
         [theme.breakpoints.down("md")]: {
-          // height : 40
         }
       },
       inputFLabelT : {

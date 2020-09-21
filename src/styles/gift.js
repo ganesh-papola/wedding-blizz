@@ -11,8 +11,10 @@ export const giftStyle = makeStyles((theme) => ({
         width : '100%',
         ...center,
         padding : 20,
+        paddingTop : 100,
         [theme.breakpoints.down("md")]: {
-            padding : 10
+            padding : 10,
+
         }
     },
     giftListV:{
@@ -81,5 +83,46 @@ export const giftStyle = makeStyles((theme) => ({
     },
     icon:{
         paddingLeft : 20
-    }
+    },
+    giftDetailDialogMain:{
+        width : '100%',
+    },
+    dialogTitleV:{
+        width : '100%',
+        display : 'flex',
+        justifyContent : 'space-between',
+        alignItems: 'center',
+    },
+    cancelIcon : {
+        cursor : 'pointer',
+        opacity : .5,
+        paddingRight : 20
+    },
+    detailModalTitleHT : {
+        fontSize : 24,
+        // paddingRight : 100,
+        color : colors.primary
+    },
+    dialogTitleT :{
+        color : colors.main5,
+        fontSize : 12,
+        paddingTop:10
+
+    },
+    contentHV:{
+        display : 'flex',
+        width : '100%',
+        justifyContent : 'flex-start'
+    },
+    dialogIcon:{
+        paddingRight : 10
+    },
+    giftNameT:{
+        fontSize : 17
+    },
+    dialogDetailT:{
+        fontSize : 12,
+        color : colors.dark,
+        paddingTop : 5
+    },
 }) )

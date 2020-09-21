@@ -187,11 +187,18 @@ export default {
         'AddNGuest' : 'Add New Guest',
         'GuestName' : 'Guest Name',
         'SelectGroup' : 'Select Group',
+        'GuestList' : 'Guest List',
+        'AddNGroup' : 'Add New Group',
+        'AddGuestList' : 'Add Guest List'
         
     },
     'gift':{
         'GiftList' : 'Gift List',
         'AddGift' : 'Add Gift',
+        'GiftDetails' : 'Gift Details',
+        'Giftedby' : 'Gifted by',
+        'AddNewGift' : 'Add New Gift',
+        'GiftTitle' : 'Gift Title'
 
     },
     'common' : {
@@ -215,6 +222,10 @@ export default {
         'Cancel' : 'Cancel',
         'Map' : 'Map',
         'outOf' : 'out of',
-        'ViewDetails' : 'View Details'
+        'ViewDetails' : 'View Details',
+        'Quantity' : 'Quantity',
+        'Description' : 'Description',
+        'DeliveryAddress' : 'Delivery Address',
+
     }
 }

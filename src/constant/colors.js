@@ -5,6 +5,7 @@ export default {
     main2 : '#FCECCB',
     main3 : '#FCF5EB',
     main4 : '#F7EFE5',
+    main5 : '#5E460A',
     
     white : '#FFFFFF',
     

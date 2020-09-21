@@ -6,6 +6,9 @@ const center = {
   alignItems: 'center',
 }
 export const landingStyle =  makeStyles((theme) => ({
+  landingMain:{
+    paddingTop : 50
+  },
     frontImage : {
         width: '100%',
         height: '100%',

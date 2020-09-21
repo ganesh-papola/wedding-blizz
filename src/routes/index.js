@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Landing, Home, Vendors, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
-  Gifts } from 'containers';
+  Guests, Gifts, AddNewGift } from 'containers';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -54,8 +54,10 @@ export default props => {
         <Route exact path="/event" component={Events} />
         <Route exact path="/addevent" component={AddEventsForm} />
         <Route exact path="/eventdetail" component={WeddingEvent} />
+        <Route exact path="/guests" component={Guests} />
         <Route exact path="/addguest" component={AddNewGuest} />
         <Route exact path="/gift" component={Gifts} />
+        <Route exact path="/addgift" component={AddNewGift} />
 
         <PrivateRoutes auth={auth} />
       </Wrapper>

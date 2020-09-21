@@ -5,10 +5,12 @@ import PerfectWedding from './perfectWeding';
 import IdeasNTips from './ideasNTips';
 import WeddingVendor from './weddingVendor';
 import WeddingApp from './weddingApp';
+import { landingStyle } from "styles";
 
 export default () => {
+    const classes = landingStyle();
     return (
-        <div>
+        <div className={classes.landingMain}>
             <FrontImage/>
             <WeddingServices/>
             <PerfectWedding/>

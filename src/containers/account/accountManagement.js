@@ -28,29 +28,31 @@ export default () => {
                         {account.EditEmail}
                     </Box>
                 </Grid>
-                <Grid sm={12} xs={12} md={12} lg={12} xs={12} item className={classes.updatePassV} >
+                <Grid sm={12} xs={12} md={12} lg={12} xl={12} item className={classes.updatePassV} >
                     <Box fontFamily='CormorantBold' className={classes.updatePassT}>
                         {account.UpdateYourPassword}
                     </Box>
                 </Grid>
 
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} >
+                <Grid sm={12} xs={12} md={10} lg={6} xl={6} item className={classes.updatePassV} >
                     <TextField label={account.CurrentPassword} secure />
                 </Grid>
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} />
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} >
+                <Grid sm={12} xs={12} md={12} lg={6} xl={6} item className={classes.updatePassV} />
+
+                <Grid sm={12} xs={12} md={10} lg={6} xl={6} item className={classes.updatePassV} >
                     <TextField label={account.NewPassword} secure />
                 </Grid>
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} />
+                <Grid sm={12} xs={12} md={12} lg={6} xl={6} item className={classes.updatePassV} />
 
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} >
+                <Grid sm={12} xs={12} md={10} lg={6} xl={6} item className={classes.updatePassV} >
                     <TextField label={account.ConfirmNewPassword} secure />
                 </Grid>
-                <Grid sm={12} xs={12} md={12} lg={6} xs={6} item className={classes.updatePassV} />
-                <Grid item sm={12} xs={12} md={7} lg={7} className={classes.accountManageV} />
+                <Grid sm={12} xs={12} md={10} lg={6} xl={6} item className={classes.updatePassV} />
+
+                <Grid item sm={12} xs={12} md={7} lg={7} xl={12} className={classes.accountManageV} />
 
 
-                <Grid sm={12} xs={12} md={12} lg={12} xs={12} item className={classes.updatePassV} >
+                <Grid sm={12} xs={12} md={12} lg={12} xl={12} item className={classes.updatePassV} >
                     <Box fontFamily='CormorantBold' className={classes.updatePassT}>
                         {account.DeleteYourAccount}
                     </Box>

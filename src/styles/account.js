@@ -92,7 +92,8 @@ export const accountStyle = makeStyles((theme) => ({
         paddingLeft : 20,
         paddingTop : 10,
         [theme.breakpoints.down("md")]: {
-            width : '80%'
+            width : '90%',
+            paddingTop : 100
         }
     },
     renderAcMainHeadT : {

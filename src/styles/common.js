@@ -143,7 +143,7 @@ export const commonButtonStyle = {
 }
 export const deleteButtonStyle = {
   margin : 10,
-  marginLeft : 5,
+  // marginLeft : 5,
   width: 150,
   height: 45,
   border : `1px solid ${colors.red}`,

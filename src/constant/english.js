@@ -181,7 +181,8 @@ export default {
         'Vendors' : 'Vendors',
         'Guests' : 'Guests',
         'Guest' : 'Guest',
-        'Gifts' : 'Gifts'
+        'Gifts' : 'Gifts',
+        'TheEventFairy' : 'The Event Fairy'
     },
     'guest':{
         'AddNGuest' : 'Add New Guest',

@@ -71,6 +71,10 @@ export { default as couple } from "./couple.png"
 
 
 export { default as giftIcon } from "./giftIcon.png"
-export { default as usersIcon } from "./usersIcon.png"
+export { default as usersIcon } from "./usersIcon.png";
+
+export { default as userIcon } from "./user.svg";
+export { default as calendarIcon } from "./calendar.svg";
+export { default as locationPinIcon } from "./location.svg";
 
 

@@ -12,6 +12,10 @@
   src: local('GothamBook'), url(./assets/fonts/Gotham-Book.otf) format('truetype');
 }
 @font-face {
+  font-family: 'GothamBold';
+  src: local('GothamBold'), url(./assets/fonts/GothamBold.otf) format('truetype');
+}
+@font-face {
   font-family: 'CormorantBold';
   src: local('CormorantBold'), url(./assets/fonts/CormorantInfant-Bold.ttf) format('truetype');
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Landing, Home, Vendors, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
-  Guests, Gifts, AddNewGift, Account } from 'containers';
+  Guests, Gifts, AddNewGift, Account, EventFr } from 'containers';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -32,7 +32,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic", "GothamBook", "CormorantSemiBold" ',
+    fontFamily: '"Gotham", "CormorantBold", "GothamLight", "CormorantBoldItalic", "GothamBook", "CormorantSemiBold", "GothamBold" ',
     button: {
       textTransform: "none"
     }
@@ -53,6 +53,8 @@ export default props => {
         <Route exact path="/event" component={Events} />
         <Route exact path="/addevent" component={AddEventsForm} />
         <Route exact path="/eventdetail" component={WeddingEvent} />
+        <Route exact path="/eventfr" component={EventFr} />
+
         <Route exact path="/guests" component={Guests} />
         <Route exact path="/addguest" component={AddNewGuest} />
         <Route exact path="/gift" component={Gifts} />

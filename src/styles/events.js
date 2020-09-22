@@ -25,7 +25,7 @@ export const eventStyle = makeStyles((theme) => ({
         color : colors.main,
         padding:10,
         [theme.breakpoints.down("md")]: {
-            fontSize : 16,
+            fontSize : 20,
         }
     },
     addNewEventV : {
@@ -185,5 +185,70 @@ export const eventStyle = makeStyles((theme) => ({
        fontSize : 14,
        paddingLeft:10 
     },
+    eventFrMain : {
+        paddingTop : 100,
+        paddingBottom : 100
+    },
+    eventFrHeadV:{
+        width : '100%',
+        minHeight : 100,
+        background : colors.main3,
+        ...center
+    },
+    eventFrListMain:{
+        ...center,
+        paddingTop : 20,
+        paddingBottom : 20
+    },
+    eventFrListV : {
+        borderRadius :10,
+        border: `1px solid ${colors.grey2}`,
+        minHeight : 100,
+        width : '60%',
+        padding : 20
+    },
+    eventFrListContainer : {
+        width : '85%'
+    },
+    eventFrHT:{
+        fontSize : 15,
+        color : colors.dark,
+        paddingTop : 7
+    },
+    eventFrCT:{
+        fontSize : 13,
+        color : colors.dark,
+        paddingTop : 10,
+        display : 'flex'
+    },
+    eventFrIcons :{
+        paddingRight : 10
+    },
+    eventFrNameHT:{
+        fontSize : 14
+    },
+    eventFrNameHT: {
+        fontSize : 13,
+        paddingLeft :15,
+        marginTop : -5
+    },
+    eventFRheadingTV:{
+
+    },
+    eventFrReviewHT:{
+        fontSize : 10,
+        paddingLeft :15,
+        paddingTop : 5,
+        ...center,
+        justifyContent: 'flex-start',
+    },
+    smallDot:{
+        height : 3,
+        width : 3,
+        background : colors.dark,
+        borderRadius : 100,
+        marginLeft : 5,
+        marginRight : 5
+    }
     
 }));

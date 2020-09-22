@@ -7,7 +7,7 @@ const center = {
 }
 export const landingStyle =  makeStyles((theme) => ({
   landingMain:{
-    paddingTop : 50
+    paddingTop : 100
   },
     frontImage : {
         width: '100%',

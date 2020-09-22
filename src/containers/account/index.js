@@ -19,7 +19,7 @@ export default () => {
     return (
         <div className={classes.accountMain}>
             <Sidemenu selected={selected} onSelect={setSelected} />
-            {components[selected]&&components[selected]()}
+            {components[selected]&&components[selected]({setSelected})}
         </div>
     )
 }

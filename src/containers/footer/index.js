@@ -52,7 +52,7 @@ const ContactView = () => {
     const classes = footerStyle();
     return (
         <div className={classes.ListView}>
-            <List className={classes.footerList}>
+            <List className={classes.contactFooterList}>
                 {SocialTexts.map((list, index) => (
                     <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-C1`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
                         <Box component="span" className={index ? classes.footerLinksT : classes.footerLinksT0}>
@@ -61,7 +61,7 @@ const ContactView = () => {
                     </Typography>
                 ))}
             </List>
-            <List className={classes.footerList}>
+            <List className={classes.contactFooterList}>
                 {ContactTexts.map((list, index) => (
                     <Typography fontFamily={index ? 'GothamBook' : 'Gotham'} key={`${Math.random()}-${index}-C2`} className={index ? classes.footerLinksT : classes.footerLinksT0}>
                         <Box component="span" className={index ? classes.footerLinksTCU : classes.footerLinksT0}>

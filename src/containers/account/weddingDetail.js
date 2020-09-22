@@ -1,19 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, accountStyle, commonButtonStyle } from 'styles';
 import { TextField, DatePicker, DropDown, Radio, FilePicker } from "components";
 import { Room } from '@material-ui/icons';
 import { strings } from 'constant';
+import { ArrowDropDown } from '@material-ui/icons';
+import Menus from './popupMenu';
+
 const { events, common, account } = strings;
 
 export default props => {
     const evntClasses = eventStyle();
     const classes = accountStyle();
+    const [menu, setMenu] = React.useState(null);
+    const handleMenuClick = (event) => {
+        setMenu(event.currentTarget);
+    };
+    const closeMenu = () => {
+        setMenu(null);
+    };
+    const onMenu = (ind) =>{
+        props.setSelected(ind)
+    }
 
     return (
         <div className={classes.renderMain}>
             <Box fontFamily='CormorantBold' className={classes.renderAcMainHeadT}>
                 {account.WeddingDetails}
+                <ArrowDropDown className={classes.dropIcon} onClick={handleMenuClick}/>
+                <Menus menu={menu} closeMenu={closeMenu} onMenu={onMenu} />
             </Box>
 
                 <Grid container>

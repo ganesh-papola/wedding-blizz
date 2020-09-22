@@ -57,6 +57,13 @@ export const accountStyle = makeStyles((theme) => ({
             background : colors.main7
         }
     },
+    dropIcon:{
+        display : 'none !important',
+        [theme.breakpoints.down("md")]: {
+            display : 'block !important',
+            paddingLeft : 10
+        }
+    },
     sideMenuNonBordTV:{
         ...center,
         justifyContent : 'flex-start',
@@ -100,8 +107,9 @@ export const accountStyle = makeStyles((theme) => ({
         fontSize : 35,
         color : colors.main,
         padding:10,
+        display : 'flex',
         [theme.breakpoints.down("md")]: {
-            fontSize : 16,
+            fontSize : 20,
         }
     },
     personalDetailTV : {

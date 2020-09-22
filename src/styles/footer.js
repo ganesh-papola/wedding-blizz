@@ -61,7 +61,20 @@ export const footerStyle =  makeStyles((theme) => ({
         paddingTop : 20
     },
     footerList : {
-        width : '50%'
+        width : '50%',
+        wordWrap: "break-word",
+        [theme.breakpoints.down("md")]: {
+            'padding-left' : '30px !important',
+            'padding-right' : '10px !important',
+        }
+    },
+    contactFooterList:{
+        width : '50%',
+        wordWrap: "break-word",
+        [theme.breakpoints.down("md")]: {
+            'padding-left' : '30px !important',
+            'padding-right' : '10px !important',
+        }
     },
     footerLinksTCU : {
         color : colors.grey,

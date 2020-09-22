@@ -1,20 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import { Grid, Box, Button } from '@material-ui/core'
 import { accountStyle, commonButtonStyle, deleteButtonStyle } from "styles";
 import { useSelector } from "react-redux";
 import { TextField, TextArea, DropDown } from "components";
 import { strings } from 'constant';
+import { ArrowDropDown } from '@material-ui/icons';
+import Menus from './popupMenu';
 
 const { account, common } = strings;
 
-export default () => {
+export default (props) => {
     const classes = accountStyle();
     const { user = {} } = useSelector(({ user }) => user);
     const { email = ' moses.chikodinaka@gmail.com' } = user;
+    const [menu, setMenu] = React.useState(null);
+    const handleMenuClick = (event) => {
+        setMenu(event.currentTarget);
+    };
+    const closeMenu = () => {
+        setMenu(null);
+    };
+    const onMenu = (ind) =>{
+        props.setSelected(ind)
+    }
+
     return (
         <div className={classes.renderMain}>
             <Box fontFamily='CormorantBold' className={classes.renderAcMainHeadT}>
                 {account.AccountManagement}
+                <ArrowDropDown className={classes.dropIcon} onClick={handleMenuClick}/>
+                <Menus menu={menu} closeMenu={closeMenu} onMenu={onMenu} />
             </Box>
             <Grid container >
                 <Grid item sm={12} xs={12} md={7} lg={7} className={classes.accountManageV} >

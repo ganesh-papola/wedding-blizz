@@ -76,7 +76,7 @@ export default (props) => {
                     </Button>
                 </Grid>
                 <Grid item sm={12} xs={12} md={7} lg={7} className={classes.accountManageV} />
-                <Grid item sm={6} xs={6} md={6} lg={6} >
+                <Grid item sm={12} xs={12} md={12} lg={6} className={classes.buttonsV}>
                     <Button variant="contained" size="large" color='primary' style={commonButtonStyle}>
                         {common.Update}
                     </Button>

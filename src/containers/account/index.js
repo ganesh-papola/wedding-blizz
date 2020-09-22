@@ -5,11 +5,13 @@ import PersonalDetail from './personalDetail';
 import WeddingDetail from './weddingDetail';
 import AccountManagement from './accountManagement';
 import EmailPreference from './emailPreference';
+import BusinessInformation from './businessInformation';
 
 const components =  [
                         props=><PersonalDetail {...props} />,
                         props=><WeddingDetail {...props} />,
                         props=><AccountManagement {...props} />,
+                        props=><BusinessInformation {...props} />,
                         props=><EmailPreference {...props} />
                     ];
 

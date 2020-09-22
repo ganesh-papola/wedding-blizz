@@ -28,7 +28,8 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
             <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
             </Typography>
-            <label htmlFor="upload-photo">
+            <label>
+                <div className={classes.browseBV}  htmlFor="upload-photo">
                 <input
                     ref={ref => uploadRef = ref}
                     style={{ display: "none" }}
@@ -38,7 +39,6 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
                     accept="image/png, image/jpeg"
                     onChange={onFile}
                     type="file" />
-                <div className={classes.browseBV}>
                     <TextField
                         className={classes.fileInputFields}
                         variant="outlined"
@@ -47,7 +47,7 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
                         helperText={error}
                         onClick={() => uploadRef && uploadRef.click()} />
                     <Button variant="outlined" size="large" color='primary'
-                        className={classes.browseButton}>
+                        className={classes.browseButton} onClick={() => uploadRef && uploadRef.click()} >
                         {common.Browse}
                     </Button>
                 </div>

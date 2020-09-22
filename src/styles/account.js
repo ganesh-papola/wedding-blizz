@@ -145,6 +145,45 @@ export const accountStyle = makeStyles((theme) => ({
     },
     updatePassV : {
         paddingTop : 5,
+    },
+    businessStatV:{
+        display : 'flex',
+        padding : 10
+    },
+    businessStatInV:{
+        padding : 15,
+        borderRadius : 6,
+        border: `1px solid ${colors.main}`,
+        ...center,
+        flexDirection : 'column',
+        marginRight : 20,
+        minWidth : 70,
+        [theme.breakpoints.down("md")]: {
+            minWidth : 50,
+            marginRight : 10,
+            padding : 10
+        }
+    },
+    busStatsValuT:{
+        color : colors.main,
+        fontSize : 30,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 18
+        }
+    },
+    busStatsTitleT : {
+        fontSize : 13,
+        color:colors.main,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 9
+        }
+    },
+    spaceV20:{
+        height : 30,
+        width : '80%'
+    },
+    buttonsV:{
+        display : 'flex'
     }
 
 }))

@@ -6,7 +6,7 @@ import { strings } from 'constant';
 const { account } = strings;
 export default ({ selected = 0, onSelect = () => { } }) => {
     const classes = accountStyle();
-    const sides = [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.EmailPreferences]
+    const sides = [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.BusinessInformation, account.EmailPreferences]
     const getTextVStyle = (index) => {
         return index === sides.length - 1 ?
             selected === index ?
@@ -23,17 +23,15 @@ export default ({ selected = 0, onSelect = () => { } }) => {
                         {account.AccountSettings}
                     </Box>
                 </div>
-
                 {
                     sides.map((text, index) => (
                         <div className={getTextVStyle(index)} onClick={() => onSelect(index)} key={index + text}>
-                            <Box fontFamily='Gotham' className={selected===index? classes.selectedmenuT : classes.menuT}>
+                            <Box fontFamily='Gotham' className={selected === index ? classes.selectedmenuT : classes.menuT}>
                                 {text}
                             </Box>
                         </div>
                     ))
                 }
-
             </div>
         </div>
     )

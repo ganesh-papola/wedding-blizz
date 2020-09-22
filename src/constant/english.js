@@ -206,13 +206,17 @@ export default {
         'WeddingDetails' : 'Wedding Details',
         'AccountManagement' : 'Account Management',
         'EmailPreferences' : 'Email Preferences',
+        'BusinessInformation' : 'Business Information',
         'WeddingDetails' : 'Wedding Details',
         'EditEmail' : 'Edit Email',
         'UpdateYourPassword' : 'Update Your Password',
         'CurrentPassword' : 'Current Password',
         'NewPassword' : 'New Password',
         'ConfirmNewPassword' : 'Confirm New Password',
-        'DeleteYourAccount' : 'Delete Your Account'
+        'DeleteYourAccount' : 'Delete Your Account',
+        'BusinessName' : 'Business Name',
+        
+
     },
     'common' : {
         'Search' : 'Search',
@@ -243,7 +247,10 @@ export default {
         'LastName' : 'Last Name',
         'Phone' : 'Phone',
         'Update' : 'Update',
-        'Delete' : 'Delete'
+        'Delete' : 'Delete',
+        'Photos' : 'Photos',
+        'Discussions' : 'Discussions',
+        'Events' : 'Events'
 
     }
 }

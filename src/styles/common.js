@@ -132,7 +132,34 @@ export const commonStyle =  makeStyles((theme) => ({
     center :{
       width:'100%',
       ...center
-    }
+    },
+    breadCrumbMain:{
+      height : 80,
+      background : colors.main3,
+      ...center,
+      width : '100%'
+    },
+    breadCrumbT:{
+      ...center,
+      fontSize : 13,
+      color : colors.grey5,
+      textTransform : 'capitalize',
+      cursor : 'pointer'
+    },
+    breadCrumbLT :{
+      ...center,
+      fontSize : 13,
+      color : colors.grey5,
+      textTransform : 'capitalize',
+    },
+    smallDot:{
+      height : 3,
+      width : 3,
+      background : colors.grey5,
+      borderRadius : 100,
+      marginLeft : 10,
+      marginRight : 10
+  }
       
 }));
 

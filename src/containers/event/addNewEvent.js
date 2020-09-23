@@ -1,15 +1,19 @@
 import React from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle } from 'styles';
-import { TextField, DatePicker, DropDown, Radio, FilePicker } from "components";
+import { TextField, DatePicker, DropDown, Radio, FilePicker, BreadCrumb } from "components";
 import { Room } from '@material-ui/icons';
 import { strings } from 'constant';
 const { events, common } = strings;
 
 export default props => {
     const classes = eventStyle();
+    const breads = [
+        { title : common.Home, path : '/' }
+    ];
     return (
         <Grid container className={classes.eventMain}>
+            <BreadCrumb breads={breads} current={events.WeddingEvent} />
             <Typography component="div" className={classes.eventTV}>
                 <Box fontFamily='CormorantBold' className={classes.eventT}>
                     {events.NewWeddingEvent}

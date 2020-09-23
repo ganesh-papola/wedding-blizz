@@ -256,7 +256,8 @@ export default {
         'Delete' : 'Delete',
         'Photos' : 'Photos',
         'Discussions' : 'Discussions',
-        'Events' : 'Events'
+        'Events' : 'Events',
+        'Home' : 'Home'
 
     }
 }

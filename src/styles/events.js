@@ -8,10 +8,12 @@ const center = {
 }
 export const eventStyle = makeStyles((theme) => ({
     eventMain : {
-        padding : 50,
+        paddingTop:100,
+        paddingBottom:100,
         ...center,
         [theme.breakpoints.down("md")]: {
-            padding : 30
+            paddingTop : 90,
+            paddingBottom : 90,
         }
     },
     eventTV : {

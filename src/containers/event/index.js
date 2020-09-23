@@ -3,12 +3,17 @@ import { Typography, Grid, Box } from '@material-ui/core'
 import { eventStyle } from 'styles';
 import { plusIcon } from "assets";
 import { strings } from 'constant';
-const { events } = strings;
+import { BreadCrumb } from "components";
+const { events, common } = strings;
 
 export default props => {
     const classes = eventStyle();
+    const breads = [
+        { title : common.Home, path : '/' }
+    ];
     return (
         <Grid container className={classes.eventMain}>
+            <BreadCrumb breads={breads} current={events.WeddingEvent} />
             <Typography component="div" className={classes.eventTV}>
                 <Box fontFamily='CormorantBold' className={classes.eventT}>
                     {events.WeddingEvent}

@@ -1,27 +1,29 @@
 import React from 'react';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
+import { Box, Breadcrumbs } from '@material-ui/core';
 import { commonStyle } from 'styles';
-
-export default ({ breads=[], current='' }) => {
+import { history } from "../../App"
+export default ({ breads = [], current='' }) => {
     const classes = commonStyle();
-    const handleClick = (item)=>{
-        props.history&&props.history.push(item.link);
+    const handleClick = (item, index) => {
+        if (item.path && history)
+            history && history.push(item.path);
     }
+    if (!breads || !breads.length)
+        return null
     return (
-        <Breadcrumbs aria-label="breadcrumb">
+        <div className={classes.breadCrumbMain}>
             {
-                breads.map((item,index)=>(
+                breads.map((item, index) => (
                     <>
-                    {index&&<Typography color="textPrimary">.</Typography>}
-                    <Link color="inherit" onClick={handleClick}>
-                        {item.text}
-                    </Link>
+                        <Box fontFamily='GothamBook' key={index + ' breadcrumb'} className={classes.breadCrumbT} onClick={() => handleClick(item, index)}>
+                            {item.title}
+
+                        </Box>
+                        <div className={classes.smallDot} />
                     </>
                 ))
             }
-            <Typography color="textPrimary">{current}</Typography>
-      </Breadcrumbs>
+            <Box fontFamily='GothamBook' className={classes.breadCrumbLT}>{current ? current : ''}</Box>
+        </div>
     )
 }

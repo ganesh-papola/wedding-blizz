@@ -21,7 +21,7 @@ export default props => {
             <Grid container justify="center" className={classes.eventInfoV}>
                 <Grid item sm={12} xs={12} md={12} className={classes.crImageV}>
                     <Carousel navButtonsAlwaysInvisible={true} indicators={true} autoPlay={false} timeout={500} animation="slide">
-                        {images.map(image => <img key={Math.random()} src={image} className={classes.eventDetailsCRImge} />)}
+                        {images.map((image,i) => <img key={Math.random()+'image-vend'+i} src={image} className={classes.eventDetailsCRImge} />)}
                     </Carousel>
                 </Grid>
                 <Grid item sm={12} xs={12} md={8} className={classes.eventInfoGV}>

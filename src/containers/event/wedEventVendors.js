@@ -29,7 +29,7 @@ export default props => {
             <div className={classes.vendorHorV}>
                 {
                     vendors.map((item, index) => (
-                        <div className={classes.eventVendorsV} key={Math.round() + index + "vend-round"}>
+                        <div className={classes.eventVendorsV} key={ Math.round()+ '-' + item.title + index + "vend-round"}>
                             <img src={item.image} className={classes.vendorImg} />
                             <Box fontFamily='Gotham' className={classes.vendorImgAlt}>
                                 {item.title}

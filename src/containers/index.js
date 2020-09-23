@@ -1,7 +1,6 @@
 export { default as Header } from "./header";
 export { default as Footer } from "./footer";
 
-export { default as Home } from "./home";
 export { default as Landing } from "./landing";
 export { default as Vendors } from "./vendors";
 export { default as About } from "./about";
@@ -17,8 +16,10 @@ export { default as AddNewGuest } from "./guest/addGuest";
 export { default as Gifts } from "./gift";
 export { default as AddNewGift } from "./gift/addGift";
 
-
 export { default as Account } from "./account";
+
+export { default as PrivacyPolicy } from "./policy";
+
 
 
 

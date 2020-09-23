@@ -6,6 +6,12 @@ const center = {
     alignItems: 'center',
 }
 export const vendorStyle = makeStyles((theme) => ({
+    vendorMain :{
+        paddingTop:100,
+        [theme.breakpoints.down("md")]: {
+            paddingTop : 85
+        }
+    },
     frontImage: {
         width: '100%',
         height: '100%',

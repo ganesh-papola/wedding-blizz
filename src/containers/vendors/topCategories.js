@@ -33,9 +33,9 @@ const ImageGrid = ({ img = [] }) => {
     return (
         <Grid container justify="center" className={classes.imagesGridV}>
             {
-                images.map(image => (
-                    <>
-                        <Grid item justify="center" align='center' sm={12} xs={12} md={4} lg={4} className={classes.ideaTipImgV}>
+                images.map((image,i) => (
+              
+                        <Grid item sm={12} xs={12} md={4} lg={4} className={classes.ideaTipImgV} key={i+image.title}>
                             <img src={image.image} className={classes.ideaTipImg} />
                             <Typography component="div" className={classes.imageGridTV}>
                                 <Box fontFamily='Gotham' className={classes.imageGridT}>
@@ -43,7 +43,6 @@ const ImageGrid = ({ img = [] }) => {
                                 </Box>
                             </Typography>
                         </Grid>
-                    </>
                 ))
             }
         </Grid>
@@ -68,7 +67,7 @@ export default props => {
     const comclasses = commonStyle();
     return (
         <Grid container >
-            <Grid item justify="center" sm={12} xs={12} md={12} align='center' className={classes.IdeasNTipsTopV}>
+            <Grid item sm={12} xs={12} md={12} className={classes.IdeasNTipsTopV}>
                 <Typography component="div" className={classes.IdeasNTipsHT}>
                     <Box fontFamily='CormorantBoldItalic' className={`${classes.IdeasNTipsText}`}>
                         {vendors.TopVenCategory}

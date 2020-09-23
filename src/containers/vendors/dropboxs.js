@@ -31,8 +31,8 @@ export default props => {
     return (
         <div>
             {
-                forms.map(item => (
-                    <div className={classes.formControlV} key={item.title}>
+                forms.map((item,i) => (
+                    <div className={classes.formControlV} key={item.title} key={i+'-drop-forms'}>
                         <FormControl variant="outlined" className={classes.formControl}>
                             <InputLabel id={item.title+"label"}>{item.title}</InputLabel>
                             <Select
@@ -41,7 +41,7 @@ export default props => {
                                 value={state[item.key]}
                                 onChange={({target:{value}}) => setState({...state, [item.key] : value })}
                                 label={item.title}>
-                                {item.data.map(it=><MenuItem value={it.value}>{it.label}</MenuItem>)}
+                                {item.data.map((it,ind)=><MenuItem value={it.value} key={ind+'-vendors-drops'}>{it.label}</MenuItem>)}
                             </Select>
                         </FormControl>
                     </div>

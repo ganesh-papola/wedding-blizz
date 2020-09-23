@@ -20,7 +20,7 @@ export default props => {
                         {vendors.FindingaVendorSubH}
                     </Box>
                 </Typography>
-                <Grid item justify="center" sm={12} xs={12} md={12} lg={4} align='center' className={classes.findVendorSubGV}>
+                <Grid item sm={12} xs={12} md={12} lg={4} className={classes.findVendorSubGV}>
                     <img src={cardIcon} className={classes.subImage} />
                     <Typography component="div" className={classes.findVendorSubTV}>
                         <Box fontFamily='CormorantBoldItalic' className={`${classes.findVendorSubT}`}>
@@ -31,7 +31,7 @@ export default props => {
                         </Box>
                     </Typography>
                 </Grid>
-                <Grid item justify="center" sm={12} xs={12} md={12} lg={4} align='center' className={classes.findVendorSubGV}>
+                <Grid item sm={12} xs={12} md={12} lg={4} className={classes.findVendorSubGV}>
                     <img src={bulbIcon} className={classes.subImage} />
                     <Typography component="div" className={classes.findVendorSubTV}>
                         <Box fontFamily='CormorantBoldItalic' className={`${classes.findVendorSubT}`}>
@@ -42,7 +42,7 @@ export default props => {
                         </Box>
                     </Typography>
                 </Grid>
-                <Grid item justify="center" sm={12} xs={12} md={12} lg={4} align='center' className={classes.findVendorSubGV}>
+                <Grid item sm={12} xs={12} md={12} lg={4} className={classes.findVendorSubGV}>
                     <img src={groupMessageIcon} className={classes.subImage} />
                     <Typography component="div" className={classes.findVendorSubTV}>
                         <Box fontFamily='CormorantBoldItalic' className={`${classes.findVendorSubT}`}>

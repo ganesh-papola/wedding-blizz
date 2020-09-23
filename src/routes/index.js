@@ -1,8 +1,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Landing, Home, Vendors, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
-  Guests, Gifts, AddNewGift, Account, EventFr } from 'containers';
+import { Landing, Vendors, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
+  Guests, Gifts, AddNewGift, Account, PrivacyPolicy, EventFr } from 'containers';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -11,7 +11,7 @@ import { palette } from 'constant';
 
 
 const privateRoues = [
-  { path: '/home', component: Home },
+  
 ]
 
 const PrivateRoutes = ({ auth }) => {
@@ -61,6 +61,7 @@ export default props => {
         <Route exact path="/addgift" component={AddNewGift} />
 
         <Route exact path="/account" component={Account} />
+        <Route exact path="/privacy" component={PrivacyPolicy} />
 
         <PrivateRoutes auth={auth} />
       </Wrapper>

@@ -217,7 +217,12 @@ export default {
         'DeleteYourAccount' : 'Delete Your Account',
         'BusinessName' : 'Business Name',
         
-
+    },
+    'privacy' : {
+        'PrivacyPolicy' : 'Privacy Policy',
+        'PrivacyPolicyH':'Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr',
+        'PrivacyPolicyC' : 'Consetetur sadipscing elitr, sed diam nons umy eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et jus tortduo dolores et ea rebumtet clita kasd gubergren. Eea takimata sanctus est Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr, sed diam nonu my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accu ert sam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata erdt sanctus est. Consetetur sadipscing elitr, sed diam nons umy eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et jus tortduo dolores et ea rebumtet clita kasd gubergren. Eea takimata sanctus est Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr, sed diam nonu my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accu ert sam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata erdt sanctus est.',
+        
     },
     'common' : {
         'Search' : 'Search',

@@ -9,3 +9,4 @@ export * from './events';
 export * from './guest';
 export * from './gift';
 export * from './account';
+export * from "./privacy";

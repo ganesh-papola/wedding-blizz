@@ -36,8 +36,8 @@ const alldata = [
 const ImagesGrids = props => {
     const classes = vendorStyle();
     return (
-        alldata.map( item =>
-            <Grid item   sm={12} xs={12} md={3} lg={3} className={classes.allCategoryV}>
+        alldata.map((item,i) =>
+            <Grid item   sm={12} xs={12} md={3} lg={3} className={classes.allCategoryV} key={item.label+i+'-all-cats'}>
                 <div className={classes.allCatRoundImgV}>
                     <img src={item.image} className={classes.allCatRoundImg} />
                 </div>

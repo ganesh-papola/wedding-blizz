@@ -30,8 +30,8 @@ const alldata = [
 const VendorsList = () => {
     const classes = vendorStyle();
     return (
-        alldata.map(label =>
-            <Grid item   sm={12} xs={12} md={3} lg={3} className={classes.allVendorStateV}>
+        alldata.map((label,i) =>
+            <Grid item   sm={12} xs={12} md={3} lg={3} className={classes.allVendorStateV} key={i+label+'-vendor-state'}>
                 <Typography component="div" className={classes.allCatRoundTV}>
                     <Box fontFamily='Gotham' className={`${classes.allVendorStateT}`}>
                         {label}

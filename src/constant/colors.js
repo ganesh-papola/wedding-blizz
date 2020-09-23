@@ -31,5 +31,6 @@ export default {
     blue3 : '#0146AD',
     blue4 : '#157CD9',
 
-    red : '#FF0303'
+    red : '#FF0303',
+    green : '#0C9C06'
 }

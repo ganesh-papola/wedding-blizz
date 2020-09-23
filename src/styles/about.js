@@ -6,6 +6,9 @@ const center = {
     alignItems: 'center',
 }
 export const aboutStyle = makeStyles((theme) => ({
+    aboutMain :{
+        paddingTop : 80
+    },
     weddingServicesMain : {
         padding : 50,
         [theme.breakpoints.down("md")]: {

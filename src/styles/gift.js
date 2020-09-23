@@ -11,7 +11,7 @@ export const giftStyle = makeStyles((theme) => ({
         width : '100%',
         ...center,
         padding : 20,
-        paddingTop : 100,
+        paddingTop : 80,
         [theme.breakpoints.down("md")]: {
             padding : 10,
 

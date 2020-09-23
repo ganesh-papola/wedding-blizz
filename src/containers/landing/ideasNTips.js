@@ -23,12 +23,14 @@ const ImageGrid = () => {
                 images.map(image => (
                     <>
                         <Grid item justify="center" align='center' sm={12} xs={12} md={4} lg={4} className={classes.ideaTipImgV}>
-                            <img src={image.image} className={classes.ideaTipImg} />
-                            <Typography component="div" className={classes.imageGridTV}>
-                                <Box fontFamily='Gotham' className={classes.imageGridT}>
-                                    {image.title}
-                                </Box>
-                            </Typography>
+                            <div className={classes.categoryImageV}>
+                                <img src={image.image} className={classes.ideaTipImg} />
+                                <Typography component="div" className={classes.imageGridTV}>
+                                    <Box fontFamily='Gotham' className={classes.imageGridT}>
+                                        {image.title}
+                                    </Box>
+                                </Typography>
+                            </div>
                         </Grid>
                     </>
                 ))

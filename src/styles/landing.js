@@ -7,7 +7,7 @@ const center = {
 }
 export const landingStyle =  makeStyles((theme) => ({
   landingMain:{
-    paddingTop : 100
+    paddingTop : 80
   },
     frontImage : {
         width: '100%',
@@ -91,9 +91,9 @@ export const landingStyle =  makeStyles((theme) => ({
         marginLeft : 10,
       },
       [theme.breakpoints.up("lg")]: {
-        width: 150,
-        height: 60,
-        marginLeft : 10,
+        width: 159,
+        height: 50,
+        marginLeft : 20,
       }
     },
     serviceView:{
@@ -277,22 +277,35 @@ export const landingStyle =  makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      transform: 'scale(1)',
-      transition: 'transform .2s',
-      "&:hover": {
-          transform: 'scale(1.15)',
-          transition: 'transform .2s'
-      },
+      
+    },
+    categoryImageV:{
+      width: 390,
+      height: 240,
+      overflow : 'hidden',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      [theme.breakpoints.down("md")]: {
+        width: 220,
+        height: 120,
+    }
     },
     ideaTipImg : {
       width: 390,
       height: 240,
       marginTop: 10,
       background: colors.black,
+      transform: 'scale(1)',
+      transition: 'transform .2s',
+      cursor : 'pointer',
+      "&:hover": {
+          transform: 'scale(1.15)',
+          transition: 'transform .2s'
+      },
       [theme.breakpoints.down("md")]: {
           width: 220,
           height: 120,
-          marginTop: 10,
       },
     },
     imageGridTV: {
@@ -304,7 +317,7 @@ export const landingStyle =  makeStyles((theme) => ({
       textAlign: 'center',
       color: colors.white,
       fontSize: 16,
-
+      cursor : 'pointer',
   },
     weddingVenderV : {
       width : '100%',

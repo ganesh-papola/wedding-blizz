@@ -7,10 +7,7 @@ const center = {
 }
 export const vendorStyle = makeStyles((theme) => ({
     vendorMain :{
-        paddingTop:100,
-        [theme.breakpoints.down("md")]: {
-            paddingTop : 85
-        }
+        paddingTop:80
     },
     frontImage: {
         width: '100%',
@@ -104,8 +101,7 @@ export const vendorStyle = makeStyles((theme) => ({
             paddingTop: 20
         }
     },
-
-    imagesGridV: {
+    imagesGridV : {
         background: colors.white,
         padding: 50,
         paddingLeft: 100,
@@ -116,33 +112,45 @@ export const vendorStyle = makeStyles((theme) => ({
             paddingLeft: 0,
             paddingRight: 0
         }
-    },
-    ideaTipImgV: {
+      },
+      ideaTipImgV : {
         paddingTop: 10,
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        transform: 'scale(1)',
-        transition: 'transform .2s',
-        "&:hover": {
-            transform: 'scale(1.15)',
-            transition: 'transform .2s'
-        },
-    },
-    ideaTipImg: {
+        
+      },
+      categoryImageV:{
+        width: 390,
+        height: 240,
+        overflow : 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        [theme.breakpoints.down("md")]: {
+            width: 220,
+            height: 120,
+        }
+      },
+      ideaTipImg : {
         width: 390,
         height: 240,
         marginTop: 10,
         background: colors.black,
+        transform: 'scale(1)',
+        transition: 'transform .2s',
+        cursor : 'pointer',
+        "&:hover": {
+            transform: 'scale(1.15)',
+            transition: 'transform .2s'
+        },
         [theme.breakpoints.down("md")]: {
             width: 220,
             height: 120,
-            marginTop: 10,
         },
-
-    },
-    imageGridTV: {
+      },
+      imageGridTV: {
         position: 'absolute',
         top: '50%',
         textAlign: 'center'
@@ -151,7 +159,7 @@ export const vendorStyle = makeStyles((theme) => ({
         textAlign: 'center',
         color: colors.white,
         fontSize: 16,
-
+        cursor : 'pointer',
     },
 
     IdeasNTipsTopV: {
@@ -162,6 +170,7 @@ export const vendorStyle = makeStyles((theme) => ({
         }
     },
     IdeasNTipsHT: {
+        ...center
     },
     IdeasNTipsText: {
         fontSize: 40,

@@ -29,7 +29,7 @@ export const headerStyle =  makeStyles((theme) => ({
         marginRight : '20px'
     },
     logoView:{
-        width : '35%',
+        width : '40%',
         cursor:'pointer',
         display : 'flex',
         justifyContent : 'flex-start',
@@ -39,7 +39,7 @@ export const headerStyle =  makeStyles((theme) => ({
         }
     },
     linksView : {
-        width : '50%',
+        width : '45%',
         display : 'flex',
         color : colors.dark,
         textTransform : 'capitalize',
@@ -49,7 +49,7 @@ export const headerStyle =  makeStyles((theme) => ({
     },
     buttonView : {
         width : '15%',
-        justifyContent: 'space-between',
+        // justifyContent: 'center',
         display : 'flex',
           [theme.breakpoints.down("md")]: {
             display: "none"

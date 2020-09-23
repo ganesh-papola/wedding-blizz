@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { headerStyle } from 'styles';
-import { Button, Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import { headerStyle, navButtons } from 'styles';
+import { Button, Box, List, ListItem, ListItemText } from '@material-ui/core';
 import { strings } from 'constant';
 import MenuIcon from './menuicon';
 import Drawer from './drawer';
@@ -39,20 +39,20 @@ export default props => {
                 <Logo />
                 <div className={classes.linksView}>
                     {
-                        navlists.map(nav => (
-                            <ListItemText key={Math.random()} >
-                                <Typography color="inherit" variant="button" className={`${classes.headerLinks}`}>
+                        navlists.map((nav,index) => (
+                            <ListItemText key={Math.random()+'nav'+index} >
+                                <Box variant="button" fontFamily="Gotham" className={`${classes.headerLinks}`}>
                                     {nav.title}
-                                </Typography>
+                                </Box>
                             </ListItemText>
                         ))
                     }
                 </div>
                 <div className={classes.buttonView}>
-                    <Button onClick={()=>setLoginModal(true)} variant="outlined" size="small" color='primary' className={classes.button} mr={4}>
+                    <Button onClick={()=>setLoginModal(true)} variant="outlined" size="small" color='primary' style={navButtons} mr={4}>
                         {auth.Login}
                     </Button>
-                    <Button onClick={()=>setSignupModal(true)}  variant="contained" size="small" color='primary' className={classes.button} mr={4}>
+                    <Button onClick={()=>setSignupModal(true)}  variant="contained" size="small" color='primary' style={navButtons} mr={4}>
                         {auth.SignUp}
                     </Button>
                 </div>

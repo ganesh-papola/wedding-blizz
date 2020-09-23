@@ -14,13 +14,13 @@ export default ({ breads = [], current='' }) => {
         <div className={classes.breadCrumbMain}>
             {
                 breads.map((item, index) => (
-                    <>
-                        <Box fontFamily='GothamBook' key={index + ' breadcrumb'} className={classes.breadCrumbT} onClick={() => handleClick(item, index)}>
+                    <div key={index+'-breadcrumb'} className={classes.breadcrumbV}>
+                        <Box fontFamily='GothamBook' className={classes.breadCrumbT} onClick={() => handleClick(item, index)}>
                             {item.title}
 
                         </Box>
                         <div className={classes.smallDot} />
-                    </>
+                    </div>
                 ))
             }
             <Box fontFamily='GothamBook' className={classes.breadCrumbLT}>{current ? current : ''}</Box>

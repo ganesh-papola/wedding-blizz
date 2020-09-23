@@ -139,6 +139,7 @@ export default {
         'AbiaWeddings' : 'Abia Weddings'
     },
     'about' : {
+        'AboutCompany' : 'About Company',
         'ProvidesWeddingServices' : 'Provides wedding services',
         'ProvidesWeddingServicesS1' : 'Lorem ipsum dolor sit amet.',
         'ProvidesWeddingServicesS2' : 'Donec phar etra mi vestibulum sapien lacinia, non tincidunt augue congue. Vivamus sit amet neque fringilla nisi vestibulum ultrices eget a eros. Aenean bibendum justo leo, nec dapibus ipsum vulputate id. Curabitur eget ante dui.',
@@ -257,7 +258,8 @@ export default {
         'Photos' : 'Photos',
         'Discussions' : 'Discussions',
         'Events' : 'Events',
-        'Home' : 'Home'
+        'Home' : 'Home',
+        'Category' : 'Category'
 
     }
 }

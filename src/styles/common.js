@@ -152,6 +152,9 @@ export const commonStyle =  makeStyles((theme) => ({
       color : colors.grey5,
       textTransform : 'capitalize',
     },
+    breadcrumbV:{
+      ...center
+    },
     smallDot:{
       height : 3,
       width : 3,
@@ -177,4 +180,10 @@ export const deleteButtonStyle = {
   background : colors.white,
   color : colors.red,
   boxShadow : '0 0 black'
+}
+export const navButtons = {
+  height : 40,
+  width : 90,
+  marginLeft : 10,
+  marginRight : 10
 }

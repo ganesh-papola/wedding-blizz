@@ -9,6 +9,7 @@ export { default as Events } from "./event";
 export { default as AddEventsForm } from "./event/addNewEvent";
 export { default as WeddingEvent } from "./event/weddingEvent";
 export { default as EventFr } from "./event/eventFairy";
+export { default as Category } from "./event/category";
 
 export { default as Guests } from "./guest";
 export { default as AddNewGuest } from "./guest/addGuest";

@@ -7,7 +7,7 @@ const center = {
 }
 export const privacyStyle =  makeStyles((theme) => ({
     privacyMain : {
-        paddingTop:100,
+        paddingTop:80,
         paddingBottom : 50,
         flexDirection : 'column',
         ...center

@@ -10,7 +10,7 @@ const { vendors, common } = strings;
 
 
 
-const images = 
+const images =
     [
         { title: vendors.ReceptionVenue, image: ReceptionVenue },
         { title: vendors.WeddingPhotographers, image: WeddingPhotographers },
@@ -24,7 +24,7 @@ const images =
     ]
 
 
-const onViewMore = () =>{
+const onViewMore = () => {
     alert("in progres...")
 }
 
@@ -33,16 +33,17 @@ const ImageGrid = ({ img = [] }) => {
     return (
         <Grid container justify="center" className={classes.imagesGridV}>
             {
-                images.map((image,i) => (
-              
-                        <Grid item sm={12} xs={12} md={4} lg={4} className={classes.ideaTipImgV} key={i+image.title}>
+                images.map((image, i) => (
+                    <Grid item sm={12} xs={12} md={4} lg={4} className={classes.ideaTipImgV} key={i + image.title}>
+                        <div className={classes.categoryImageV}>
                             <img src={image.image} className={classes.ideaTipImg} />
                             <Typography component="div" className={classes.imageGridTV}>
                                 <Box fontFamily='Gotham' className={classes.imageGridT}>
                                     {image.title}
                                 </Box>
                             </Typography>
-                        </Grid>
+                        </div>
+                    </Grid>
                 ))
             }
         </Grid>
@@ -53,14 +54,14 @@ const ImageGrid = ({ img = [] }) => {
 const ButtonView = props => {
     const classes = vendorStyle();
 
-    return(
+    return (
         <div className={classes.catButtonV}>
             <Button onClick={onViewMore} variant="outlined" size="large" color='primary' className={classes.catButton}>
                 {common.ViewAll}
             </Button>
         </div>
 
-    )  
+    )
 }
 export default props => {
     const classes = vendorStyle();
@@ -76,7 +77,7 @@ export default props => {
             </Grid>
             <ImageGrid />
             <ButtonView />
-            <div className={comclasses.space100}/>
+            <div className={comclasses.space100} />
         </Grid>
     )
 }

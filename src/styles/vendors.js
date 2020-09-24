@@ -128,6 +128,10 @@ export const vendorStyle = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        "&:hover > img": {
+            transform: 'scale(1.15)',
+            transition: 'transform .2s'
+        },
         [theme.breakpoints.down("md")]: {
             width: 220,
             height: 120,
@@ -141,10 +145,6 @@ export const vendorStyle = makeStyles((theme) => ({
         transform: 'scale(1)',
         transition: 'transform .2s',
         cursor : 'pointer',
-        "&:hover": {
-            transform: 'scale(1.15)',
-            transition: 'transform .2s'
-        },
         [theme.breakpoints.down("md")]: {
             width: 220,
             height: 120,

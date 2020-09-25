@@ -119,6 +119,17 @@ export const headerStyle =  makeStyles((theme) => ({
         color : colors.main,
         marginLeft : 10,
         marginRight : 10
+      },
+      popoverV:{
+      },
+      popoverT :{
+        paddingLeft : 40,
+        paddingRight : 40,
+        paddingTop : 10,
+        paddingBottom : 10,
+        cursor : 'pointer',
+        fontSize : 13,
+        borderBottom : `1px solid ${colors.grey7}`
       }
     
   }));

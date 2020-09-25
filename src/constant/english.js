@@ -28,6 +28,7 @@ export default {
         'ForgotPassword' : 'Forgot Password?',
         'VendorLogin' : 'Vendor Login',
         'CoupleLogin' : 'Couple Login',
+        'LogoutContent' : 'Are you sure want to logout?'
     },
     'header' : {
         'Planning' : 'Planning',

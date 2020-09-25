@@ -8,6 +8,7 @@ export const authModalStyle = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'center',
       overflow:'scroll',
+      // width : '100%',
       [theme.breakpoints.down("md")]: {
         // height : '80%'
       }
@@ -20,14 +21,14 @@ export const authModalStyle = makeStyles((theme) => ({
       
     },
     modalBody: {
-      width : '40%',
+      width : 500,
       background : colors.white,
       minHeight : '30%',
       borderRadius : 10,
       padding : 10,
       outline: 'none',
       [theme.breakpoints.down("md")]: {
-        width : '90%',
+        width : 400,
         // height:'70%'
       }
     },
@@ -38,8 +39,8 @@ export const authModalStyle = makeStyles((theme) => ({
     },
     inputFieldsV : {
       padding : 20,
-      paddingBottom : 15,
-      paddingTop : 5
+      paddingBottom : 10,
+      paddingTop : 5,
     },
     inputFields : {
       width : '100%',
@@ -47,7 +48,10 @@ export const authModalStyle = makeStyles((theme) => ({
     },
     modalHeadingT : {
       color : colors.main,
-      fontSize : 35
+      fontSize : 35,
+      display : 'flex',
+      justifyContent : 'center',
+      alignItems : 'center'
     },
     headingV:{
       display : 'flex',

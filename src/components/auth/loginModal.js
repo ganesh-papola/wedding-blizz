@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Modal, Backdrop, Fade, Typography, Box, Button } from '@material-ui/core';
+import { Modal, Dialog, Backdrop, Fade, Typography, Box, Button } from '@material-ui/core';
 import { authModalStyle, clearIconStyle, loaderStyle } from "styles";
 import { Clear } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,20 +51,7 @@ const onSubmit = () =>{
 
 
   return (
-    <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={modal}
-        onClose={()=>setModal(false)}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={modal}>
+      <Dialog open={modal} onClose={()=>setModal(false)} className={classes.modal}>
             <div className={classes.modalBody}>
                 <div className={classes.headerIconV}>
                     <Clear style={clearIconStyle} onClick={()=>setModal(false)}/>
@@ -89,8 +76,6 @@ const onSubmit = () =>{
                     </Button>
                 </div>
             </div>
-        </Fade>
-      </Modal>
-    </div>
+      </Dialog>
   );
 }

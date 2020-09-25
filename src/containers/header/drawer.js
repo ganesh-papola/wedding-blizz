@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { headerStyle } from 'styles';
+import { useSelector, useDispatch } from "react-redux";
 import { Drawer, Divider, List, ListItem, ListItemText } from '@material-ui/core';
 import { strings } from 'constant';
+import { logout } from "actions";
 const { auth, header } = strings;
 
 
@@ -14,7 +16,12 @@ const navlists = [
 ];
 export default props => {
     const classes = headerStyle();
-
+    const dispatch = useDispatch();
+    const { user = {}, isLoggedIn = false } = useSelector(({ user }) => user);
+    const loggedIn = !!(isLoggedIn && user.uid && user.token)
+    let authMenu = loggedIn? [{title : auth.MyProfile, onClick:()=>{}}, 
+        {title : auth.Logout, onClick: ()=>dispatch(logout())}] : 
+        [{title : auth.Login, onClick : props.setLoginModal}, {title : auth.SignUp, onClick: props.setSignupModal}]
     return (
         <Drawer open={props.open} onClose={props.toggleDrawerHandler}>
             <div className={classes.list}
@@ -30,9 +37,16 @@ export default props => {
                 </List>
                 <Divider />
                 <List>
-                    {[auth.Login, auth.SignUp].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemText primary={text} />
+                    {
+                        loggedIn?(
+                            <ListItem button key={user.name}>
+                            <ListItemText className={classes.profileMenuNameT} primary={user.name} />
+                        </ListItem>
+                        ):null
+                    }
+                    {authMenu.map((link, index) => (
+                        <ListItem button key={link.title} onClick={link.onClick}>
+                            <ListItemText primary={link.title} />
                         </ListItem>
                     ))}
                 </List>

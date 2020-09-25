@@ -55,7 +55,7 @@ export default props => {
     const comclasses = commonStyle();
     const { guests = dummy } = useSelector(({ guest }) => guest);
     const [flag, setFlag] = useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -85,7 +85,7 @@ export default props => {
                     <MoreHoriz onClick={handleMenuClick}/>
                 </div>
                 <Menu
-                    id="simple-menu"
+                    id="guest-simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}

@@ -4,7 +4,6 @@ import { authModalStyle, clearIconStyle, loaderStyle } from "styles";
 import { Clear } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { strings, LFields, loginErrors } from 'constant';
-import { validations } from 'helpers';
 import Inputs from './input';
 import { Loader } from 'components';
 import { login } from "actions"
@@ -13,9 +12,9 @@ const { auth } = strings;
 
 export default props => {
   const classes = authModalStyle();
-  const { modal=false, setModal=()=>{}, onSignUp=()=>{}, push } = props;
+  const { modal=false, setModal=()=>{}, onSignUp=()=>{}, push, type='couple', onChangeLogin=()=>{} } = props;
   const dispatch = useDispatch();
-  const { loader = false } = useSelector(({ auth }) => auth);
+  const { loader = false } = useSelector(({ user }) => user);
 
   const [state, setState] = useState({
     email : '',
@@ -42,13 +41,14 @@ const makeErrors = () => {
 const onSubmit = () =>{
     if(Object.values(state).filter(el => !el).length || Object.values(errors).filter(s => s).length)
         return makeErrors();
-    else 
-    dispatch(login(state, push))
+    else{
+      dispatch(login(state, push))
+      setTimeout(() => {
+        setModal(false)
+      }, 1500);
+    }
 }
 
-const onVendorLogin = ()=> {
-  
-}
 
   return (
     <div>
@@ -84,8 +84,8 @@ const onVendorLogin = ()=> {
                         <Box className={classes.alreadyAcT}>{auth.DontHaveAc}</Box>
                         <Box onClick={onSignUp} className={classes.alreadyAcSignInT}>{auth.SignUp}</Box>
                     </Typography>
-                    <Button onClick={onVendorLogin} variant="outlined" size="large" color='primary' className={classes.button}>
-                        {auth.VendorLogin}
+                    <Button onClick={onChangeLogin} variant="outlined" size="large" color='primary' className={classes.button}>
+                        {type==='couple'?auth.VendorLogin:auth.CoupleLogin}
                     </Button>
                 </div>
             </div>

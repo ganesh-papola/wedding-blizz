@@ -6,11 +6,12 @@ import { PersistGate } from "redux-persist/integration/react";
 import { createBrowserHistory } from "history";
 import { store, persistor } from "store";
 import Routes from "routes";
+import { firebaseInit } from "helpers";
 export const history = createBrowserHistory();
 
 
 export default () => {
-
+  firebaseInit();
   return (
     <PersistGate persistor={persistor}>
       <Provider store={store}>

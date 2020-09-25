@@ -7,7 +7,10 @@ export const authModalStyle = makeStyles((theme) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      overflow:'scroll'
+      overflow:'scroll',
+      [theme.breakpoints.down("md")]: {
+        // height : '80%'
+      }
       
     },
     headerIconV : {
@@ -22,7 +25,11 @@ export const authModalStyle = makeStyles((theme) => ({
       minHeight : '30%',
       borderRadius : 10,
       padding : 10,
-      outline: 'none'
+      outline: 'none',
+      [theme.breakpoints.down("md")]: {
+        width : '90%',
+        // height:'70%'
+      }
     },
     inputFLabelT : {
       fontSize : 14,
@@ -49,13 +56,12 @@ export const authModalStyle = makeStyles((theme) => ({
     },
     buttonV : {
       padding : 20,
-      // paddingBottom : 5,
-      // paddingTop : 5
+      
     },
     button : {
       width : '100%',
       height : 50,
-      fontSize : 18,
+      fontSize : 18
     },
     alreadyAcV :{
       display : 'flex',

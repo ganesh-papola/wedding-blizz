@@ -9,10 +9,10 @@ import { Loader } from 'components';
 import Inputs from './input';
 const { auth } = strings;
 
-export default ({ state = {}, errors = {}, fields = [], setState, setErrors, onSignIn, push={} }) => {
+export default ({ state = {}, errors = {}, fields = [], setModal, setState, setErrors, onSignIn, push={} }) => {
     const classes = authModalStyle();
     const dispatch = useDispatch();
-    const { loader = false } = useSelector(({ auth }) => auth);
+    const { loader = false } = useSelector(({ user }) => user);
 
     const onChange = useCallback(
         (key, value) => {
@@ -36,8 +36,12 @@ export default ({ state = {}, errors = {}, fields = [], setState, setErrors, onS
     const onSubmit = () => {
         if(Object.values(state).filter(el => !el).length || Object.values(errors).filter(s => s).length)
             return makeErrors();
-        else 
-        dispatch(signUp(state, push))
+        else {
+            setTimeout(() => {
+                dispatch(signUp(state, push));
+                setModal(false)
+            }, 1500);
+        }
     }
 
     return (

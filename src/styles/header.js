@@ -104,5 +104,37 @@ export const headerStyle =  makeStyles((theme) => ({
           height: 22,
           marginTop:0
         }
+      },
+      profileMenuV:{
+        display : 'flex',
+        justifyContent : 'center',
+        alignItems: 'center',
+        cursor : 'pointer',
+        [theme.breakpoints.down("md")]: {
+          display : 'none'
+        }
+      },
+      profileMenuNameT:{
+        fontSize : 13, 
+        color : colors.main,
+        marginLeft : 10,
+        marginRight : 10
       }
+    
   }));
+  export const headerProfielIcon = {
+    color : colors.main,
+    fontSize : 16
+  }
+  export const menuIcon = {
+    color : colors.main,
+    fontSize : 17
+  }
+  export const popupMenuItems = {
+    paddingLeft : 40,
+    paddingRight : 40
+  }
+  export const loggedInMenu = {
+    top : '0 !important',
+    right : '0 !important',
+  }

@@ -171,6 +171,15 @@ export const commonStyle =  makeStyles((theme) => ({
   },
   dialogButtonV:{
 
+  },
+  alertShowV:{
+    position : 'fixed',
+    zIndex : 1000,
+    top : 90,
+    width : '100%'
+  },
+  alertHideV:{
+    marginTop : 0
   }
       
 }));
@@ -195,4 +204,12 @@ export const navButtons = {
   width : 90,
   marginLeft : 10,
   marginRight : 10
+}
+export const alertErrorIcon = {
+  color : colors.red,
+  fontSize : 15
+}
+export const alertSuccessIcon = {
+  color : colors.green,
+  fontSize : 15
 }

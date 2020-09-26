@@ -10,3 +10,4 @@ export { default as Radio } from "./common/radioButton";
 export { default as FilePicker } from "./common/filePicker";
 export { default as TextArea } from './common/textArea';
 export { default as Confirm } from './common/confirm';
+export { default as Alert } from "./common/alert"

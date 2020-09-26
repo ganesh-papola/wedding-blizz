@@ -6,7 +6,9 @@ const types = [
 const manuals = {
   RESET: 'RESET',
   LOG_OUT: 'LOG_OUT',
-  USER_LOGGEDIN : 'USER_LOGGEDIN'
+  USER_LOGGEDIN : 'USER_LOGGEDIN',
+  CLOSE_ALERT : 'CLOSE_ALERT',
+  CREATE_ALERT : 'CREATE_ALERT'
 
 };
 

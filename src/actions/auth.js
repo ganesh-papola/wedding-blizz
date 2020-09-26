@@ -2,6 +2,7 @@
 import { auth, createProfile } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES } from 'constant';
+import { createAlert } from "actions";
 
 export const signUp = ({email,password, phone, fullname}) => async dispatch => {
     try {
@@ -30,6 +31,7 @@ export const login = ({email,password}) => async (dispatch, getState) => {
     } catch (error) {
         console.log("login catch error ", error)
         dispatch({ type : ACTION_TYPES.AUTH_FAILED });
+        dispatch(createAlert(error.message, 'error'))
     }
 }
 

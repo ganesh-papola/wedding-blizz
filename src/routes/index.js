@@ -11,7 +11,16 @@ import { palette } from 'constant';
 
 
 const privateRoues = [
-  
+  {path:'/event', component : Events},
+  {path:'/addevent', component : AddEventsForm},
+  {path:'/eventdetail', component : WeddingEvent},
+  {path:'/eventfr', component : EventFr},
+  {path:'/category', component : Category},
+  {path:'/guests', component : Guests},
+  {path:'/addguest', component : AddNewGuest},
+  {path:'/gift', component : Gifts},
+  {path:'/addgift', component : AddNewGift},
+  {path:'/account', component : Account},
 ]
 
 const PrivateRoutes = ({ auth }) => {
@@ -49,19 +58,6 @@ export default props => {
         <Route exact path="/" component={Landing} />
         <Route exact path="/vendors" component={Vendors} />
         <Route exact path="/about" component={About} />
-
-        <Route exact path="/event" component={Events} />
-        <Route exact path="/addevent" component={AddEventsForm} />
-        <Route exact path="/eventdetail" component={WeddingEvent} />
-        <Route exact path="/eventfr" component={EventFr} />
-        <Route exact path="/category" component={Category} />
-
-        <Route exact path="/guests" component={Guests} />
-        <Route exact path="/addguest" component={AddNewGuest} />
-        <Route exact path="/gift" component={Gifts} />
-        <Route exact path="/addgift" component={AddNewGift} />
-
-        <Route exact path="/account" component={Account} />
         <Route exact path="/privacy" component={PrivacyPolicy} />
 
         <PrivateRoutes auth={auth} />

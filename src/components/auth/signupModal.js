@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Dialog, Typography, Box } from '@material-ui/core';
+import { Dialog, Box } from '@material-ui/core';
 import { authModalStyle, clearIconStyle } from "styles";
 import { Clear } from '@material-ui/icons';
 import { strings, SUFields } from 'constant';
@@ -16,6 +16,7 @@ const [state, setState] = useState({
     phone : '',
     password : '',
     cpassword : '',
+    role : '',
 })
 const [errors, setErrors] = useState({
     fullname : null,
@@ -23,8 +24,9 @@ const [errors, setErrors] = useState({
     phone : null,
     password : null,
     cpassword : null,
+    role : null,
 })
-const inprops = { onSignIn, errors, state, setState, fields:SUFields, setErrors }
+const inprops = { onSignIn, errors, state, setState,setModal, fields:SUFields, setErrors }
 
   return (
     <div>

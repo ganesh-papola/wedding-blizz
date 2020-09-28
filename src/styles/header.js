@@ -118,7 +118,8 @@ export const headerStyle =  makeStyles((theme) => ({
         fontSize : 13, 
         color : colors.main,
         marginLeft : 10,
-        marginRight : 10
+        marginRight : 10,
+        textTransform : 'capitalize'
       },
       popoverV:{
       },

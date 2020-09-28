@@ -9,7 +9,7 @@ import { Loader } from 'components';
 import Inputs from './input';
 const { auth } = strings;
 
-export default ({ state = {}, errors = {}, fields = [], setModal, setState, setErrors, onSignIn, push={} }) => {
+export default ({ state = {}, errors = {}, fields = [], setModal=()=>{}, setState, setErrors, onSignIn }) => {
     const classes = authModalStyle();
     const dispatch = useDispatch();
     const { loader = false } = useSelector(({ user }) => user);
@@ -37,10 +37,10 @@ export default ({ state = {}, errors = {}, fields = [], setModal, setState, setE
         if(Object.values(state).filter(el => !el).length || Object.values(errors).filter(s => s).length)
             return makeErrors();
         else {
+            dispatch(signUp(state));
             setTimeout(() => {
-                dispatch(signUp(state, push));
                 setModal(false)
-            }, 1500);
+            }, 1000);
         }
     }
 

@@ -14,7 +14,8 @@ export default function login(state = INITIAL_STATE, action) {
       return { ...state, loader: false, isLoggedIn: true, user: action.payload }
     case ACTION_TYPES.AUTH_FAILED:
       return { ...state, loader: false, isLoggedIn: false, user: {} }
-
+    case ACTION_TYPES.SIGNUP :
+      return {...state, loader: false }
     case ACTION_TYPES.RESET:
       return INITIAL_STATE
     case ACTION_TYPES.LOG_OUT:

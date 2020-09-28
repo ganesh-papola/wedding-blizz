@@ -13,7 +13,7 @@ const dispatch = useDispatch();
     return (
         <div className={classes.alertShowV}>
             <Collapse in={show}>
-                <Alert severity={type==='error'?'error':'success'} action={
+                <Alert variant="filled" severity={type==='error'?'error':'success'} action={
                     <IconButton aria-label="close" color="inherit" size="small" onClick={() => dispatch(closeAlert())}>
                     <CloseIcon fontSize="inherit" style={type==='error'? alertErrorIcon : alertSuccessIcon} />
                     </IconButton>

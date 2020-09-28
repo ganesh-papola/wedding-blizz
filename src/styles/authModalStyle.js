@@ -92,7 +92,14 @@ export const authModalStyle = makeStyles((theme) => ({
     forgotPassT : {
       paddingTop : 20,
       paddingBottom : 20,
-      color : colors.blue3
+      color : colors.blue3,
+      cursor : 'pointer'
+    },
+    ForgotMessageT:{
+      fontSize : 14,
+      color : colors.dark,
+      paddingTop : 10,
+      paddingBottom : 10
     }
       
   }))

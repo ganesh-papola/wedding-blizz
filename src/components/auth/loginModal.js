@@ -12,7 +12,7 @@ const { auth } = strings;
 
 export default props => {
   const classes = authModalStyle();
-  const { modal=false, setModal=()=>{}, onSignUp=()=>{}, push, type='couple', onChangeLogin=()=>{} } = props;
+  const { modal=false, setModal=()=>{}, onSignUp=()=>{}, push, type='couple', onChangeLogin=()=>{}, onForgot=()=>{} } = props;
   const dispatch = useDispatch();
   const { loader = false } = useSelector(({ user }) => user);
 
@@ -65,7 +65,7 @@ const onSubmit = () =>{
                         {loader ? <Loader {...loaderStyle} size={15} /> : auth.Login}
                     </Button>
                     <Typography fontFamily="GothamBook" component={'span'} className={classes.forgotPassV}>
-                        <Box className={classes.forgotPassT}>{auth.ForgotPassword}</Box>
+                        <Box onClick={onForgot}  className={classes.forgotPassT}>{auth.ForgotPassword}</Box>
                     </Typography>
                     <Typography fontFamily="Gotham" component={'span'} className={classes.alreadyAcV}>
                         <Box className={classes.alreadyAcT}>{auth.DontHaveAc}</Box>

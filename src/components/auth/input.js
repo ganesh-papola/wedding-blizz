@@ -1,31 +1,33 @@
 import React from 'react';
-import { Typography, Box, TextField } from '@material-ui/core';
+import { Typography, Box } from '@material-ui/core';
 import { authModalStyle } from "styles";
+import { TextField, DropDown } from "components";
 
-export default ({onChange=()=>{}, fields=[], errors, state }) => {
+export default ({ onChange = () => { }, fields = [], errors, state }) => {
     const classes = authModalStyle();
     return (
         <>
             {
                 fields.map((item, i) => (
                     <div className={classes.inputFieldsV} key={item.key + i}>
-                        <Typography fontFamily="Gotham" component={'span'}>
-                            <Box className={classes.inputFLabelT}>{item.label}</Box>
-                        </Typography>
+                        {item.type==='textfield'&&
                         <TextField
-                            className={classes.inputFields}
-                            error={!!errors[item.key]}
-                            type={item.secure ? 'password' : 'text'}
-                            id={item.label}
+                            secure={item.secure}
                             label={item.label}
                             value={state[item.key]}
-                            helperText={errors[item.key]}
-                            variant="outlined"
-                            inputProps={{
-                                maxLength: item.maxLength,
-                            }}
-                            onChange={({ target: { value } }) => onChange(item.key, value)}
-                        />
+                            error={errors[item.key]}
+                            maxLength={item.maxLength}
+                            onChange={value => onChange(item.key, value)}
+                        />}
+                        {
+                            item.type==='dropdown'&&
+                            <DropDown label={item.label}
+                            data={item.data}
+                            value={state[item.key]}
+                            error={errors[item.key]}
+                            onChange={value => onChange(item.key, value)}
+                            />
+                        }
                     </div>
                 ))
             }

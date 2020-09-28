@@ -8,9 +8,9 @@ import { logout } from "actions";
 import { strings } from 'constant';
 import MenuIcon from './menuicon';
 import Drawer from './drawer';
-import Logo from './logo'
+import Logo from './logo';
 import { Confirm } from 'components';
-import { SignupModal, LoginModal } from "components";
+import { SignupModal, LoginModal, ForgotModal } from "components";
 const { auth, header } = strings;
 const navlists = [
     { title: header.Planning },
@@ -26,16 +26,19 @@ export default props => {
     const [login, setLoginModal] = useState(false);
     const [type, setType] = useState('couple');
     const [signup, setSignupModal] = useState(false);
+    const [forgot, setForgotModal] = useState(false);
     const [popup, setPopup] = useState(null);
-
+    const { history }  = props;
     const onSignIn = () => {
         setSignupModal(false);
+        setForgotModal(false);
         setTimeout(() => {
             setLoginModal(true)
         }, 300);
     }
     const onSignUp = () => {
         setLoginModal(false);
+        setForgotModal(false);
         setTimeout(() => {
             setSignupModal(true);
         }, 300);
@@ -46,6 +49,11 @@ export default props => {
         setTimeout(() => {
             setLoginModal(true);
         }, 300);
+    }
+    const onForgot = () =>{
+        setLoginModal(false);
+        setSignupModal(false);
+        setForgotModal(true);
     }
 
 
@@ -64,7 +72,7 @@ export default props => {
                         ))
                     }
                 </div>
-                <LoggedInUser setSignupModal={setSignupModal} setLoginModal={setLoginModal} open={popup} />
+                <LoggedInUser setSignupModal={setSignupModal} setLoginModal={setLoginModal} open={popup} history={history}/>
 
                 <div className={classes.drawerView}>
                     <MenuIcon openDrawerHandler={() => openDrawer(true)} />
@@ -72,18 +80,22 @@ export default props => {
                 </div>
             </ListItem>
 
-            {login && <LoginModal modal={login} setModal={setLoginModal} onSignUp={onSignUp} type={type} onChangeLogin={onChangeLogin} />}
+            {login && <LoginModal modal={login} setModal={setLoginModal} onSignUp={onSignUp} type={type} onChangeLogin={onChangeLogin} onForgot={onForgot} />}
             {signup && <SignupModal modal={signup} setModal={setSignupModal} onSignIn={onSignIn} />}
+            {forgot && <ForgotModal modal={forgot} setModal={setForgotModal}  onSignIn={onSignIn}/>}
         </List>
     )
 }
 
-const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, open = false }) => {
+const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, open = false, history }) => {
     const classes = headerStyle();
     const { user = {}, isLoggedIn = false } = useSelector(({ user }) => user);
     const [dialog, setDailog] = useState(false);
     const dispatch = useDispatch();
-    const onLogout = () => setDailog(true)
+    const onLogout = () => setDailog(true);
+    const setRoute = (route)=>{
+        history.push(route);
+    }
     return (
         <>
             {isLoggedIn && user.uid && user.token ?
@@ -104,6 +116,9 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                 <div className={classes.popoverV}>
                                     <Box variant="button" fontFamily="Gotham" className={classes.popoverT}>
                                         {auth.MyProfile}
+                                    </Box>
+                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>{popupState.close();setRoute('/account')}}>
+                                        {auth.MyAccount}
                                     </Box>
                                     <Box variant="button" onClick={onLogout} fontFamily="Gotham" className={classes.popoverT}>
                                         {auth.Logout}

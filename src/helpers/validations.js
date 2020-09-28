@@ -4,5 +4,6 @@ export const validations = {
     cpassword : (confPass, pass) => pass===confPass,
     fullname : val => !/[^A-Za-z0-9_ '-]/.test(val),
     phone : val => !/[^A-Za-z0-9_ '-]/.test(val),
-    check : val => val 
+    role : val => val,
+    check : val => val,
 }

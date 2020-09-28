@@ -6,8 +6,7 @@ import { store } from "store";
 const { errors } = strings;
 const {
     REACT_APP_BUCKET, REACT_APP_FIRE_API, REACT_APP_FIRE_AUTH_DOMAIN, REACT_APP_FIRE_DB,
-    REACT_APP_ID, REACT_APP_MEASERID, REACT_APP_PID, REACT_APP_SENDER_ID
-
+    REACT_APP_ID, REACT_APP_MEASERID, REACT_APP_PID, REACT_APP_SENDER_ID, REACT_APP_CONFIRMATION_EMAIL_REDIRECT
 } = process.env;
 const firebaseConfig = {
     apiKey: REACT_APP_FIRE_API,
@@ -24,34 +23,38 @@ export let firestore;
 export const firebaseInit = () => {
     firebase.initializeApp(firebaseConfig);
     firestore = firebase.firestore();
-    auth =  firebase.auth();
+    auth = firebase.auth();
     setListners()
 }
+let userDB = uid => firestore.doc(`users/${uid}`);
+let usersDB = () => firestore.collection('users');
 
 export const createProfile = async (uid, user) => {
-    if(!uid)
-    throw errors.NoUid
-    const created = new Date();
+    if (!uid)
+        throw errors.NoUid
+    const createdAt = new Date().getTime();
     const userReference = firestore.doc(`users/${uid}`);
     const snapShot = await userReference.get();
-    if(!snapShot.exists)
-     userReference.set({...user, created});
-     let currentUser = firebase.auth().currentUser;
-     currentUser.updateProfile({...user, created})
-    return userReference
+    if (!snapShot.exists)
+        userReference.set({ ...user, createdAt });
+    let currentUser = firebase.auth().currentUser;
+    currentUser.updateProfile({ ...user, createdAt, modifiedAt: createdAt })
+    await currentUser.sendEmailVerification({ url: REACT_APP_CONFIRMATION_EMAIL_REDIRECT });
+
 }
-export const setListners = async() => {
-    if(auth)
-    auth.onAuthStateChanged( async user =>{
-        const { getState, dispatch} = store;
-        const data = getState().user;
-        console.log("user ",data.user)
-        if(user){
-            const { displayName, uid, email, refreshToken } = user;
-            if(data.user)
-            dispatch({ type : ACTION_TYPES.AUTH_COMPLETE, 
-                payload:{...data.user, uid, name : displayName, email, token : refreshToken } });
-        } 
-        
-    })
+export const setListners = async () => {
+    if (auth)
+        auth.onAuthStateChanged(async user => {
+            if (user && user.emailVerified) {
+                const { getState, dispatch } = store;
+                const data = getState().user;
+                const { displayName, uid, email, refreshToken } = user;
+                const snapshot = (await userDB(uid).get()).data();
+                if (data.user)
+                    dispatch({
+                        type: ACTION_TYPES.AUTH_COMPLETE,
+                        payload: { ...data.user, uid, name: displayName, email, token: refreshToken, ...snapshot }
+                    });
+            }
+        })
 }

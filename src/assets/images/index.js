@@ -4,8 +4,8 @@ export { default as LogoText } from './logo-text.svg';
 // landing
 export { default as weddingPlanner1 } from "./weddingPlannerFront1.png";
 export { default as weddingPlanner2 } from "./weddingPlannerFront2.png";
-export { default as downloadAndroid } from "./downloadAndroid.png";
-export { default as downloadApple } from "./downloadApple.png";
+export { default as downloadAndroid } from "./downloadAndroid.svg";
+export { default as downloadApple } from "./downloadApple.svg";
 export { default as heartImage } from "./heart.svg";
 export { default as userTieImage } from "./userTie.svg";
 export { default as calculatorImage } from "./calculator.svg";
@@ -24,8 +24,8 @@ export { default as weddingFashion } from "./WeddingFashion.png";
 
 export { default as weddingVendor } from "./weddingVendor.png";
 
-export { default as downloadPrApple } from "./downloadPrApple.png";
-export { default as downloadPrAndroid } from "./downloadPrAndroid.png";
+export { default as downloadPrApple } from "./downloadPrApple.svg";
+export { default as downloadPrAndroid } from "./downloadPrAndroid.svg";
 
 
 //footer

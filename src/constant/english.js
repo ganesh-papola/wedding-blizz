@@ -1,6 +1,7 @@
 export default {
     'success' : {
-        'SignupSuccess' : 'Sign Up successfull'
+        'SignupSuccess' : 'Sign Up successfull, Please check your inbox and verify your email',
+        'ForgotPassword' : 'A reset link is sent to the email'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -8,6 +9,7 @@ export default {
         'phone' : 'Please enter valid phone no',
         'password' : 'Please enter a valid password with min 8 alphanumeric chars.',
         'cpassword' : 'Password does not match',
+        'role' : 'Please select a role',
         'emailLogin' : 'Enter email address',
         'passwordLogin' : 'Enter password',
         'NoUid' : 'No UID found'
@@ -17,6 +19,7 @@ export default {
         'SignUp' : 'Sign Up',
         'Logout' : 'Logout',
         'MyProfile' :'My Profile',
+        'MyAccount' :'My Account',
         'FullName' : 'Full Name',
         'EmailAddress' : 'Email Address',
         'Phone' : 'Phone',
@@ -28,7 +31,12 @@ export default {
         'ForgotPassword' : 'Forgot Password?',
         'VendorLogin' : 'Vendor Login',
         'CoupleLogin' : 'Couple Login',
-        'LogoutContent' : 'Are you sure want to logout?'
+        'LogoutContent' : 'Are you sure want to logout?',
+        'SelectYouRole' : 'Select Your Role',
+        'Couple' : 'Couple',
+        'Guest' : 'Guest',
+        'Vendor' : 'Vendor',
+        'ForgotLinkMessage' : 'A reset link will be sent to this email'
     },
     'header' : {
         'Planning' : 'Planning',

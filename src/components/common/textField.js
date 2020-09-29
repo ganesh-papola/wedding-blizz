@@ -16,7 +16,6 @@ export default ({ value = '', onChange=()=>{}, label, maxLength=100, error, secu
             </Typography>
             <TextField
                 className={classes.inputFields}
-                {...tprops}
                 error={!!error}
                 type={secure ? 'password' : 'text'}
                 id={label}
@@ -28,6 +27,7 @@ export default ({ value = '', onChange=()=>{}, label, maxLength=100, error, secu
                     maxLength,
                 }}
                 onChange={({ target: { value } }) => onTextChange(value)}
+                {...tprops}
             />
         </div>
     )

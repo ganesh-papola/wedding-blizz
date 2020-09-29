@@ -27,20 +27,19 @@ export const firebaseInit = () => {
     setListners()
 }
 let userDB = uid => firestore.doc(`users/${uid}`);
-let usersDB = () => firestore.collection('users');
+
+export const insert = (collection, data) => firestore.collection(collection).add(data);
 
 export const createProfile = async (uid, user) => {
     if (!uid)
         throw errors.NoUid
     const createdAt = new Date().getTime();
-    const userReference = firestore.doc(`users/${uid}`);
-    const snapShot = await userReference.get();
+    const snapShot = await userDB(uid).get();
     if (!snapShot.exists)
-        userReference.set({ ...user, createdAt });
+    userDB(uid).set({ ...user, createdAt });
     let currentUser = firebase.auth().currentUser;
     currentUser.updateProfile({ ...user, createdAt, modifiedAt: createdAt })
     await currentUser.sendEmailVerification({ url: REACT_APP_CONFIRMATION_EMAIL_REDIRECT });
-
 }
 export const setListners = async () => {
     if (auth)

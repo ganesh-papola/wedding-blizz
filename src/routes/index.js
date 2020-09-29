@@ -11,6 +11,7 @@ import { palette } from 'constant';
 
 
 const privateRoues = [
+  {path:'/', component : Events},
   {path:'/event', component : Events},
   {path:'/addevent', component : AddEventsForm},
   {path:'/eventdetail', component : WeddingEvent},
@@ -22,15 +23,30 @@ const privateRoues = [
   {path:'/addgift', component : AddNewGift},
   {path:'/account', component : Account},
 ]
-
+const publicRoutes = [
+  {path:'/', component : Landing},
+  {path:'/vendors', component : Vendors},
+  {path:'/about', component : About},
+  {path:'/privacy', component : PrivacyPolicy}
+]
 const PrivateRoutes = ({ auth }) => {
   return (
     <>
       {
         privateRoues.map(route => (
-          <Route exact path={route.path} component={auth ? route.component : Landing} key={route.path} />
+          <Route exact path={route.path} component={route.component} key={route.path} />
         ))
       }
+    </>
+  )
+}
+const PublicRoutes = ({auth}) => {
+  return(
+    <>
+    {  privateRoues.map(route => (
+        <Route exact path={route.path} component={route.component} key={route.path} />
+      ))
+    }
     </>
   )
 }
@@ -54,13 +70,12 @@ export default props => {
   const auth = !!user.token;
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper auth={auth}>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/vendors" component={Vendors} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/privacy" component={PrivacyPolicy} />
+      <Wrapper auth={auth}>        
+        {
+          auth?<PrivateRoutes auth={auth} />:
+          <PublicRoutes/>
+        }
 
-        <PrivateRoutes auth={auth} />
       </Wrapper>
     </ThemeProvider>
 

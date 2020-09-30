@@ -4,33 +4,29 @@ import { useSelector } from "react-redux";
 import { commonStyle, eventStyle } from 'styles';
 import Carousel from 'react-material-ui-carousel'
 import { strings } from 'constant';
-import { couple } from "assets";
+import moment from "moment";
 const { events } = strings;
 
-const dummy = [
-    couple, couple, couple, couple, couple
-]
 export default props => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const { event = {} } = useSelector(({ event }) => event);
-    const { images = dummy, name = "Joe Root & Maria Clerk", date = "02 Sep 2020", address1 = "Radisson Blue Hotel",
-        address2 = "63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684" } = event;
+    const { images, spouse_name = "", event_date = "", event_location = "" } = event;
     return (
         <div className={classes.crEventMain}>
             <Grid container justify="center" className={classes.eventInfoV}>
                 <Grid item sm={12} xs={12} md={12} className={classes.crImageV}>
                     <Carousel navButtonsAlwaysInvisible={true} indicators={true} autoPlay={false} timeout={500} animation="slide">
-                        {images.map((image,i) => <img key={Math.random()+'image-vend'+i} src={image} className={classes.eventDetailsCRImge} />)}
+                        {images&&images.map((image,i) => <img key={Math.random()+'image-vend'+i} src={image} className={classes.eventDetailsCRImge} />)}
                     </Carousel>
                 </Grid>
                 <Grid item sm={12} xs={12} md={8} className={classes.eventInfoGV}>
-                    <Typography component="div" className={classes.eventInfoTV}>
+                    <Typography noWrap component="div" className={classes.eventInfoTV}>
                         <Box fontFamily='Gotham' className={classes.eventInfoHT}>
                             {events.CoupleName}
                         </Box>
-                        <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
-                            {name}
+                        <Box  fontFamily='GothamBook' className={classes.eventInfoIT}>
+                            {spouse_name}
                         </Box>
                     </Typography>
                 </Grid>
@@ -40,21 +36,21 @@ export default props => {
                             {events.EventDate}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
-                            {date}
+                            {event_date&&moment(event_date).format('DD MMM YYYY')}
                         </Box>
                     </Typography>
                 </Grid>
                 <Grid item sm={12} xs={12} md={12} className={classes.eventInfoGV}>
-                    <Typography component="div" className={classes.imageGridTV}>
+                    <Typography noWrap component="div" className={classes.imageGridTV}>
                         <Box fontFamily='Gotham' className={classes.eventInfoHT}>
                             {events.WeddingLocation}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
-                            {address1}
+                            {event_location}
                         </Box>
-                        <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
+                        {/* <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
                             {address2}
-                        </Box>
+                        </Box> */}
                     </Typography>
                 </Grid>
                 <div className={commClasses.hairline} />

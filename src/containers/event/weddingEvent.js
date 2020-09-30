@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid, Box } from '@material-ui/core'
 import { eventStyle } from 'styles';
 import { strings } from 'constant';
 import WedEventCarasoul from './wedEventCarasoul';
 import WedEventVendors from './wedEventVendors';
 import { BreadCrumb } from "components";
+import { fetchEvent } from "actions";
 
 const { events, common } = strings;
 
@@ -13,6 +15,14 @@ export default props => {
     const breads = [
         { title : common.Home, path : '/' }
     ];
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        const get = async () =>{
+            const event = await dispatch(fetchEvent());
+            if(!event) props.history.push('/addEvent');
+        }
+        get();
+    },[])
     return (
         <Grid container justify="center" className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.WeddingEvent} />

@@ -180,6 +180,38 @@ export const commonStyle =  makeStyles((theme) => ({
   },
   alertHideV:{
     marginTop : 0
+  },
+  notFoundMain:{
+    ...center,
+    flex : 1,
+    flexDirection : 'column',
+    padding : 20,
+    paddingTop : 80,
+    paddingBottom : 100
+  },
+  notFoundT : {
+    fontSize : 150,
+    color : colors.main,
+    paddingTop : 40,
+    paddingBottom : 40,
+    [theme.breakpoints.down("md")]: {
+      fontSize : 60,
+      color : colors.main,
+      paddingTop : 20,
+      paddingBottom : 20,
+    }
+  },
+  notFoundTT : {
+    fontSize : 50,
+    color : colors.main,
+    paddingTop : 40,
+    paddingBottom : 40,
+    [theme.breakpoints.down("md")]: {
+      fontSize : 14,
+      color : colors.main,
+      paddingTop : 20,
+      paddingBottom : 20,
+    }
   }
       
 }));

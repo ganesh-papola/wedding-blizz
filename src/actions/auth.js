@@ -30,7 +30,7 @@ export const login = ({email,password}) => async (dispatch, getState) => {
         if(uid&&refreshToken){
           let data = getState().user;
           let userData = data?data.user:{};
-          history.push('/event');
+          history.push('/');
           dispatch({ type : ACTION_TYPES.AUTH_COMPLETE, payload:{...userData, name:displayName, email:user.email,uid,token:refreshToken} });
         }else
         dispatch({ type : ACTION_TYPES.AUTH_FAILED });

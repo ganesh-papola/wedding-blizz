@@ -277,7 +277,9 @@ export default {
         'Discussions' : 'Discussions',
         'Events' : 'Events',
         'Home' : 'Home',
-        'Category' : 'Category'
+        'Category' : 'Category',
+        'notFoundN' : '404',
+        'notFoundT' : 'The Page you are looking for does not exist.'
 
     }
 }

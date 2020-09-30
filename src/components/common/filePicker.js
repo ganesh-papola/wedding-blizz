@@ -8,7 +8,7 @@ import { commonStyle } from "styles";
 import { strings } from 'constant';
 const { common } = strings;
 
-let uploadRef;
+let uploadRef={};
 export default ({ onImage = () => { }, multiple = false, label, error }) => {
     const classes = commonStyle();
     const [images, setImages] = useState([]);
@@ -31,10 +31,10 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
             <label>
                 <div className={classes.browseBV}  htmlFor="upload-photo">
                 <input
-                    ref={ref => uploadRef = ref}
+                    ref={ref => uploadRef[label] = ref}
                     style={{ display: "none" }}
                     id="upload-photo"
-                    name="upload-photo"
+                    name={label}
                     multiple={multiple}
                     accept="image/png, image/jpeg"
                     onChange={onFile}
@@ -42,12 +42,12 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
                     <TextField
                         className={classes.fileInputFields}
                         variant="outlined"
-                        id={label} label={label}
+                        label={label}
                         error={!!error}
                         helperText={error}
-                        onClick={() => uploadRef && uploadRef.click()} />
+                        onClick={() => uploadRef[label] && uploadRef[label].click()} />
                     <Button variant="outlined" size="large" color='primary'
-                        className={classes.browseButton} onClick={() => uploadRef && uploadRef.click()} >
+                        className={classes.browseButton} onClick={() => uploadRef[label] && uploadRef[label].click()} >
                         {common.Browse}
                     </Button>
                 </div>

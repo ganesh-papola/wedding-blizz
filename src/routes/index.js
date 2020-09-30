@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Landing, Vendors, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
   Guests, Gifts, AddNewGift, Account, PrivacyPolicy, EventFr, Category } from 'containers';
+import { Notfound } from "components";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
 import Wrapper from "hoc";
@@ -29,7 +30,7 @@ const publicRoutes = [
   {path:'/about', component : About},
   {path:'/privacy', component : PrivacyPolicy}
 ]
-const PrivateRoutes = ({ auth }) => {
+const PrivateRoutes = () => {
   return (
     <>
       {
@@ -37,16 +38,18 @@ const PrivateRoutes = ({ auth }) => {
           <Route exact path={route.path} component={route.component} key={route.path} />
         ))
       }
+      {/* <Route component={Notfound} /> */}
     </>
   )
 }
-const PublicRoutes = ({auth}) => {
+const PublicRoutes = () => {
   return(
     <>
-    {  privateRoues.map(route => (
+    {  publicRoutes.map(route => (
         <Route exact path={route.path} component={route.component} key={route.path} />
       ))
     }
+    {/* <Route component={Notfound} /> */}
     </>
   )
 }
@@ -75,7 +78,7 @@ export default props => {
           auth?<PrivateRoutes auth={auth} />:
           <PublicRoutes/>
         }
-
+        
       </Wrapper>
     </ThemeProvider>
 

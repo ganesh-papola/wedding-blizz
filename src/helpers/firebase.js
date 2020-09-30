@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/storage";
 import { strings, ACTION_TYPES } from "constant";
 import { store } from "store";
 const { errors } = strings;
@@ -56,4 +57,20 @@ export const setListners = async () => {
                     });
             }
         })
+}
+export const uploadImages = (images=[]) => {
+    try {
+        return Promise.all(images.map(async image => {
+            const name = `${new Date().getTime()}-${image.name}`;
+            const ref = firebase.storage().ref(`events`);
+            const snapshot = await ref.child(name).put(image);
+            return await snapshot.ref.getDownloadURL();
+        }) )
+    } catch (error) {
+        console.log("upload catch error ", error);
+        return []
+    }
+}
+export const retrieve = async (collection, uid='', query={}) =>{
+
 }

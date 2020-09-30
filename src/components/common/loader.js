@@ -6,7 +6,7 @@ export default ({size=30, style={}, color='white'}) => {
     const classes = commonStyle();
     return (
         <div className={classes.loaderV}>
-            <CircularProgress size={size} style={{...loaderStyle, ...style}} color={color} />
+            <CircularProgress size={size} style={{...loaderStyle, ...style}} />
         </div>
     )
 }

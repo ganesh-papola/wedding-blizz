@@ -18,7 +18,7 @@ export default props => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const { event = {} } = useSelector(({ event }) => event);
-    const { vendors = dummy, guests = 150, gifts = 5, totalGifts = 15 } = event;
+    const { vendors = dummy, guest_count = 150, gifts = 5, totalGifts = 15 } = event;
     return (
         <Grid container justify="center" className={classes.eventVendorsMain}>
             <Typography component="div" className={classes.eventTV}>
@@ -52,7 +52,7 @@ export default props => {
                     <div className={classes.eventStatBox}>
                         <img src={usersIcon} />
                         <Box fontFamily='GothamBook' className={classes.eventstatsT}>
-                            {`${guests} ${events.Guests}`}
+                            {`${guest_count} ${guest_count>1?events.Guests:events.Guest}`}
                         </Box>
                     </div>
                 </div>

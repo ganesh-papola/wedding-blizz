@@ -185,6 +185,8 @@ export default {
     },
     'events' : {
         'WeddingEvent' : 'Wedding Event',
+        'VendorDetail' : 'Vendor Detail',
+        'VendorName' : 'Vendor Name',
         'AddUrWeddingEvent' : 'Add your Wedding Event',
         'NewWeddingEvent' : 'New Wedding Event',
         'SpouseName' : 'Spouse Name',

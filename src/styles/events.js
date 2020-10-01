@@ -100,6 +100,15 @@ export const eventStyle = makeStyles((theme) => ({
             height: 150,
         }
     },
+    eventVendDetailsCRImge:{
+        height: 500,
+        height: 300,
+        borderRadius:10,
+        [theme.breakpoints.down("md")]: {
+            height: 250,
+            height: 150,
+        }
+    },
     eventInfoV: {
         paddingTop: 20,
         width: '50%'
@@ -196,6 +205,12 @@ export const eventStyle = makeStyles((theme) => ({
         minHeight: 100,
         background: colors.main3,
         ...center
+    },
+    eventVendorListMain:{
+        ...center,
+        paddingTop: 20,
+        paddingBottom: 20,
+        cursor:'pointer'
     },
     eventFrListMain: {
         ...center,
@@ -322,6 +337,15 @@ export const eventStyle = makeStyles((theme) => ({
     categoryButonV: {
         ...center,
         paddingTop: 50  
+    },
+    eventVendorDetailTV : {
+        width : '50%',
+        paddingLeft :20,
+        paddingRight :20,
+        [theme.breakpoints.down("md")]: {
+            paddingLeft :20,
+            paddingRight :20,
+        }
     }
 
 }));

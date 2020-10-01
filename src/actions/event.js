@@ -52,7 +52,7 @@ export const fetchCategory = () => async (dispatch, getState) => {
             const detail = doc.data();
             const { icon } = detail;
             const image = await imagePathToUrl(icon);
-            return {...detail, icon:image }
+            return {...detail, id:doc.id, icon:image }
         }))
         dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
         return data;
@@ -62,4 +62,25 @@ export const fetchCategory = () => async (dispatch, getState) => {
         dispatch(createAlert(error.message, 'error'));
         return null
     }
+}
+export const setCategory = (payload) => dispatch => {
+    dispatch({ type : ACTION_TYPES.SET_EVENT_CATEGORY, payload });
+}
+export const fetchVendors = () => async (dispatch, getState) => {
+    console.log(" getting events ");
+    try {
+        const { category=null } = getState().event;
+        dispatch({ type : ACTION_TYPES.EVENT_REQUEST });
+        const snap = await firestore.collection('venders').where('categories', 'array-contains', category.id).get();
+        dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
+        return snap.docs.map(doc=>doc.data());
+    } catch (error) {
+        console.log("fetchVendors event catch error ", error)
+        dispatch({ type : ACTION_TYPES.EVENT_FAILED });
+        dispatch(createAlert(error.message, 'error'));
+        return null
+    }
+}
+export const setEventVendor = (payload) => dispatch => {
+    dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload });
 }

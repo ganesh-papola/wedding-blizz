@@ -3,14 +3,9 @@ import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { CheckCircleRounded } from "@material-ui/icons";
 import { eventStyle, commonButtonStyle, primaryLoaderStyle } from 'styles';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    venueRoundImage, weddingBandRoundImage, weddingcateringRoundImage, weddinggiftImage,
-    transportRoundImage, photographyRoundImage, invitationRoundImage
-} from "assets";
 import { strings } from 'constant';
 import { BreadCrumb, Loader } from "components";
-import { fetchCategory } from "actions";
-import loader from 'components/common/loader';
+import { fetchCategory, setCategory } from "actions";
 const { events, vendors, common } = strings;
 
 export default props => {
@@ -18,7 +13,8 @@ export default props => {
     const dispatch = useDispatch();
     const [categories, setCategories] = useState([]);
     const breads = [
-        { title: common.Home, path: '/' }
+        { title: common.Home, path: '/' },
+        { title: events.WeddingEvent, path: '/eventdetail' },
     ];
     
     useEffect(()=>{
@@ -36,18 +32,24 @@ export default props => {
                     {common.Category}
                 </Box>
             </Typography>
-            <ImagesGrids categories={categories} />
+            <ImagesGrids categories={categories} history={props.history}/>
         </Grid>
     )
 }
 
-const ImagesGrids = ({categories=[]}) => {
+const ImagesGrids = ({categories=[], history}) => {
     const classes = eventStyle();
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(-1);
     const { loader=false } = useSelector(({ event }) => event);
+    const dispatch = useDispatch();
+    const onSubmit = ()=>{
+        if(selected >=0 ){
+           dispatch(setCategory(categories[selected]));
+           history.push('/eventvendorlist') 
+        }
+    }
     return (
         <Grid container className={classes.categoriesV}>
-            
             {loader? <Loader style={primaryLoaderStyle}/> :
             <>
             {categories.map((item, i) =>
@@ -62,41 +64,15 @@ const ImagesGrids = ({categories=[]}) => {
                 </Grid>
             )}
             <Grid item sm={6} xs={6} md={6} lg={12} className={classes.categoryButonV}>
-                <Button variant="contained" size="large" color='primary' style={commonButtonStyle}>
+                <Button variant="contained" size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>
                     {common.Submit}
                 </Button>
-                <Button variant="contained" size="large" style={commonButtonStyle}>
+                <Button variant="contained" size="large" style={commonButtonStyle} onClick={history.goBack}>
                     {common.Cancel}
                 </Button>
             </Grid>
             </>
             }
-            
         </Grid>
     )
 }
-const alldata = [
-    { label: vendors.Venue, image: venueRoundImage },
-    { label: vendors.Catering, image: weddingcateringRoundImage },
-    { label: vendors.WedingBands, image: weddingBandRoundImage },
-    { label: vendors.Photography, image: photographyRoundImage },
-    { label: vendors.Invitation, image: invitationRoundImage },
-    { label: vendors.WeddingGifts, image: weddinggiftImage },
-    { label: vendors.Transportation, image: transportRoundImage },
-    { label: vendors.Venue, image: venueRoundImage },
-    { label: vendors.Catering, image: weddingcateringRoundImage },
-    { label: vendors.WedingBands, image: weddingBandRoundImage },
-    { label: vendors.Photography, image: photographyRoundImage },
-    { label: vendors.Invitation, image: invitationRoundImage },
-    { label: vendors.WeddingGifts, image: weddinggiftImage },
-    { label: vendors.Transportation, image: transportRoundImage },
-    { label: vendors.Venue, image: venueRoundImage },
-    { label: vendors.Catering, image: weddingcateringRoundImage },
-    { label: vendors.WedingBands, image: weddingBandRoundImage },
-    { label: vendors.Photography, image: photographyRoundImage },
-    { label: vendors.Invitation, image: invitationRoundImage },
-    { label: vendors.WeddingGifts, image: weddinggiftImage },
-    { label: vendors.Transportation, image: transportRoundImage },
-    { label: vendors.Invitation, image: invitationRoundImage },
-    { label: vendors.WeddingGifts, image: weddinggiftImage },
-]

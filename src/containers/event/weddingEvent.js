@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid, Box } from '@material-ui/core'
-import { eventStyle } from 'styles';
+import { eventStyle, primaryLoaderStyle } from 'styles';
 import { strings } from 'constant';
 import WedEventCarasoul from './wedEventCarasoul';
 import WedEventVendors from './wedEventVendors';
-import { BreadCrumb } from "components";
+import { BreadCrumb, Loader } from "components";
 import { fetchEvent } from "actions";
 
 const { events, common } = strings;
@@ -16,6 +16,7 @@ export default props => {
         { title : common.Home, path : '/' }
     ];
     const dispatch = useDispatch();
+    const { loader=false } = useSelector(({ event }) => event);
     useEffect(()=>{
         const get = async () =>{
             const event = await dispatch(fetchEvent());
@@ -31,8 +32,11 @@ export default props => {
                     {events.WeddingEvent}
                 </Box>
             </Typography>
-            <WedEventCarasoul />
-            <WedEventVendors />
+            {loader?<Loader style={primaryLoaderStyle} /> :
+            <>
+            <WedEventCarasoul history={props.history} />
+            <WedEventVendors history={props.history} />
+            </>}
         </Grid>
     )
 }

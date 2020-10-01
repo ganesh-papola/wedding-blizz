@@ -38,7 +38,7 @@ export default props => {
                     ))
                 }
                 <div className={classes.eventVendorsV}>
-                    <div className={classes.roundVenV} onClick={() => alert("In progress..")}>
+                    <div className={classes.roundVenV} onClick={() => props.history.push('/category')}>
                         <img src={plusIcon} className={classes.plusIcon1} />
                     </div>
                 </div>

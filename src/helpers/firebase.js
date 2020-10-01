@@ -64,12 +64,18 @@ export const uploadImages = (images=[]) => {
             const name = `${new Date().getTime()}-${image.name}`;
             const ref = firebase.storage().ref(`events`);
             const snapshot = await ref.child(name).put(image);
-            return await snapshot.ref.getDownloadURL();
+            // return await snapshot.ref.getDownloadURL();
+            return `events/${name}`;
         }) )
     } catch (error) {
         console.log("upload catch error ", error);
         return []
     }
+}
+export const imagePathToUrl = async (path) => {
+    if(path)
+    return firebase.storage().ref().child(path).getDownloadURL();
+    return null
 }
 export const retrieve = async (collection, uid='', query={}) =>{
 

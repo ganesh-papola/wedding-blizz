@@ -1,5 +1,5 @@
 
-import { auth, firestore, insert, uploadImages } from "helpers";
+import { auth, firestore, insert, uploadImages, imagePathToUrl } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings } from 'constant';
 import { createAlert } from "actions";
@@ -27,7 +27,13 @@ export const fetchEvent = () => async (dispatch, getState) => {
         dispatch({ type : ACTION_TYPES.EVENT_REQUEST });
         const {user:{uid=''}} = getState().user;
         const snap = await firestore.collection('events').where('owners', '==', uid).get();
-        const data = snap.docs.map(doc => doc.data());
+        const data = await Promise.all(snap.docs.map(async doc => {
+            const detail = doc.data();
+            const { images, theme_image } = detail;
+            const imagesUrls = await Promise.all(images.map(async image => await imagePathToUrl(image) ));
+            const themeUrl = await imagePathToUrl(theme_image);
+            return {...detail, images:imagesUrls, theme_image:themeUrl };
+        }));
         dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
         dispatch({ type : ACTION_TYPES.EVENT_COMPLETE, payload : data[0] });
         return data[0];
@@ -37,5 +43,23 @@ export const fetchEvent = () => async (dispatch, getState) => {
         dispatch(createAlert(error.message, 'error'));
         return null
     }
-    
+}
+export const fetchCategory = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type : ACTION_TYPES.EVENT_REQUEST });
+        const category = await firestore.collection('categories').get();
+        const data = await Promise.all(category.docs.map(async doc => {
+            const detail = doc.data();
+            const { icon } = detail;
+            const image = await imagePathToUrl(icon);
+            return {...detail, icon:image }
+        }))
+        dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
+        return data;
+    } catch (error) {
+        console.log("fetchCategory event catch error ", error)
+        dispatch({ type : ACTION_TYPES.EVENT_FAILED });
+        dispatch(createAlert(error.message, 'error'));
+        return null
+    }
 }

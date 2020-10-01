@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Typography, Box, TextField, Button } from '@material-ui/core';
 import { signUp } from "actions";
 import { useDispatch, useSelector } from 'react-redux';
-import { authModalStyle, loaderStyle } from "styles";
+import { authModalStyle, whiteLoaderStyle } from "styles";
 import { strings, signupError } from 'constant';
 import { validations } from 'helpers';
 import { Loader } from 'components';
@@ -49,7 +49,7 @@ export default ({ state = {}, errors = {}, fields = [], setModal=()=>{}, setStat
             <Inputs onChange={onChange} fields={fields} state={state} errors={errors} />
             <div className={classes.buttonV}>
                 <Button onClick={onSubmit} variant="contained" size="large" color='primary' className={classes.button}>
-                    {loader ? <Loader {...loaderStyle} size={15} /> : auth.SignUp}
+                    {loader ? <Loader style={whiteLoaderStyle} size={15} /> : auth.SignUp}
                 </Button>
                 <Typography fontFamily="Gotham" component={'span'} className={classes.alreadyAcV}>
                     <Box className={classes.alreadyAcT}>{auth.AlreadyHaveAC}</Box>

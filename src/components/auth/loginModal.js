@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Modal, Dialog, Backdrop, Fade, Typography, Box, Button } from '@material-ui/core';
-import { authModalStyle, clearIconStyle, loaderStyle } from "styles";
+import { authModalStyle, clearIconStyle, whiteLoaderStyle } from "styles";
 import { Clear } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { strings, LFields, loginErrors } from 'constant';
@@ -62,7 +62,7 @@ const onSubmit = () =>{
                 <Inputs onChange={onChange} fields={LFields} state={state} errors={errors} />
                 <div className={classes.buttonV}>
                     <Button onClick={onSubmit} variant="contained" size="large" color='primary' className={classes.button}>
-                        {loader ? <Loader {...loaderStyle} size={15} /> : auth.Login}
+                        {loader ? <Loader style={whiteLoaderStyle} size={15} /> : auth.Login}
                     </Button>
                     <Typography fontFamily="GothamBook" component={'span'} className={classes.forgotPassV}>
                         <Box onClick={onForgot}  className={classes.forgotPassT}>{auth.ForgotPassword}</Box>

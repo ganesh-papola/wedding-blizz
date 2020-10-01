@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Box } from '@material-ui/core'
 import Rating from '@material-ui/lab/Rating';
+import { useDispatch, useSelector } from 'react-redux';
 import { eventStyle, commonButtonStyle } from 'styles';
 import { userIcon, calendarIcon, locationPinIcon } from "assets";
 import { strings } from 'constant';
@@ -20,8 +21,13 @@ const dummy = [
     { title: 'The Wedding Party', name: 'Moses Chikodinaka', date: '02 Sep 2020', location: 'Radisson Blue Hotel' },
     { title: 'The Wedding Party', name: 'Moses Chikodinaka', date: '02 Sep 2020', location: 'Radisson Blue Hotel' },
 ]
-export default () => {
+export default (props) => {
     const classes = eventStyle();
+    const { user:{type} }= useSelector(({user})=>user);
+    useEffect(()=>{
+        if(type!==3)
+            return props.history.push('/event')
+    },[type])
     return (
         <Grid justify='center' container className={classes.eventFrMain}>
             <Grid item className={classes.eventFrHeadV}>

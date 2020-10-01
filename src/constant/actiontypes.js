@@ -1,6 +1,6 @@
 const format = ['_REQUEST', '_COMPLETE', '_SUCCESS', '_FAILED'];
 const types = [
-  'AUTH','EVENT'
+  'AUTH','EVENT','EVENT_SERVICE'
 ];
 
 const manuals = {

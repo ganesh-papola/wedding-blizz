@@ -170,7 +170,7 @@ export const commonStyle =  makeStyles((theme) => ({
     paddingRight : 20
   },
   dialogButtonV:{
-
+    paddingRight : 20
   },
   alertShowV:{
     position : 'fixed',

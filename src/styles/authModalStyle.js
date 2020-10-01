@@ -107,3 +107,4 @@ export const authModalStyle = makeStyles((theme) => ({
   export const clearIconStyle = { fontSize: 18, color : colors.grey2, cursor : 'pointer' };
   export const loaderStyle = { color : colors.main }
   export const primaryLoaderStyle = { color : colors.main }
+  export const whiteLoaderStyle = { color : colors.white }

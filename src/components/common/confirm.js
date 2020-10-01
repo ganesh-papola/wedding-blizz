@@ -24,7 +24,7 @@ export default props => {
                 <DialogActions>
                     <Button variant="outlined" onClick={onClose}>
                         Cancel
-                </Button>
+                    </Button>
                     <Button variant="contained" onClick={onAction} color="primary">
                         {button}
                     </Button>

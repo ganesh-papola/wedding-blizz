@@ -96,6 +96,10 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
     const setRoute = (route)=>{
         history.push(route);
     }
+    const handleLogout = () => {
+        dispatch(logout());
+        history.push('/');
+    }
     return (
         <>
             {isLoggedIn && user.uid && user.token ?
@@ -138,7 +142,7 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                 </div>
             }
             <Confirm open={dialog} onClose={()=>setDailog(false)} title={auth.Logout} 
-                content={auth.LogoutContent} onClick={()=>dispatch(logout())} button={auth.Logout} />
+                content={auth.LogoutContent} onClick={handleLogout} button={auth.Logout} />
         </>
     )
 

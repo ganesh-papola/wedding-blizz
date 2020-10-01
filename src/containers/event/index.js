@@ -15,7 +15,7 @@ export default props => {
     ];
     const dispatch = useDispatch();
     const { loader=false }= useSelector(({event})=>event);
-    const { user:{type=0} }= useSelector(({user})=>user);
+    const { user:{type} }= useSelector(({user})=>user);
     useEffect(()=>{
         const get = async () =>{
             if(type===3)
@@ -25,7 +25,7 @@ export default props => {
             if(event) props.history.push('/eventdetail');
         }
         get();
-    },[])
+    },[type])
     return (
         <Grid container className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.WeddingEvent} />

@@ -29,7 +29,8 @@ export default props => {
     const classes = eventStyle();
     const [state, setState] = useState(initialState);
     const dispatch = useDispatch();
-    const { loader=false }= useSelector(({event})=>event);
+    const { loader=false, _loader=false }= useSelector(({event})=>event);
+    const { user:{type} }= useSelector(({user})=>user);
     const breads = [
         { title : common.Home, path : '/' }
     ];
@@ -43,12 +44,14 @@ export default props => {
     }
     useEffect(()=>{
         const get = async () =>{
+            if(type===3)
+            return props.history.push('/eventfr')
             const event = await dispatch(fetchEvent());
             console.log("event event ", event);
             if(event) props.history.push('/');
         }
         get();
-    },[])
+    },[type])
     
     return (
         <Grid container className={classes.eventMain}>
@@ -117,10 +120,10 @@ export default props => {
                         <FilePicker label={common.Image} onImage={value=>changeState('theme_image', value)} />
                     </Grid>
                     <Grid item sm={6} xs={6} md={6} lg={6} className={classes.addNewEventFormGBtV}>
-                        <Button variant="contained" disabled={loader} size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>
-                            {loader?<Loader style={primaryLoaderStyle} size={15} />:common.Submit}
+                        <Button variant="contained" disabled={_loader} size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>
+                            {_loader?<Loader style={primaryLoaderStyle} size={15} />:common.Submit}
                         </Button>
-                        <Button variant="contained" size="large" style={commonButtonStyle} disabled={loader} onClick={()=>props.history.push("/")}>
+                        <Button variant="contained" size="large" style={commonButtonStyle} disabled={_loader} onClick={()=>props.history.push("/")}>
                             {common.Cancel}
                         </Button>
                     </Grid>

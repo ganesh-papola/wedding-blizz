@@ -29,7 +29,10 @@ export const firebaseInit = () => {
 }
 let userDB = uid => firestore.doc(`users/${uid}`);
 
-export const insert = (collection, data) => firestore.collection(collection).add(data);
+export const insert = async (collection, data) => {
+    const {id=''} = await firestore.collection(collection).doc();
+    firestore.collection(collection).doc(id).set({id,...data})
+};
 
 export const createProfile = async (uid, user) => {
     if (!uid)

@@ -4,7 +4,7 @@ import { CheckCircleRounded } from "@material-ui/icons";
 import { eventStyle, commonButtonStyle, primaryLoaderStyle } from 'styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { strings } from 'constant';
-import { BreadCrumb, Loader } from "components";
+import { BreadCrumb, Loader, NoRecordFound } from "components";
 import { fetchCategory, setCategory } from "actions";
 const { events, vendors, common } = strings;
 
@@ -52,7 +52,7 @@ const ImagesGrids = ({categories=[], history}) => {
         <Grid container className={classes.categoriesV}>
             {loader? <Loader style={primaryLoaderStyle}/> :
             <>
-            {categories.map((item, i) =>
+            { categories && categories.length ? categories.map((item, i) =>
                 <Grid item sm={12} xs={12} md={3} lg={3} className={classes.allCategoryV} key={item.name + i + '-category-all-cats'}>
                     <div className={classes.allCatRoundImgV} onClick={() => setSelected(i)}>
                         <img src={item.icon} className={selected === i ? classes.allCatSelectedImg : classes.allCatRoundImg} />
@@ -62,7 +62,9 @@ const ImagesGrids = ({categories=[], history}) => {
                         {item.name}
                     </Box>
                 </Grid>
-            )}
+            ) : 
+            <NoRecordFound />
+        }
             <Grid item sm={6} xs={6} md={6} lg={12} className={classes.categoryButonV}>
                 <Button variant="contained" size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>
                     {common.Submit}

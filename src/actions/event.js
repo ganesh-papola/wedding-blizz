@@ -36,10 +36,12 @@ export const fetchEvent = () => async (dispatch, getState) => {
         }));
         dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
         dispatch({ type : ACTION_TYPES.EVENT_COMPLETE, payload : data[0] });
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         return data[0];
     } catch (error) {
         console.log("add event catch error ", error)
         dispatch({ type : ACTION_TYPES.EVENT_FAILED });
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
         dispatch(createAlert(error.message, 'error'));
         return null
     }
@@ -67,7 +69,6 @@ export const setCategory = (payload) => dispatch => {
     dispatch({ type : ACTION_TYPES.SET_EVENT_CATEGORY, payload });
 }
 export const fetchVendors = () => async (dispatch, getState) => {
-    console.log(" getting events ");
     try {
         const { category=null } = getState().event;
         dispatch({ type : ACTION_TYPES.EVENT_REQUEST });
@@ -83,4 +84,20 @@ export const fetchVendors = () => async (dispatch, getState) => {
 }
 export const setEventVendor = (payload) => dispatch => {
     dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload });
+}
+
+export const addProposal = (data) => async dispatch => {
+    try {
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
+        await insert('proposals', data);
+        setTimeout(() => {
+           dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
+           history.push('/');
+           dispatch(createAlert(strings.success.proposalAdded, 'success'));
+        }, 2000);
+    } catch (error) {
+        console.log("add proposal ", error);
+        dispatch(createAlert(error.message, 'error'));
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
+    }
 }

@@ -17,7 +17,6 @@ export default ({ breads = [], current='' }) => {
                     <div key={index+'-breadcrumb'} className={classes.breadcrumbV}>
                         <Box fontFamily='GothamBook' className={classes.breadCrumbT} onClick={() => handleClick(item, index)}>
                             {item.title}
-
                         </Box>
                         <div className={classes.smallDot} />
                     </div>

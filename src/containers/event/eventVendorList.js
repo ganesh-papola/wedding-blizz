@@ -4,7 +4,7 @@ import { Typography, Grid, Box } from '@material-ui/core'
 import { eventStyle, primaryLoaderStyle } from 'styles';
 import { strings } from 'constant';
 import { userIcon, calendarIcon, locationPinIcon } from "assets";
-import { BreadCrumb, Loader } from "components";
+import { BreadCrumb, Loader, NoRecordFound } from "components";
 import { fetchVendors, setEventVendor } from "actions";
 
 const { events, common } = strings;
@@ -39,7 +39,7 @@ export default props => {
             </Typography>
             {loader ? <Loader style={primaryLoaderStyle} /> :
                 <>
-                    {vendors && vendors.length && vendors.map((vendor, index) =>
+                    { vendors && vendors.length ? vendors.map((vendor, index) =>
                         <Grid item sm={12} xs={12} md={12} lg={4} key={`${index}-event-fair-vendors-list`}
                          onClick={()=>onVendor(vendor)} className={classes.eventVendorListMain}>
                             <div className={classes.eventFrListV}>
@@ -60,7 +60,8 @@ export default props => {
                                 </Box>
                             </div>
                         </Grid>
-                    )}
+                    ) :
+                    <NoRecordFound /> }
                 </>
                 }
         </Grid>

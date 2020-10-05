@@ -144,13 +144,19 @@ export const commonStyle =  makeStyles((theme) => ({
       fontSize : 13,
       color : colors.grey5,
       textTransform : 'capitalize',
-      cursor : 'pointer'
+      cursor : 'pointer',
+      [theme.breakpoints.down("md")]: {
+        fontSize : 8
+      }
     },
     breadCrumbLT :{
       ...center,
       fontSize : 13,
       color : colors.grey5,
       textTransform : 'capitalize',
+      [theme.breakpoints.down("md")]: {
+        fontSize : 8
+      }
     },
     breadcrumbV:{
       ...center
@@ -212,6 +218,11 @@ export const commonStyle =  makeStyles((theme) => ({
       paddingTop : 20,
       paddingBottom : 20,
     }
+  },
+  noReordT:{
+    ...center,
+    fontSize : 16,
+    color : colors.main
   }
       
 }));

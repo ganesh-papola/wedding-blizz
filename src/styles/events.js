@@ -130,8 +130,10 @@ export const eventStyle = makeStyles((theme) => ({
     crEventMain: {
         ...center,
         width: '35%',
+        paddingLeft : 10,
+            paddingRight : 10,
         [theme.breakpoints.down("md")]: {
-            width: '100%'
+            width: '100%',
         }
     },
     crImageV: {
@@ -140,8 +142,7 @@ export const eventStyle = makeStyles((theme) => ({
     eventVendorsV: {
         ...center,
         flexDirection: 'column',
-        paddingRight: 20,
-        paddingLeft: 20,
+        paddingRight: 25,
     },
     vendorImg: {
         height: 80,
@@ -259,6 +260,12 @@ export const eventStyle = makeStyles((theme) => ({
         ...center,
         justifyContent: 'flex-start',
     },
+    eventVendDetailHT: {
+        fontSize: 10,
+        paddingTop: 5,
+        ...center,
+        justifyContent: 'flex-start',
+    },
     smallDot: {
         height: 3,
         width: 3,
@@ -268,8 +275,9 @@ export const eventStyle = makeStyles((theme) => ({
         marginRight: 5
     },
     categoriesV: {
-        paddingLeft: 100,
-        paddingRight: 50,
+        // paddingLeft: 100,
+        // paddingRight: 50,
+        width : '80% !important',
         ...center,
         justifyContent: 'flex-start',
         [theme.breakpoints.down("md")]: {
@@ -339,6 +347,7 @@ export const eventStyle = makeStyles((theme) => ({
         paddingTop: 50  
     },
     eventVendorDetailTV : {
+        ...center,
         width : '50%',
         paddingLeft :20,
         paddingRight :20,
@@ -346,6 +355,52 @@ export const eventStyle = makeStyles((theme) => ({
             paddingLeft :20,
             paddingRight :20,
         }
+    },
+    detailParentV : {
+        width : '50%'
+    },
+    eventSubV : {
+        ...center,
+        paddingBottom : 20
+    },
+    eventSubT : {
+        color : colors.main,
+        fontSize : 25,
+        [theme.breakpoints.down("md")]: {
+            fontSize : 20
+        }
+    },
+    vendorDetailBLV:{
+        ...center,
+        justifyContent: 'flex-end',
+    },
+    chatButtonV : {
+        background : colors.main4,
+        height : 60,
+        width : 184,
+        borderRadius : 5,
+        cursor : 'pointer',
+        ...center
+    },
+    vendorDetailBRV:{
+        ...center,
+        paddingLeft : 30,
+        justifyContent: 'flex-start',
+        [theme.breakpoints.down("md")]: {
+            paddingLeft : 0,
+            paddingTop : 10
+        }
+    }, 
+    vendorDetButT: {
+        ...center,
+        color : colors.dark1,
+        fontSize : 15
     }
 
 }));
+export const btSmallIcon = {
+    color : colors.main,
+    fontSize : 15,
+    padding: 5,
+    paddingBottom : 0
+}

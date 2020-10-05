@@ -2,7 +2,8 @@ export default {
     'success' : {
         'SignupSuccess' : 'Sign Up successfull, Please check your inbox and verify your email',
         'ForgotPassword' : 'A reset link is sent to the email',
-        'EventAddedSuccussful' : 'Event added successfully.'
+        'EventAddedSuccussful' : 'Event added successfully.',
+        'proposalAdded': 'Proposal added successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -203,7 +204,9 @@ export default {
         'Guests' : 'Guests',
         'Guest' : 'Guest',
         'Gifts' : 'Gifts',
-        'TheEventFairy' : 'The Event Fairy'
+        'TheEventFairy' : 'The Event Fairy',
+        'VendingServicesOffered' : 'Vending Services Offered',
+        'PrefContactMethod' : 'Preferred Contact Method'
     },
     'guest':{
         'AddNGuest' : 'Add New Guest',
@@ -254,6 +257,7 @@ export default {
         'Zipcode':'Zipcode',
         'PhoneNumber' : 'Phone Number',
         'EmailAddress' : 'Email Address',
+        'Email' : 'Email',
         'Address' : 'Address',
         'Private' : 'Private',
         'Public' : 'Public',
@@ -281,7 +285,12 @@ export default {
         'Home' : 'Home',
         'Category' : 'Category',
         'notFoundN' : '404',
-        'notFoundT' : 'The Page you are looking for does not exist.'
-
+        'notFoundT' : 'The Page you are looking for does not exist.',
+        'NoRecordFound' : 'No Record Found',
+        'Rating' : 'Rating',
+        'Chat' : 'Chat',
+        'GetAQuote' : 'Get a Quote',
+        'Name' : 'Name',
+        'Message' : 'Message'
     }
 }

@@ -2,6 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
+import "firebase/messaging";
 import { strings, ACTION_TYPES } from "constant";
 import { store } from "store";
 const { errors } = strings;
@@ -21,18 +22,58 @@ const firebaseConfig = {
 };
 export let auth;
 export let firestore;
+export let messaging;
 export const firebaseInit = () => {
     firebase.initializeApp(firebaseConfig);
     firestore = firebase.firestore();
     auth = firebase.auth();
-    setListners()
+    messaging = firebase.messaging();
+    setListners();
+}
+export const registerServiceWorker = async () => {
+    try {
+        if ("serviceWorker" in navigator) {
+            const registration = await navigator.serviceWorker.register("./firebase-messaging-sw.js");
+        }
+    } catch (error) {
+        console.log("Service worker registration failed, error:", error);
+    }
+};
+export const handleFCM = async(token, uid, action='add') => {
+    if (token) {
+        let tokens = [];
+        const user = await findById('users', uid);
+        const { fcm = [] } = user.data();
+        
+        if (action === 'add')
+            if (fcm.indexOf(token) > -1) return;
+            else tokens = [...fcm, token];
+        else tokens = fcm.filter(tkn => tkn !== token);
+        updateOne('users', uid, { fcm: tokens })
+    }
+}
+export const notification = async (uid) => {
+    try {
+        await Notification.requestPermission();
+        const payload = await messaging.getToken();
+        console.log('token: notification notification', payload);
+        if(payload){
+            const { dispatch } = store;
+            dispatch({type: ACTION_TYPES.DEVICE_TOKEN, payload});
+            handleFCM(payload, uid);
+        }
+        messaging.onMessage(notification => {
+            handleMessages(notification)
+        });
+    } catch (error) {
+        console.log("notification ", error);
+    }
+}
+const handleMessages = (notification) => {
+    console.log("on notification ", notification)
 }
 let userDB = uid => firestore.doc(`users/${uid}`);
 
-export const insert = async (collection, data) => {
-    const {id=''} = await firestore.collection(collection).doc();
-    firestore.collection(collection).doc(id).set({id,...data})
-};
 
 export const createProfile = async (uid, user) => {
     if (!uid)
@@ -40,9 +81,13 @@ export const createProfile = async (uid, user) => {
     const createdAt = new Date().getTime();
     const snapShot = await userDB(uid).get();
     if (!snapShot.exists)
-    userDB(uid).set({ ...user, createdAt });
+        userDB(uid).set({ ...user, createdAt });
     let currentUser = firebase.auth().currentUser;
-    currentUser.updateProfile({ ...user, createdAt, modifiedAt: createdAt })
+    await currentUser.sendEmailVerification({ url: REACT_APP_CONFIRMATION_EMAIL_REDIRECT });
+    currentUser.updateProfile({ ...user, createdAt, modifiedAt: createdAt });
+}
+export const resendVerificationEmail = async () => {
+    let currentUser = firebase.auth().currentUser;
     await currentUser.sendEmailVerification({ url: REACT_APP_CONFIRMATION_EMAIL_REDIRECT });
 }
 export const setListners = async () => {
@@ -61,7 +106,7 @@ export const setListners = async () => {
             }
         })
 }
-export const uploadImages = (images=[]) => {
+export const uploadImages = (images = []) => {
     try {
         return Promise.all(images.map(async image => {
             const name = `${new Date().getTime()}-${image.name}`;
@@ -69,17 +114,29 @@ export const uploadImages = (images=[]) => {
             const snapshot = await ref.child(name).put(image);
             // return await snapshot.ref.getDownloadURL();
             return `events/${name}`;
-        }) )
+        }))
     } catch (error) {
         console.log("upload catch error ", error);
         return []
     }
 }
 export const imagePathToUrl = async (path) => {
-    if(path)
-    return firebase.storage().ref().child(path).getDownloadURL();
+    if (path)
+        return firebase.storage().ref().child(path).getDownloadURL();
     return null
 }
-export const retrieve = async (collection, uid='', query={}) =>{
+export const find = async (collection, uid = '', query = {}) => {
 
+}
+export const findById = (collection,id) => {
+  return firestore.collection(collection).doc(id).get();
+}
+export const insert = async (collection, data) => {
+    const { id = '' } = await firestore.collection(collection).doc();
+    firestore.collection(collection).doc(id).set({ id, ...data })
+};
+export const updateOne = (collection, id, data) => {
+    if(!collection || !id || !data)
+     throw {message:errors.commandKeysMissing}
+    firestore.collection(collection).doc(id).update(data);
 }

@@ -1,9 +1,10 @@
 export default {
     'success' : {
-        'SignupSuccess' : 'Sign Up successfull, Please check your inbox and verify your email',
+        'SignupSuccess' : 'please check your email - we have sent a confirmation link',
         'ForgotPassword' : 'A reset link is sent to the email',
-        'EventAddedSuccussful' : 'Event added successfully.',
-        'proposalAdded': 'Proposal added successfully'
+        'EventAddedSuccussful' : 'Event added successfully',
+        'proposalAdded': 'Proposal added successfully',
+        'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -14,7 +15,9 @@ export default {
         'role' : 'Please select a role',
         'emailLogin' : 'Enter email address',
         'passwordLogin' : 'Enter password',
-        'NoUid' : 'No UID found.'
+        'NoUid' : 'No UID found.',
+        'emailNotVerified' : 'Email address is not verified, click on Resend to resend verification email again',
+        'commandKeysMissing' : 'Command keys are missing'
     },
     'auth' : {
         'Login' : 'Login',
@@ -291,6 +294,7 @@ export default {
         'Chat' : 'Chat',
         'GetAQuote' : 'Get a Quote',
         'Name' : 'Name',
-        'Message' : 'Message'
+        'Message' : 'Message',
+        'Resend' : 'Resend'
     }
 }

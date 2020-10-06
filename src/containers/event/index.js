@@ -21,7 +21,6 @@ export default props => {
             if(type===3)
             return props.history.push('/eventfr')
             const event = await dispatch(fetchEvent());
-            console.log("event event ", event);
             if(event) props.history.push('/eventdetail');
         }
         get();

@@ -2,7 +2,8 @@ import { ACTION_TYPES } from 'constant';
 const INITIAL_STATE = {
   user: {},
   isLoggedIn: false,
-  loader: false
+  loader: false,
+  fcm : null
 };
 
 export default function login(state = INITIAL_STATE, action) {
@@ -20,7 +21,8 @@ export default function login(state = INITIAL_STATE, action) {
       return INITIAL_STATE
     case ACTION_TYPES.LOG_OUT:
       return INITIAL_STATE
-
+    case ACTION_TYPES.DEVICE_TOKEN : 
+        return {...state, fcm:action.payload}
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import { auth, firestore, insert, uploadImages, imagePathToUrl } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings } from 'constant';
 import { createAlert } from "actions";
+import { id } from "date-fns/locale";
 
 export const addEvent = ({ images,theme_image, ...state}) => async (dispatch, getState) => {
     try {
@@ -13,12 +14,12 @@ export const addEvent = ({ images,theme_image, ...state}) => async (dispatch, ge
         const insertData = {...state, owners : uid, images : imagesUrl, theme_image : imageUrl[0]};
         const event = await insert('events', insertData);
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
-        dispatch(createAlert(strings.success.EventAddedSuccussful, 'success'));
+        dispatch(createAlert({message:strings.success.EventAddedSuccussful, type:'success'}));
         history.push("/")
     } catch (error) {
         console.log("add event catch error ", error)
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
-        dispatch(createAlert(error.message, 'error'))
+        dispatch(createAlert({message:error.message, type:'error'}))
     }
 }
 
@@ -39,10 +40,10 @@ export const fetchEvent = () => async (dispatch, getState) => {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         return data[0];
     } catch (error) {
-        console.log("add event catch error ", error)
+        console.log("fetch event catch error ", error)
         dispatch({ type : ACTION_TYPES.EVENT_FAILED });
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
-        dispatch(createAlert(error.message, 'error'));
+        dispatch(createAlert({message:error.message, type:'error'}));
         return null
     }
 }
@@ -61,7 +62,7 @@ export const fetchCategory = () => async (dispatch, getState) => {
     } catch (error) {
         console.log("fetchCategory event catch error ", error)
         dispatch({ type : ACTION_TYPES.EVENT_FAILED });
-        dispatch(createAlert(error.message, 'error'));
+        dispatch(createAlert({message:error.message, type:'error'}));
         return null
     }
 }
@@ -78,7 +79,7 @@ export const fetchVendors = () => async (dispatch, getState) => {
     } catch (error) {
         console.log("fetchVendors event catch error ", error)
         dispatch({ type : ACTION_TYPES.EVENT_FAILED });
-        dispatch(createAlert(error.message, 'error'));
+        dispatch(createAlert({message:error.message, type:'error'}));
         return null
     }
 }
@@ -93,11 +94,11 @@ export const addProposal = (data) => async dispatch => {
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
            history.push('/');
-           dispatch(createAlert(strings.success.proposalAdded, 'success'));
+           dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));
         }, 2000);
     } catch (error) {
         console.log("add proposal ", error);
-        dispatch(createAlert(error.message, 'error'));
+        dispatch(createAlert({message : error.message, type:'error'}));
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
     }
 }

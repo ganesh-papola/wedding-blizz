@@ -3,7 +3,8 @@ import { ACTION_TYPES } from 'constant';
 const INITIAL_STATE = {
     show: false,
     message: '',
-    type : 'error'
+    type : 'error',
+    extra : {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
         case ACTION_TYPES.CLOSE_ALERT:
             return { ...state, show: false, message: '' }
         case ACTION_TYPES.CREATE_ALERT:
-            return { ...state, show: true, message: action.payload, type : action.typ }
+            return { ...state, show: true, message: action.payload, type : action.typ, extra : action.extra }
 
         case ACTION_TYPES.RESET:
             return INITIAL_STATE

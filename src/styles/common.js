@@ -223,6 +223,10 @@ export const commonStyle =  makeStyles((theme) => ({
     ...center,
     fontSize : 16,
     color : colors.main
+  },
+  alertButtonV:{
+    ...center
+
   }
       
 }));
@@ -251,10 +255,14 @@ export const navButtons = {
 export const alertErrorIcon = {
   color : colors.white,
   fontSize : 15,
-  marginRight : 20
+  marginRight : 20,
+  marginLeft : 20,
+  cursor : 'pointer'
 }
 export const alertSuccessIcon = {
   color : colors.white,
   fontSize : 15,
-  marginRight : 20
+  marginRight : 20,
+  marginLeft : 20,
+  cursor : 'pointer'
 }

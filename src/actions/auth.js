@@ -13,6 +13,7 @@ export const signUp = ({email,password, phone, role, fullname}) => async (dispat
         const { user={} } = await auth.createUserWithEmailAndPassword(email,password);
         const { uid} = user;
         await createProfile(uid, {userId:uid,phone,type:role,displayName:fullname, name:fullname, email});
+        notification(uid);
         dispatch({ type : ACTION_TYPES.SIGNUP });
         // dispatch({ type : ACTION_TYPES.AUTH_COMPLETE, payload:{ ...userData, uid, token:refreshToken, phone, name:fullname } });
         dispatch(createAlert({message:strings.success.SignupSuccess, type:'success', duration : 13000}))

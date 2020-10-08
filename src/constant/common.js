@@ -51,5 +51,5 @@ export const palette = {
     }
   }
 export const routes = {
-  notifications : '/notifications'
+  notifications : 'notifications'
 }

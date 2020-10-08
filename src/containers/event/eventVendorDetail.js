@@ -7,7 +7,7 @@ import { strings } from 'constant';
 import Carousel from 'react-material-ui-carousel'
 import { BreadCrumb, Loader, QuoteModal } from "components";
 import { venueRoundImage } from "assets";
-import {Chat, Assignment} from '@material-ui/icons'
+import {Chat, Assignment} from '@material-ui/icons';
 const { events, common } = strings;
 
 export default props => {
@@ -22,7 +22,6 @@ export default props => {
     ];
     const dispatch = useDispatch();
     const { vendor = {}, loader = false } = useSelector(({ event }) => event);
-
     const dummy = [
         { title: 'Venue', image: venueRoundImage },
     ]

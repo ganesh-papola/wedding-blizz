@@ -1,5 +1,5 @@
 
-import { auth, firestore, insert, uploadImages, imagePathToUrl } from "helpers";
+import { auth, firestore, insert, uploadImages, imagePathToUrl, sendPush } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
@@ -103,15 +103,14 @@ export const addProposal = (data) => async dispatch => {
     }
 }
 
-const sendNotification = () => async(dispatch, getState) => {
+export const sendNotification = () => async(dispatch, getState) => {
     try {
         const vendor = getState().event?.vendor;
-        if(vendor&&vendor.owners){
-            const {REACT_APP_CLOUD_URL=''} = process.env;
+        if(vendor&&vendor.ownerId){
             const {name=''} = getState().user?.user;
             const title = strings.notifications.NewProposal
             const body = `${ strings.notifications.ProposalBody} ${name}`
-            const notif = await(await fetch(`${REACT_APP_CLOUD_URL}/${routes.notifications}?to=${vendor.owners}&title=${title}&body=${body}`)).json();
+            const notif = await sendPush({to:vendor.ownerId,title,body});
             console.log("notification ",notif)
         }
     } catch (error) {

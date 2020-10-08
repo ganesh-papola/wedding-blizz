@@ -3,8 +3,10 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
 import "firebase/messaging";
+import "firebase/functions";
 import { strings, ACTION_TYPES } from "constant";
 import { store } from "store";
+import {createAlert} from "actions";
 const { errors } = strings;
 const {
     REACT_APP_BUCKET, REACT_APP_FIRE_API, REACT_APP_FIRE_AUTH_DOMAIN, REACT_APP_FIRE_DB,
@@ -23,11 +25,13 @@ const firebaseConfig = {
 export let auth;
 export let firestore;
 export let messaging;
+export let functions;
 export const firebaseInit = () => {
     firebase.initializeApp(firebaseConfig);
     firestore = firebase.firestore();
     auth = firebase.auth();
     messaging = firebase.messaging();
+    functions = firebase.functions();
     setListners();
 }
 export const registerServiceWorker = async () => {
@@ -53,12 +57,12 @@ export const handleFCM = async(token, uid, action='add') => {
     }
 }
 export const notification = async (uid) => {
+    const { dispatch } = store;
     try {
         await Notification.requestPermission();
         const payload = await messaging.getToken();
         console.log('token: notification notification', payload);
         if(payload){
-            const { dispatch } = store;
             dispatch({type: ACTION_TYPES.DEVICE_TOKEN, payload});
             handleFCM(payload, uid);
         }
@@ -67,7 +71,13 @@ export const notification = async (uid) => {
         });
     } catch (error) {
         console.log("notification ", error);
+        dispatch(createAlert({message : error.message, type:'error'}));
     }
+}
+export const sendPush = data =>{
+    const notification =  functions.httpsCallable('notifications');
+    console.log("notification send ")
+    return notification(data);
 }
 const handleMessages = (notification) => {
     console.log("on notification ", notification)

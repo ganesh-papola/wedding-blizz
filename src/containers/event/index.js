@@ -6,6 +6,7 @@ import { plusIcon } from "assets";
 import { strings } from 'constant';
 import { BreadCrumb, Loader } from "components";
 import { fetchEvent } from "actions";
+import { notification } from "helpers";
 const { events, common } = strings;
 
 export default props => {
@@ -15,7 +16,7 @@ export default props => {
     ];
     const dispatch = useDispatch();
     const { loader=false }= useSelector(({event})=>event);
-    const { user:{type} }= useSelector(({user})=>user);
+    const { user:{type,uid}, fcm }= useSelector(({user})=>user);
     useEffect(()=>{
         const get = async () =>{
             if(type===3)
@@ -24,6 +25,8 @@ export default props => {
             if(event) props.history.push('/eventdetail');
         }
         get();
+        if(!fcm || fcm===[])
+            notification(uid)
     },[type])
     return (
         <Grid container className={classes.eventMain}>

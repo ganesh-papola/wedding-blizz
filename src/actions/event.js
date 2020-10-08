@@ -1,9 +1,8 @@
 
 import { auth, firestore, insert, uploadImages, imagePathToUrl } from "helpers";
 import { history } from "../App";
-import { ACTION_TYPES, strings } from 'constant';
+import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
-import { id } from "date-fns/locale";
 
 export const addEvent = ({ images,theme_image, ...state}) => async (dispatch, getState) => {
     try {
@@ -94,11 +93,28 @@ export const addProposal = (data) => async dispatch => {
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
            history.push('/');
+           dispatch(sendNotification())
            dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));
         }, 2000);
     } catch (error) {
         console.log("add proposal ", error);
         dispatch(createAlert({message : error.message, type:'error'}));
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
+    }
+}
+
+const sendNotification = () => async(dispatch, getState) => {
+    try {
+        const vendor = getState().event?.vendor;
+        if(vendor&&vendor.owners){
+            const {REACT_APP_CLOUD_URL=''} = process.env;
+            const {name=''} = getState().user?.user;
+            const title = strings.notifications.NewProposal
+            const body = `${ strings.notifications.ProposalBody} ${name}`
+            const notif = await(await fetch(`${REACT_APP_CLOUD_URL}/${routes.notifications}?to=${vendor.owners}&title=${title}&body=${body}`)).json();
+            console.log("notification ",notif)
+        }
+    } catch (error) {
+        console.log("notification error ", error)
     }
 }

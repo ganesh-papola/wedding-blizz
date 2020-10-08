@@ -93,7 +93,8 @@ export const eventStyle = makeStyles((theme) => ({
     },
 
     eventDetailsCRImge: {
-        height: 500,
+        //height: 500,
+        width : '100%',  
         height: 300,
         [theme.breakpoints.down("md")]: {
             height: 250,
@@ -101,8 +102,9 @@ export const eventStyle = makeStyles((theme) => ({
         }
     },
     eventVendDetailsCRImge:{
-        height: 500,
+        //height: 500,
         height: 300,
+        width : '100%',
         borderRadius:10,
         [theme.breakpoints.down("md")]: {
             height: 250,

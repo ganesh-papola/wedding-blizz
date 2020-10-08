@@ -50,3 +50,6 @@ export const palette = {
       main : colors.red
     }
   }
+export const routes = {
+  notifications : '/notifications'
+}

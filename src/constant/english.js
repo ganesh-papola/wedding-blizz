@@ -296,5 +296,9 @@ export default {
         'Name' : 'Name',
         'Message' : 'Message',
         'Resend' : 'Resend'
+    },
+    'notifications':{
+            'NewProposal':'New Proposal',
+            'ProposalBody' : 'You have a new Proposal by'
     }
 }

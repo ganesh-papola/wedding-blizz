@@ -73,11 +73,11 @@ export default props => {
                     {guest.GuestList}
                 </Box>
                 <div className={guestClass.addButtonV}>
-                    <Button onClick={() => alert("n progress ...")} variant="outlined" size="large" color='primary'>
+                    <Button onClick={() => props.history.push('/addguest')} variant="outlined" size="large" color='primary'>
                         {guest.AddNGroup}
                     </Button>
                     <div className={guestClass.spaceH20} />
-                    <Button onClick={() => alert("n progress ...")} variant="outlined" size="large" color='primary'>
+                    <Button onClick={() => props.history.push('/addguest')} variant="outlined" size="large" color='primary'>
                         {guest.AddGuestList}
                     </Button>
                 </div>
@@ -90,8 +90,8 @@ export default props => {
                     keepMounted
                     open={Boolean(anchorEl)}
                     onClose={handleClose}>
-                    <MenuItem onClick={handleClose}>{guest.AddNGroup}</MenuItem>
-                    <MenuItem onClick={handleClose}>{guest.AddGuestList}</MenuItem>
+                    <MenuItem onClick={()=>{handleClose(); props.history.push('/addguest') }}>{guest.AddNGroup}</MenuItem>
+                    <MenuItem onClick={()=>{handleClose(); props.history.push('/addguest') }}>{guest.AddGuestList}</MenuItem>
                 </Menu>
             </div>
             <div className={classes.giftListV}>

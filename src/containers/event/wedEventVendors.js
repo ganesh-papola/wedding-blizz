@@ -9,16 +9,11 @@ import {
 } from "assets";
 
 const { events, common } = strings;
-const dummy = [
-    { title: 'Venue', image: venueRoundImage },
-    { title: 'Catering', image: weddingcateringRoundImage },
-    { title: 'Wedding Band', image: weddingBandRoundImage },
-]
 export default props => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const { event = {} } = useSelector(({ event }) => event);
-    const { vendors = dummy, guest_count = 150, gifts = 5, totalGifts = 15 } = event;
+    const { vendors = [], guest_count = 150, gifts = 5, totalGifts = 15 } = event;
     return (
         <Grid container justify="center" className={classes.eventVendorsMain}>
             <Typography component="div" className={classes.eventTV}>
@@ -49,7 +44,7 @@ export default props => {
                     </Box>
                 </Typography>
                 <div className={commClasses.center}>
-                    <div className={classes.eventStatBox}>
+                    <div className={classes.eventStatBox} onClick={()=>props.history.push("/guests")}>
                         <img src={usersIcon} />
                         <Box fontFamily='GothamBook' className={classes.eventstatsT}>
                             {`${guest_count} ${guest_count>1?events.Guests:events.Guest}`}
@@ -63,7 +58,7 @@ export default props => {
                     </Box>
                 </Typography>
                 <div className={commClasses.center}>
-                    <div className={classes.eventStatBox}>
+                    <div className={classes.eventStatBox} onClick={()=>props.history.push("/gift")}>
                         <img src={giftIcon} />
                         <Box fontFamily='GothamBook' className={classes.eventstatsT}>
                             {`${gifts} ${common.outOf} ${totalGifts}`}

@@ -5,29 +5,14 @@ import {
 } from '@material-ui/core';
 import { Clear } from '@material-ui/icons';
 import { giftStyle, commonStyle } from 'styles';
+import { useDispatch, useSelector } from 'react-redux';
 import { strings } from 'constant';
-import { useSelector } from "react-redux";
 import { giftIcon, usersIcon } from "assets";
+import { createAlert } from "actions";
 
-const { gift, common } = strings;
+const { gift, common, errors } = strings;
 
 const dummy = [
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
     { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
     { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
     { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
@@ -45,7 +30,9 @@ const dummy = [
 export default props => {
     const classes = giftStyle();
     const comclasses = commonStyle();
+    const dispatch = useDispatch();
     const { gifts = dummy } = useSelector(({ gift }) => gift);
+    const { event = {} } = useSelector(({ event }) => event);
     const [open, setOpen] = useState(false);
     const [data, setData] = useState({});
     const onClose = () => {
@@ -55,7 +42,11 @@ export default props => {
         setData(data);
         setOpen(true);
     }
-
+    const handleAddGift = () => {
+        if(event&&event.id)
+        props.history.push('/addgift')
+        else dispatch(createAlert({message:errors.noEventFoun, type:'error'}));
+    }
 
     return (
         <Grid container className={classes.giftMain}>
@@ -64,13 +55,13 @@ export default props => {
                     {gift.GiftList}
                 </Box>
                 <div className={classes.addButtonV}>
-                    <Button onClick={() => alert("n progress ...")} variant="outlined" size="large" color='primary'>
+                    <Button onClick={handleAddGift} variant="outlined" size="large" color='primary'>
                         {gift.AddGift}
                     </Button>
                 </div>
             </div>
             <div className={classes.giftListV}>
-                <Grid justify='center' container >
+                <Grid container >
                     {dummy.map((item, index) => (
                         <Grid item sm={12} xs={12} md={12} lg={4} className={classes.boxWrapper} key={Math.random() + index + 'gift-list'}>
                             <div className={classes.giftBox}>

@@ -3,7 +3,11 @@ import colors from './colors';
 import strings from './english';
 
 const { errors, auth } = strings;
-
+export const giftTErrors = {
+  gift_title : errors.giftTitleRequired,
+  gift_description : errors.giftDescRequired,
+  delivery_address : errors.giftAddRequired,
+}
 export const signupError = {
     fullname : errors.fullname,
     email : errors.email,

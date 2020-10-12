@@ -17,7 +17,11 @@ export default {
         'passwordLogin' : 'Enter password',
         'NoUid' : 'No UID found.',
         'emailNotVerified' : 'Email address is not verified, click on Resend to resend verification email again',
-        'commandKeysMissing' : 'Command keys are missing'
+        'commandKeysMissing' : 'Command keys are missing',
+        'noEventFoun' : 'No event found! Please add a new event and try again',
+        'giftTitleRequired' : 'Please enter gift title',
+        'giftDescRequired' : 'Please enter gift description',
+        'giftAddRequired' : 'Please enter address',
     },
     'auth' : {
         'Login' : 'Login',

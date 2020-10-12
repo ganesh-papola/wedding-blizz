@@ -193,6 +193,7 @@ export const eventStyle = makeStyles((theme) => ({
         height: 50,
         borderRadius: 5,
         background: colors.main4,
+        cursor : 'pointer',
         ...center
     },
     eventstatsT: {

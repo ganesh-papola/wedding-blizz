@@ -20,7 +20,7 @@ export default props => {
         country : '',
         zip : ''
     });
-    let [error, setError] = useState({
+    const [error, setError] = useState({
         gift_title: '',
         gift_description : '',
         delivery_address : '',

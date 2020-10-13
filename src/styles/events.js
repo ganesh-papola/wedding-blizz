@@ -94,7 +94,8 @@ export const eventStyle = makeStyles((theme) => ({
 
     eventDetailsCRImge: {
         //height: 500,
-        width : '100%',  
+        width : '100%', 
+        borderRadius : 5, 
         height: 300,
         [theme.breakpoints.down("md")]: {
             height: 250,
@@ -105,7 +106,7 @@ export const eventStyle = makeStyles((theme) => ({
         //height: 500,
         height: 300,
         width : '100%',
-        borderRadius:10,
+        borderRadius:5,
         [theme.breakpoints.down("md")]: {
             height: 250,
             height: 150,
@@ -113,7 +114,14 @@ export const eventStyle = makeStyles((theme) => ({
     },
     eventInfoV: {
         paddingTop: 20,
-        width: '50%'
+        width: '100%'
+    },
+    eventInfoVendV :{
+        paddingTop: 20,
+        width: '50%',
+        [theme.breakpoints.down("md")]: {
+            width : '100%'
+        }
     },
     eventInfoHT: {
         fontSize: 14
@@ -131,7 +139,7 @@ export const eventStyle = makeStyles((theme) => ({
     },
     crEventMain: {
         ...center,
-        width: '70%',
+        width: '35%',
         paddingLeft : 10,
         paddingRight : 10,
         [theme.breakpoints.down("md")]: {
@@ -378,6 +386,9 @@ export const eventStyle = makeStyles((theme) => ({
     vendorDetailBLV:{
         ...center,
         justifyContent: 'flex-end',
+        [theme.breakpoints.down("md")]: {
+            justifyContent: 'flex-start',
+        }
     },
     chatButtonV : {
         background : colors.main4,

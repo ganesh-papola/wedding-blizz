@@ -4,7 +4,8 @@ export default {
         'ForgotPassword' : 'A reset link is sent to the email',
         'EventAddedSuccussful' : 'Event added successfully',
         'proposalAdded': 'Proposal added successfully',
-        'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address'
+        'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address',
+        'GiftAdded': 'New Gift added successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -22,6 +23,8 @@ export default {
         'giftTitleRequired' : 'Please enter gift title',
         'giftDescRequired' : 'Please enter gift description',
         'giftAddRequired' : 'Please enter address',
+        'giftQuantityRequired' : 'Please enter a valid quantity',
+        'CommonApiError' : 'Oops! Something went wrong, Please try again later'
     },
     'auth' : {
         'Login' : 'Login',

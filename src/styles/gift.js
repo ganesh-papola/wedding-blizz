@@ -87,6 +87,9 @@ export const giftStyle = makeStyles((theme) => ({
     giftDetailDialogMain:{
         width : '100%',
     },
+    giftDetailModalBodyMainV:{
+        minWidth : 300
+    },
     dialogTitleV:{
         width : '100%',
         display : 'flex',
@@ -124,5 +127,8 @@ export const giftStyle = makeStyles((theme) => ({
         fontSize : 12,
         color : colors.dark,
         paddingTop : 5
+    },
+    giftDetailModalBody : {
+        paddingBottom : 10
     },
 }) )

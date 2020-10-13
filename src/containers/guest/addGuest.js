@@ -52,7 +52,7 @@ export default props => {
                         <Button variant="contained" size="large" color='primary' style={commonButtonStyle}>
                             {common.Submit}
                         </Button>
-                        <Button variant="contained" size="large" style={commonButtonStyle}>
+                        <Button variant="contained" size="large" style={commonButtonStyle} onClick={()=>props.history.goBack()}>
                             {common.Cancel}
                         </Button>
                     </Grid>

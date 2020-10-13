@@ -7,6 +7,7 @@ export const giftTErrors = {
   gift_title : errors.giftTitleRequired,
   gift_description : errors.giftDescRequired,
   delivery_address : errors.giftAddRequired,
+  quantity : errors.giftQuantityRequired
 }
 export const signupError = {
     fullname : errors.fullname,

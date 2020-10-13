@@ -1,6 +1,6 @@
 const format = ['_REQUEST', '_COMPLETE', '_SUCCESS', '_FAILED'];
 const types = [
-  'AUTH','EVENT','EVENT_SERVICE'
+  'AUTH','EVENT','EVENT_SERVICE', 'GIFT'
 ];
 
 const manuals = {
@@ -12,7 +12,8 @@ const manuals = {
   SIGNUP : 'SIGNUP',
   SET_EVENT_CATEGORY : 'SET_EVENT_CATEGORY',
   EVENT_VENDOR_DETAIL : 'EVENT_VENDOR_DETAIL',
-  DEVICE_TOKEN : 'DEVICE_TOKEN'
+  DEVICE_TOKEN : 'DEVICE_TOKEN',
+  GIFTS_COMPLETE : 'GIFTS_COMPLETE'
 
 };
 

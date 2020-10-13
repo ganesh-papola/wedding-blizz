@@ -131,9 +131,9 @@ export const eventStyle = makeStyles((theme) => ({
     },
     crEventMain: {
         ...center,
-        width: '35%',
+        width: '70%',
         paddingLeft : 10,
-            paddingRight : 10,
+        paddingRight : 10,
         [theme.breakpoints.down("md")]: {
             width: '100%',
         }
@@ -143,6 +143,7 @@ export const eventStyle = makeStyles((theme) => ({
     },
     eventVendorsV: {
         ...center,
+        alignItems: 'flex-start',
         flexDirection: 'column',
         paddingRight: 25,
     },
@@ -360,7 +361,8 @@ export const eventStyle = makeStyles((theme) => ({
         }
     },
     detailParentV : {
-        width : '50%'
+        width : '70%',
+        ...center
     },
     eventSubV : {
         ...center,

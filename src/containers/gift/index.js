@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     useMediaQuery, DialogContent, Dialog, DialogContentText, Grid, Box, Button, useTheme,
     DialogTitle
@@ -7,34 +7,22 @@ import { Clear } from '@material-ui/icons';
 import { giftStyle, commonStyle } from 'styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { strings } from 'constant';
-import { giftIcon, usersIcon } from "assets";
-import { createAlert } from "actions";
-
+import { giftIcon } from "assets";
+import { createAlert, fetchGifts } from "actions";
+import { Loader, NoRecordFound } from "components";
 const { gift, common, errors } = strings;
 
-const dummy = [
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-    { gift: 'Whiskey Decanter Box', giftTotal: '1/3', from : 'Michael Johnson', address : '63, Adekunle Fajuyi, G.R.A, Ikeja, Lagos, Nigeria 542684', description : 'Consetetur sadipscing elitr, sed diam nons umyerte eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et justo duo dolores et ea rebumtet clita kasd gubergren.' },
-
-]
 
 export default props => {
     const classes = giftStyle();
-    const comclasses = commonStyle();
     const dispatch = useDispatch();
-    const { gifts = dummy } = useSelector(({ gift }) => gift);
+    const { gifts = [], loader=false } = useSelector(({ gift }) => gift);
     const { event = {} } = useSelector(({ event }) => event);
     const [open, setOpen] = useState(false);
     const [data, setData] = useState({});
+    useEffect(()=>{
+        dispatch(fetchGifts());
+    },[])
     const onClose = () => {
         setOpen(false);
     }
@@ -61,27 +49,27 @@ export default props => {
                 </div>
             </div>
             <div className={classes.giftListV}>
-                <Grid container >
-                    {dummy.map((item, index) => (
+                {loader? <Loader/>:<Grid container >
+                    {gifts && gifts.length ? gifts.map((item, index) => (
                         <Grid item sm={12} xs={12} md={12} lg={4} className={classes.boxWrapper} key={Math.random() + index + 'gift-list'}>
                             <div className={classes.giftBox}>
                                 <img src={giftIcon} className={classes.icon} />
                                 <div className={classes.centerTV}>
                                     <Box fontFamily='GothamBook' className={classes.giftstatsT}>
-                                        {item.gift}
+                                        {item.gift_title}
                                     </Box>
                                     <Box fontFamily='GothamBook' className={classes.viewDetailT} onClick={() => viewDetails(item)}>
                                         {common.ViewDetails}
                                     </Box>
                                 </div>
                                 <Box fontFamily='Gotham' className={classes.giftTotalT}>
-                                    {item.giftTotal}
+                                    {item.quantity}
                                 </Box>
                             </div>
                         </Grid>
                     ))
-                    }
-                </Grid>
+                    : <NoRecordFound />}
+                </Grid>}
             </div>
             <GiftDetailDialog open={open} onClose={onClose} data={data} />
         </Grid>
@@ -106,39 +94,39 @@ const GiftDetailDialog = ({ open = false, onClose = () => { }, data = {} }) => {
             </div>
 
             <DialogContent>
-                <div>
+                <div className={classes.giftDetailModalBodyMainV}>
                     <div className={classes.contentHV}>
                         <img src={giftIcon} className={classes.dialogIcon} />
                         <Box fontFamily='Gotham' className={classes.giftNameT}>
-                            {data.gift}
+                            {data.gift_title}
                         </Box>
                     </div>
-                    <div>
+                    <div className={classes.giftDetailModalBody}>
                         <Box fontFamily='Gotham' className={classes.dialogTitleT}>
                             {common.Quantity}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.dialogDetailT} >
-                            {data.giftTotal}
+                            {data.quantity}
                         </Box>
                         <Box fontFamily='Gotham' className={classes.dialogTitleT}>
                             {common.Description}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.dialogDetailT}>
-                            {data.description}
+                            {data.gift_description}
                         </Box>
                         <Box fontFamily='Gotham' className={classes.dialogTitleT} >
                             {common.DeliveryAddress}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.dialogDetailT}>
-                            {data.address}
+                            {data.delivery_address}
                         </Box>
                         
-                        <Box fontFamily='Gotham' className={classes.dialogTitleT} >
+                        {/* <Box fontFamily='Gotham' className={classes.dialogTitleT} >
                             {gift.Giftedby}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.dialogDetailT} >
                             {data.from}
-                        </Box>
+                        </Box> */}
                     </div>
 
                 </div>

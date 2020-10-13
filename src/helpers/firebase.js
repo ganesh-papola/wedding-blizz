@@ -143,7 +143,8 @@ export const findById = (collection,id) => {
 }
 export const insert = async (collection, data) => {
     const { id = '' } = await firestore.collection(collection).doc();
-    firestore.collection(collection).doc(id).set({ id, ...data })
+    const createdAt = new Date().getTime();
+    return firestore.collection(collection).doc(id).set({ id,createdAt, isDeleted:false, ...data })
 };
 export const updateOne = (collection, id, data) => {
     if(!collection || !id || !data)

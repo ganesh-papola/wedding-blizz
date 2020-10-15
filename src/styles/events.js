@@ -123,6 +123,13 @@ export const eventStyle = makeStyles((theme) => ({
             width : '100%'
         }
     },
+    eventVendorInfoVendV:{
+        paddingTop: 20,
+        width: '50%',
+        [theme.breakpoints.down("md")]: {
+            width : '100%'
+        }
+    },
     eventInfoHT: {
         fontSize: 14
     },
@@ -369,6 +376,10 @@ export const eventStyle = makeStyles((theme) => ({
         }
     },
     detailParentV : {
+        width : '70%',
+        ...center
+    },
+    vendorDetailParentV:{
         width : '70%',
         ...center
     },

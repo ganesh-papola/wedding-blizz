@@ -27,6 +27,15 @@ export const giftStyle = makeStyles((theme) => ({
         paddingTop : 20,
         paddingBottom : 20
     },
+    boxGuestWrapper:{
+        width : '100%',
+        paddingTop : 20,
+        paddingBottom : 20,
+        alignSelf: 'baseline',
+        display : 'flex',
+        flexDirection : 'row',
+        justifyContent: 'center',
+    },
     headV:{
         ...center,
         width : '100%',

@@ -100,6 +100,10 @@ export const authModalStyle = makeStyles((theme) => ({
       color : colors.dark,
       paddingTop : 10,
       paddingBottom : 10
+    },
+    guestModalView:{
+      paddingLeft : 20,
+      paddingRight : 20
     }
       
   }))

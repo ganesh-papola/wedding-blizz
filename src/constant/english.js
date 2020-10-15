@@ -5,7 +5,9 @@ export default {
         'EventAddedSuccussful' : 'Event added successfully',
         'proposalAdded': 'Proposal added successfully',
         'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address',
-        'GiftAdded': 'New Gift added successfully'
+        'GiftAdded': 'New Gift added successfully',
+        'guestSuccess': 'Guest added successfully',
+        'guestGroupSuccess' : 'Group addedd successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -24,7 +26,14 @@ export default {
         'giftDescRequired' : 'Please enter gift description',
         'giftAddRequired' : 'Please enter address',
         'giftQuantityRequired' : 'Please enter a valid quantity',
-        'CommonApiError' : 'Oops! Something went wrong, Please try again later'
+        'CommonApiError' : 'Oops! Something went wrong, Please try again later',
+        'guestName' : 'Please enter valid guest name',
+        'guestGroup' : 'Please select a group',
+        'address' : 'Please enter valid address',
+        'city' : 'Please enter valid city',
+        'state' : 'Please enter valid state',
+        'zip' : 'Please enter valid zip code',
+        'country' : 'Please select country',
     },
     'auth' : {
         'Login' : 'Login',
@@ -224,7 +233,9 @@ export default {
         'SelectGroup' : 'Select Group',
         'GuestList' : 'Guest List',
         'AddNGroup' : 'Add New Group',
-        'AddGuestList' : 'Add Guest List'
+        'AddGroup' : 'Add Group',
+        'AddGuestList' : 'Add Guest List',
+        'GroupName' : 'Group Name'
         
     },
     'gift':{

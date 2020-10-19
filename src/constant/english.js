@@ -236,7 +236,12 @@ export default {
         'AddNGroup' : 'Add New Group',
         'AddGroup' : 'Add Group',
         'AddGuestList' : 'Add Guest List',
-        'GroupName' : 'Group Name'
+        'GroupName' : 'Group Name',
+        'EditGroup' : 'Edit Group',
+        'EditGuest' : 'Edit Guest',
+        'DeleteGuest' : 'Delete Guest',
+        'DeleteGroup' : 'Delete Group',
+        'DeleteGroupContent' : 'This will delete all the guests in this group, Please confirm to proceed'
         
     },
     'gift':{
@@ -315,7 +320,8 @@ export default {
         'Name' : 'Name',
         'Message' : 'Message',
         'Resend' : 'Resend',
-        'Invite' :'Invite'
+        'Invite' :'Invite',
+        'Close' : 'Close'
     },
     'notifications':{
             'NewProposal':'New Proposal',

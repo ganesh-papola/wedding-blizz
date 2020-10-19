@@ -60,6 +60,8 @@ export const guestStyle = makeStyles((theme) => ({
     },
     listHT : {
         fontSize : 16,
+        display : 'flex',
+        alignItems : 'center',
         [theme.breakpoints.down("md")]: {
             fontSize : 11
         }
@@ -82,6 +84,11 @@ export const guestStyle = makeStyles((theme) => ({
         width : '100%',
         padding : 20,
         ...center
+    },
+    groupActionIconsV : {
+        display : 'flex',
+        flex:1,
+        justifyContent: 'flex-end',
     }
 
 }) )

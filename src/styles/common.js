@@ -276,3 +276,12 @@ export const alertSuccessIcon = {
   marginLeft : 20,
   cursor : 'pointer'
 }
+export const groupCheck = {
+  cursor : 'pointer',
+  marginRight : 8,
+  color : colors.dark
+}
+export const guestCheck = {
+  cursor : 'pointer',
+  color : colors.dark
+}

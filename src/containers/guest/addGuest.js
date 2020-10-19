@@ -44,10 +44,10 @@ export default props => {
         address : strings.errors.address,
         groupId : strings.errors.guestGroup
     }
-    const { groups = [], _loader=false, loader=false } = useSelector(({ guest }) => guest);
-    useEffect(()=>{
-        dispatch(fetchGuestGroups())
-    },[])
+    const { guests = [], _loader=false, loader=false } = useSelector(({ guest }) => guest);
+    // useEffect(()=>{
+    //     dispatch(fetchGuestGroups())
+    // },[])
     const onChange = (k,v) => {
         setState({...state,[k]:v})
         setError({...error, [k] : validator(k,v)?'':errors[k]})
@@ -82,7 +82,7 @@ export default props => {
                         <TextField label={guest.GuestName} error={error.name} value={state.name} onChange={v=>onChange('name',v)} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <DropDown label={guest.SelectGroup} data={groups} value={state.groupId} error={error.groupId} onChange={v=>onChange('groupId',v)}/>
+                        <DropDown label={guest.SelectGroup} data={guests} value={state.groupId} error={error.groupId} onChange={v=>onChange('groupId',v)}/>
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
@@ -114,7 +114,7 @@ export default props => {
                         <Button disabled={loader} onClick={onSubmit} variant="contained" size="large" color='primary' style={commonButtonStyle}>
                             {loader?<Loader/>:common.Submit}
                         </Button>
-                        <Button disabled={loader} onClick={()=>props.history.goBack()} variant="contained" size="large" style={commonButtonStyle} onClick={()=>props.history.goBack()}>
+                        <Button disabled={loader} variant="contained" size="large" style={commonButtonStyle} onClick={()=>props.history.goBack()}>
                             {common.Cancel}
                         </Button>
                     </Grid>

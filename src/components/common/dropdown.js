@@ -23,7 +23,7 @@ export default ({label='', value='', error='', data=[], onChange=()=>{} }) => {
                     value={val}
                     onChange={({ target: { value } }) => onDateChange(value)}
                     label={label}>
-                    {data.map(it => <MenuItem value={it.value}>{it.label}</MenuItem>)}
+                    {data.map((it,i) => <MenuItem key={it.label&&it.label+i} value={it.value}>{it.label}</MenuItem>)}
                 </Select>
                 {error&&<FormHelperText>{error}</FormHelperText>}
             </FormControl>

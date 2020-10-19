@@ -77,6 +77,11 @@ export const guestStyle = makeStyles((theme) => ({
         [theme.breakpoints.down("md")]: {
             fontSize : 10
         }
+    },
+    guestInviteButtonV:{
+        width : '100%',
+        padding : 20,
+        ...center
     }
 
 }) )

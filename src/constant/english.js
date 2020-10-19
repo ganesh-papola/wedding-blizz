@@ -34,6 +34,7 @@ export default {
         'state' : 'Please enter valid state',
         'zip' : 'Please enter valid zip code',
         'country' : 'Please select country',
+        'nameExist' : 'This name already exist. Please type a new name'
     },
     'auth' : {
         'Login' : 'Login',
@@ -313,7 +314,8 @@ export default {
         'GetAQuote' : 'Get a Quote',
         'Name' : 'Name',
         'Message' : 'Message',
-        'Resend' : 'Resend'
+        'Resend' : 'Resend',
+        'Invite' :'Invite'
     },
     'notifications':{
             'NewProposal':'New Proposal',

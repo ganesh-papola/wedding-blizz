@@ -380,7 +380,7 @@ export const eventStyle = makeStyles((theme) => ({
         ...center
     },
     vendorDetailParentV:{
-        width : '70%',
+        width : '40%',
         ...center
     },
     eventSubV : {

@@ -246,6 +246,16 @@ export const deleteButtonStyle = {
   color : colors.red,
   boxShadow : '0 0 black'
 }
+export const mainBorderDtBotton = {
+  margin : 10,
+  // marginLeft : 5,
+  width: 200,
+  height: 45,
+  border : `1px dashed ${colors.main1}`,
+  background : colors.white,
+  color : colors.main,
+  boxShadow : '0 0 black'
+}
 export const navButtons = {
   height : 40,
   width : 90,

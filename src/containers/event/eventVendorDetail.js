@@ -38,7 +38,7 @@ export default props => {
             { loader ? <Loader style={primaryLoaderStyle} /> :
                 <div className={classes.vendorDetailParentV}>
                     <Grid container justify="center" className={classes.eventVendorInfoVendV}>
-                        <Grid item sm={12} xs={12} md={12} className={classes.crImageV}>
+                        <Grid item sm={12} xs={10} md={12} className={classes.crImageV}>
                             <Carousel navButtonsAlwaysInvisible={true} indicators={true} autoPlay={false} timeout={500} animation="slide">
                                 {images && images.map((image, i) =>
                                     <img key={Math.random() + 'image-vend-detail' + i} src={image} className={classes.eventVendDetailsCRImge} />)}

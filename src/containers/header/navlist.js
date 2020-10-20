@@ -118,9 +118,9 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}>
                                 <div className={classes.popoverV}>
-                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT}>
+                                    {/* <Box variant="button" fontFamily="Gotham" className={classes.popoverT}>
                                         {auth.MyProfile}
-                                    </Box>
+                                    </Box> */}
                                     <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>{popupState.close();setRoute('/account')}}>
                                         {auth.MyAccount}
                                     </Box>

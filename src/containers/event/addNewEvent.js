@@ -2,7 +2,7 @@ import React, { useState, useCallback,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle, primaryLoaderStyle } from 'styles';
-import { TextField, DatePicker, DropDown, Radio, FilePicker, BreadCrumb, Loader } from "components";
+import { TextField, DatePicker, DropDown, Radio, FilePicker, BreadCrumb, Loader, GooglePlaces } from "components";
 import { Room } from '@material-ui/icons';
 import { strings, country } from 'constant';
 import { addEvent, fetchEvent } from 'actions';
@@ -51,6 +51,12 @@ export default props => {
             if(event) props.history.push('/');
         }
         get();
+        navigator.geolocation.getCurrentPosition(({coords}) => {
+            console.log("pos ", coords)
+        },
+        error => {
+            console.log("position error ", error)
+        })
     },[type])
     
     return (
@@ -71,13 +77,14 @@ export default props => {
                         <DatePicker minDate={new Date()} label={events.WeddingDate} value={state.event_date} onChange={value=>changeState('event_date', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} className={classes.addNewEventFormGV}>
-                        <Typography component="div" className={classes.mapTV}>
+                        {/* <Typography component="div" className={classes.mapTV}>
                             <Room />
                             <Box fontFamily='GothamBook' className={classes.mapT}>
                                 {common.Map}
                             </Box>
-                        </Typography>
-                        <TextField label={events.WeddingLocation}   onChange={value=>changeState('event_location', value)}/>
+                        </Typography> */}
+                        {/* <TextField label={events.WeddingLocation}   onChange={value=>changeState('event_location', value)}/> */}
+                        <GooglePlaces label={events.WeddingLocation} />
                     </Grid>
 
                     {/* <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>

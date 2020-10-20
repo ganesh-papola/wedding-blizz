@@ -11,9 +11,9 @@ export default ({ value = '', onChange=()=>{}, label, maxLength, error, rows = 4
     }
     return (
         <div className={classes.inputFieldsV}>
-            <Typography component={'span'}>
+            {/* <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
-            </Typography>
+            </Typography> */}
             <TextField
                 className={classes.textAreaTV}
                 {...tprops}

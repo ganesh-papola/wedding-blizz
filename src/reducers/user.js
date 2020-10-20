@@ -3,7 +3,8 @@ const INITIAL_STATE = {
   user: {},
   isLoggedIn: false,
   loader: false,
-  fcm : null
+  xloader: false,
+  fcm: null
 };
 
 export default function login(state = INITIAL_STATE, action) {
@@ -15,15 +16,22 @@ export default function login(state = INITIAL_STATE, action) {
       return { ...state, loader: false, isLoggedIn: true, user: action.payload }
     case ACTION_TYPES.AUTH_FAILED:
       return { ...state, loader: false, isLoggedIn: false, user: {} }
-    case ACTION_TYPES.SIGNUP :
-      return {...state, loader: false }
+    case ACTION_TYPES.SIGNUP:
+      return { ...state, loader: false }
     case ACTION_TYPES.RESET:
       return INITIAL_STATE
     case ACTION_TYPES.LOG_OUT:
       return INITIAL_STATE
-    case ACTION_TYPES.DEVICE_TOKEN : 
-        return {...state, fcm:action.payload}
+    case ACTION_TYPES.DEVICE_TOKEN:
+      return { ...state, fcm: action.payload }
+    case ACTION_TYPES.ACCOUNT_UPDATE_REQUEST:
+      return { ...state, xloader: true }
+    case ACTION_TYPES.ACCOUNT_UPDATE_COMPLETE:
+      return { ...state, xloader: false }
+    case ACTION_TYPES.ACCOUNT_UPDATE_FAILED:
+      return { ...state, xloader: false }
     default:
       return state;
+      
   }
 }

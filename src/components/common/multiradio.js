@@ -13,9 +13,9 @@ export default ({ value='', onChange=()=>{}, label, data=[] }) => {
         return null
     return (
         <div className={classes.inputFieldsV}>
-            <Typography component={'span'}>
+            {/* <Typography component={'span'}>
                 <Box fontFamily="Gotham" className={classes.inputFLabelT}>{label}</Box>
-            </Typography>
+            </Typography> */}
             <div className={classes.radioPv}>
                 {data.map((item,index)=>(
                 <div className={classes.radioV} key={`${index}-sweet-radio`}>

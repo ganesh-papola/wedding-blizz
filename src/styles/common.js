@@ -153,6 +153,7 @@ export const commonStyle =  makeStyles((theme) => ({
       ...center,
       fontSize : 13,
       color : colors.grey5,
+      fontWeight : 'bold',
       textTransform : 'capitalize',
       [theme.breakpoints.down("md")]: {
         fontSize : 8
@@ -256,6 +257,15 @@ export const mainBorderDtBotton = {
   color : colors.main,
   boxShadow : '0 0 black'
 }
+export const mainBorderDelBotton = {
+  margin : 10,
+  width: 200,
+  height: 45,
+  border : `1px dashed ${colors.red}`,
+  background : colors.white,
+  color : colors.red,
+  boxShadow : '0 0 black' 
+}
 export const navButtons = {
   height : 40,
   width : 90,
@@ -279,9 +289,27 @@ export const alertSuccessIcon = {
 export const groupCheck = {
   cursor : 'pointer',
   marginRight : 8,
-  color : colors.dark
+  color : colors.dark,
+  fontSize : 17
 }
 export const guestCheck = {
   cursor : 'pointer',
+  color : colors.dark,
+  fontSize : 17
+}
+export const groupDelete = {
+  cursor : 'pointer',
+  marginRight : 8,
+  color : colors.red,
+  fontSize : 17
+}
+export const groupEditIcon = {
+  cursor : 'pointer',
+  fontSize : 17,
   color : colors.dark
+}
+export const flex1 = {
+  display:'flex',
+  width :'100%',
+ flex:1
 }

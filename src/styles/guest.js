@@ -61,6 +61,7 @@ export const guestStyle = makeStyles((theme) => ({
     listHT : {
         fontSize : 16,
         display : 'flex',
+        paddingBottom : 5,
         alignItems : 'center',
         [theme.breakpoints.down("md")]: {
             fontSize : 11
@@ -70,12 +71,15 @@ export const guestStyle = makeStyles((theme) => ({
         ...center,
         justifyContent: 'flex-start',
         cursor : 'pointer',
-        paddingTop : 10,
-        paddingBottom : 10
+        paddingTop : 5,
+        // paddingBottom : 5
     },
     guestNameT:{
         fontSize : 14,
         paddingLeft : 10,
+        display : 'flex',
+        alignItems : 'center',
+        width : '100%',
         [theme.breakpoints.down("md")]: {
             fontSize : 10
         }
@@ -83,12 +87,20 @@ export const guestStyle = makeStyles((theme) => ({
     guestInviteButtonV:{
         width : '100%',
         padding : 20,
+        minHeight : 100,
         ...center
     },
     groupActionIconsV : {
         display : 'flex',
         flex:1,
         justifyContent: 'flex-end',
+    },
+    loaderV:{
+        minHeight:400,
+        ...center
+    },
+    guestActionButtonsV:{
+        ...center
     }
 
 }) )

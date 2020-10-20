@@ -2,6 +2,7 @@ import { ACTION_TYPES } from 'constant';
 const INITIAL_STATE = {
   loader: false,
   _loader: false,
+  dloader: false,
   guests: [],
   groups: []
 };
@@ -16,7 +17,7 @@ export default function login(state = INITIAL_STATE, action) {
     case ACTION_TYPES.GUEST_SUCCESS:
       return { ...state, loader: false }
     case ACTION_TYPES.GUEST_COMPLETE:
-      return { ...state, loader : false, _loader : false, guests : action.payload }
+      return { ...state, loader: false, _loader: false, guests: action.payload }
     case ACTION_TYPES.GUEST_FAILED:
       return { ...state, loader: false }
     case ACTION_TYPES.GUEST_GROUP_COMPLETE:
@@ -26,7 +27,12 @@ export default function login(state = INITIAL_STATE, action) {
       return { ...state, _loader: true }
     case ACTION_TYPES.GUEST_GROUP_FAILED:
       return { ...state, _loader: false, loader: false }
-
+    case ACTION_TYPES.GUEST_GROUP_DEL_REQUEST:
+      return { ...state, dloader: true }
+    case ACTION_TYPES.GUEST_GROUP_DEL_COMPLETE:
+      return { ...state, dloader: false }
+    case ACTION_TYPES.GUEST_GROUP_DEL_FAILED:
+      return { ...state, dloader: false }
     case ACTION_TYPES.RESET:
       return INITIAL_STATE
 

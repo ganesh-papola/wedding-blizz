@@ -1,6 +1,6 @@
 const format = ['_REQUEST', '_COMPLETE', '_SUCCESS', '_FAILED'];
 const types = [
-  'AUTH','EVENT','EVENT_SERVICE', 'GIFT', 'GUEST', 'GUEST_GROUP'
+  'AUTH','EVENT','EVENT_SERVICE', 'GIFT', 'GUEST', 'GUEST_GROUP', 'GUEST_GROUP_DEL', 'ACCOUNT_UPDATE'
 ];
 
 const manuals = {

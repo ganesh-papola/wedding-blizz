@@ -1,12 +1,16 @@
 import React from "react";
-import { Typography, Grid, Box } from '@material-ui/core'
+import { Box } from '@material-ui/core';
 import { accountStyle } from "styles";
 import { strings } from 'constant';
+import { useSelector } from "react-redux";
 
 const { account } = strings;
 export default ({ selected = 0, onSelect = () => { } }) => {
+    const { user={} } = useSelector(({user})=>user);
     const classes = accountStyle();
-    const sides = [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.BusinessInformation, account.EmailPreferences]
+    const sides = user&&user.uid && user.type === 1 ?
+    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.EmailPreferences] :
+    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.BusinessInformation, account.EmailPreferences]
     const getTextVStyle = (index) => {
         return index === sides.length - 1 ?
             selected === index ?

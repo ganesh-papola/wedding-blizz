@@ -12,9 +12,9 @@ export default ({label='', value='', error='', data=[], onChange=()=>{} }) => {
     }
     return (
         <div className={classes.dropdownV}>
-            <Typography component={'span'}>
+            {/* <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
-            </Typography>
+            </Typography> */}
             <FormControl variant="outlined" className={classes.formControlDropD} error={!!error}>
                 <InputLabel label={`${label}-label-${Math.random()}`}>{label}</InputLabel>
                 <Select

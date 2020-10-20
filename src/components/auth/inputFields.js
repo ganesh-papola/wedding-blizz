@@ -40,7 +40,7 @@ export default ({ state = {}, errors = {}, fields = [], setModal=()=>{}, setStat
             dispatch(signUp(state));
             setTimeout(() => {
                 setModal(false)
-            }, 1000);
+            }, 2500);
         }
     }
 

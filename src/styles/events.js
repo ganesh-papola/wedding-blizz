@@ -11,6 +11,7 @@ export const eventStyle = makeStyles((theme) => ({
         paddingTop: 80,
         paddingBottom: 80,
         ...center,
+        // justifyContent: 'flex-start',
         [theme.breakpoints.down("md")]: {
             paddingTop: 90,
             paddingBottom: 90,
@@ -125,7 +126,7 @@ export const eventStyle = makeStyles((theme) => ({
     },
     eventVendorInfoVendV:{
         paddingTop: 20,
-        width: '50%',
+        width: '40%',
         [theme.breakpoints.down("md")]: {
             width : '100%'
         }
@@ -230,7 +231,11 @@ export const eventStyle = makeStyles((theme) => ({
         ...center,
         paddingTop: 20,
         paddingBottom: 20,
-        cursor:'pointer'
+    },
+    eventVendorDetailMain:{
+        ...center,
+        paddingTop: 20,
+        paddingBottom: 20,
     },
     eventFrListMain: {
         ...center,
@@ -242,7 +247,8 @@ export const eventStyle = makeStyles((theme) => ({
         border: `1px solid ${colors.grey2}`,
         minHeight: 100,
         width: '60%',
-        padding: 20
+        padding: 20,
+        cursor:'pointer'
     },
     eventFrListContainer: {
         width: '85%'

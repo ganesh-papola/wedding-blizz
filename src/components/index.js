@@ -17,3 +17,5 @@ export { default as Confirm } from './common/confirm';
 export { default as Alert } from "./common/alert";
 export { default as Notfound } from "./common/notFound";
 export { default as NoRecordFound } from "./common/noRecordFound";
+
+export { default as GooglePlaces } from "./common/GooglePlaces";

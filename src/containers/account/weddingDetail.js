@@ -39,12 +39,12 @@ export default props => {
                     <DatePicker label={events.WeddingDate} />
                 </Grid>
                 <Grid item sm={12} xs={12} className={evntClasses.addNewEventFormGV}>
-                    <Typography component="div" className={evntClasses.mapTV}>
+                    {/* <Typography component="div" className={evntClasses.mapTV}>
                         <Room />
                         <Box fontFamily='GothamBook' className={evntClasses.mapT}>
                             {common.Map}
                         </Box>
-                    </Typography>
+                    </Typography> */}
                     <TextField label={events.WeddingLocation} />
                 </Grid>
 

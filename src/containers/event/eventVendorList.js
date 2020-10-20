@@ -30,7 +30,7 @@ export default props => {
         props.history.push('/eventvendordetail');
     }
     return (
-        <Grid container justify="center" className={classes.eventMain}>
+        <Grid container className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.Vendors} />
             <Typography component="div" className={classes.eventTV}>
                 <Box fontFamily='CormorantBold' className={classes.eventT}>
@@ -41,8 +41,8 @@ export default props => {
                 <>
                     { vendors && vendors.length ? vendors.map((vendor, index) =>
                         <Grid item sm={12} xs={12} md={12} lg={4} key={`${index}-event-fair-vendors-list`}
-                         onClick={()=>onVendor(vendor)} className={classes.eventVendorListMain}>
-                            <div className={classes.eventFrListV}>
+                          className={classes.eventVendorListMain}>
+                            <div className={classes.eventFrListV} onClick={()=>onVendor(vendor)}>
                                 <Box fontFamily='GothamBold' className={classes.eventFrHT}>
                                     {vendor.business_name}
                                 </Box>

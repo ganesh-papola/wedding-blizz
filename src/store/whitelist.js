@@ -1,2 +1,2 @@
 
-export default ["user","event"];
+export default ["user","event", "guest"];

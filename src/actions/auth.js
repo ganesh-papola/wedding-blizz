@@ -1,5 +1,5 @@
 
-import { auth, createProfile, resendVerificationEmail, handleFCM , notification} from "helpers";
+import { auth, createProfile, resendVerificationEmail, handleFCM , notification, updateOne, firestore } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings } from 'constant';
 import { createAlert } from "actions";
@@ -79,4 +79,25 @@ export const onForgotPassword = (email) => async dispatch => {
         dispatch(createAlert({ message : error.message, type:'error' }));
         console.log("forgot catch error ", error)
     }
+}
+export const updateUser = (state) => async (dispatch, getState) => {
+    try {
+        dispatch({ type : ACTION_TYPES.ACCOUNT_UPDATE_REQUEST });
+        const {user:{uid=''}} = getState().user;
+        const update = await updateOne('users',uid,state);
+        dispatch(fetchUser());
+        dispatch({ type : ACTION_TYPES.ACCOUNT_UPDATE_COMPLETE });
+        dispatch(createAlert({message:strings.success.profileUpdateSuccess, type:'success'}));
+    } catch (error) {
+        console.log("add event catch error ", error)
+        dispatch({ type : ACTION_TYPES.ACCOUNT_UPDATE_FAILED });
+        dispatch(createAlert({message:error.message, type:'error'}))
+    }
+}
+const fetchUser = () => async (dispatch, getState) => {
+    const {user={}} = getState().user;
+    const data = await firestore.collection('users').where('userId', '==', user.uid).get();
+    const obj = data&&data.docs&&data.docs.length?data.docs.map(item=>item.data()):[];
+    let payload = obj&&obj.length?obj[0]:{};
+    dispatch({type : ACTION_TYPES.AUTH_COMPLETE, payload : {...user, ...payload} })
 }

@@ -7,7 +7,9 @@ export default {
         'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address',
         'GiftAdded': 'New Gift added successfully',
         'guestSuccess': 'Guest added successfully',
-        'guestGroupSuccess' : 'Group addedd successfully'
+        'guestGroupSuccess' : 'Group addedd successfully',
+        'guestGroupUpdateSuccess' : 'Group updated successfully',
+        'profileUpdateSuccess' : 'Profile updated successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -34,7 +36,8 @@ export default {
         'state' : 'Please enter valid state',
         'zip' : 'Please enter valid zip code',
         'country' : 'Please select country',
-        'nameExist' : 'This name already exist. Please type a new name'
+        'nameExist' : 'This name already exist. Please type a new name',
+        'NoGroupAdded' : 'Please add atleast one group to continue'
     },
     'auth' : {
         'Login' : 'Login',
@@ -241,7 +244,8 @@ export default {
         'EditGuest' : 'Edit Guest',
         'DeleteGuest' : 'Delete Guest',
         'DeleteGroup' : 'Delete Group',
-        'DeleteGroupContent' : 'This will delete all the guests in this group, Please confirm to proceed'
+        'DeleteGroupContent' : 'This will delete all the guests in this group, Please confirm to proceed',
+        'DeleteGuestContent' : 'Are you sure want to delete this guest?'
         
     },
     'gift':{
@@ -307,6 +311,7 @@ export default {
         'Update' : 'Update',
         'Delete' : 'Delete',
         'Photos' : 'Photos',
+        'Edit' : 'Edit',
         'Discussions' : 'Discussions',
         'Events' : 'Events',
         'Home' : 'Home',

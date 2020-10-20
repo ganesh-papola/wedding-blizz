@@ -1,16 +1,18 @@
-import { auth, firestore, insert, uploadImages, imagePathToUrl, sendPush } from "helpers";
+import { auth, firestore, insert, updateOne, imagePathToUrl, sendPush } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
 const { success, errors } = strings;
 
-export const addGroup = data => async (dispatch, getState) => {
+export const addGroup = (data) => async (dispatch, getState) => {
     try {
         const { uid = '' } = getState().user?.user;
         dispatch({ type: ACTION_TYPES.GUEST_REQUEST });
-        await insert('guest_groups', { ...data, userId: uid });
+        if(data&&data.id)
+        await updateOne('guest_groups', data?.id, { name:data.name });
+        else await insert('guest_groups', { ...data, userId: uid });
         dispatch({ type: ACTION_TYPES.GUEST_SUCCESS });
-        dispatch(createAlert({ message: success.guestGroupSuccess, type: 'success' }));
+        dispatch(createAlert({ message: data?.id?success.guestGroupUpdateSuccess:success.guestGroupSuccess, type: 'success' }));
         dispatch(fetchGroupGuests());
     } catch (error) {
         console.log("addGift error ", error)
@@ -31,11 +33,12 @@ export const fetchGuestGroups = () => async (dispatch, getState) => {
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
 }
-export const addGuest = (data) => async (dispatch, getState) => {
+export const addGuest = (data, id) => async (dispatch, getState) => {
     try {
         const { uid = '' } = getState().user?.user;
         dispatch({ type: ACTION_TYPES.GUEST_REQUEST });
-        await insert('guest_users', { ...data, coupleId: uid });
+        if(id) await updateOne('guest_users', id, { ...data, coupleId: uid });
+        else await insert('guest_users', { ...data, coupleId: uid });
         dispatch({ type: ACTION_TYPES.GUEST_SUCCESS });
         dispatch(createAlert({ message: success.guestSuccess, type: 'success' }));
         history.goBack();
@@ -69,6 +72,32 @@ export const inviteGuests = (data) => async (dispatch, getState) => {
     } catch (error) {
         console.log("addGift error ", error)
         // dispatch({ type: ACTION_TYPES.GUEST_FAILED })
+        dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
+    }
+}
+export const deleteGroup = (id) => async (dispatch, getState) => {
+    try {
+        const { uid = '' } = getState().user?.user;
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_REQUEST });
+        await firestore.collection('guest_groups').doc(id).delete();
+        dispatch(fetchGroupGuests());
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_COMPLETE });
+    } catch (error) {
+        console.log("addGift error ", error)
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_FAILED })
+        dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
+    }
+}
+export  const deleteGuest = (id) => async (dispatch, getState) => {
+    try {
+        const { uid = '' } = getState().user?.user;
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_REQUEST });
+        await firestore.collection('guest_users').doc(id).delete();
+        dispatch(fetchGroupGuests());
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_COMPLETE });
+    } catch (error) {
+        console.log("addGift error ", error)
+        dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
 }

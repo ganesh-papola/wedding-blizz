@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box } from '@material-ui/core';
 import { commonStyle } from "styles"
-
+import { Loader } from "components";
 
 export default props => {
-    const { onClick, onClose, open = false, title, content, button } = props
+    const { onClick, onClose, open = false, title, content, button, loader=false } = props
     const classes = commonStyle();
     const onAction = () =>{
         onClose();
@@ -26,7 +26,7 @@ export default props => {
                         Cancel
                     </Button>
                     <Button variant="contained" onClick={onAction} color="primary">
-                        {button}
+                        {loader?<Loader/>:button}
                     </Button>
                 </DialogActions>
             </div>

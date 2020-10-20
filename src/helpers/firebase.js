@@ -37,7 +37,7 @@ export const firebaseInit = () => {
 export const registerServiceWorker = async () => {
     try {
         if ("serviceWorker" in navigator) {
-            const registration = await navigator.serviceWorker.register("./firebase-messaging-sw.js");
+            await navigator.serviceWorker.register("./firebase-messaging-sw.js");
         }
     } catch (error) {
         console.log("Service worker registration failed, error:", error);
@@ -149,5 +149,5 @@ export const insert = async (collection, data) => {
 export const updateOne = (collection, id, data) => {
     if(!collection || !id || !data)
      throw {message:errors.commandKeysMissing}
-    firestore.collection(collection).doc(id).update(data);
+    firestore.collection(collection).doc(id).update({...data, modifiedAt : new Date().getTime()});
 }

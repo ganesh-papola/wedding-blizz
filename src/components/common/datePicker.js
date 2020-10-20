@@ -18,9 +18,9 @@ export default ({ value = null, onChange = () => { }, label, maxLength, error, s
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <div className={classes.dateFieldsV}>
-                <Typography component={'span'}>
+                {/* <Typography component={'span'}>
                     <Box className={classes.inputFLabelT}>{label}</Box>
-                </Typography>
+                </Typography> */}
                 <KeyboardDatePicker
                     className={classes.inputFields}
                     id={label}

@@ -14,6 +14,7 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
     const [images, setImages] = useState([]);
 
     const onFile = ({ target: { files = [] } }) => {
+        // setName([...names, ...files.map(file=>file.name)]);
         setImages([...images, ...files]);
         onImage([...images, ...files]);
     }
@@ -25,9 +26,9 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
     }
     return (
         <div className={classes.inputFieldsV}>
-            <Typography component={'span'}>
+            {/* <Typography component={'span'}>
                 <Box className={classes.inputFLabelT}>{label}</Box>
-            </Typography>
+            </Typography> */}
             <label>
                 <div className={classes.browseBV}  htmlFor="upload-photo">
                 <input
@@ -44,6 +45,8 @@ export default ({ onImage = () => { }, multiple = false, label, error }) => {
                         variant="outlined"
                         label={label}
                         error={!!error}
+                        value={images.map(file=>file.name).toString()}
+                        disabled
                         helperText={error}
                         onClick={() => uploadRef[label] && uploadRef[label].click()} />
                     <Button variant="outlined" size="large" color='primary'

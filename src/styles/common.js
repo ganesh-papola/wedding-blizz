@@ -27,8 +27,8 @@ export const commonStyle =  makeStyles((theme) => ({
     ,
     inputFieldsV : {
         width : '100%',
-        paddingBottom : 15,
-        paddingTop : 5
+        paddingBottom : 20,
+        paddingTop : 10
       },
       textAreaTV : {
         width : '100%',
@@ -227,7 +227,33 @@ export const commonStyle =  makeStyles((theme) => ({
   },
   alertButtonV:{
     ...center
-
+  },
+  googlePlacesTV : {
+     position:'relative'
+  },
+  googlePlacesSuggestionV : {
+    position : 'absolute',
+    background : colors.white,
+    border : ``,
+    zIndex:10000,
+    width : '100%',
+    borderRadius : 8,
+    border : `1px solid ${colors.main}`
+  },
+  googlePlacesSuggestionT : {
+    // width : '100%',
+    paddingLeft : 10,
+    cursor : 'pointer',
+    marginTop : 15,
+    marginBottom : 15,
+    color : colors.dark1,
+    paddingBottom : 10,
+    borderBottom : `1px solid ${colors.grey7}`,
+    '&:hover' : {
+      borderBottom : `1px solid ${colors.blue3}`,
+      color : colors.blue3,
+      // background : colors.blue1
+    }
   }
       
 }));

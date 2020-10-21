@@ -9,7 +9,9 @@ export default {
         'guestSuccess': 'Guest added successfully',
         'guestGroupSuccess' : 'Group addedd successfully',
         'guestGroupUpdateSuccess' : 'Group updated successfully',
-        'profileUpdateSuccess' : 'Profile updated successfully'
+        'profileUpdateSuccess' : 'Profile updated successfully',
+        'businessAdded' : 'Business information added successfully',
+        'businessUpdated' : 'Business information updated successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -177,7 +179,11 @@ export default {
         'Transportation' : 'Transportation',
 
         'WeddingVendorsState' : 'Wedding Vendors by State',
-        'AbiaWeddings' : 'Abia Weddings'
+        'AbiaWeddings' : 'Abia Weddings',
+
+        'CreateBusiness' : 'Create Business',
+        'VendorBusiness' : 'Vendor Business',
+        'BusinessName' : 'Business Name'
     },
     'about' : {
         'AboutCompany' : 'About Company',

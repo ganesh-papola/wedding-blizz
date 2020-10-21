@@ -51,6 +51,7 @@ export const login = ({email,password}) => async (dispatch, getState) => {
                 action : ()=>dispatch(resendEmailVerification())
             }}));
         }
+        dispatch(getPosition());
     }else
         dispatch({ type : ACTION_TYPES.AUTH_FAILED });
     } catch (error) {
@@ -59,7 +60,14 @@ export const login = ({email,password}) => async (dispatch, getState) => {
         dispatch(createAlert({message:error.message, type:'error'}))
     }
 }
-
+export const getPosition = () => dispatch => {
+    navigator.geolocation.getCurrentPosition(({coords}) => {
+        dispatch({ type : ACTION_TYPES.SET_POSITION, payload : coords });
+    },
+    error => {
+        console.log("position error ", error)
+    })
+}
 export const logout = () => async (dispatch, getState) =>{
     const {user:{uid}, fcm=''} = getState().user;
     dispatch({ type : ACTION_TYPES.RESET });

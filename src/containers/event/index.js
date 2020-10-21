@@ -20,7 +20,7 @@ export default props => {
     useEffect(()=>{
         const get = async () =>{
             if(type===3)
-            return props.history.push('/eventfr')
+            return props.history.push('/vendor')
             const event = await dispatch(fetchEvent());
             if(event) props.history.push('/eventdetail');
         }

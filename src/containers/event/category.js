@@ -12,10 +12,15 @@ export default props => {
     const classes = eventStyle();
     const dispatch = useDispatch();
     const [categories, setCategories] = useState([]);
-    const breads = [
-        { title: common.Home, path: '/' },
-        { title: events.WeddingEvent, path: '/eventdetail' },
-    ];
+    const { user:{type} } = useSelector(({user})=>user);
+    const params = props.history?.location?.state;
+    const breads = type===3 ? [
+            { title: common.Home, path: '/' },
+            { title: strings.vendors.VendorBusiness, path: '/vendor' },
+        ]:[
+            { title: common.Home, path: '/' },
+            { title: events.WeddingEvent, path: '/eventdetail' },
+        ];
     
     useEffect(()=>{
         const get = async () => {
@@ -32,21 +37,30 @@ export default props => {
                     {common.Category}
                 </Box>
             </Typography>
-            <ImagesGrids categories={categories} history={props.history}/>
+            <ImagesGrids categories={categories} history={props.history} multi={params?.multi}/>
         </Grid>
     )
 }
 
-const ImagesGrids = ({categories=[], history}) => {
+const ImagesGrids = ({categories=[], history, multi=false}) => {
     const classes = eventStyle();
-    const [selected, setSelected] = useState(-1);
+    const [selected, setSelected] = useState([]);
+    const { user:{type} }= useSelector(({user})=>user);
     const { loader=false } = useSelector(({ event }) => event);
     const dispatch = useDispatch();
     const onSubmit = ()=>{
-        if(selected >=0 ){
-           dispatch(setCategory(categories[selected]));
-           history.push('/eventvendorlist') 
+        if(selected&&selected.length){
+           dispatch(setCategory(multi||type===3?selected:selected[0]));
+           history.push(type===3?'/addvendorbusiness':'/eventvendorlist') 
         }
+    }
+    const handleSelection = (i,item) => {
+        if(multi||type===3){
+            const selects = selected&&selected.map(sel=>sel.id).includes(item.id)?selected.filter(f=>f.id!==item.id) : 
+                             [...selected, item];
+            setSelected(selects);
+        } else
+        setSelected([item])
     }
     return (
         <Grid container className={classes.categoriesV}>
@@ -54,11 +68,11 @@ const ImagesGrids = ({categories=[], history}) => {
             <>
             { categories && categories.length ? categories.map((item, i) =>
                 <Grid item sm={12} xs={12} md={3} lg={3} className={classes.allCategoryV} key={item.name + i + '-category-all-cats'}>
-                    <div className={classes.allCatRoundImgV} onClick={() => setSelected(i)}>
-                        <img src={item.icon} className={selected === i ? classes.allCatSelectedImg : classes.allCatRoundImg} />
-                        {selected === i && <CheckCircleRounded className={classes.categoryCheckIcon} />}
+                    <div className={classes.allCatRoundImgV} onClick={() => handleSelection(i, item)}>
+                        <img src={item.icon} className={ selected&&selected.length&&selected.map(s=>s.id).includes(item.id) ? classes.allCatSelectedImg : classes.allCatRoundImg} />
+                        {selected&&selected.length&&selected.map(s=>s.id).includes(item.id) ? <CheckCircleRounded className={classes.categoryCheckIcon} /> : null }
                     </div>
-                    <Box fontFamily='Gotham' className={`${classes.allCatRoundT}`} onClick={() => setSelected(i)}>
+                    <Box fontFamily='Gotham' className={`${classes.allCatRoundT}`} onClick={() => handleSelection(i, item)}>
                         {item.name}
                     </Box>
                 </Grid>

@@ -45,7 +45,7 @@ export default props => {
     useEffect(()=>{
         const get = async () =>{
             if(type===3)
-            return props.history.push('/eventfr')
+            return props.history.push('/vendor')
             const event = await dispatch(fetchEvent());
             console.log("event event ", event);
             if(event) props.history.push('/');
@@ -84,7 +84,7 @@ export default props => {
                             </Box>
                         </Typography> */}
                         {/* <TextField label={events.WeddingLocation}   onChange={value=>changeState('event_location', value)}/> */}
-                        <GooglePlaces label={events.WeddingLocation} />
+                        <GooglePlaces label={events.WeddingLocation} onChange={v=>console.log("vvvvv ", v)} />
                     </Grid>
 
                     {/* <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>

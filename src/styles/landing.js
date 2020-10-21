@@ -77,7 +77,6 @@ export const landingStyle =  makeStyles((theme) => ({
       }
     },
     downloadImage : {
-      
       cursor : 'pointer',
       marginLeft : 20,
       [theme.breakpoints.down("md")]: {

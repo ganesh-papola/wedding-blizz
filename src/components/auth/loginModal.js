@@ -49,7 +49,6 @@ const onSubmit = () =>{
     }
 }
 
-
   return (
       <Dialog open={modal} onClose={()=>setModal(false)} className={classes.modal}>
             <div className={classes.modalBody}>

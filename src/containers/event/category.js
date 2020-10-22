@@ -11,8 +11,8 @@ const { events, vendors, common } = strings;
 export default props => {
     const classes = eventStyle();
     const dispatch = useDispatch();
-    const [categories, setCategories] = useState([]);
     const { user:{type} } = useSelector(({user})=>user);
+    const { categories = [] } = useSelector(({ app }) => app);
     const params = props.history?.location?.state;
     const breads = type===3 ? [
             { title: common.Home, path: '/' },
@@ -22,13 +22,6 @@ export default props => {
             { title: events.WeddingEvent, path: '/eventdetail' },
         ];
     
-    useEffect(()=>{
-        const get = async () => {
-            const data = await dispatch(fetchCategory());
-            setCategories(data);
-        }
-        get();
-    },[])
     return (
         <Grid container className={classes.eventMain}>
             <BreadCrumb breads={breads} current={common.Category} />

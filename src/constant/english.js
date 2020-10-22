@@ -332,7 +332,8 @@ export default {
         'Message' : 'Message',
         'Resend' : 'Resend',
         'Invite' :'Invite',
-        'Close' : 'Close'
+        'Close' : 'Close',
+        'ServiceOffered' : 'Service Offered'
     },
     'notifications':{
             'NewProposal':'New Proposal',

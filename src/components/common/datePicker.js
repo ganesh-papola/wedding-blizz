@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Box, TextField } from '@material-ui/core';
 import {
     MuiPickersUtilsProvider,
@@ -10,7 +10,8 @@ import { commonStyle } from "styles";
 
 export default ({ value = null, onChange = () => { }, label, maxLength, error, secure = false, ...tprops }) => {
     const classes = commonStyle();
-    const [val, setValue] = useState(value);
+    const [val, setValue] = useState('');
+    useEffect(()=>setValue(value),[value])
     const onDateChange = v => {
         setValue(v);
         onChange(v)

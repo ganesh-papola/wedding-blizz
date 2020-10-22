@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Typography, Box, Radio } from '@material-ui/core';
 import { commonStyle } from "styles";
 
 export default ({ value = '', onChange = () => { }, label, secure = false, va, vb }) => {
     const classes = commonStyle();
-    const [val, setValue] = useState(value);
+    const [val, setValue] = useState('');
+    useEffect(()=>setValue(value),[value])
     const onTextChange = v => {
         setValue(v);
         onChange(v)

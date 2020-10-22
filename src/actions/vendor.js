@@ -8,9 +8,13 @@ export const fetchVendorBusiness = (data) => async (dispatch, getState) => {
     try {
         const { uid = '' } = getState().user?.user;
         dispatch({ type: ACTION_TYPES.BUSINESS_REQUEST });
-        const data = await firestore.collection('venders').where('ownerId', '==', uid).get();
-        const business = data.docs.map(grp => grp.data());
-        console.log("....data ", data, business)
+        const snap = await firestore.collection('venders').where('ownerId', '==', uid).get();
+        const business = await Promise.all(snap.docs.map(async doc => {
+            const detail = doc.data();
+            const { images } = detail;
+            const imagesUrls = await Promise.all(images.map(async image => await imagePathToUrl(image) ));
+            return {...detail, images:imagesUrls };
+        }));
         dispatch({ type: ACTION_TYPES.BUSINESS_SUCCESS, payload : business&&business[0] });
         return new Promise(res=>res(business&&business[0]))
     } catch (error) {
@@ -25,7 +29,7 @@ export const addBusiness = ({images=[],...data}) => async (dispatch, getState) =
         const { uid = '' } = getState().user?.user;
         const { id=null } = getState().vendor?.business;
         dispatch({ type: ACTION_TYPES.BUSINESS_ADD_REQUEST });
-        const imagesUrl = await uploadImages(images);
+        const imagesUrl = await uploadImages('vendors',images);
         if(id)
         await updateOne('venders', id, { ...data, images:imagesUrl, ownerId: uid });
         else

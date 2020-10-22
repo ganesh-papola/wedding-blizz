@@ -159,7 +159,7 @@ export const eventStyle = makeStyles((theme) => ({
     },
     eventVendorsV: {
         ...center,
-        alignItems: 'flex-start',
+        alignItems: 'center',
         flexDirection: 'column',
         paddingRight: 25,
     },
@@ -428,6 +428,11 @@ export const eventStyle = makeStyles((theme) => ({
         ...center,
         color : colors.dark1,
         fontSize : 15
+    },
+    vendorCategoryV:{
+        display : 'flex',
+        justifyContent:'flex-start',
+        alignItems: 'center',
     }
 
 }));

@@ -52,7 +52,7 @@ export default (props) => {
                     <TextField label={common.City} value={city} />
                 </Grid>
                 <Grid item sm={12} xs={12} md={6} lg={6} className={classes.personalDetailTV}>
-                    <DropDown label={common.State} />
+                    <TextField label={common.State} />
                 </Grid>
                 <Grid item sm={12} xs={12} md={6} lg={6} className={classes.personalDetailTV}>
                     <DropDown label={common.Country} />

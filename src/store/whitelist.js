@@ -1,2 +1,2 @@
 
-export default ["user","event", "guest"];
+export default ["app","user","event", "guest", "vendor"];

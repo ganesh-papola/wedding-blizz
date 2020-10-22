@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     show: false,
     message: '',
     type : 'error',
-    extra : {}
+    extra : {},
+    categories:[]
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +17,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, show: true, message: action.payload, type : action.typ, extra : action.extra }
         case ACTION_TYPES.SET_POSITION : 
             return { ...state, position : action.payload}
+        case ACTION_TYPES.CATEGORIES :
+            return { ...state, categories : action.payload }
         case ACTION_TYPES.RESET:
             return INITIAL_STATE
         case ACTION_TYPES.LOG_OUT:

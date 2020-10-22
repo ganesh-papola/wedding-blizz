@@ -1,11 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InputLabel, FormControl, FormHelperText, Select, MenuItem, Typography, Box } from '@material-ui/core';
 import { commonStyle } from 'styles';
 
 export default ({label='', value='', error='', data=[], onChange=()=>{} }) => {
     const classes = commonStyle();
-    const [val, setValue] = useState(value);
+    const [val, setValue] = useState('');
+    useEffect(()=>setValue(value),[value])
     const onDateChange = v => {
         setValue(v);
         onChange(v)

@@ -8,8 +8,8 @@ export const addEvent = ({ images,theme_image, ...state}) => async (dispatch, ge
     try {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
         const {user:{uid=''}} = getState().user;
-        const imagesUrl = await uploadImages(images);
-        const imageUrl = await uploadImages(theme_image);
+        const imagesUrl = await uploadImages('events',images);
+        const imageUrl = await uploadImages('events',theme_image);
         const insertData = {...state, owners : uid, images : imagesUrl, theme_image : imageUrl[0]};
         const event = await insert('events', insertData);
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
@@ -57,6 +57,7 @@ export const fetchCategory = () => async (dispatch, getState) => {
             return {...detail, id:doc.id, icon:image }
         }))
         dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });
+        dispatch({ type : ACTION_TYPES.CATEGORIES, payload : data });
         return data;
     } catch (error) {
         console.log("fetchCategory event catch error ", error)

@@ -13,7 +13,7 @@ export default props => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const { event = {} } = useSelector(({ event }) => event);
-    const { vendors = [], guest_count = 150, gifts = 5, totalGifts = 15 } = event;
+    const { categories = [], guest_count = 150, gifts = 5, totalGifts = 15 } = event;
     return (
         <Grid container justify="center" className={classes.eventVendorsMain}>
             <Typography component="div" className={classes.eventTV}>
@@ -23,7 +23,7 @@ export default props => {
             </Typography>
             <div className={classes.vendorHorV}>
                 {
-                    vendors.map((item, index) => (
+                    categories.map((item, index) => (
                         <div className={classes.eventVendorsV} key={ Math.round()+ '-' + item.title + index + "vend-round"}>
                             <img src={item.image} className={classes.vendorImg} />
                             <Box fontFamily='Gotham' className={classes.vendorImgAlt}>

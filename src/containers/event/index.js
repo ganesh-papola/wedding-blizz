@@ -5,7 +5,7 @@ import { eventStyle } from 'styles';
 import { plusIcon } from "assets";
 import { strings } from 'constant';
 import { BreadCrumb, Loader } from "components";
-import { fetchEvent } from "actions";
+import { fetchEvent, fetchCategory } from "actions";
 import { notification } from "helpers";
 const { events, common } = strings;
 
@@ -24,6 +24,7 @@ export default props => {
             const event = await dispatch(fetchEvent());
             if(event) props.history.push('/eventdetail');
         }
+        dispatch(fetchCategory());
         get();
         if(!fcm || fcm===[])
             notification(uid)

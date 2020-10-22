@@ -116,14 +116,14 @@ export const setListners = async () => {
             }
         })
 }
-export const uploadImages = (images = []) => {
+export const uploadImages = (collection,images = []) => {
     try {
         return Promise.all(images.map(async image => {
             const name = `${new Date().getTime()}-${image.name}`;
-            const ref = firebase.storage().ref(`events`);
+            const ref = firebase.storage().ref(`${collection}`);
             const snapshot = await ref.child(name).put(image);
             // return await snapshot.ref.getDownloadURL();
-            return `events/${name}`;
+            return `${collection}/${name}`;
         }))
     } catch (error) {
         console.log("upload catch error ", error);

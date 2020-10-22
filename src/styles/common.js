@@ -36,8 +36,8 @@ export const commonStyle =  makeStyles((theme) => ({
         }
       },
       dateFieldsV:{
-        paddingBottom : 15,
-        paddingTop : 5
+        paddingBottom : 20,
+        paddingTop : 10
       },
       inputFields : {
         width : '100%',
@@ -61,8 +61,8 @@ export const commonStyle =  makeStyles((theme) => ({
         }
     },
     dropdownV:{
-      paddingBottom : 15,
-      paddingTop : 5,
+      paddingBottom : 20,
+        paddingTop : 10,
       width: '100%',
     },
     radioPv:{
@@ -238,22 +238,26 @@ export const commonStyle =  makeStyles((theme) => ({
     zIndex:10000,
     width : '100%',
     borderRadius : 8,
+    paddingBottom : 10,
     border : `1px solid ${colors.main}`
   },
   googlePlacesSuggestionT : {
-    // width : '100%',
     paddingLeft : 10,
     cursor : 'pointer',
-    marginTop : 15,
-    marginBottom : 15,
+    height:50,
+    display:'flex',
+    alignItems:'center',
     color : colors.dark1,
-    paddingBottom : 10,
     borderBottom : `1px solid ${colors.grey7}`,
     '&:hover' : {
       borderBottom : `1px solid ${colors.blue3}`,
       color : colors.blue3,
-      // background : colors.blue1
     }
+  },
+  addressCrossIconV : {
+    display:'flex',
+    justifyContent:'flex-end',
+    padding : 5
   }
       
 }));
@@ -338,4 +342,9 @@ export const flex1 = {
   display:'flex',
   width :'100%',
  flex:1
+}
+export const clearAddressStyle = {
+  color : colors.main,
+  fontSize : 20,
+  cursor : 'pointer'
 }

@@ -16,7 +16,9 @@ const initialState = {
     state : '',
     country : '',
     zip_code : '',
-    images:[]
+    images:[],
+    latitude:'',
+    longitude:''
 }
 export default props => {
     const classes = eventStyle();
@@ -65,7 +67,6 @@ export default props => {
     }
     const onSubmit = () => {
             const errs = makeErrors();
-            console.log("Errerererer ", errs)
             if(errs&&errs.filter(er=>!er).length) return
             else dispatch(addBusiness({...state, categories:category&&category.length>0?category.map(it=>it.id):[], business_name : state.name}));
         
@@ -82,6 +83,10 @@ export default props => {
         }
         get();
     },[type])
+    const handleAddress = format => {
+        setState({...state, state:format.state,city:format.city,country:format.country,zip_code:format.zip, 
+            address:format.address, longitude:format.longitude, latitude:format.latitude })
+    }
     
     return (
         <Grid container className={classes.eventMain}>
@@ -92,22 +97,22 @@ export default props => {
                 </Box>
             </Typography>
             {loader ? <Loader /> :
-            <form className={classes.addNewEventFormV} noValidate autoComplete="off">
+            <div className={classes.addNewEventFormV}>
                 <Grid container>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
                         <TextField label={vendors.BusinessName} error={error.name} value={state.name} onChange={value=>onChange('name', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <TextField label={common.Phone}value={state.phone} error={error.phone} onChange={value=>onChange('phone', value)}/>
+                        <TextField label={common.Phone} value={state.phone} error={error.phone} onChange={value=>onChange('phone', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={12} lg={12} className={classes.addNewEventFormGV}>
-                        <TextField label={common.EmailAddress}  error={error.email} onChange={value=>onChange('email', value)}/>
+                        <TextField label={common.EmailAddress} value={state.email} error={error.email} onChange={value=>onChange('email', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={12} lg={12} className={classes.addNewEventFormGV}>
-                        <GooglePlaces label={common.Address} error={error.address} onChange={value=>onChange('address', value)} />
+                        <GooglePlaces label={common.Address} error={error.address} onChange={handleAddress} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <TextField label={common.City}value={state.city} error={error.city} onChange={value=>onChange('city', value)}/>
+                        <TextField label={common.City} value={state.city} error={error.city} onChange={value=>onChange('city', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
                         <TextField label={common.State} value={state.state} error={error.state} onChange={value=>onChange('state', value)}/>
@@ -134,7 +139,7 @@ export default props => {
                         </Button>
                     </Grid>
                 </Grid>
-            </form>}
+            </div>}
         </Grid>
     )
 }

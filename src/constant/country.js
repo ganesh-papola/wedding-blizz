@@ -2976,4 +2976,4 @@ const country = [
         "emojiU": "U+1F1FF U+1F1FC"
     }
 ];
-export default country.map(item=>({label:item.name, value:item.id}))
+export default country.map(item=>({label:item.name, value:item.name}))

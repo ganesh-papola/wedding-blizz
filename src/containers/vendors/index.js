@@ -5,7 +5,7 @@ import { eventStyle } from 'styles';
 import { plusIcon } from "assets";
 import { strings } from 'constant';
 import { BreadCrumb, Loader } from "components";
-import { fetchVendorBusiness } from "actions";
+import { fetchCategory, fetchVendorBusiness } from "actions";
 import { notification } from "helpers";
 const { vendors, common } = strings;
 
@@ -24,6 +24,7 @@ export default props => {
             if(business&&business.business_name&&business.id) props.history.push('/businessdetails');
             }else props.history.push('/event')
         }
+        dispatch(fetchCategory());
         get();
         if(!fcm || fcm===[])
             notification(uid)

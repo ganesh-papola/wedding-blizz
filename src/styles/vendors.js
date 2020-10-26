@@ -273,5 +273,27 @@ export const vendorStyle = makeStyles((theme) => ({
         width : '100%',
         display : 'flex',
         paddingTop : 20
+    },
+    bookingEventCard:{
+        width : '100%',
+        borderRadius : 10,
+        minHeight : 100,
+        'box-shadow': `0px 1px 4px 1px ${colors.grey6}`,
+        display : 'flex',
+        justifyContent : 'flex-start',
+        alignItems: 'flex-start',
+        flexDirection : 'column',
+        padding : 20,
+        marginTop : 5,
+        marginBottom : 15
+    },
+    bookingEventBody:{
+        
+    },
+    bookingEventHT:{
+        // fontWeight : 'bold',
+        fontSize : 17,
+        textTransform : 'capitalize',
+        color : colors.primary
     }
 }))

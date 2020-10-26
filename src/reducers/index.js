@@ -5,7 +5,8 @@ import event from "./event";
 import gift from "./gift";
 import guest from "./guest";
 import app from "./app";
+import proposal from "./proposal";
 
 export default combineReducers({
-    user, vendor, event, gift, guest, app
+    user, vendor, event, gift, guest, app, proposal
   });

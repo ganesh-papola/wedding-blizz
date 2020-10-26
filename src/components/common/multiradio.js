@@ -23,7 +23,7 @@ export default ({ value='', onChange=()=>{}, label, data=[] }) => {
                     <Radio
                         checked={item.value === val}
                         onChange={({ target: { value } }) => onTextChange(value)}
-                        value={item.value}
+                        value={val}
                     />
                     <Typography component={'span'} onClick={() => onTextChange(item.value)}>
                         <Box fontFamily="GothamBook" className={classes.radioT}>{item.label}</Box>

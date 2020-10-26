@@ -4,6 +4,7 @@ export default {
         'ForgotPassword' : 'A reset link is sent to the email',
         'EventAddedSuccussful' : 'Event added successfully',
         'proposalAdded': 'Proposal added successfully',
+        'proposalUpdated': 'Proposal updated successfully',
         'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address',
         'GiftAdded': 'New Gift added successfully',
         'guestSuccess': 'Guest added successfully',
@@ -39,7 +40,10 @@ export default {
         'zip' : 'Please enter valid zip code',
         'country' : 'Please select country',
         'nameExist' : 'This name already exist. Please type a new name',
-        'NoGroupAdded' : 'Please add atleast one group to continue'
+        'NoGroupAdded' : 'Please add atleast one group to continue',
+        'MaxGuestCountExceed' : 'Max no of guests are already added',
+        'bookinAmount' : 'Please enter a valid booking amount',
+        'message' : 'Please enter a valid message'
     },
     'auth' : {
         'Login' : 'Login',
@@ -183,7 +187,10 @@ export default {
 
         'CreateBusiness' : 'Create Business',
         'VendorBusiness' : 'Vendor Business',
-        'BusinessName' : 'Business Name'
+        'BusinessName' : 'Business Name',
+        'Booking' : 'Booking',
+        'Bookings' : 'Bookings',
+        'NoBookingAvail' : 'No Bookings available'
     },
     'about' : {
         'AboutCompany' : 'About Company',
@@ -280,6 +287,7 @@ export default {
         
     },
     'privacy' : {
+        'TermsNConditions' : 'Terms and Conditions',
         'PrivacyPolicy' : 'Privacy Policy',
         'PrivacyPolicyH':'Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr',
         'PrivacyPolicyC' : 'Consetetur sadipscing elitr, sed diam nons umy eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et jus tortduo dolores et ea rebumtet clita kasd gubergren. Eea takimata sanctus est Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr, sed diam nonu my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accu ert sam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata erdt sanctus est. Consetetur sadipscing elitr, sed diam nons umy eirmod tempor invidunt ut labore set dolore magna aliquyam erat, sed diameset voluptua. At vero eos et jus tortduo dolores et ea rebumtet clita kasd gubergren. Eea takimata sanctus est Lorem ipsum sit dolor sit amet, consetetur sadipscing elitr, sed diam nonu my eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accu ert sam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata erdt sanctus est.',
@@ -333,10 +341,21 @@ export default {
         'Resend' : 'Resend',
         'Invite' :'Invite',
         'Close' : 'Close',
-        'ServiceOffered' : 'Service Offered'
+        'ServiceOffered' : 'Service Offered',
+        'Proposals' : 'Proposals',
+        'ProposalDetail' : 'Proposal Detail',
+        'BookingAmount' : 'Booking Amount',
+        'Accept' : 'Accept'
     },
     'notifications':{
             'NewProposal':'New Proposal',
-            'ProposalBody' : 'You have a new Proposal by'
+            'ProposalBody' : 'You have a new Proposal by',
+            'ProposalUpdatedBody' : 'You have a new updated Proposal by'
+    },
+    'proposal' : {
+        'NoProposalFound' : 'No proposals found',
+        'SendProposal' : 'Send Proposal',
+        'AddProposal' : 'Add Proposal',
+        'UppdateProposal' : 'Uppdate Proposal',
     }
 }

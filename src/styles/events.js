@@ -265,7 +265,8 @@ export const eventStyle = makeStyles((theme) => ({
         display: 'flex'
     },
     eventFrIcons: {
-        paddingRight: 10
+        paddingRight: 10,
+        textTransform : 'capitalize'
     },
     eventFrNameHT: {
         fontSize: 14

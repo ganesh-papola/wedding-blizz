@@ -15,7 +15,7 @@ const dispatch = useDispatch();
     return (
         <div className={classes.alertShowV}>
             <Collapse in={show}>
-                <Alert variant="filled" severity={type==='error'?'error':'success'} action={
+                <Alert variant="filled" severity={type} action={
                     <div className={classes.alertButtonV}>
                         {extra&&Object.keys(extra).length>0&&
                             <Button color="inherit" size="small" onClick={()=>{ dispatch(closeAlert()); extra&&extra.action()}}>

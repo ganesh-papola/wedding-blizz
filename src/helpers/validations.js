@@ -15,6 +15,8 @@ export const validator = (key, value) => {
             return /^[a-z\.A-Z ]+$/.test(value);
         case 'phone':
             return /^(\+\d{1,3}[- ]?)?\d{10}$/.test(value);
+        case 'booking_amount' :
+            return /^([1-9][0-9]{0,4}|100000)$/.test(value)
         default:
             return !!value;
     }

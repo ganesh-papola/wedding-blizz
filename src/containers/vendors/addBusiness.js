@@ -2,8 +2,7 @@ import React, { useState, useCallback,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle, primaryLoaderStyle } from 'styles';
-import { TextField, DatePicker, DropDown, Radio, FilePicker, BreadCrumb, Loader, GooglePlaces } from "components";
-import { Room } from '@material-ui/icons';
+import { TextField, DropDown, Radio, FilePicker, BreadCrumb, Loader, GooglePlaces } from "components";
 import { strings, country } from 'constant';
 import { addBusiness, fetchVendorBusiness } from 'actions';
 import { validator } from "helpers";

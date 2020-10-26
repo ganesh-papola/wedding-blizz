@@ -11,7 +11,7 @@ export default ({ value = null, onChange = () => {}, label, maxLength, error }) 
     const classes = commonStyle();
     const [val, setValue] = useState('');
     const [open, setOpen] = useState(false);
-    useEffect(()=>setValue(value),[value])
+    useEffect(()=>setValue(value?value:''),[value])
     let placeRef={};
     const handleSelectAddress = async suggestion => {
         setOpen(false)

@@ -1,5 +1,5 @@
 
-import { firestore, insert, uploadImages, imagePathToUrl, sendPush } from "helpers";
+import { firestore, insert, uploadImages, imagePathToUrl, sendPush, updateOne } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
@@ -87,15 +87,16 @@ export const setEventVendor = (payload) => dispatch => {
     dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload });
 }
 
-export const addProposal = (data) => async dispatch => {
+export const addProposal = (data, id=null) => async dispatch => {
     try {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
+        if(id) await updateOne('proposals', id, data);
         await insert('proposals', data);
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
            history.push('/');
-           dispatch(sendNotification())
-           dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));
+           dispatch(sendNotification(!!id));
+           dispatch(createAlert({message:id?strings.success.proposalUpdated:strings.success.proposalAdded, type:'success'}));
         }, 2000);
     } catch (error) {
         console.log("add proposal ", error);
@@ -103,14 +104,31 @@ export const addProposal = (data) => async dispatch => {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
     }
 }
+export const fetchProposal = (eventid,uid, category) => async dispatch => {
+    try {
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
+        const snap = await firestore.collection('proposals').where('user_id', '==', uid).where('event_id', '==', eventid)
+            .where('category_id','==',category).get();
+        setTimeout(() => {
+           dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
+        }, 2000);
+        const data = snap.docs.map(it=>it.data());
+        return new Promise(res=>res(data&&data.length?data[0]:null));
+    } catch (error) {
+        console.log("add proposal ", error);
+        dispatch(createAlert({message : error.message, type:'error'}));
+        dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
+        return new Promise(res=>res(null));
+    }
+}
 
-export const sendNotification = () => async(dispatch, getState) => {
+export const sendNotification = (update) => async(dispatch, getState) => {
     try {
         const vendor = getState().event?.vendor;
         if(vendor&&vendor.ownerId){
             const {name=''} = getState().user?.user;
             const title = strings.notifications.NewProposal
-            const body = `${ strings.notifications.ProposalBody} ${name}`
+            const body = `${ update?strings.notifications.ProposalBody:strings.notifications.ProposalBody} ${name}`
             const notif = await sendPush({to:vendor.ownerId,title,body});
             console.log("notification ",notif)
         }
@@ -118,3 +136,19 @@ export const sendNotification = () => async(dispatch, getState) => {
         console.log("notification error ", error)
     }
 }
+export const addVendorProposal = (data,id) => async (dispatch, getState) => {
+    try {
+        dispatch({ type : ACTION_TYPES.PROPOSAL_REQUEST });
+        if(id) await updateOne('proposals', id, {isQuote:false});
+        await insert('proposals', data);
+        setTimeout(() => {
+           dispatch({ type : ACTION_TYPES.PROPOSAL_COMPLETE });
+           dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));
+           history.goBack();
+        }, 2000);
+    } catch (error) {
+        console.log("add proposal ", error);
+        dispatch(createAlert({message : error.message, type:'error'}));
+        dispatch({ type : ACTION_TYPES.PROPOSAL_FAILED });
+    }
+} 

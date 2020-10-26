@@ -21,7 +21,7 @@ export default props => {
         const get = async () =>{
             if(type===3){
             const business = await dispatch(fetchVendorBusiness());
-            if(business&&business.business_name&&business.id) props.history.push('/businessdetails');
+            if(business&&business?.business_name&&business?.id) props.history.push('/businessdetails');
             }else props.history.push('/event')
         }
         dispatch(fetchCategory());

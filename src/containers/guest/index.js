@@ -16,6 +16,7 @@ export default props => {
     const classes = giftStyle(); // copying similar style
     const guestClass = guestStyle();
     const { guests = [], loader = false, dloader = false } = useSelector(({ guest }) => guest);
+    const { event={} } = useSelector(({ event }) => event);
     const dispatch = useDispatch();
     const [group, setGroup] = useState(false);
     const [update, setUpdate] = useState(false);
@@ -73,8 +74,14 @@ export default props => {
         }, 150);
     }
     const handleAddGuest = () => {
-        if (guests && guests.length)
+        let count = 0;
+        if (guests && guests.length){
+            if(event&&event.guest_count)
+            guests.forEach(g=>count+=g.guests.length);
+            if(count<event.guest_count)
             props.history.push('/addguest');
+            else dispatch(createAlert({ message: errors.MaxGuestCountExceed, type: 'warning' }));
+        }
         else dispatch(createAlert({ message: errors.NoGroupAdded, type: 'warning' }));
     }
     return (

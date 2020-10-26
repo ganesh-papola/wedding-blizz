@@ -58,7 +58,9 @@ export default props => {
             console.log("position error ", error)
         })
     },[type])
-    
+    const handleAddress = (add) => {
+        setState({...state, event_location:add.address});
+    }
     return (
         <Grid container className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.WeddingEvent} />
@@ -84,7 +86,7 @@ export default props => {
                             </Box>
                         </Typography> */}
                         {/* <TextField label={events.WeddingLocation}   onChange={value=>changeState('event_location', value)}/> */}
-                        <GooglePlaces label={events.WeddingLocation} onChange={v=>console.log("vvvvv ", v)} />
+                        <GooglePlaces label={events.WeddingLocation} onChange={handleAddress} />
                     </Grid>
 
                     {/* <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>

@@ -10,3 +10,4 @@ export * from './guest';
 export * from './gift';
 export * from './account';
 export * from "./privacy";
+export * from "./proposal";

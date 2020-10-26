@@ -2,13 +2,13 @@ import { ACTION_TYPES } from 'constant';
 const INITIAL_STATE = {
   loader: false,
   _loader : false,
-  business : null
+  business : null,
+  booking : [],
+  bloader : false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ACTION_TYPES.USER_LOGGEDIN:
-      return { ...state, isLoggedIn: true }
 
     case ACTION_TYPES.BUSINESS_REQUEST:
       return { ...state, loader: true }
@@ -25,6 +25,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, _loader: false }
     case ACTION_TYPES.BUSINESS_ADD_FAILED:
       return { ...state, _loader: false }
+
+      case ACTION_TYPES.VENDOR_BOOKING_SUCCESS:
+        return {...state, bloader : false, booking : action.payload}
 
     case ACTION_TYPES.RESET:
       return INITIAL_STATE

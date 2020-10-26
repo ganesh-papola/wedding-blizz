@@ -3,7 +3,7 @@ import { Typography, Box } from '@material-ui/core';
 import { authModalStyle } from "styles";
 import { TextField, DropDown, DatePicker, TextArea, MultiRadio } from "components";
 
-export default ({ onChange = () => { }, fields = [], errors, state, }) => {
+export default ({ onChange=()=>{}, fields = [], errors, state, }) => {
     const classes = authModalStyle();
     return (
         <>

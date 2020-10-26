@@ -12,17 +12,17 @@ export default () => {
     const classes = accountStyle();
     const [selected, setSelected] = useState(0);
     const { user } = useSelector(({user})=>user);
-    const components =  user&&user.uid && user.type === 1 ?[
+    const components =  user&&user.uid && user.type === 3 ?[
         props=><PersonalDetail {...props} />,
         props=><WeddingDetail {...props} />,
         props=><AccountManagement {...props} />,
+        props=><BusinessInformation {...props} />,
         props=><EmailPreference {...props} />
     ]:
     [
         props=><PersonalDetail {...props} />,
         props=><WeddingDetail {...props} />,
         props=><AccountManagement {...props} />,
-        props=><BusinessInformation {...props} />,
         props=><EmailPreference {...props} />
     ];
     return (

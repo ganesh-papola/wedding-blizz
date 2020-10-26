@@ -8,9 +8,9 @@ const { account } = strings;
 export default ({ selected = 0, onSelect = () => { } }) => {
     const { user={} } = useSelector(({user})=>user);
     const classes = accountStyle();
-    const sides = user&&user.uid && user.type === 1 ?
-    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.EmailPreferences] :
-    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.BusinessInformation, account.EmailPreferences]
+    const sides = user&&user.uid && user.type === 3 ?
+    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement, account.BusinessInformation, account.EmailPreferences] :
+    [account.PersonalDetails, account.WeddingDetails, account.AccountManagement,  account.EmailPreferences]
     const getTextVStyle = (index) => {
         return index === sides.length - 1 ?
             selected === index ?

@@ -5,7 +5,8 @@ const INITIAL_STATE = {
     message: '',
     type : 'error',
     extra : {},
-    categories:[]
+    categories:[],
+    imgloader : false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,12 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, position : action.payload}
         case ACTION_TYPES.CATEGORIES :
             return { ...state, categories : action.payload }
+        case ACTION_TYPES.IMAGE_URL_REQUEST :
+            return {...state, imgloader : true}
+        case ACTION_TYPES.IMAGE_URL_COMPLETE :
+            return {...state, imgloader : false}
+        case ACTION_TYPES.IMAGE_URL_FAILED :
+            return { ...state, imgloader : false}
         case ACTION_TYPES.RESET:
             return INITIAL_STATE
         case ACTION_TYPES.LOG_OUT:

@@ -38,7 +38,7 @@ export default props => {
                 </Box>
             </Typography>
             {loader ? <Loader style={primaryLoaderStyle} /> :
-                <>
+                <Grid container>
                     { vendors && vendors.length ? vendors.map((vendor, index) =>
                         <Grid item sm={12} xs={12} md={12} lg={4} key={`${index}-event-fair-vendors-list`}
                           className={classes.eventVendorListMain}>
@@ -62,7 +62,7 @@ export default props => {
                         </Grid>
                     ) :
                     <NoRecordFound /> }
-                </>
+                </Grid>
                 }
         </Grid>
     )

@@ -23,7 +23,10 @@ export default props => {
     const dispatch = useDispatch();
     const { vendor = {}, loader = false } = useSelector(({ event }) => event);
     const { categories = [] } = useSelector(({ app }) => app);
-
+    useEffect(()=>{
+        if(!vendor||vendor&&!vendor.id||!vendor.id)
+            props.history.push('/');
+    },[])
     return (
         <Grid container justify="center" className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.VendorDetail} />

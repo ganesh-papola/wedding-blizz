@@ -11,7 +11,7 @@ import Drawer from './drawer';
 import Logo from './logo';
 import { Confirm } from 'components';
 import { SignupModal, LoginModal, ForgotModal } from "components";
-const { auth, header } = strings;
+const { auth, header, common } = strings;
 const navlists = [
     { title: header.Planning },
     { title: header.LocalVendors },
@@ -100,6 +100,10 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
         dispatch(logout());
         history.push('/');
     }
+    const handlePopClick = (popupState, route) => {
+        popupState.close();
+        setRoute(route)
+    }
     return (
         <>
             {isLoggedIn && user.uid && user.token ?
@@ -118,10 +122,10 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}>
                                 <div className={classes.popoverV}>
-                                    {/* <Box variant="button" fontFamily="Gotham" className={classes.popoverT}>
-                                        {auth.MyProfile}
-                                    </Box> */}
-                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>{popupState.close();setRoute('/account')}}>
+                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>handlePopClick(popupState,'/proposals')}>
+                                        {common.Proposals}
+                                    </Box>
+                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>handlePopClick(popupState,'/account')}>
                                         {auth.MyAccount}
                                     </Box>
                                     <Box variant="button" onClick={onLogout} fontFamily="Gotham" className={classes.popoverT}>

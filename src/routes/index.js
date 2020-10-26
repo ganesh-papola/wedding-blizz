@@ -2,8 +2,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Landing, VendorsLanding, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
-  Guests, Gifts, AddNewGift, Account, PrivacyPolicy, EventFr, Category, EventVendorList, EventVendorDetail,
-Vendor, AddBusiness, BusinessDetail } from 'containers';
+  Guests, Gifts, AddNewGift, Account, PrivacyPolicy, TNC, EventFr, Category, EventVendorList, 
+  EventVendorDetail, Vendor, AddBusiness, BusinessDetail, Proposals, ProposalDetail } from 'containers';
 import { Notfound } from "components";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
@@ -29,13 +29,16 @@ const privateRoues = [
   {path:'/vendor', component : Vendor},
   {path:'/addvendorbusiness', component : AddBusiness},
   {path:'/businessdetails', component : BusinessDetail},
+  {path:'/proposals', component:Proposals},
+  {path:'/proposaldetail', component:ProposalDetail},
   
 ]
 const publicRoutes = [
   {path:'/', component : Landing},
   {path:'/landing-vendor', component : VendorsLanding},
   {path:'/about', component : About},
-  {path:'/privacy', component : PrivacyPolicy}
+  {path:'/tnc', component : TNC},
+  {path:'/privacy', component : PrivacyPolicy},
 ]
 const PrivateRoutes = () => {
   return (

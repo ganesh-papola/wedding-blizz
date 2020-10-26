@@ -3,6 +3,7 @@ export { default as SignupModal } from "./auth/signupModal";
 export { default as LoginModal } from "./auth/loginModal";
 export { default as ForgotModal } from "./auth/forgotModal";
 export { default as QuoteModal } from "./event/getAQuoteModal";
+export {default as ProposeModal} from "./proposal/proposalModal"
 
 export { default as Loader } from "./common/loader";
 export { default as BreadCrumb } from "./common/breadcrumb";

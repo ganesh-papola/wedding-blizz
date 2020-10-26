@@ -22,6 +22,10 @@ export { default as AddNewGift } from "./gift/addGift";
 export { default as Account } from "./account";
 
 export { default as PrivacyPolicy } from "./policy";
+export { default as TNC } from "./policy/tnc";
+
+export { default as Proposals } from "./prosposal";
+export { default as ProposalDetail } from "./prosposal/proposalDetail";
 
 export { default as Vendor} from "./vendors"
 export { default as AddBusiness} from "./vendors/addBusiness";

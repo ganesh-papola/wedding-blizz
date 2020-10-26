@@ -184,6 +184,13 @@ export const accountStyle = makeStyles((theme) => ({
     },
     buttonsV:{
         display : 'flex'
+    },
+    myBusinessFormV:{
+        width: '100%',
+        ...center,
+        [theme.breakpoints.down("md")]: {
+            width: '100%'
+        }
     }
 
 }))

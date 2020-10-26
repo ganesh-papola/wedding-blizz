@@ -60,13 +60,13 @@ export default props => {
                             {proposal?.proposed?.message}
                         </Box>
                     </div>
-                    {proposal && (proposal?.proposed?.sender_id === uid || type===3) && proposal?.proposed?.isProposal ?
+                    {proposal && (proposal?.proposed?.sender_id === uid && type===3) && proposal?.proposed?.isProposal ?
                         <div className={classes.sendProposeBV} style={proposal && proposal.sender_id === uid ? leftSideBubble :rightSideBubble }>
                             <Button onClick={()=>setOpen(true)} variant="contained" size="large" color='primary' >
                                 {loader ? <Loader /> : strings.proposal.UppdateProposal}
                             </Button>
                         </div> : null}
-                        {proposal && (proposal?.proposed?.sender_id !== uid || type===3) && proposal?.proposed?.isProposal && !proposal?.proposed?.isBooked?
+                        {proposal && (proposal?.proposed?.sender_id !== uid && type!==3) && proposal?.proposed?.isProposal && !proposal?.proposed?.isBooked?
                         <div className={classes.sendProposeBV} style={leftSideBubble }>
                             <Button onClick={onAccept} variant="contained" size="large" color='primary' >
                                 {loader ? <Loader /> : strings.common.Accept}

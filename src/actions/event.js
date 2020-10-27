@@ -84,7 +84,7 @@ export const fetchVendors = () => async (dispatch, getState) => {
     }
 }
 export const setEventVendor = (payload) => async dispatch => {
-    const images = payload.images;
+    const images = payload&&payload.images?payload.images:[];
     const displayImages = await Promise.all(images.map(async image => await imagePathToUrl(image) ));
     dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload:{...payload, displayImages} });
 }

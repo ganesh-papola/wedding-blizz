@@ -47,10 +47,10 @@ export default props => {
                             <Grid item sm={12} xs={12} md={8} className={classes.eventInfoGV}>
                                 <Typography noWrap component="div" className={classes.eventInfoTV}>
                                     <Box fontFamily='Gotham' className={classes.eventInfoHT}>
-                                        {events.VendorName}
+                                        {events?.VendorName}
                                     </Box>
                                     <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
-                                        {vendor.business_name}
+                                        {vendor?.business_name}
                                     </Box>
                                 </Typography>
                             </Grid>
@@ -73,7 +73,7 @@ export default props => {
                                         {common.Address}
                                     </Box>
                                     <Box fontFamily='GothamBook' className={classes.eventInfoIT}>
-                                        {`${vendor.city} ${vendor.state}, ${vendor.zip_code}`}
+                                        {`${vendor?.city} ${vendor?.state}, ${vendor?.zip_code}`}
                                     </Box>
                                 </Typography>
                             </Grid>

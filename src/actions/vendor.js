@@ -79,20 +79,21 @@ export const getProposals = () => async (dispatch, getState) => {
         const business = getState().vendor?.business;
         const { type = '', uid='' } = getState().user?.user;
         if(type===3&&business&&(!business.id)) return
-        firestore.collection('proposals').where(type===3?'vender_id':'user_id', '==', type===3?business.id:uid).onSnapshot(async snap => {
+        firestore.collection('proposals').where(type===3?'business_id':'user_id', '==',type===3?business?.id: uid).onSnapshot(async snap => {
             const payload = snap.docs.map(quote => quote.data());
             // dispatch({type : ACTION_TYPES.SET_PROPOSAL, payload:{}});
             // if(history&&history.location?.pathname==='/proposaldetail') history&&history.goBack();
+            
             if (payload && payload.length) {
                 const eventsSnap = await firestore.collection('events').where('id', 'in', payload.map(id => id.event_id)).get();
-                const userSnap = await firestore.collection(type===3?'users':'venders').where(type===3?'userId':'id', 'in', payload.map(id => type===3?id.user_id : id.vender_id )).get();
+                const userSnap = await firestore.collection(type===3?'users':'venders').where('userId', 'in', payload.map(id =>id.user_id )).get();
                 const events = eventsSnap.docs.map(event => event.data());
                 const owners = userSnap.docs.map(user => user.data());
   
                 dispatch({
                     type: ACTION_TYPES.PROPOSAL_SUCCESS, payload: 
                     payload.reduce((acc, curr) =>{
-                        let x = acc.find(a => a['event_id'] === curr['event_id'])
+                        let x = acc.find(a => a['event_id'] === curr['event_id']&&a['category_id']===curr['category_id'])
                         if(x) {
                             const main = acc&&curr&&[...acc,curr].filter(ac=>!ac.isProposal&&!ac.isBooked)
                             const sub = acc&&curr&&[...acc,curr].filter(ac=>(ac.isProposal||ac.isBooked)&&!ac.isQuote)

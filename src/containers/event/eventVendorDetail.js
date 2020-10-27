@@ -6,7 +6,6 @@ import { eventStyle, commonStyle, primaryLoaderStyle, btSmallIcon } from 'styles
 import { strings } from 'constant';
 import Carousel from 'react-material-ui-carousel'
 import { BreadCrumb, Loader, QuoteModal } from "components";
-import { venueRoundImage } from "assets";
 import { Chat, Assignment } from '@material-ui/icons';
 const { events, common } = strings;
 
@@ -41,7 +40,7 @@ export default props => {
                         <Grid container justify="center" >
                             <Grid item sm={12} xs={10} md={12} className={classes.crImageV}>
                                 <Carousel navButtonsAlwaysInvisible={true} indicators={true} autoPlay={false} timeout={500} animation="slide">
-                                    {vendor?.images && vendor?.images.map((image, i) =>
+                                    {vendor?.displayImages && vendor?.displayImages.map((image, i) =>
                                         <img key={Math.random() + 'image-vend-detail' + i} src={image} className={classes.eventVendDetailsCRImge} />)}
                                 </Carousel>
                             </Grid>

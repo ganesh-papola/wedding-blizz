@@ -28,9 +28,9 @@ export default props => {
                 const busines = await dispatch(fetchVendorBusiness());
                 if (busines && !busines?.business_name || !busines?.id) props.history.push('/vendor');
             } else props.history.push('/event');
-            return dispatch(getBooking());
+         dispatch(getBooking());
         }
-        return get();
+         get();
     }, [type])
 
     return (

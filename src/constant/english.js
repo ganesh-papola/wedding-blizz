@@ -357,5 +357,6 @@ export default {
         'SendProposal' : 'Send Proposal',
         'AddProposal' : 'Add Proposal',
         'UppdateProposal' : 'Uppdate Proposal',
+        'ProposalAccepted' : 'Proposal Accepted'
     }
 }

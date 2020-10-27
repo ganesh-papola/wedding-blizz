@@ -49,8 +49,9 @@ export const proposalStyle =  makeStyles((theme) => ({
     prosposalDateT:{
         color : colors.main,
         fontSize : 13,
-        marginTop : 5,
-        overflowWrap : 'break-word'
+        marginTop : 7,
+        overflowWrap : 'break-word',
+        display : 'flex'
     },
     proposeMT:{
         fontSize: 13,
@@ -60,6 +61,12 @@ export const proposalStyle =  makeStyles((theme) => ({
     },
     sendProposeBV : {
         width : '100%'
+    },
+    proposalAccepted:{
+        color : colors.green,
+        fontSize:13,
+        marginTop : 5,
+        display : 'flex'
     }
 }));
 export const proposeDetailStyle = {
@@ -75,4 +82,9 @@ export const leftSideBubble = {
     display : 'flex',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+}
+export const acceptedIcon = {
+    colors : colors.green,
+    fontSize : 16,
+    marginLeft : 10
 }

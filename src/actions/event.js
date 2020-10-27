@@ -83,8 +83,10 @@ export const fetchVendors = () => async (dispatch, getState) => {
         return null
     }
 }
-export const setEventVendor = (payload) => dispatch => {
-    dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload });
+export const setEventVendor = (payload) => async dispatch => {
+    const images = payload.images;
+    const displayImages = await Promise.all(images.map(async image => await imagePathToUrl(image) ));
+    dispatch({ type : ACTION_TYPES.EVENT_VENDOR_DETAIL, payload:{...payload, displayImages} });
 }
 
 export const addProposal = (data, id=null) => async dispatch => {
@@ -94,10 +96,12 @@ export const addProposal = (data, id=null) => async dispatch => {
         await insert('proposals', data);
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
-           history.push('/');
-           dispatch(sendNotification(!!id));
            dispatch(createAlert({message:id?strings.success.proposalUpdated:strings.success.proposalAdded, type:'success'}));
+           dispatch(sendNotification(!!id));
         }, 2000);
+        setTimeout(() => {
+            history.push('/'); 
+        }, 4000);
     } catch (error) {
         console.log("add proposal ", error);
         dispatch(createAlert({message : error.message, type:'error'}));
@@ -107,15 +111,15 @@ export const addProposal = (data, id=null) => async dispatch => {
 export const fetchProposal = (eventid,uid, category) => async dispatch => {
     try {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
-        const snap = await firestore.collection('proposals').where('user_id', '==', uid).where('event_id', '==', eventid)
-            .where('category_id','==',category).get();
+        const snap = await firestore.collection('proposals').where('user_id', '==', uid)
+            .where('event_id', '==', eventid).where('category_id','==',category).get();
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         }, 2000);
         const data = snap.docs.map(it=>it.data());
         return new Promise(res=>res(data&&data.length?data[0]:null));
     } catch (error) {
-        console.log("add proposal ", error);
+        console.log("fetch proposal catch error ", error);
         dispatch(createAlert({message : error.message, type:'error'}));
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_FAILED });
         return new Promise(res=>res(null));
@@ -136,11 +140,13 @@ export const sendNotification = (update) => async(dispatch, getState) => {
         console.log("notification error ", error)
     }
 }
-export const addVendorProposal = (data,id) => async (dispatch, getState) => {
+export const addVendorProposal = (data,id, subid=null) => async (dispatch, getState) => {
     try {
         dispatch({ type : ACTION_TYPES.PROPOSAL_REQUEST });
         if(id) await updateOne('proposals', id, {isQuote:false});
-        await insert('proposals', data);
+        if(subid)
+        await updateOne('proposals', subid, data);
+        else await insert('proposals', data);
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.PROPOSAL_COMPLETE });
            dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));

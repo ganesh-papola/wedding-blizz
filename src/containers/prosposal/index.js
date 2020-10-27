@@ -31,13 +31,13 @@ export default props => {
                 {loader ? <Loader /> : proposals && proposals.length ? proposals.map(propo => (
                     <div className={classes.listCard} onClick={()=>handleProposal(propo)}>
                         <Box fontFamily='Gotham' className={classes.prosposalNameT}>
-                            {type===3?propo?.owner?.name:propo?.owner?.business_name}
+                            {propo?.name}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
                             {propo?.servicesDate?moment(new Date(propo?.modifiedAt)).format('DD MMM YYYY') :'' }
                         </Box>
                         <Box fontFamily='GothamBook' className={eclasses.eventFrCT}>
-                            {propo?.message?.replace(/^(.{300}[^\s]*).*/, "$1")+'...'}
+                            {propo?.message?.replace(/^(.{300}[^\s]*).*/, "$1")}
                         </Box>
                     </div>)) : <NoRecordFound text={proposal.NoProposalFound} />}
             </div>

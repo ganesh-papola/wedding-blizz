@@ -34,9 +34,10 @@ export default props => {
       setState({...state, name});
   },[name]);
   useEffect(()=>{
+      if(proposal&&proposal.proposed)
     setState({...state, name:proposal?.proposed?.name, message:proposal?.proposed?.message, 
         booking_amount:proposal?.proposed?.booking_amount});
-},[proposal.proposed]);
+},[proposal&&proposal.proposed]);
   const { modal=false, onClose=()=>{} } = props;
   const submit = () => {
       const {proposed,modifiedAt,createdAt,isDeleted,owner,event,id,...propsal} = proposal;
@@ -46,13 +47,12 @@ export default props => {
     const data = {
         ...propsal,
         ...state,
-        modifiedAt : new Date().getTime(),
         sender_id : uid,
         isQuote : false,
         isProposal : true,
         isBooked : false
     };
-    dispatch(addVendorProposal(data,id));
+    dispatch(addVendorProposal(data,id, proposed&&proposed.id));
 }
 const onChange = (k,v) => {
         setState({...state,[k]:v})

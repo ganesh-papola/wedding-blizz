@@ -32,6 +32,7 @@ export const privacyStyle =  makeStyles((theme) => ({
         paddingBottom : 5,
         color : colors.dark,
         fontSize : 15,
+        textTransform:'uppercase',
         [theme.breakpoints.down("md")]: {
             fontSize : 12
         }
@@ -42,6 +43,7 @@ export const privacyStyle =  makeStyles((theme) => ({
         color : colors.dark,
         fontSize : 15,
         lineHeight : 1.3,
+        // textTransform:'capitalize',
         [theme.breakpoints.down("md")]: {
             fontSize : 12
         }

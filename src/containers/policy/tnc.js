@@ -72,6 +72,21 @@ export default () => {
                     <Box fontFamily='GothamBook' className={classes.privacyCT}>
                         {tnc.RulesConductForPostingTerms}
                     </Box>
+                    <Box fontFamily='GothamBook' className={classes.privacyCT}>
+                        {tnc.RulesConductForPostingTerms1}
+                    </Box>
+                    <Box fontFamily='GothamBook' className={classes.privacyCT}>
+                        {tnc.RulesConductForPostingTerms2}
+                    </Box>
+                    <Box fontFamily='GothamBook' className={classes.privacyCT}>
+                        {tnc.RulesConductForPostingTerms3}
+                    </Box>
+                    <Box fontFamily='GothamBook' className={classes.privacyCT}>
+                        {tnc.RulesConductForPostingTerms4}
+                    </Box>
+                    <Box fontFamily='GothamBook' className={classes.privacyCT}>
+                        {tnc.RulesConductForPostingTerms5}
+                    </Box>
                     <Box fontFamily='GothamBold' className={classes.privacyCHT}>
                         {tnc.InAppPurchases}
                     </Box>

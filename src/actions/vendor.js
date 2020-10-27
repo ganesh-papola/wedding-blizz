@@ -79,11 +79,21 @@ export const getProposals = () => async (dispatch, getState) => {
         const business = getState().vendor?.business;
         const { type = '', uid='' } = getState().user?.user;
         if(type===3&&business&&(!business.id)) return
-        firestore.collection('proposals').where(type===3?'business_id':'user_id', '==',type===3?business?.id: uid).onSnapshot(async snap => {
+        firestore.collection('proposals').where(type===3?'business_id':'user_id', '==',type===3?business?.id: uid)
+        .where('sender_id','==', uid)
+        .onSnapshot(async snap => {
             const payload = snap.docs.map(quote => quote.data());
             // dispatch({type : ACTION_TYPES.SET_PROPOSAL, payload:{}});
             // if(history&&history.location?.pathname==='/proposaldetail') history&&history.goBack();
-            
+            console.log("proposals ", payload,payload.reduce((acc, curr) =>{
+                let x = acc.find(a => a['event_id'] === curr['event_id']&&a['category_id']===curr['category_id'])
+                if(x) {
+                    const main = acc&&curr&&[...acc,curr].filter(ac=>!ac.isProposal&&!ac.isBooked)
+                    const sub = acc&&curr&&[...acc,curr].filter(ac=>(ac.isProposal||ac.isBooked)&&!ac.isQuote)
+                    return [{...main[0], proposed: sub[0]}]
+                }
+                 else return [...acc, curr]
+            }, []))
             if (payload && payload.length) {
                 const eventsSnap = await firestore.collection('events').where('id', 'in', payload.map(id => id.event_id)).get();
                 const userSnap = await firestore.collection(type===3?'users':'venders').where('userId', 'in', payload.map(id =>id.user_id )).get();

@@ -12,7 +12,8 @@ export default {
         'guestGroupUpdateSuccess' : 'Group updated successfully',
         'profileUpdateSuccess' : 'Profile updated successfully',
         'businessAdded' : 'Business information added successfully',
-        'businessUpdated' : 'Business information updated successfully'
+        'businessUpdated' : 'Business information updated successfully',
+        'InvitationSending' : 'Event Invitation in being sent, Guest will recieve invitation in mail'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -396,12 +397,16 @@ export default {
         'Proposals' : 'Proposals',
         'ProposalDetail' : 'Proposal Detail',
         'BookingAmount' : 'Booking Amount',
-        'Accept' : 'Accept'
+        'Accept' : 'Accept',
+        'WeddingInvitation':'WeddingInvitation'
     },
     'notifications':{
-            'NewProposal':'New Proposal',
+            'Proposal':'Proposal',
             'ProposalBody' : 'You have a new Proposal by',
-            'ProposalUpdatedBody' : 'You have a new updated Proposal by'
+            'ProposalUpdatedBody' : 'You have a new updated Proposal by',
+            'ProposalAcceptedBody' : 'Your Proposal is accepted by',
+            'QuoteBody' : 'You have a quote on your service by ',
+            'QuoteUpdateBody' : 'You have new quote updated on your service by'
     },
     'proposal' : {
         'NoProposalFound' : 'No proposals found',

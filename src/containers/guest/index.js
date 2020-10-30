@@ -62,7 +62,7 @@ export default props => {
         setGroup(true)
     }
     const onInvite = () => {
-        dispatch(inviteGuests(checks))
+        dispatch(inviteGuests(checks.map(em=>em.email)))
     }
     const handleChecks = (item, flag) => {
         item.guests = item.guests.map(it => ({ ...it, check: flag }));

@@ -78,7 +78,7 @@ export default props => {
     const data = {
         category_id : category?.id,
         event_id : event?.id,
-        vender_id : vendor?.id,
+        business_id : vendor?.id,
         sender_id : uid,
         user_id : uid,
         ...state,

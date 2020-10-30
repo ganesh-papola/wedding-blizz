@@ -80,20 +80,9 @@ export const getProposals = () => async (dispatch, getState) => {
         const { type = '', uid='' } = getState().user?.user;
         if(type===3&&business&&(!business.id)) return
         firestore.collection('proposals').where(type===3?'business_id':'user_id', '==',type===3?business?.id: uid)
-        .where('sender_id','==', uid)
         .onSnapshot(async snap => {
             const payload = snap.docs.map(quote => quote.data());
-            // dispatch({type : ACTION_TYPES.SET_PROPOSAL, payload:{}});
-            // if(history&&history.location?.pathname==='/proposaldetail') history&&history.goBack();
-            console.log("proposals ", payload,payload.reduce((acc, curr) =>{
-                let x = acc.find(a => a['event_id'] === curr['event_id']&&a['category_id']===curr['category_id'])
-                if(x) {
-                    const main = acc&&curr&&[...acc,curr].filter(ac=>!ac.isProposal&&!ac.isBooked)
-                    const sub = acc&&curr&&[...acc,curr].filter(ac=>(ac.isProposal||ac.isBooked)&&!ac.isQuote)
-                    return [{...main[0], proposed: sub[0]}]
-                }
-                 else return [...acc, curr]
-            }, []))
+            checkPayload(payload);
             if (payload && payload.length) {
                 const eventsSnap = await firestore.collection('events').where('id', 'in', payload.map(id => id.event_id)).get();
                 const userSnap = await firestore.collection(type===3?'users':'venders').where('userId', 'in', payload.map(id =>id.user_id )).get();
@@ -102,15 +91,7 @@ export const getProposals = () => async (dispatch, getState) => {
   
                 dispatch({
                     type: ACTION_TYPES.PROPOSAL_SUCCESS, payload: 
-                    payload.reduce((acc, curr) =>{
-                        let x = acc.find(a => a['event_id'] === curr['event_id']&&a['category_id']===curr['category_id'])
-                        if(x) {
-                            const main = acc&&curr&&[...acc,curr].filter(ac=>!ac.isProposal&&!ac.isBooked)
-                            const sub = acc&&curr&&[...acc,curr].filter(ac=>(ac.isProposal||ac.isBooked)&&!ac.isQuote)
-                            return [{...main[0], proposed: sub[0]}]
-                        }
-                         else return [...acc, curr]
-                    }, [])
+                    checkPayload(payload)
                         .map(p => {
                         const event = events.filter(ev => ev.id === p.event_id);
                         const owner = owners.filter(ev => ev.id === type===3?p.user_id:p.vender_id);
@@ -129,4 +110,27 @@ export const getProposals = () => async (dispatch, getState) => {
 }
 export const setProposal = payload => async dispatch => {
     dispatch({type : ACTION_TYPES.SET_PROPOSAL, payload})
+}
+const checkPayload = data => {
+    let duplicates = [];
+    data.forEach((el, i) => {
+        if(!el.isProposal&&!el.isBooked){
+        data.forEach((element, index) => {
+        let proposed = null;
+        if (i === index) return null;
+                if (element.event_id === el.event_id && element.category_id === el.category_id) {
+                    if((element.isProposal||element.isBooked)&&!element.isQuote){
+                        proposed = element;
+                        if (!duplicates.includes(el)) duplicates = [...duplicates, {...el, proposed}];
+                    }
+            }
+        });
+        }
+    });
+    const single = data.filter(f=>{
+        const ar = duplicates.map(d=>d.id);
+         if(ar&&ar.length)
+            return ar.indexOf(f.id)<0
+      })
+    return [...duplicates, ...single].sort((a,b)=>a.createdAt-b.createdAt)
 }

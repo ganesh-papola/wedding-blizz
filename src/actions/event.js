@@ -1,5 +1,5 @@
 
-import { firestore, insert, uploadImages, imagePathToUrl, sendPush, updateOne } from "helpers";
+import { firestore, insert, uploadImages, imagePathToUrl, sendPush, updateOne, findById } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
@@ -132,7 +132,7 @@ export const sendNotification = (update) => async(dispatch, getState) => {
         if(vendor&&vendor.ownerId){
             const {name=''} = getState().user?.user;
             const title = strings.notifications.NewProposal
-            const body = `${ update?strings.notifications.ProposalBody:strings.notifications.ProposalBody} ${name}`
+            const body = `${update?strings.notifications.QuoteUpdateBody:strings.notifications.QuoteBody} ${name}`
             const notif = await sendPush({to:vendor.ownerId,title,body});
             console.log("notification ",notif)
         }
@@ -143,6 +143,7 @@ export const sendNotification = (update) => async(dispatch, getState) => {
 export const addVendorProposal = (data,id, subid=null) => async (dispatch, getState) => {
     try {
         dispatch({ type : ACTION_TYPES.PROPOSAL_REQUEST });
+        const {name=''} = getState().user?.user;
         if(id) await updateOne('proposals', id, {isQuote:false});
         if(subid)
         await updateOne('proposals', subid, data);
@@ -152,9 +153,29 @@ export const addVendorProposal = (data,id, subid=null) => async (dispatch, getSt
            dispatch(createAlert({message:strings.success.proposalAdded, type:'success'}));
            history.goBack();
         }, 2000);
+        handleNotification(data, !!subid, name)
     } catch (error) {
         console.log("add proposal ", error);
         dispatch(createAlert({message : error.message, type:'error'}));
         dispatch({ type : ACTION_TYPES.PROPOSAL_FAILED });
     }
 } 
+
+const handleNotification = async(data, update, name) => {
+    try {
+        const bid = data?.business_id;
+        const business = await findById('venders',bid);
+        const busines = business.docs.map(b=>b.data());
+        const title = strings.notifications.Proposal
+        if(data.isProposal){
+            const body = `${ update?strings.notifications.ProposalUpdatedBody:strings.notifications.ProposalBody} ${busines?.business_name}`
+            const notif = await sendPush({to:data?.user_id,title,body});
+        }
+        if(data.isBooked){
+            const body = `${strings.notifications.ProposalAcceptedBody} ${name}`
+            const notif = await sendPush({to:busines&&busines[0]&&busines[0]?.ownerId,title,body});
+        }
+    } catch (error) {
+        console.log("handleNotification catch error ",error);   
+    } 
+}

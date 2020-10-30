@@ -1,4 +1,4 @@
-import { auth, firestore, insert, updateOne, imagePathToUrl, sendPush } from "helpers";
+import { auth, firestore, insert, updateOne, imagePathToUrl, sendEmail, sendPush } from "helpers";
 import { history } from "../App";
 import { ACTION_TYPES, strings, routes } from 'constant';
 import { createAlert } from "actions";
@@ -65,13 +65,23 @@ export const fetchGroupGuests = () => async (dispatch, getState) => {
     }
 }
 
-export const inviteGuests = (data) => async (dispatch, getState) => {
+export const inviteGuests = (emails) => async (dispatch, getState) => {
     try {
-        const { uid = '' } = getState().user?.user;
-        // dispatch({ type: ACTION_TYPES.GUEST_REQUEST });
+        dispatch({ type: ACTION_TYPES.GUEST_REQUEST });
+        // const { uid = '' } = getState().user?.user;
+        // const guestsData = await firestore.collection('guest_groups').where('id', 'in', ids).get();
+        const options = {
+            to:emails,
+            subject : strings.common.WeddingInvitation
+        }
+        const eres = await sendEmail(options);
+        console.log("resresresres ", eres)
+        dispatch({ type: ACTION_TYPES.GUEST_COMPLETE });
+        dispatch(createAlert({ message: success.InvitationSending, type: 'success' }));
+        history&&history.goBack();
     } catch (error) {
         console.log("addGift error ", error)
-        // dispatch({ type: ACTION_TYPES.GUEST_FAILED })
+        dispatch({ type: ACTION_TYPES.GUEST_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
 }

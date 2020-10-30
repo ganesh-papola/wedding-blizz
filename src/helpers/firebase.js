@@ -76,8 +76,13 @@ export const notification = async (uid) => {
 }
 export const sendPush = data =>{
     const notification =  functions.httpsCallable('notifications');
-    console.log("notification send ")
+    console.log("notification sending.. ")
     return notification(data);
+}
+export const sendEmail = data =>{
+    const email =  functions.httpsCallable('sendEmail');
+    console.log("email sending.. ")
+    return email(data);
 }
 const handleMessages = (notification) => {
     console.log("on notification ", notification)

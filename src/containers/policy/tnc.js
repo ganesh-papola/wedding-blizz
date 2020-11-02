@@ -12,9 +12,9 @@ export default () => {
                     {tnc.TermsNConditions}
                 </Box>
                 <div className={classes.privacymainV}>
-                    <Box fontFamily='Gotham' className={classes.privacyCHT}>
+                    {/* <Box fontFamily='Gotham' className={classes.privacyCHT}>
                         {tnc.WBTermsNConditions}
-                    </Box>
+                    </Box> */}
                     <Box fontFamily='GothamBold' className={classes.privacyCHT}>
                         {tnc.General}
                     </Box>

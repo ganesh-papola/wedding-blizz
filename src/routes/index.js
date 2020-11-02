@@ -31,6 +31,8 @@ const privateRoues = [
   {path:'/businessdetails', component : BusinessDetail},
   {path:'/proposals', component:Proposals},
   {path:'/proposaldetail', component:ProposalDetail},
+  {path:'/tnc', component : TNC},
+  {path:'/privacy', component : PrivacyPolicy},
   
 ]
 const publicRoutes = [

@@ -10,7 +10,7 @@ export const addEvent = ({ images,theme_image, ...state}) => async (dispatch, ge
         const {user:{uid=''}} = getState().user;
         const imagesUrl = await uploadImages('events',images);
         const imageUrl = await uploadImages('events',theme_image);
-        const insertData = {...state, owners : uid, images : imagesUrl, theme_image : imageUrl[0]};
+        const insertData = {...state, owners : uid, images : imagesUrl, theme_image : imageUrl&&imageUrl[0]?imageUrl[0]:''};
         const event = await insert('events', insertData);
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         dispatch(createAlert({message:strings.success.EventAddedSuccussful, type:'success'}));
@@ -30,8 +30,8 @@ export const fetchEvent = () => async (dispatch, getState) => {
         const data = await Promise.all(snap.docs.map(async doc => {
             const detail = doc.data();
             const { images, theme_image } = detail;
-            const imagesUrls = await Promise.all(images.map(async image => await imagePathToUrl(image) ));
-            const themeUrl = await imagePathToUrl(theme_image);
+            const imagesUrls = images&&images.length?await Promise.all(images.map(async image => await imagePathToUrl(image) )):[];
+            const themeUrl = theme_image&&theme_image.length?await imagePathToUrl(theme_image):'';
             return {...detail, images:imagesUrls, theme_image:themeUrl };
         }));
         dispatch({ type : ACTION_TYPES.EVENT_SUCCESS });

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle } from 'styles';
-import { TextField, DropDown, TextArea, Loader } from "components";
+import { TextField, GooglePlaces, TextArea, Loader } from "components";
 import { strings, giftTErrors } from 'constant';
 import { addGift } from "actions";
 import { useDispatch, useSelector } from "react-redux"
@@ -39,7 +39,7 @@ export default props => {
     }
     const onChange = (k,v) => {
         setState({...state,[k]:v})
-        if(!v && (k==='gift_title'||k==='gift_description'||k==='delivery_address') || (k==='quantity' && v<1))
+        if(!v && (k==='gift_title'||k==='gift_description') || (k==='quantity' && v<1))
         setError({...error,[k]: giftTErrors[k]});
         else setError({...error,[k]:''});
     }
@@ -64,7 +64,8 @@ export default props => {
                     </Grid>
 
                     <Grid item sm={12} xs={12}  className={classes.addNewEventFormGV}>
-                        <TextArea label={common.Address} error={error.delivery_address} onChange={v=>onChange('delivery_address',v)} value={state.delivery_address}/>
+                        {/* <TextArea label={common.Address} error={error.delivery_address} onChange={v=>onChange('delivery_address',v)} value={state.delivery_address}/> */}
+                        <GooglePlaces label={common.Address} error={error.delivery_address} onChange={(add)=>onChange('delivery_address',add.address)} value={state.delivery_address}/>
                     </Grid>
                     {/* <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
                         <TextField label={common.City} onChange={v=>onChange('city',v)} value={state.city}/>

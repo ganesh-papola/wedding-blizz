@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle } from 'styles';
-import { TextField, DropDown, Loader } from "components";
+import { TextField, DropDown, Loader, GooglePlaces } from "components";
 import { strings, country } from 'constant';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGuestGroups, addGuest } from "actions";
@@ -12,7 +12,6 @@ export default props => {
     const classes = eventStyle();
     const dispatch = useDispatch();
     const {location={}} = props.history;
-    console.log(props.history.location)
     let edit = {};
     if(location.state&&location.state.id){
         const {name='', email='', city='', groupId='', country='', address='', zip_code='', phone='', id=''} = location.state?location.state:{};
@@ -52,10 +51,7 @@ export default props => {
         groupId : strings.errors.guestGroup
     }
     const { guests = [], _loader=false, loader=false } = useSelector(({ guest }) => guest);
-    useEffect(()=>{
-        // dispatch(fetchGuestGroups());
-        
-    },[props.history])
+
     const onChange = (k,v) => {
         setState({...state,[k]:v})
         setError({...error, [k] : validator(k,v)?'':errors[k]})
@@ -75,6 +71,20 @@ export default props => {
         if(errs&&errs.filter(er=>!er).length)
             return
         else dispatch(addGuest(state, edit?.id))
+    }
+    const handleAddress = format => {
+        let raw = {state:format.state,city:format.city,country:format.country,zip_code:format.zip, 
+            address:format.address};
+        setState({...state, ...raw });
+        const err = handleAddressErrs(format,raw);
+        setError({...error,...err})
+    }
+    const handleAddressErrs = (format,raw) =>{
+        let err = {};
+        ['state','city','country','zip_code','address'].forEach(k=>{
+            err = {...err,[k]: validator(k,raw[k])?'':errors[k]}
+        });
+        return err;
     }
     return (
         <Grid container className={classes.eventMain}>
@@ -101,7 +111,8 @@ export default props => {
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={12} lg={12} className={classes.addNewEventFormGV}>
-                        <TextField label={common.Address} error={error.address} value={state.address} onChange={v=>onChange('address',v)}/>
+                        {/* <TextField label={common.Address} error={error.address} value={state.address} onChange={v=>onChange('address',v)}/> */}
+                        <GooglePlaces label={common.Address} error={error.address} value={state.address} onChange={handleAddress} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
                         <TextField label={common.City} error={error.city} value={state.city} onChange={v=>onChange('city',v)}/>

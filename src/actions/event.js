@@ -112,6 +112,7 @@ export const fetchProposal = (eventid,uid, category) => async dispatch => {
     try {
         dispatch({ type : ACTION_TYPES.EVENT_SERVICE_REQUEST });
         const snap = await firestore.collection('proposals').where('user_id', '==', uid)
+            .where('isProposal','==', false).where('isBooked','==', false)
             .where('event_id', '==', eventid).where('category_id','==',category).get();
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });

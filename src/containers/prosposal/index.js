@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Grid, Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { proposalStyle, eventStyle } from 'styles';
 import { strings } from 'constant';
-import { BreadCrumb, Loader, NoRecordFound } from "components";
+import { BreadCrumb, Loader, NoRecordFound, Chat } from "components";
 import { getProposals, setProposal } from "actions";
 import moment from 'moment';
 const { proposal, common } = strings;
@@ -11,6 +11,7 @@ const { proposal, common } = strings;
 export default props => {
     const classes = proposalStyle();
     const eclasses = eventStyle();
+    const [chtprop, setChat] = useState({title:'', subTitle:''})
     const breads = [
         { title: common.Home, path: '/' }
     ];
@@ -21,8 +22,13 @@ export default props => {
         dispatch(getProposals())
     }, [])
     const handleProposal = propose => {
-        dispatch(setProposal(propose))
-        props.history.push('/proposaldetail')
+        dispatch(setProposal(propose));
+        setChat({...chtprop, title:propose.name, subTitle:propose.message})
+        // props.history.push('/proposaldetail')
+    }
+    const chatProps = {
+        ...chtprop,
+        handler:'active'
     }
     return (
         <div className={classes.proposalMain}>
@@ -41,6 +47,7 @@ export default props => {
                         </Box>
                     </div>)) : <NoRecordFound text={proposal.NoProposalFound} />}
             </div>
+            <Chat {...chatProps} />
         </div>
     )
 }

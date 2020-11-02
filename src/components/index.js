@@ -20,3 +20,4 @@ export { default as Notfound } from "./common/notFound";
 export { default as NoRecordFound } from "./common/noRecordFound";
 
 export { default as GooglePlaces } from "./common/GooglePlaces";
+export { default as Chat } from "./common/chatPopup";

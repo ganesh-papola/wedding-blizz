@@ -11,3 +11,4 @@ export * from './gift';
 export * from './account';
 export * from "./privacy";
 export * from "./proposal";
+export * from "./chat";

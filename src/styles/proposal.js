@@ -9,7 +9,8 @@ const center = {
 export const proposalStyle =  makeStyles((theme) => ({ 
     proposalMain : {
         paddingTop: 80,
-        paddingBottom: 80
+        paddingBottom: 80,
+        flex:1
     },
     mainBody:{
         ...center,
@@ -23,10 +24,17 @@ export const proposalStyle =  makeStyles((theme) => ({
         flexDirection : 'column',
         paddingTop : 50
     },
+    mainDetailBodyC:{
+        ...center,
+        width : '100%',
+        justifyContent : 'flex-start',
+        flexDirection : 'column',
+        paddingTop : 50
+    },
     listCard:{
         width : '40%',
         borderRadius : 10,
-        minHeight : 100,
+        minHeight : 50,
         'box-shadow': `0px 1px 4px 1px ${colors.grey6}`,
         display : 'flex',
         justifyContent : 'flex-start',
@@ -34,7 +42,26 @@ export const proposalStyle =  makeStyles((theme) => ({
         flexDirection : 'column',
         padding : 20,
         marginTop : 5,
-        marginBottom : 15,
+        paddingBottom:15,
+        // marginBottom : 15,
+        cursor : 'pointer',
+        [theme.breakpoints.down("md")]: {
+            width : '80%', 
+        }
+    },
+    listCardC:{
+        width : '80%',
+        borderRadius : 10,
+        minHeight : 50,
+        'box-shadow': `0px 1px 4px 1px ${colors.grey6}`,
+        display : 'flex',
+        justifyContent : 'flex-start',
+        alignItems: 'flex-start',
+        flexDirection : 'column',
+        padding : 20,
+        paddingBottom:15,
+        marginTop : 5,
+        // marginBottom : 15,
         cursor : 'pointer',
         [theme.breakpoints.down("md")]: {
             width : '80%', 
@@ -48,8 +75,9 @@ export const proposalStyle =  makeStyles((theme) => ({
     },
     prosposalDateT:{
         color : colors.main,
-        fontSize : 13,
-        marginTop : 7,
+        fontSize : 10,
+        marginTop : 5,
+        marginLeft : 5,
         overflowWrap : 'break-word',
         display : 'flex'
     },
@@ -67,6 +95,10 @@ export const proposalStyle =  makeStyles((theme) => ({
         fontSize:13,
         marginTop : 5,
         display : 'flex'
+    },
+    noRecV:{
+        minHeight : 200,
+        ...center
     }
 }));
 export const proposeDetailStyle = {

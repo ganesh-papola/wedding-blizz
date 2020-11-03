@@ -398,10 +398,12 @@ export default {
         'ProposalDetail' : 'Proposal Detail',
         'BookingAmount' : 'Booking Amount',
         'Accept' : 'Accept',
-        'WeddingInvitation':'WeddingInvitation'
+        'WeddingInvitation':'WeddingInvitation',
+        'TypeMessage' : 'Type message ...'
     },
     'notifications':{
             'Proposal':'Proposal',
+            'NewProposal':'New Proposal',
             'ProposalBody' : 'You have a new Proposal by',
             'ProposalUpdatedBody' : 'You have a new updated Proposal by',
             'ProposalAcceptedBody' : 'Your Proposal is accepted by',

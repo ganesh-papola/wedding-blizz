@@ -82,7 +82,8 @@ export const getProposals = () => async (dispatch, getState) => {
         firestore.collection('proposals').where(type===3?'business_id':'user_id', '==',type===3?business?.id: uid)
         .onSnapshot(async snap => {
             const payload = snap.docs.map(quote => quote.data());
-            checkPayload(payload);
+            console.log("..... snap data payload ", payload, checkPayload(payload))
+            
             if (payload && payload.length) {
                 const eventsSnap = await firestore.collection('events').where('id', 'in', payload.map(id => id.event_id)).get();
                 const userSnap = await firestore.collection(type===3?'users':'venders').where('userId', 'in', payload.map(id =>id.user_id )).get();
@@ -132,5 +133,6 @@ const checkPayload = data => {
          if(ar&&ar.length)
             return ar.indexOf(f.id)<0
       })
-    return [...duplicates, ...single].sort((a,b)=>a.createdAt-b.createdAt)
+      const array = [...duplicates, ...single];
+    return array&&array.length?array.sort((a,b)=>a.createdAt-b.createdAt):data;
 }

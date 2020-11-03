@@ -97,10 +97,10 @@ export const addProposal = (data, id=null) => async dispatch => {
         setTimeout(() => {
            dispatch({ type : ACTION_TYPES.EVENT_SERVICE_SUCCESS });
            dispatch(createAlert({message:id?strings.success.proposalUpdated:strings.success.proposalAdded, type:'success'}));
-           dispatch(sendNotification(!!id));
         }, 2000);
         setTimeout(() => {
-            history.push('/'); 
+            history.push('/');
+            dispatch(sendNotification(!!id)); 
         }, 4000);
     } catch (error) {
         console.log("add proposal ", error);

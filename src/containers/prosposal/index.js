@@ -11,24 +11,22 @@ const { proposal, common } = strings;
 export default props => {
     const classes = proposalStyle();
     const eclasses = eventStyle();
-    const [chtprop, setChat] = useState({title:'', subTitle:''})
+    const [chtprop, setChat] = useState({title:'', subTitle:'',visible:null})
     const breads = [
         { title: common.Home, path: '/' }
     ];
+    const setVisible = type=>setChat({...chtprop, visible:type})
     const dispatch = useDispatch();
     const { user: { type } } = useSelector(({ user }) => user);
     const { proposals = [], loader = false } = useSelector(({ proposal }) => proposal);
     useEffect(() => {
+        dispatch(setProposal([]))
         dispatch(getProposals())
     }, [])
     const handleProposal = propose => {
         dispatch(setProposal(propose));
-        setChat({...chtprop, title:propose.name, subTitle:propose.message})
+        setChat({...chtprop, title:propose.name, subTitle:propose.message,visible:'active'})
         // props.history.push('/proposaldetail')
-    }
-    const chatProps = {
-        ...chtprop,
-        handler:'active'
     }
     return (
         <div className={classes.proposalMain}>
@@ -47,7 +45,7 @@ export default props => {
                         </Box>
                     </div>)) : <NoRecordFound text={proposal.NoProposalFound} />}
             </div>
-            <Chat {...chatProps} />
+            {(chtprop.visible==="active"||chtprop.visible==="hide")&&<Chat {...chtprop} setVisible={setVisible} />}
         </div>
     )
 }

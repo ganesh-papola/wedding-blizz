@@ -5,7 +5,7 @@ import { DoneAllRounded } from "@material-ui/icons"
 import { useDispatch, useSelector } from 'react-redux';
 import { proposalStyle, proposeDetailStyle, rightSideBubble, leftSideBubble,acceptedIcon } from 'styles';
 import { strings } from 'constant';
-import { BreadCrumb, Loader, ProposeModal } from "components";
+import { BreadCrumb, Loader, NoRecordFound, ProposeModal } from "components";
 import moment from 'moment';
 import {addVendorProposal} from "actions";
 const { common } = strings;
@@ -18,6 +18,7 @@ export default props => {
         { title: common.Home, path: '/' },
         { title: common.Proposals, path: '/proposals' }
     ];
+    const { chat=false } = props;
     const dispatch = useDispatch();
     const { user: { type, uid = '' } } = useSelector(({ user }) => user);
     const { proposal = {}, loader = false } = useSelector(({ proposal }) => proposal);
@@ -30,23 +31,29 @@ export default props => {
         };
         dispatch(addVendorProposal(data,id, proposed&&proposed.id));   
     }
+    if(!proposal||(proposal&&!proposal.id))
+        return (
+            <div className={classes.NoRecV}>
+                <NoRecordFound/>
+            </div>
+        )
     return (
         <div className={classes.proposalMain}>
-            <BreadCrumb breads={breads} current={common.ProposalDetail} />
+            {!chat&&<BreadCrumb breads={breads} current={common.ProposalDetail} />}
             <div className={classes.mainBody} >
-                <div className={classes.mainDetailBody} style={proposal && (proposal.sender_id === proposal.user_id && proposal.user_id === uid) ? rightSideBubble : leftSideBubble}>
-                    <div className={classes.listCard} style={proposeDetailStyle}>
+                <div className={chat?classes.mainDetailBodyC:classes.mainDetailBody} style={proposal && (proposal.sender_id === proposal.user_id && proposal.user_id === uid) ? rightSideBubble : leftSideBubble}>
+                    <div className={chat?classes.listCardC:classes.listCard} style={proposeDetailStyle}>
                         <Box fontFamily='Gotham' className={classes.prosposalNameT}>
                             {proposal?.name}
-                        </Box>
-                        <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
-                            {proposal?.modifiedAt ? moment(new Date(proposal?.modifiedAt)).format('DD MMM YYYY') : ''}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.proposeMT}>
                             {strings.common?.Message+' - '}
                             {proposal?.message}
                         </Box>
                     </div>
+                    <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
+                            {proposal?.modifiedAt ? moment(new Date(proposal?.modifiedAt)).format('DD MMM YYYY') : ''}
+                        </Box>
                     {proposal && (proposal.sender_id === proposal.user_id && proposal.user_id!==uid && type === 3) && proposal.isQuote ?
                         <div className={classes.sendProposeBV} style={proposal && proposal.sender_id === proposal.user_id ? leftSideBubble : rightSideBubble}>
                             <Button onClick={() => setOpen(true)} variant="contained" size="large" color='primary' >
@@ -56,15 +63,12 @@ export default props => {
                         : null}
                 </div>
                 {proposal && proposal.proposed ?
-                    <div className={classes.mainDetailBody} style={proposal && proposal.proposed&& (proposal.proposed.sender_id !== proposal.proposed.user_id && proposal.proposed.sender_id===uid) ? rightSideBubble:leftSideBubble}>
+                    <div className={chat?classes.mainDetailBodyC:classes.mainDetailBody} style={proposal && proposal.proposed&& (proposal.proposed.sender_id !== proposal.proposed.user_id && proposal.proposed.sender_id===uid) ? rightSideBubble:leftSideBubble}>
                         <div className={classes.listCard} style={proposeDetailStyle}>
                             <Box fontFamily='Gotham' className={classes.prosposalNameT}>
                                 {proposal?.proposed?.name}
                             </Box>
-                            <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
-                                {proposal?.proposed?.modifiedAt ? moment(new Date(proposal.proposed.modifiedAt)).format('DD MMM YYYY') : ''}
-                            </Box>
-                            <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
+                            <Box fontFamily='GothamBook' className={classes.proposeMT}>
                                 {strings.common?.BookingAmount+' - '}
                                 {proposal?.proposed?.booking_amount}
                             </Box>
@@ -77,6 +81,9 @@ export default props => {
                                 <DoneAllRounded style={acceptedIcon}/>
                             </Box>:null}
                         </div>
+                        <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
+                                {proposal?.proposed?.modifiedAt ? moment(new Date(proposal.proposed.modifiedAt)).format('DD MMM YYYY') : ''}
+                        </Box>
                         { proposal && proposal.proposed&& (proposal.proposed.sender_id !== proposal.proposed.user_id && proposal.proposed.sender_id===uid) && proposal?.proposed?.isProposal && !proposal?.proposed?.isBooked ?
                             <div className={classes.sendProposeBV} style={proposal && proposal?.proposed?.sender_id === proposal?.proposed?.user_id ? leftSideBubble : rightSideBubble}>
                                 <Button onClick={() => setOpen(true)} variant="contained" size="large" color='primary' >

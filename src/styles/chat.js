@@ -48,6 +48,10 @@ export const chatStyle =  makeStyles((theme) => ({
             borderBottomRightRadius:10,
             padding:15,
             height : '76.5%',
+            overflowY:'scroll',
+            display:'flex',
+            flexDirection : 'column',
+            flex:1
         },
         closeMain:{
             display : 'flex',
@@ -73,6 +77,27 @@ export const chatStyle =  makeStyles((theme) => ({
             textTransform : 'capitalize',
             paddingTop:5,
             paddingBottom:5
+        },
+        inputV:{
+            ...center,
+            position:'fixed',
+            bottom:45,
+            width:'35%',
+            background:colors.white,
+            paddingTop:5,
+            paddingBottom:10,
+            borderRadius:3,
+            borderBottomLeftRadius:10,
+            borderBottomRightRadius:10,
+            border : `1px solid ${colors.grey7}`
+            
+        },
+        input:{
+            display:'flex',
+            flexDirection:'column',
+            flex:1,
+            paddingLeft:10,
+            // width : '90%'
         }
 }));
 export const navIconStyle = {
@@ -84,4 +109,14 @@ export const navIconStyle = {
 export const msgIconStyle = {
     fontSize : 25,
     color : colors.white
+}
+export const sendIconStyle = {
+    marginRight : 10,
+    color:colors.grey,
+    cursor : 'pointer'
+}
+export const sendIconActiveStyle = {
+    marginRight : 10,
+    color:colors.main,
+    cursor : 'pointer'
 }

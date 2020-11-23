@@ -30,7 +30,7 @@ const rolesData = [
 export const SUFields = [
   { label : auth.FullName, key : 'fullname', maxLength : 100, type:'textfield' },
   { label : auth.EmailAddress, key : 'email', maxLength : 50, type:'textfield' },
-  { label : auth.Phone, key : 'phone', maxLength : 10, type:'textfield' },
+  { label : auth.Phone, key : 'phone', maxLength : 10, type:'phone' },
   { label : auth.Password, key : 'password', maxLength : 50, secure : true, type:'textfield' },
   { label : auth.ConfirmPassword, key : 'cpassword', maxLength : 50, secure : true, type:'textfield' },
   { label : auth.SelectYouRole, key : 'role', type:'dropdown', data:rolesData },

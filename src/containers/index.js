@@ -27,10 +27,10 @@ export { default as TNC } from "./policy/tnc";
 export { default as Proposals } from "./prosposal";
 export { default as ProposalDetail } from "./prosposal/proposalDetail";
 
-export { default as Vendor} from "./vendors"
-export { default as AddBusiness} from "./vendors/addBusiness";
-export { default as BusinessDetail} from "./vendors/businessDetails";
-
+export { default as Vendor } from "./vendors"
+export { default as AddBusiness } from "./vendors/addBusiness";
+export { default as BusinessDetail } from "./vendors/businessDetails";
+export { default as GuestLanding } from "./landing-guest"
 
 
 

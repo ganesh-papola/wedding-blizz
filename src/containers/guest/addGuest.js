@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react';
 import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonButtonStyle } from 'styles';
-import { TextField, DropDown, Loader, GooglePlaces } from "components";
+import { TextField, DropDown, Loader, GooglePlaces, PhoneInput } from "components";
 import { strings, country } from 'constant';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGuestGroups, addGuest } from "actions";
@@ -104,7 +104,7 @@ export default props => {
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <TextField label={common.PhoneNumber} error={error.phone} value={state.phone} onChange={v=>onChange('phone',v)} />
+                        <PhoneInput label={common.PhoneNumber} error={error.phone} value={state.phone} onChange={v=>onChange('phone',v)} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
                         <TextField label={common.EmailAddress} error={error.email} value={state.email} onChange={v=>onChange('email',v)}/>

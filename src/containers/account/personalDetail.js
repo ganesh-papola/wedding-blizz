@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid, Box, Button } from '@material-ui/core'
 import { accountStyle, commonButtonStyle } from "styles";
 import { useSelector, useDispatch } from "react-redux";
-import { TextField, TextArea, DropDown, Loader } from "components";
+import { TextField, PhoneInput, DropDown, Loader } from "components";
 import { strings, country } from 'constant';
 import { ArrowDropDown } from '@material-ui/icons';
 import { validator } from "helpers";
@@ -92,7 +92,7 @@ export default (props) => {
                     <TextField label={common.EmailAddress} value={state.email} disabled />
                 </Grid>
                 <Grid item sm={12} xs={12} md={6} lg={6} className={classes.personalDetailTV}>
-                    <TextField label={common.Phone} error={error.phone} onChange={v=>onChange('phone',v)} value={state.phone} />
+                    <PhoneInput label={common.Phone} error={error.phone} onChange={v=>onChange('phone',v)} value={state.phone} />
                 </Grid>
 
                 <Grid item sm={12} xs={12} className={classes.personalDetailTV}>

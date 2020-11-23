@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, Box, Button } from '@material-ui/core'
 import { accountStyle, commonButtonStyle, primaryLoaderStyle, eventStyle } from "styles";
 import { useSelector, useDispatch } from "react-redux";
-import { TextField, FilePicker, DropDown, Loader, GooglePlaces } from "components";
+import { TextField, FilePicker, DropDown, Loader, GooglePlaces, PhoneInput } from "components";
 import { ArrowDropDown } from '@material-ui/icons';
 import Menus from './popupMenu';
 import BusinessStats from './businessStats';
@@ -96,7 +96,7 @@ export default (props) => {
                         <TextField label={vendors.BusinessName} error={error.name} value={state.name} onChange={value=>onChange('name', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <TextField label={common.Phone} value={state.phone} error={error.phone} onChange={value=>onChange('phone', value)}/>
+                        <PhoneInput label={common.Phone} value={state.phone} error={error.phone} onChange={value=>onChange('phone', value)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={12} lg={12} className={classes.addNewEventFormGV}>
                         <TextField label={common.EmailAddress} value={state.email} error={error.email} onChange={value=>onChange('email', value)}/>

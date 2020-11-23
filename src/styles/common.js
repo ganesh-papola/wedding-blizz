@@ -45,6 +45,46 @@ export const commonStyle =  makeStyles((theme) => ({
         [theme.breakpoints.down("md")]: {
         }
       },
+      phoneInputFieldV:{
+        width : '100%',
+        paddingBottom : 20,
+        paddingTop : 10,
+        fontStyle: 'GothamBook',
+        fontWeight:'bold',
+        color:colors.primary
+      },
+      phoneInputFieldVErr:{
+        width : '100%',
+        paddingBottom : 20,
+        paddingTop : 10,
+        fontStyle: 'GothamBook',
+        fontWeight:'bold',
+        color:colors.red
+      },
+      phoneInputError:{
+        marginLeft: 15,
+        color: colors.red
+      },
+      phoneInputField:{
+        width : '100% !important',
+        fontFamily:'GothamBook',
+        fontWeight:'600',
+        '&:focus':{
+          border: `2px solid ${colors.primary}! important`,
+          boxShadow: `0 0 0 0 !important`
+        }
+      },
+      phoneInputFieldEr:{
+        width : '100% !important',
+        fontFamily:'GothamBook',
+        fontWeight:'600',
+        border: `1px solid ${colors.red}! important`,
+        boxShadow: `0 0 0 0 !important`,
+        '&:focus':{
+          border: `1px solid ${colors.red}! important`,
+          boxShadow: `0 0 0 0 !important`
+        }
+      },
       inputFLabelT : {
         fontSize : 14,
         color : colors.dark,

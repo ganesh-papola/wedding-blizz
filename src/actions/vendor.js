@@ -136,3 +136,20 @@ const checkPayload = data => {
       const array = [...duplicates, ...single];
     return array&&array.length?array.sort((a,b)=>a.createdAt-b.createdAt):data;
 }
+export const getVendorList = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: ACTION_TYPES.PROPOSAL_REQUEST });
+        const { id = '' } = getState().vendor?.business;
+        firestore.collection('proposals').where('business_id', '==',id).where('isBooked', '==',true)
+        .onSnapshot(async snap => {
+            const payload = snap.docs.map(b => b.data());
+            console.log("booking >>> ", payload);
+            dispatch({ type: ACTION_TYPES.PROPOSAL_COMPLETE });
+            return new Promise(r=>r(payload));
+        })   
+    } catch (error) {
+        dispatch({ type: ACTION_TYPES.PROPOSAL_FAILED });
+        return new Promise(r=>r(null));
+    }
+    
+}

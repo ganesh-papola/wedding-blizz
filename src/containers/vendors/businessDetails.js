@@ -6,7 +6,7 @@ import { eventStyle, commonStyle, primaryLoaderStyle, btSmallIcon, vendorStyle }
 import { strings } from 'constant';
 import Carousel from 'react-material-ui-carousel'
 import { BreadCrumb, Loader, NoRecordFound, QuoteModal } from "components";
-import { fetchVendorBusiness, getBooking } from "actions";
+import { fetchVendorBusiness, getBooking, getVendorList } from "actions";
 import { userIcon, calendarIcon, locationPinIcon } from "assets";
 import moment from "moment";
 const { events, common, vendors } = strings;
@@ -29,6 +29,8 @@ export default props => {
                 if (busines && !busines?.business_name || !busines?.id) props.history.push('/vendor');
             } else props.history.push('/event');
          dispatch(getBooking());
+         const bookings = await dispatch(getVendorList());
+         console.log("bookings bookings ",bookings)
         }
          get();
     }, [type])

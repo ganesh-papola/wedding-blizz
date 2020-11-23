@@ -52,6 +52,7 @@ export default props => {
         isProposal : true,
         isBooked : false
     };
+    console.log("data data data data ",data)
     dispatch(addVendorProposal(data,id, proposed&&proposed.id));
 }
 const onChange = (k,v) => {

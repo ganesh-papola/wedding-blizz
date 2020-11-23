@@ -12,3 +12,4 @@ export * from './account';
 export * from "./privacy";
 export * from "./proposal";
 export * from "./chat";
+export * from "./guestLanding";

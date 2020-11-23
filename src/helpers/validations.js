@@ -3,7 +3,7 @@ export const validations = {
     password: val => /^(?=.*?[a-zA-Z])(?=.*?[0-9]).{8,}$/.test(val),
     cpassword: (confPass, pass) => pass === confPass,
     fullname: val => !/[^A-Za-z0-9_ '-]/.test(val),
-    phone: val => /^(\+\d{1,3}[- ]?)?\d{10}$/.test(val),
+    phone: val => /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g.test(val),
     role: val => val,
     check: val => val,
 }
@@ -15,7 +15,7 @@ export const validator = (key, value) => {
         case 'name':
             return /^[a-z\.A-Z ]+$/.test(value);
         case 'phone':
-            return /^(\+\d{1,3}[- ]?)?\d{10}$/.test(value);
+            return /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g.test(value);
         case 'booking_amount' :
             return /^([1-9][0-9]{0,4}|100000)$/.test(value)
         default:

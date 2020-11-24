@@ -38,14 +38,17 @@ const makeErrors = () => {
   });
   setErrors({ ...errors, ...errs })
 }
-const onSubmit = () =>{
+const onSubmit = async() =>{
     if(Object.values(state).filter(el => !el).length || Object.values(errors).filter(s => s).length)
         return makeErrors();
     else{
-      dispatch(login(state, push))
+      const exec = await dispatch(login(state, push))
+      if(exec)
+      setModal(false);
+      else
       setTimeout(() => {
         setModal(false)
-      }, 1500);
+      }, 10000);
     }
 }
 

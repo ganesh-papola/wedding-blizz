@@ -33,14 +33,17 @@ export default ({ state = {}, errors = {}, fields = [], setModal=()=>{}, setStat
         setErrors({ ...errors, ...errs })
     }
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         if(Object.values(state).filter(el => !el).length || Object.values(errors).filter(s => s).length)
             return makeErrors();
         else {
-            dispatch(signUp(state));
+            const exec = await dispatch(signUp(state));
+            if(exec)
+            setModal(false)
+            else
             setTimeout(() => {
                 setModal(false)
-            }, 2500);
+            }, 10000);
         }
     }
 

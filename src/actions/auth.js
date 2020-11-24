@@ -7,20 +7,25 @@ import { createAlert } from "actions";
 export const signUp = ({email,password, phone, role, fullname}) => async (dispatch, getState) => {
     console.log("state ", email, role, fullname)
     try {
+        let roles = [role];
         let data = getState().user;
         let userData = data?data.user:{};
         dispatch({ type : ACTION_TYPES.AUTH_REQUEST });
         const { user={} } = await auth.createUserWithEmailAndPassword(email,password);
         const { uid} = user;
-        await createProfile(uid, {userId:uid,phone,type:role,displayName:fullname, name:fullname, email});
+        const snap =  await firestore.collection('guest_users').where('email','==',email).get();
+        const guest = snap.docs.map(it=>it.data());
+        if(guest&&guest.length) roles = [...new Set([...roles,2])];
+        await createProfile(uid, {userId:uid,phone,type:roles,displayName:fullname, name:fullname, email});
         notification(uid);
         dispatch({ type : ACTION_TYPES.SIGNUP });
-        // dispatch({ type : ACTION_TYPES.AUTH_COMPLETE, payload:{ ...userData, uid, token:refreshToken, phone, name:fullname } });
-        dispatch(createAlert({message:strings.success.SignupSuccess, type:'success', duration : 13000}))
+        dispatch(createAlert({message:strings.success.SignupSuccess, type:'success', duration : 13000}));
+        return true
     } catch (error) {
         console.log("signup catch error ", error)
         dispatch(createAlert({message:error.message, type:'error', duration : 10000}))
         dispatch({ type : ACTION_TYPES.AUTH_FAILED });
+        return true
     }
 }
 const resendEmailVerification = () => async dispatch=> {
@@ -52,12 +57,13 @@ export const login = ({email,password}) => async (dispatch, getState) => {
             }}));
         }
         dispatch(getPosition());
-    }else
-        dispatch({ type : ACTION_TYPES.AUTH_FAILED });
+    }else dispatch({ type : ACTION_TYPES.AUTH_FAILED });
+        return true
     } catch (error) {
         console.log("login catch error ", error)
         dispatch({ type : ACTION_TYPES.AUTH_FAILED });
-        dispatch(createAlert({message:error.message, type:'error'}))
+        dispatch(createAlert({message:error.message, type:'error'}));
+        return true
     }
 }
 export const getPosition = () => dispatch => {

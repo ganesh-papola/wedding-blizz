@@ -22,5 +22,36 @@ export const guestLandStyle =  makeStyles((theme) => ({
     },
     subImagesV:{
         padding : 20
+    },
+    inviteHeader:{
+        paddingLeft: 20
+    },
+    invitesV:{
+        ...center
+    },
+    eventsLisCardV:{
+        width: '50%'
+    },
+    eventsLisCardV:{
+        width:'50%',
+        borderRadius: 10,
+        marginBottom: 30,
+        padding: 30,
+        'box-shadow': `0px 0px 4px 0px ${colors.grey6}`,
+        cursor: 'pointer'
+    },
+    giftsLisCardV:{
+        borderRadius: 10,
+        marginBottom: 30,
+        padding: 10,
+        width:'100%',
+        'box-shadow': `0px 0px 4px 0px ${colors.grey6}`,
+        cursor: 'pointer'
+    },
+    eventsLisCard:{
+        width:'50%',
+    },
+    eventT:{
+
     }
 }))

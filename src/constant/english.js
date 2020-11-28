@@ -399,7 +399,15 @@ export default {
         'BookingAmount' : 'Booking Amount',
         'Accept' : 'Accept',
         'WeddingInvitation':'WeddingInvitation',
-        'TypeMessage' : 'Type message ...'
+        'TypeMessage' : 'Type message ...',
+        'Invitation': 'Invitation',
+        'Invitations':'Invitations',
+        'EventDetails':'Event Details',
+        'Gift': 'Gift',
+        'Select': 'Select',
+        'RemoveSelection':'Remove Selection',
+        'MyEvent': 'My Event',
+        'Vendor': 'Vendor',
     },
     'notifications':{
             'Proposal':'Proposal',

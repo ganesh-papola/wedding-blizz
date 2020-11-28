@@ -16,11 +16,13 @@ export default props => {
     ];
     const dispatch = useDispatch();
     const { loader=false }= useSelector(({event})=>event);
-    const { user:{type,uid}, fcm }= useSelector(({user})=>user);
+    const { user:{type,roles=[],uid}, fcm }= useSelector(({user})=>user);
     useEffect(()=>{
         const get = async () =>{
-            if(type===3)
+            if(type===3||roles.indexOf(3)>-1)
             return props.history.push('/vendor')
+            if(type===2||roles.indexOf(2)>-1)
+            return props.history.push('/guestlanding')
             const event = await dispatch(fetchEvent());
             if(event) props.history.push('/eventdetail');
         }

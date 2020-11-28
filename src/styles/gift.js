@@ -119,7 +119,12 @@ export const giftStyle = makeStyles((theme) => ({
         color : colors.main5,
         fontSize : 12,
         paddingTop:10
-
+    },
+    dialogGiftTitleT:{
+        color : colors.main5,
+        fontSize : 12,
+        paddingTop:10,
+        fontSize: 20  
     },
     contentHV:{
         display : 'flex',

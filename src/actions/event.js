@@ -180,3 +180,5 @@ const handleNotification = async(data, update, name) => {
         console.log("handleNotification catch error ",error);   
     } 
 }
+
+export const setEvent = payload => dispatch => dispatch({type: ACTION_TYPES.EVENT_COMPLETE, payload})

@@ -28,7 +28,7 @@ export default props => {
     const [signup, setSignupModal] = useState(false);
     const [forgot, setForgotModal] = useState(false);
     const [popup, setPopup] = useState(null);
-    const { history }  = props;
+    const { history } = props;
     const onSignIn = () => {
         setSignupModal(false);
         setForgotModal(false);
@@ -50,7 +50,7 @@ export default props => {
             setLoginModal(true);
         }, 300);
     }
-    const onForgot = () =>{
+    const onForgot = () => {
         setLoginModal(false);
         setSignupModal(false);
         setForgotModal(true);
@@ -72,7 +72,7 @@ export default props => {
                         ))
                     }
                 </div>
-                <LoggedInUser setSignupModal={setSignupModal} setLoginModal={setLoginModal} open={popup} history={history}/>
+                <LoggedInUser setSignupModal={setSignupModal} setLoginModal={setLoginModal} open={popup} history={history} />
 
                 <div className={classes.drawerView}>
                     <MenuIcon openDrawerHandler={() => openDrawer(true)} />
@@ -82,7 +82,7 @@ export default props => {
 
             {login && <LoginModal modal={login} setModal={setLoginModal} onSignUp={onSignUp} type={type} onChangeLogin={onChangeLogin} onForgot={onForgot} />}
             {signup && <SignupModal modal={signup} setModal={setSignupModal} onSignIn={onSignIn} />}
-            {forgot && <ForgotModal modal={forgot} setModal={setForgotModal}  onSignIn={onSignIn}/>}
+            {forgot && <ForgotModal modal={forgot} setModal={setForgotModal} onSignIn={onSignIn} />}
         </List>
     )
 }
@@ -93,7 +93,7 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
     const [dialog, setDailog] = useState(false);
     const dispatch = useDispatch();
     const onLogout = () => setDailog(true);
-    const setRoute = (route)=>{
+    const setRoute = (route) => {
         history.push(route);
     }
     const handleLogout = () => {
@@ -122,10 +122,22 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}>
                                 <div className={classes.popoverV}>
-                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>handlePopClick(popupState,'/proposals')}>
+                                    {(user.type !== 2 || (user.roles && user.roles.length && user.roles.indexOf(2) < 0)) && <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/proposals')}>
                                         {common.Proposals}
-                                    </Box>
-                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={()=>handlePopClick(popupState,'/account')}>
+                                    </Box>}
+                                    {
+                                        user.type === 2 && user.roles && user.roles.length && user.roles.indexOf(2) > -1 && user.roles.indexOf(1) > -1 &&
+                                        <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/eventdetail')}>
+                                            {common.MyEvent}
+                                        </Box>
+                                    }
+                                    {
+                                        user.type === 2 && user.roles && user.roles.length && user.roles.indexOf(2) > -1 && user.roles.indexOf(3) > -1 &&
+                                        <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/vendor')}>
+                                            {common.Vendor}
+                                        </Box>
+                                    }
+                                    <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/account')}>
                                         {auth.MyAccount}
                                     </Box>
                                     <Box variant="button" onClick={onLogout} fontFamily="Gotham" className={classes.popoverT}>
@@ -145,7 +157,7 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                     </Button>
                 </div>
             }
-            <Confirm open={dialog} onClose={()=>setDailog(false)} title={auth.Logout} 
+            <Confirm open={dialog} onClose={() => setDailog(false)} title={auth.Logout}
                 content={auth.LogoutContent} onClick={handleLogout} button={auth.Logout} />
         </>
     )

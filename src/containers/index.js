@@ -30,7 +30,9 @@ export { default as ProposalDetail } from "./prosposal/proposalDetail";
 export { default as Vendor } from "./vendors"
 export { default as AddBusiness } from "./vendors/addBusiness";
 export { default as BusinessDetail } from "./vendors/businessDetails";
-export { default as GuestLanding } from "./landing-guest"
+export { default as GuestLanding } from "./landing-guest";
+
+export {default as GuestEvent} from "./landing-guest/event-detail";
 
 
 

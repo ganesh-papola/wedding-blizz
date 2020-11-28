@@ -15,7 +15,7 @@ export const addGroup = (data) => async (dispatch, getState) => {
         dispatch(createAlert({ message: data?.id?success.guestGroupUpdateSuccess:success.guestGroupSuccess, type: 'success' }));
         dispatch(fetchGroupGuests());
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("addGroup error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -28,7 +28,7 @@ export const fetchGuestGroups = () => async (dispatch, getState) => {
         const data = await firestore.collection('guest_groups').where('userId', '==', uid).get();
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_COMPLETE, payload: data.docs.map(grp => grp.data()).map(it => ({ label: it.name, value: it.id, uid: it.userId })) });
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("fetchGuestGroups error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -43,7 +43,7 @@ export const addGuest = (data, id) => async (dispatch, getState) => {
         dispatch(createAlert({ message: success.guestSuccess, type: 'success' }));
         history.goBack();
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("addGuest error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -59,7 +59,7 @@ export const fetchGroupGuests = () => async (dispatch, getState) => {
         console.log(".....", payload)
         dispatch({ type: ACTION_TYPES.GUEST_COMPLETE, payload });
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("fetchGroupGuests error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -80,7 +80,7 @@ export const inviteGuests = (emails) => async (dispatch, getState) => {
         dispatch(createAlert({ message: success.InvitationSending, type: 'success' }));
         history&&history.goBack();
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("inviteGuests error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -93,7 +93,7 @@ export const deleteGroup = (id) => async (dispatch, getState) => {
         dispatch(fetchGroupGuests());
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_COMPLETE });
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("deleteGroup error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
     }
@@ -106,8 +106,30 @@ export  const deleteGuest = (id) => async (dispatch, getState) => {
         dispatch(fetchGroupGuests());
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_COMPLETE });
     } catch (error) {
-        console.log("addGift error ", error)
+        console.log("deleteGuest error ", error)
         dispatch({ type: ACTION_TYPES.GUEST_GROUP_DEL_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
+    }
+}
+export  const getGuestEvents = (id) => async (dispatch, getState) => {
+    try {
+        const { uid = '', email='' } = getState().user?.user;
+        dispatch({ type: ACTION_TYPES.GUEST_REQUEST });
+        const guestss = await firestore.collection('guest_users').where('email', '==', email).get();
+        const guests = guestss.docs.map(d=>d.data().id);
+        const eventss = await firestore.collection('event_invite').where('guestId', 'in', guests&&guests.length?guests:[]).get();
+        const events = eventss.docs.map(d=>d.data().eventId);
+        const eventDetailss = await firestore.collection('events').where('id', 'in', events&&events.length?events:[]).get();
+        const eventDetails = eventDetailss.docs.map(d=>d.data()); 
+        console.log("eventDetails.map(e=>e.owners ",eventDetails.map(e=>e.owners));
+        const ownerss = await firestore.collection('users').where('userId', 'in', eventDetails.map(e=>e.owners)).get();
+        const owners = ownerss.docs.map(d=>({name:d.data().name, userId:d.data().userId}));  
+        dispatch({ type: ACTION_TYPES.GUEST_COMPLETE });
+        return {events:eventDetails,owners};
+    } catch (error) {
+        console.log("getGuestEvents error ", error)
+        dispatch({ type: ACTION_TYPES.GUEST_FAILED })
+        dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
+        return null
     }
 }

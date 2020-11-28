@@ -50,10 +50,6 @@ export default props => {
                                     <img src={userIcon} alt="" className={classes.eventFrIcons} />
                                     {vendor.vendorName}
                                 </Box>
-                                {/* <Box fontFamily='GothamBook' className={classes.eventFrCT}>
-                                    <img src={calendarIcon} alt="" className={classes.eventFrIcons} />
-                                    {vendor.date}
-                                </Box> */}
                                 <Box noWrap fontFamily='GothamBook' className={classes.eventFrCT}>
                                     <img src={locationPinIcon} alt="" className={classes.eventFrIcons} />
                                     {`${vendor.city} ${vendor.state}, ${vendor.zip_code}`}

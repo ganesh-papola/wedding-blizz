@@ -307,6 +307,14 @@ export const commonButtonStyle = {
   width: 150,
   height: 45
 }
+export const commonButtonSmStyle = {
+  margin : 5,
+  marginLeft:0,
+  marginBottom:0,
+  marginTop: 20,
+  // width: 100,
+  height: 30
+}
 export const deleteButtonStyle = {
   margin : 10,
   // marginLeft : 5,
@@ -387,4 +395,7 @@ export const clearAddressStyle = {
   color : colors.main,
   fontSize : 20,
   cursor : 'pointer'
+}
+export const btLoaderStyle = {
+  color : colors.white
 }

@@ -35,3 +35,19 @@ export const fetchGifts = () => async (dispatch, getState) => {
         dispatch(createAlert({message:errors.CommonApiError, type:'error'}));
     }
 }
+export const updateGift = ({id,...gift}, flag) => async (dispatch, getState) => {
+    try {
+        const {uid=''} = getState().user?.user;
+        dispatch({type:ACTION_TYPES.GIFT_REQUEST});
+        await firestore.doc(`gifts/${id}`).set({
+            ...gift,id,
+            selected_by: gift.selected_by&&gift.selected_by.length? flag?gift.selected_by.filter(id=>id!==uid):[...gift.selected_by, uid] : [uid]
+        });
+        dispatch(fetchGifts())
+        dispatch({type:ACTION_TYPES.GIFT_SUCCESS});
+    } catch (error) {
+        console.log("updateGift error ", error)
+        dispatch({type:ACTION_TYPES.GIFT_FAILED})
+        dispatch(createAlert({message:errors.CommonApiError, type:'error'}));
+    }
+}

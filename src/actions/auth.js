@@ -16,7 +16,7 @@ export const signUp = ({email,password, phone, role, fullname}) => async (dispat
         const snap =  await firestore.collection('guest_users').where('email','==',email).get();
         const guest = snap.docs.map(it=>it.data());
         if(guest&&guest.length) roles = [...new Set([...roles,2])];
-        await createProfile(uid, {userId:uid,phone,type:roles,displayName:fullname, name:fullname, email});
+        await createProfile(uid, {userId:uid,phone,type:role,roles,displayName:fullname, name:fullname, email});
         notification(uid);
         dispatch({ type : ACTION_TYPES.SIGNUP });
         dispatch(createAlert({message:strings.success.SignupSuccess, type:'success', duration : 13000}));

@@ -29,6 +29,7 @@ export default props => {
     const dispatch = useDispatch();
     const [events, setEvents] = useState([]);
     const [loader, setLoader] = useState(true);
+    const { type='' } = useSelector(({ user }) => user)?.user;
     useEffect(() => {
         const events = async () => {
             setTimeout(() => {
@@ -39,6 +40,9 @@ export default props => {
             setEvents(evnts);
             setLoader(false)
         }
+        if(type!==2)
+            props.history.push('/eventdetail')
+        else
         events();
     }, []);
     const getOwnerName = id => {

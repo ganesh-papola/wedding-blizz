@@ -6,7 +6,7 @@ import { strings } from 'constant';
 import WedEventCarasoul from './wedEventCarasoul';
 import WedEventVendors from './wedEventVendors';
 import { BreadCrumb, Loader } from "components";
-import { fetchEvent } from "actions";
+import { fetchEvent, getEveVendors } from "actions";
 
 const { events, common } = strings;
 
@@ -21,9 +21,15 @@ export default props => {
         const get = async () =>{
             const event = await dispatch(fetchEvent());
             if(!event) props.history.push('/addEvent');
+            else getVendors(event)
         }
         get();
     },[])
+    const getVendors = async e => {
+        console.log("event event ", e)
+        const propsals = await dispatch(getEveVendors(e.id));
+        console.log("propsals propsals ",propsals)
+    }
     return (
         <Grid container justify="center" className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.WeddingEvent} />

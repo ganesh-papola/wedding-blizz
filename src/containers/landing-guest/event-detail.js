@@ -11,14 +11,14 @@ import { fetchGifts, updateGift } from "actions";
 const { events, common } = strings;
 
 
-export default () => {
+export default (props) => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const gclasses = guestLandStyle();
     const gfclasses = giftStyle();
     const dispatch = useDispatch();
     const { event = {} } = useSelector(({ event }) => event);
-    const { uid = '' } = useSelector(({ user }) => user)?.user;
+    const { uid = '', type='', roles=[] } = useSelector(({ user }) => user)?.user;
     const { loader = false, gifts = [] } = useSelector(({ gift }) => gift);
     const { images, spouse_name = "", event_date = "", event_location = "" } = event;
     const breads = [
@@ -26,6 +26,9 @@ export default () => {
     ];
     console.log("gifts gifts ", gifts)
     useEffect(() => {
+        if(type!==2)
+            props.history.push('/eventdetail')
+        else
         dispatch(fetchGifts());
     }, [])
     const onSelectRem = (item, status)=> {

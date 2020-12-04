@@ -44,7 +44,7 @@ export default props => {
                 <div className={chat?classes.mainDetailBodyC:classes.mainDetailBody} style={proposal && (proposal.sender_id === proposal.user_id && proposal.user_id === uid) ? rightSideBubble : leftSideBubble}>
                     <div className={chat?classes.listCardC:classes.listCard} style={proposeDetailStyle}>
                         <Box fontFamily='Gotham' className={classes.prosposalNameT}>
-                            {proposal?.name}
+                            {proposal?.owner?.name}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.proposeMT}>
                             {strings.common?.Message+' - '}

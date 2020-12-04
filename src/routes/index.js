@@ -3,7 +3,8 @@ import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Landing, VendorsLanding, About, Events, AddEventsForm, WeddingEvent, AddNewGuest,
   Guests, Gifts, AddNewGift, Account, PrivacyPolicy, TNC, EventFr, Category, EventVendorList, 
-  EventVendorDetail, Vendor, AddBusiness, BusinessDetail, Proposals, ProposalDetail, GuestLanding, GuestEvent } from 'containers';
+  EventVendorDetail, Vendor, AddBusiness, BusinessDetail, Proposals, ProposalDetail, GuestLanding, 
+  GuestEvent, Conversation } from 'containers';
 import { Notfound } from "components";
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
@@ -35,6 +36,7 @@ const privateRoues = [
   {path:'/tnc', component : TNC},
   {path:'/privacy', component : PrivacyPolicy},
   {path:'/guest-event', component : GuestEvent},
+  {path:'/conversation', component : Conversation},
   
   
 ]

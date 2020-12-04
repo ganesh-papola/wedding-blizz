@@ -6,7 +6,7 @@ import "firebase/messaging";
 import "firebase/functions";
 import { strings, ACTION_TYPES } from "constant";
 import { store } from "store";
-import {createAlert} from "actions";
+import { createAlert } from "actions";
 const { errors } = strings;
 const {
     REACT_APP_BUCKET, REACT_APP_FIRE_API, REACT_APP_FIRE_AUTH_DOMAIN, REACT_APP_FIRE_DB,
@@ -43,12 +43,12 @@ export const registerServiceWorker = async () => {
         console.log("Service worker registration failed, error:", error);
     }
 };
-export const handleFCM = async(token, uid, action='add') => {
+export const handleFCM = async (token, uid, action = 'add') => {
     if (token) {
         let tokens = [];
         const user = await findById('users', uid);
         const { fcm = [] } = user.data();
-        
+
         if (action === 'add')
             if (fcm.indexOf(token) > -1) return;
             else tokens = [...fcm, token];
@@ -62,8 +62,8 @@ export const notification = async (uid) => {
         await Notification.requestPermission();
         const payload = await messaging.getToken();
         console.log('token: notification notification', payload);
-        if(payload){
-            dispatch({type: ACTION_TYPES.DEVICE_TOKEN, payload});
+        if (payload) {
+            dispatch({ type: ACTION_TYPES.DEVICE_TOKEN, payload });
             handleFCM(payload, uid);
         }
         messaging.onMessage(notification => {
@@ -71,16 +71,16 @@ export const notification = async (uid) => {
         });
     } catch (error) {
         console.log("notification ", error);
-        dispatch(createAlert({message : error.message, type:'error'}));
+        dispatch(createAlert({ message: error.message, type: 'error' }));
     }
 }
-export const sendPush = data =>{
-    const notification =  functions.httpsCallable('notifications');
+export const sendPush = data => {
+    const notification = functions.httpsCallable('notifications');
     console.log("notification sending.. ")
     return notification(data);
 }
-export const sendEmail = data =>{
-    const email =  functions.httpsCallable('sendEmail');
+export const sendEmail = data => {
+    const email = functions.httpsCallable('sendEmail');
     console.log("email sending.. ")
     return email(data);
 }
@@ -121,7 +121,7 @@ export const setListners = async () => {
             }
         })
 }
-export const uploadImages = (collection,images = []) => {
+export const uploadImages = (collection, images = []) => {
     try {
         return Promise.all(images.map(async image => {
             const name = `${new Date().getTime()}-${image.name}`;
@@ -143,17 +143,18 @@ export const imagePathToUrl = async (path) => {
 export const find = async (collection, uid = '', query = {}) => {
 
 }
-export const findById = (collection,id) => {
-  return firestore.collection(collection).doc(id).get();
+export const findById = (collection, id) => {
+    return firestore.collection(collection).doc(id).get();
 }
 export const insert = async (collection, data) => {
     const { id = '' } = await firestore.collection(collection).doc();
     const createdAt = new Date().getTime();
     const modifiedAt = new Date().getTime();
-    return firestore.collection(collection).doc(id).set({ id,createdAt,modifiedAt, isDeleted:false, ...data })
+    await firestore.collection(collection).doc(id).set({ id, createdAt, modifiedAt, isDeleted: false, ...data });
+    return { id };
 };
 export const updateOne = (collection, id, data) => {
-    if(!collection || !id || !data)
-     throw {message:errors.commandKeysMissing}
-    firestore.collection(collection).doc(id).update({...data, modifiedAt : new Date().getTime()});
+    if (!collection || !id || !data)
+        throw { message: errors.commandKeysMissing }
+    firestore.collection(collection).doc(id).update({ ...data, modifiedAt: new Date().getTime() });
 }

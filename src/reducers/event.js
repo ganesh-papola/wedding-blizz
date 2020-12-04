@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   events: [],
   event: {},
   category: null,
+  categories: [],
   vendor : null
 };
 
@@ -31,6 +32,8 @@ export default function event(state = INITIAL_STATE, action) {
 
     case ACTION_TYPES.SET_EVENT_CATEGORY:
       return { ...state, category: action.payload }
+      case ACTION_TYPES.SET_EVENT_CATEGORIES:
+        return { ...state, categories: action.payload }
     case ACTION_TYPES.EVENT_VENDOR_DETAIL:
       return { ...state, vendor : action.payload }
     case ACTION_TYPES.RESET:

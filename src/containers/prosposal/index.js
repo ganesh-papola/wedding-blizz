@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { proposalStyle, eventStyle } from 'styles';
 import { strings } from 'constant';
 import { BreadCrumb, Loader, NoRecordFound, Chat } from "components";
-import { getProposals, setProposal } from "actions";
+import { getProposals, setProposal, setChat } from "actions";
 import moment from 'moment';
 const { proposal, common } = strings;
 
 export default props => {
     const classes = proposalStyle();
     const eclasses = eventStyle();
-    const [chtprop, setChat] = useState({title:'', subTitle:'',visible:null})
+    const [chtprop, setChatt] = useState({title:'', subTitle:'',visible:null})
     const breads = [
         { title: common.Home, path: '/' }
     ];
-    const setVisible = type=>setChat({...chtprop, visible:type})
+    const setVisible = type=>setChatt({...chtprop, visible:type})
     const dispatch = useDispatch();
-    const { user: { type } } = useSelector(({ user }) => user);
+    const { user: { type, uid='' } } = useSelector(({ user }) => user);
     const { proposals = [], loader = false } = useSelector(({ proposal }) => proposal);
     useEffect(() => {
         dispatch(setProposal([]))
@@ -25,7 +25,8 @@ export default props => {
     }, [])
     const handleProposal = propose => {
         dispatch(setProposal(propose));
-        setChat({...chtprop, title:propose.name, subTitle:propose.message,visible:'active'})
+        dispatch(setChat({user:propose?.owner}))
+        setChatt({...chtprop, title:propose?.owner?.name, subTitle:propose.message,visible:'active'})
         // props.history.push('/proposaldetail')
     }
     return (
@@ -35,7 +36,7 @@ export default props => {
                 {loader ? <Loader /> : proposals && proposals.length ? proposals.map(propo => (
                     <div className={classes.listCard} onClick={()=>handleProposal(propo)}>
                         <Box fontFamily='Gotham' className={classes.prosposalNameT}>
-                            {propo?.name}
+                            {propo?.owner?.name}
                         </Box>
                         <Box fontFamily='GothamBook' className={classes.prosposalDateT}>
                             {propo?.servicesDate?moment(new Date(propo?.modifiedAt)).format('DD MMM YYYY') :'' }
@@ -45,7 +46,7 @@ export default props => {
                         </Box>
                     </div>)) : <NoRecordFound text={proposal.NoProposalFound} />}
             </div>
-            {(chtprop.visible==="active"||chtprop.visible==="hide")&&<Chat {...chtprop} setVisible={setVisible} />}
+            {(chtprop.visible==="active"||chtprop.visible==="hide")&&<Chat {...chtprop} proposal setVisible={setVisible} />}
         </div>
     )
 }

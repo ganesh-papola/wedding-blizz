@@ -24,12 +24,27 @@ export const proposalStyle =  makeStyles((theme) => ({
         flexDirection : 'column',
         paddingTop : 50
     },
+    mainDetailBodyCHV:{
+        ...center,
+        width : '50%',
+        justifyContent : 'flex-start',
+        flexDirection : 'column',
+        paddingTop : 20
+    },
     mainDetailBodyC:{
         ...center,
         width : '100%',
         justifyContent : 'flex-start',
         flexDirection : 'column',
         paddingTop : 50
+    },
+    mainDetailBodyCHV:{ 
+        ...center,
+        width : '100%',
+        justifyContent : 'flex-start',
+        flexDirection : 'column',
+        paddingTop : 20
+
     },
     listCard:{
         width : '40%',

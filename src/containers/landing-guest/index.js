@@ -12,7 +12,7 @@ import { strings } from 'constant';
 import { Loader, NoRecordFound } from 'components';
 import { getGuestEvents, setEvent } from "actions";
 import moment from "moment";
-const { common } = strings;
+const { common, guest } = strings;
 
 const photos = [
     { src: WeddingPhotographers, height: 3, width: 5 },
@@ -29,7 +29,7 @@ export default props => {
     const dispatch = useDispatch();
     const [events, setEvents] = useState([]);
     const [loader, setLoader] = useState(true);
-    const { type='' } = useSelector(({ user }) => user)?.user;
+    const { type = '' } = useSelector(({ user }) => user)?.user;
     useEffect(() => {
         const events = async () => {
             setTimeout(() => {
@@ -40,10 +40,10 @@ export default props => {
             setEvents(evnts);
             setLoader(false)
         }
-        if(type!==2)
+        if (type !== 2)
             props.history.push('/eventdetail')
         else
-        events();
+            events();
     }, []);
     const getOwnerName = id => {
         const { owners = [] } = events;
@@ -56,7 +56,24 @@ export default props => {
     }
     return (
         <div className={classes.container}>
+            <Typography component="div" className={eclasses.eventTV}>
+                <Box fontFamily='CormorantBold' className={classes.guestLandingCoupleHT}>
+                    {guest.CoupleOfTheMoment}
+                </Box>
+            </Typography>
+
             <div className={classes.headerImageV}>
+                <div className={classes.guestLandingCoupleV}>
+                    <div>
+                        <Box fontFamily='Gotham' className={classes.guestLandingCoupleT}>
+                            {common.Name}
+                        </Box>
+                    </div>
+
+                    <Box fontFamily='Gotham' className={classes.guestLandingCoupleT}>
+                        {common.Country}
+                    </Box>
+                </div>
                 <img src={weddingPlanner2} className={classes.headerImage} />
             </div>
             <div className={classes.subImagesV}>

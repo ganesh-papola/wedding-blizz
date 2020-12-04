@@ -186,18 +186,23 @@ export const setEvent = payload => dispatch => dispatch({ type: ACTION_TYPES.EVE
 export const getEveVendors = id => async dispatch => {
     try {
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_REQUEST });
-        const snap = await firestore.collection('proposals').where('event_id', '==', id).where('isBooked', '==', false).get();
+        const snap = await firestore.collection('proposals').where('event_id', '==', id).where('isBooked', '==', true).get();
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_SUCCESS });
+        dispatch({ type: ACTION_TYPES.SET_EVENT_CATEGORIES, payload: [] });
         const data = snap.docs.map(it => it.data());
         const cats = data && data.length ? data.map(it => it.category_id) : [];
-        const cts = await firestore.collection('categories').where('id', '==', cats && cats.length ? cats : []).get();
-        const categories = await Promise.all(cts.docs.map(async itm => {
-            const it = itm.data();
-            const image = await imagePathToUrl(it.icon);
-            return { ...it, image }
-        }))
-        console.log("data data data data ", categories,cats, cts.docs.map(i=>i.data()))
-        return new Promise(res => res({ proposals: data && data.length ? data : [], categories }));
+        if (cats && cats.length) {
+            const cts = await firestore.collection('categories').where('id', 'in', cats).get();
+            const categories = await Promise.all(cts.docs.map(async itm => {
+                const it = itm.data();
+                const image = await imagePathToUrl(it.icon);
+                return { ...it, image }
+            }));
+            if (categories && categories.length)
+                dispatch({ type: ACTION_TYPES.SET_EVENT_CATEGORIES, payload: categories });
+            console.log("data data data data ", categories, cats, cts.docs.map(i => i.data()))
+            return new Promise(res => res({ proposals: data && data.length ? data : [], categories }));
+        }
     } catch (error) {
         console.log("fetch proposal catch error ", error);
         dispatch(createAlert({ message: error.message, type: 'error' }));

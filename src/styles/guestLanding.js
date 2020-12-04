@@ -18,7 +18,8 @@ export const guestLandStyle =  makeStyles((theme) => ({
     },
     headerImageV:{
         width : '100%',
-        ...center
+        ...center,
+        flexDirection: 'column'
     },
     subImagesV:{
         padding : 20
@@ -52,6 +53,21 @@ export const guestLandStyle =  makeStyles((theme) => ({
         width:'50%',
     },
     eventT:{
+
+    },
+    guestLandingCoupleHT:{
+        fontSize:30,
+        color: colors.primary
+    },
+    guestLandingCoupleV:{
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        width: '90%',
+        paddingTop:10,
+        paddingBottom: 20,
+        display: 'flex'
+    },
+    guestLandingCoupleT:{
 
     }
 }))

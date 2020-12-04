@@ -259,7 +259,8 @@ export default {
         'DeleteGuest' : 'Delete Guest',
         'DeleteGroup' : 'Delete Group',
         'DeleteGroupContent' : 'This will delete all the guests in this group, Please confirm to proceed',
-        'DeleteGuestContent' : 'Are you sure want to delete this guest?'
+        'DeleteGuestContent' : 'Are you sure want to delete this guest?',
+        'CoupleOfTheMoment':'Couple of the Moment'
         
     },
     'gift':{
@@ -408,6 +409,8 @@ export default {
         'RemoveSelection':'Remove Selection',
         'MyEvent': 'My Event',
         'Vendor': 'Vendor',
+        'Chats':'Chats',
+        'NoChatRecord':'No chat record found'
     },
     'notifications':{
             'Proposal':'Proposal',
@@ -424,5 +427,8 @@ export default {
         'AddProposal' : 'Add Proposal',
         'UppdateProposal' : 'Uppdate Proposal',
         'ProposalAccepted' : 'Proposal Accepted'
+    },
+    'chat':{
+        'NoConversFound': 'No chat record found'
     }
 }

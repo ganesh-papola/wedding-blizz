@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Grid, Box } from '@material-ui/core'
 import { eventStyle, primaryLoaderStyle } from 'styles';
@@ -13,22 +13,21 @@ const { events, common } = strings;
 export default props => {
     const classes = eventStyle();
     const breads = [
-        { title : common.Home, path : '/' }
+        { title: common.Home, path: '/' }
     ];
     const dispatch = useDispatch();
-    const { loader=false } = useSelector(({ event }) => event);
-    useEffect(()=>{
-        const get = async () =>{
+    const { loader = false } = useSelector(({ event }) => event);
+    useEffect(() => {
+        const get = async () => {
             const event = await dispatch(fetchEvent());
-            if(!event) props.history.push('/addEvent');
+            if (!event) props.history.push('/addEvent');
             else getVendors(event)
         }
         get();
-    },[])
+    }, [])
     const getVendors = async e => {
-        console.log("event event ", e)
         const propsals = await dispatch(getEveVendors(e.id));
-        console.log("propsals propsals ",propsals)
+        console.log("propsals ", propsals);
     }
     return (
         <Grid container justify="center" className={classes.eventMain}>
@@ -38,11 +37,11 @@ export default props => {
                     {events.WeddingEvent}
                 </Box>
             </Typography>
-            {loader?<Loader style={primaryLoaderStyle} /> :
-            <>
-            <WedEventCarasoul history={props.history} />
-            <WedEventVendors history={props.history} />
-            </>}
+            {loader ? <Loader style={primaryLoaderStyle} /> :
+                <>
+                    <WedEventCarasoul history={props.history} />
+                    <WedEventVendors history={props.history}/>
+                </>}
         </Grid>
     )
 }

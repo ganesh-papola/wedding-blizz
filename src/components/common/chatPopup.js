@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { chatStyle, navIconStyle, proposalStyle, msgIconStyle, sendIconStyle, sendIconActiveStyle,
-    leftSideBubble, rightSideBubble, proposeDetailStyle } from "styles";
+import {
+    chatStyle, navIconStyle, proposalStyle, msgIconStyle, sendIconStyle, sendIconActiveStyle,
+    leftSideBubble, rightSideBubble, proposeDetailStyle
+} from "styles";
 import { CloseRounded, RemoveRounded, QuestionAnswerRounded, Send } from "@material-ui/icons";
 import { InputBase, Box } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +18,7 @@ export default props => {
     const classes = chatStyle();
     const dispatch = useDispatch();
     let inputVRef = null;
-    const { chats = [], _loader = false, detail={} } = useSelector(({ chat }) => chat);
+    const { chats = [], _loader = false, detail = {} } = useSelector(({ chat }) => chat);
     const { title, subTitle, visible = "", proposal = false, setVisible = () => { } } = props;
     const [message, setMessage] = useState('');
     useEffect(() => {
@@ -29,16 +31,19 @@ export default props => {
     // useEffect(()=> {
     //     dispatch(getConversationListner())
     // } ,[])
-    const handleMessage = () => {
-        dispatch(sendMessage(message));
-        setMessage('')
+    const handleMessage = (e) => {
+        e.preventDefault();
+        if (message) {
+            dispatch(sendMessage(message));
+            setMessage('')
+        }
     }
     const scrollBottom = () => {
         inputVRef && inputVRef.scrollIntoView({ behavior: "smooth" })
     }
-    const handleChatMessage = (value,key)=>{
+    const handleChatMessage = (value, key, target) => {
+        console.log("kkkk ", key, target, target.key)
         setMessage(value);
-        console.log("kkkk ", key)
     }
     return (
         <>
@@ -52,7 +57,7 @@ export default props => {
                             </div>
                             <div className={classes.chatHeaderV}>
                                 <Box fontFamily='GothamBook' className={classes.chatHeaderTT}>
-                                    {title||detail?.user?.name}
+                                    {title || detail?.user?.name}
                                 </Box>
                                 <Box fontFamily='GothamBook' className={classes.chatHeaderST}>
                                     {subTitle}
@@ -64,10 +69,13 @@ export default props => {
                             <Chats chats={chats} />
                             <div ref={ref => inputVRef = ref} />
                         </div>
-                        <div className={classes.inputV}>
-                            <InputBase className={classes.input} placeholder={common.TypeMessage} value={message} onChange={({ target: { value }, ...key}) => handleChatMessage(value, key)} />
-                            <Send style={message ? sendIconActiveStyle : sendIconStyle} onClick={handleMessage} />
-                        </div>
+                        <form onSubmit={handleMessage}>
+                            <div className={classes.inputV}>
+                                <InputBase className={classes.input} placeholder={common.TypeMessage} value={message} onChange={({ target, ...key }) => handleChatMessage(target.value, key, target)} />
+                                <Send type="submit" style={message ? sendIconActiveStyle : sendIconStyle} onClick={handleMessage} />
+                            </div>
+                        </form>
+
                     </div>
                     : null}
         </>
@@ -85,12 +93,12 @@ const CloseIcon = ({ handleClick = () => { } }) => {
 
 const Chats = ({ chats = [] }) => {
     const classes = proposalStyle();
-    const { uid='' } = useSelector(({ user }) => user)?.user;
+    const { uid = '' } = useSelector(({ user }) => user)?.user;
     return (
         <div>
             {chats && chats.length ? chats.map((chat, index) =>
                 (<div className={chat ? classes.mainDetailBodyCHV : classes.mainDetailBodyCHV} key={`${index}-chat-list`}
-                    style={(chat.sender_id === uid) ? rightSideBubble: leftSideBubble}>
+                    style={(chat.sender_id === uid) ? rightSideBubble : leftSideBubble}>
                     <div className={classes.listCard} style={proposeDetailStyle}>
                         {/* <Box fontFamily='Gotham' className={classes.prosposalNameT}>
                         {chat?.message}
@@ -104,7 +112,7 @@ const Chats = ({ chats = [] }) => {
                     </Box>
                 </div>))
                 :
-            <NoRecordFound text={common.NoChatRecord} />}
+                <NoRecordFound text={common.NoChatRecord} />}
         </div>
     )
 }

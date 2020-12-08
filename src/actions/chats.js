@@ -20,7 +20,7 @@ export const getChats = (id) => async (dispatch, getState) => {
         // console.log("conversation", conversation, ids, users)
         // dispatch({ type: ACTION_TYPES.CONVERSATION_SUCCESS, payload: conversation.map(c => ({ ...c, user: users.filter(n => c.participants.indexOf(n.userId) > -1)[0] })) });
         dispatch(getConversationListner());
-        dispatch({ type: ACTION_TYPES.CONVERSATION_COMPLETE })
+        // dispatch({ type: ACTION_TYPES.CONVERSATION_COMPLETE })
     } catch (error) {
         console.log("add event catch error ", error)
         dispatch({ type: ACTION_TYPES.CONVERSATION_FAILED });
@@ -57,7 +57,7 @@ export const getChat = () => async (dispatch, getState) => {
         // console.log("chats chats ", chats)
         // dispatch({ type: ACTION_TYPES.CHAT_SUCCESS, payload: chats });
         dispatch(getChatListner());
-        dispatch({ type: ACTION_TYPES.CHAT_COMPLETE });
+        // dispatch({ type: ACTION_TYPES.CHAT_COMPLETE });
     } catch (error) {
         console.log("add event catch error ", error)
         dispatch({ type: ACTION_TYPES.CHAT_FAILED });
@@ -79,29 +79,45 @@ export const sendMessage = message => async (dispatch, getState) => {
     try {
         const { user: { uid = '' } } = getState().user;
         const { user: { userId = '' }, id = '' } = getState().chat?.detail;
-        let chatId = `${uid}_${userId}`;
-        const conversations = {
-            participants: [uid, userId],
-            id: chatId,
-            modifiedAt: new Date().getTime(),
-            lastMessage: {
-                conversationId: chatId,
-                isMedia: false, receiverId: userId, senderId: uid, message
+        let chatId1 = `${uid}_${userId}`,chatId2 = `${userId}_${uid}` ;
+        
+        const conv = await firestore.collection('conversations').where('id', 'in', [chatId1, chatId2]).get();
+        const cdata = conv.docs.map(d=>d.data());
+        console.log("cdata cdata ", cdata)
+        if(cdata.length){
+            const conversations = {
+                participants: cdata[0]?.participants,
+                id: cdata[0]?.id,
+                modifiedAt: new Date().getTime(),
+                lastMessage: {
+                    ...cdata[0]?.lastMessage, message
+                }
             }
-        }
-        const conv = await firestore.collection('conversations').where('participants', 'array-contains', uid).get();
-        if(conv.docs.map(d=>d.data()).length){
-            await firestore.doc(`conversations/${chatId}`).set(conversations);
+            await firestore.doc(`conversations/${cdata[0]?.id}`).set(conversations);
+            const chats = {
+                conversationId: cdata[0]?.id,
+                message, receiver_id: userId, sender_id: uid
+            }
+            const save = await insert('chats', chats);
         }else {
+            const conversations = {
+                participants: [uid, userId],
+                id: chatId1,
+                modifiedAt: new Date().getTime(),
+                lastMessage: {
+                    conversationId: chatId1,
+                    isMedia: false, receiverId: userId, senderId: uid, message
+                }
+            }
             await insert('conversations', {...conversations, modifiedAt: new Date().getTime()});
+            const chats = {
+                conversationId: chatId1,
+                message, receiver_id: userId, sender_id: uid
+            }
+            const save = await insert('chats', chats);
+            console.log("save chat ", save)
         }
-        const chats = {
-            conversationId: chatId,
-            message, receiver_id: userId, sender_id: uid
-        }
-        const save = await insert('chats', chats);
-        // const save = await firestore.collection('chats').doc(chatId).set({ id: chatId, createdAt:new Date().getTime(), ...chats });
-        console.log("save save save", save, 'conversations conversations ', id);
+  
     } catch (error) {
         console.log("send  message catch error ", error)
     }

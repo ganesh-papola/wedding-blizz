@@ -134,7 +134,7 @@ export const sendNotification = (update) => async (dispatch, getState) => {
             const { name = '' } = getState().user?.user;
             const title = strings.notifications.NewProposal
             const body = `${update ? strings.notifications.QuoteUpdateBody : strings.notifications.QuoteBody} ${name}`
-            const notif = await sendPush({ to: vendor.ownerId, title, body });
+            const notif = await sendPush({ to: [vendor.ownerId], title, body });
             console.log("notification ", notif)
         }
     } catch (error) {
@@ -170,11 +170,11 @@ const handleNotification = async (data, update, name) => {
         const title = strings.notifications.Proposal
         if (data.isProposal) {
             const body = `${update ? strings.notifications.ProposalUpdatedBody : strings.notifications.ProposalBody} ${busines?.business_name}`
-            const notif = await sendPush({ to: data?.user_id, title, body });
+            const notif = await sendPush({ to: [data?.user_id], title, body });
         }
         if (data.isBooked) {
             const body = `${strings.notifications.ProposalAcceptedBody} ${name}`
-            const notif = await sendPush({ to: busines && busines[0] && busines[0]?.ownerId, title, body });
+            const notif = await sendPush({ to: busines && busines[0] && [busines[0]?.ownerId], title, body });
         }
     } catch (error) {
         console.log("handleNotification catch error ", error);

@@ -131,6 +131,11 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                             {common.MyEvent}
                                         </Box>
                                     }
+                                    {user.type !== 2 ?
+                                        <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/conversation')}>
+                                            {common.Chat}
+                                        </Box> : null
+                                    }
                                     {
                                         user.type === 2 && user.roles && user.roles.length && user.roles.indexOf(2) > -1 && user.roles.indexOf(3) > -1 &&
                                         <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/vendor')}>

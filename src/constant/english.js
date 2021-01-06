@@ -7,6 +7,7 @@ export default {
         'proposalUpdated': 'Proposal updated successfully',
         'verificationEmailSent' : 'We have sent an email with a confirmation link to your email address',
         'GiftAdded': 'New Gift added successfully',
+        'FileUploaded': 'File Uploaded successfully',
         'guestSuccess': 'Guest added successfully',
         'guestGroupSuccess' : 'Group addedd successfully',
         'guestGroupUpdateSuccess' : 'Group updated successfully',
@@ -410,7 +411,15 @@ export default {
         'MyEvent': 'My Event',
         'Vendor': 'Vendor',
         'Chats':'Chats',
-        'NoChatRecord':'No chat record found'
+        'NoChatRecord':'No chat record found',
+        'Gallery': 'Gallery',
+        'GoToGallery': 'Go to Gallery',
+        'DeleteImage' : 'Delete Image',
+        'DeleteFile' : 'Delete File',
+        'DeleteImageContent': 'Are you sure want to delete this image?',
+        'DeleteFileContent': 'Are you sure want to delete this File?',
+        'Upload': 'Upload'
+
     },
     'notifications':{
             'Proposal':'Proposal',

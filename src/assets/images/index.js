@@ -77,4 +77,6 @@ export { default as userIcon } from "./user.svg";
 export { default as calendarIcon } from "./calendar.svg";
 export { default as locationPinIcon } from "./location.svg";
 
+export { default as videoPlaceholder } from "./videoPlaceholder.png";
+
 

@@ -26,7 +26,7 @@ export const fetchGifts = () => async (dispatch, getState) => {
         const {id=''} = getState().event?.event;
         dispatch({type:ACTION_TYPES.GIFT_REQUEST});
         const data = await firestore.collection('gifts').where('event_id', '==', id).get();
-        const payload = data.docs.map(gift=>gift.data().id&&gift.data());
+        const payload = data.docs.map(gift=>gift.data().id&&gift.data()).filter(fl=>fl);
         console.log("gift.data() gift.data() ", payload)
         dispatch({type:ACTION_TYPES.GIFTS_COMPLETE, payload});
     } catch (error) {

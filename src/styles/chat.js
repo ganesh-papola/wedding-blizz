@@ -11,14 +11,15 @@ export const shadow = {
 export const chatStyle =  makeStyles((theme) => ({
         chatMain:{
             position : 'fixed',
-            height : '80%',
+            height : '70%',
             width : '35%',
-            bottom : 50,
+            bottom : 100,
             right : 30,
             minHeight : 400,
             zIndex : 1000,
             ...shadow,
             borderRadius : 10,
+            background : colors.white,
             [theme.breakpoints.down("md")]: {
                 width : '80%', 
             }
@@ -47,7 +48,8 @@ export const chatStyle =  makeStyles((theme) => ({
             borderBottomLeftRadius:10,
             borderBottomRightRadius:10,
             padding:15,
-            height : '76.5%',
+            // paddingBottom: 10,
+            height : '60%',
             overflowY:'scroll',
             display:'flex',
             flexDirection : 'column',
@@ -81,7 +83,7 @@ export const chatStyle =  makeStyles((theme) => ({
         inputV:{
             ...center,
             position:'fixed',
-            bottom:45,
+            bottom:95,
             width:'35%',
             background:colors.white,
             paddingTop:5,

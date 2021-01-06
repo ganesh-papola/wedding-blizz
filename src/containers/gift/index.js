@@ -56,14 +56,14 @@ export default props => {
                                 <img src={giftIcon} className={classes.icon} />
                                 <div className={classes.centerTV}>
                                     <Box fontFamily='GothamBook' className={classes.giftstatsT}>
-                                        {item.gift_title}
+                                        {item?.gift_title}
                                     </Box>
                                     <Box fontFamily='GothamBook' className={classes.viewDetailT} onClick={() => viewDetails(item)}>
                                         {common.ViewDetails}
                                     </Box>
                                 </div>
                                 <Box fontFamily='Gotham' className={classes.giftTotalT}>
-                                    {item.quantity}
+                                    {item?.quantity}
                                 </Box>
                             </div>
                         </Grid>

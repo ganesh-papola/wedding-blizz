@@ -99,7 +99,7 @@ const Chats = ({ chats = [] }) => {
             {chats && chats.length ? chats.map((chat, index) =>
                 (<div className={chat ? classes.mainDetailBodyCHV : classes.mainDetailBodyCHV} key={`${index}-chat-list`}
                     style={(chat.sender_id === uid) ? rightSideBubble : leftSideBubble}>
-                    <div className={classes.listCard} style={proposeDetailStyle}>
+                    <div className={classes.chatlistCard} style={proposeDetailStyle}>
                         {/* <Box fontFamily='Gotham' className={classes.prosposalNameT}>
                         {chat?.message}
                     </Box> */}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Grid, Box } from '@material-ui/core'
-import { eventStyle, commonStyle } from 'styles';
+import { Typography, Grid, Box, Button } from '@material-ui/core'
+import { eventStyle, commonStyle, commonButtonStyle } from 'styles';
 import { strings } from 'constant';
 import { useSelector } from "react-redux";
 import {
@@ -24,7 +24,7 @@ export default props => {
             <div className={classes.vendorHorV}>
                 {
                     categories.map((item, index) => (
-                        <div className={classes.eventVendorsV} key={ Math.round()+ '-' + item.title + index + "vend-round"}>
+                        <div className={classes.eventVendorsV} key={Math.round() + '-' + item.title + index + "vend-round"}>
                             <img src={item.image} className={classes.vendorImg} />
                             <Box fontFamily='Gotham' className={classes.vendorImgAlt}>
                                 {item.name}
@@ -44,10 +44,10 @@ export default props => {
                     </Box>
                 </Typography>
                 <div className={commClasses.center}>
-                    <div className={classes.eventStatBox} onClick={()=>props.history.push("/guests")}>
+                    <div className={classes.eventStatBox} onClick={() => props.history.push("/guests")}>
                         <img src={usersIcon} />
                         <Box fontFamily='GothamBook' className={classes.eventstatsT}>
-                            {`${guest_count} ${guest_count>1?events.Guests:events.Guest}`}
+                            {`${guest_count} ${guest_count > 1 ? events.Guests : events.Guest}`}
                         </Box>
                     </div>
                 </div>
@@ -58,12 +58,40 @@ export default props => {
                     </Box>
                 </Typography>
                 <div className={commClasses.center}>
-                    <div className={classes.eventStatBox} onClick={()=>props.history.push("/gift")}>
+                    <div className={classes.eventStatBox} onClick={() => props.history.push("/gift")}>
                         <img src={giftIcon} />
                         <Box fontFamily='GothamBook' className={classes.eventstatsT}>
                             {`${gifts} ${common.outOf} ${totalGifts}`}
                         </Box>
                     </div>
+                </div>
+
+                <div className={commClasses.hairline} />
+                <Typography component="div" className={classes.eventTV}>
+                    <Box fontFamily='CormorantBold' className={classes.eventT}>
+                        {events.Gifts}
+                    </Box>
+                </Typography>
+                <div className={commClasses.center}>
+                    <div className={classes.eventStatBox} onClick={() => props.history.push("/gift")}>
+                        <img src={giftIcon} />
+                        <Box fontFamily='GothamBook' className={classes.eventstatsT}>
+                            {`${gifts} ${common.outOf} ${totalGifts}`}
+                        </Box>
+                    </div>
+                </div>
+
+                {/* <div className={commClasses.hairline} />
+                <Typography component="div" className={classes.eventTV}>
+                    <Box fontFamily='CormorantBold' className={classes.eventT}>
+                        {common.Gallery}
+                    </Box>
+                </Typography> */}
+                <div className={commClasses.space100} />
+                <div className={commClasses.center}>
+                    <Button variant="contained" size="large" color='primary' style={commonButtonStyle} onClick={() => props.history.push("/gallery")}>
+                        {common.GoToGallery}
+                    </Button>
                 </div>
             </div>
         </Grid>

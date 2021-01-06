@@ -7,7 +7,8 @@ import guest from "./guest";
 import app from "./app";
 import proposal from "./proposal";
 import chat from "./chat";
+import gallery from "./gallery";
 
 export default combineReducers({
-    user, vendor, event, gift, guest, app, proposal, chat
+    user, vendor, event, gift, guest, app, proposal, chat, gallery
   });

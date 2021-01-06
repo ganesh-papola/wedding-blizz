@@ -298,6 +298,29 @@ export const commonStyle =  makeStyles((theme) => ({
     display:'flex',
     justifyContent:'flex-end',
     padding : 5
+  },
+  videoV:{
+    // width:'70%'
+  },
+  closeV:{
+    background:'black',
+    position:'absolute',
+    padding:3,
+    zIndex:1000,
+    right:20,
+    top:15,
+    borderRadius: 5,
+    ...center,
+    pointer:'cursor'
+  },
+  videoContentV:{
+    width: 500,
+    // height:300,
+    ...center,
+    [theme.breakpoints.down("md")]: {
+      width: 250,
+    height:200,
+    }
   }
       
 }));
@@ -398,4 +421,9 @@ export const clearAddressStyle = {
 }
 export const btLoaderStyle = {
   color : colors.white
+}
+export const clearVideoModal = {
+  color : 'yellow',
+  fontSize : 20,
+  cursor : 'pointer'
 }

@@ -13,3 +13,4 @@ export * from "./privacy";
 export * from "./proposal";
 export * from "./chat";
 export * from "./guestLanding";
+export * from "./gallery";

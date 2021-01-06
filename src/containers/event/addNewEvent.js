@@ -115,7 +115,7 @@ export default props => {
                         <Radio label={events.WeddingFunction} value={state.event_type?'family':'traditional'} va="traditional" vb="family" onChange={value=>changeState('function_type',value==='family'?0:1)}/>
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                    <FilePicker multiple label={common.Images} onImage={value=>changeState('images', value)} />
+                        <FilePicker multiple label={common.Images} onImage={value=>changeState('images', value)} />
                     </Grid>
                     <Typography component="div" className={classes.eventTV}>
                         <Box fontFamily='CormorantBold' className={classes.eventT}>

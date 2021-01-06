@@ -5,6 +5,7 @@ import { Router } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 // import 'react-phone-input-2/lib/style.css';
 import 'react-phone-input-2/lib/material.css'
+import 'video-react/dist/video-react.css';
 import { createBrowserHistory } from "history";
 import { store, persistor } from "store";
 import Routes from "routes";

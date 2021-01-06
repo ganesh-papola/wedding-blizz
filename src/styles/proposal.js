@@ -64,6 +64,26 @@ export const proposalStyle =  makeStyles((theme) => ({
             width : '80%', 
         }
     },
+    chatlistCard:{
+        // width : '40%',
+        maxWidth:'60%', 
+        borderRadius : 8,
+        // minHeight : 50,
+        'box-shadow': `0px 1px 4px 1px ${colors.grey6}`,
+        display : 'flex',
+        justifyContent : 'flex-start',
+        alignItems: 'flex-start',
+        flexDirection : 'column',
+        padding : 20,
+        // marginTop : 5,
+        paddingBottom:10,
+        paddingTop:5,
+        // marginBottom : 15,
+        cursor : 'pointer',
+        [theme.breakpoints.down("md")]: {
+            maxWidth:'80%',
+        }
+    },
     listCardC:{
         width : '80%',
         borderRadius : 10,
@@ -118,7 +138,8 @@ export const proposalStyle =  makeStyles((theme) => ({
 }));
 export const proposeDetailStyle = {
     backgroundColor : colors.main6,
-    width : '60%'
+    // width : '60%'
+
 }
 export const rightSideBubble = {
     display : 'flex',

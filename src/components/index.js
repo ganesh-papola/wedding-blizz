@@ -22,3 +22,4 @@ export { default as NoRecordFound } from "./common/noRecordFound";
 
 export { default as GooglePlaces } from "./common/GooglePlaces";
 export { default as Chat } from "./common/chatPopup";
+export { default as Media } from "./common/video";

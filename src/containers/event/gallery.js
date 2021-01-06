@@ -51,7 +51,7 @@ export default props => {
             <div className={classes.main}>
                 <Grid container className={classes.fileMenu}>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <FilePicker multiple label={common.Images} value={imges} onImage={value => setImages([...imges, ...value])} />
+                        <FilePicker multiple label={common.Media} value={imges} onImage={value => setImages([...imges, ...value])} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.buttonV}>
                         <Button variant="contained" disabled={loader} size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>

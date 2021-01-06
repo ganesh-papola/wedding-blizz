@@ -418,7 +418,8 @@ export default {
         'DeleteFile' : 'Delete File',
         'DeleteImageContent': 'Are you sure want to delete this image?',
         'DeleteFileContent': 'Are you sure want to delete this File?',
-        'Upload': 'Upload'
+        'Upload': 'Upload',
+        'Media':'Media'
 
     },
     'notifications':{

@@ -15,13 +15,15 @@ export const addImage = (images, key) => async (dispatch, getState) => {
     try {
         const { id = '' } = getState().event?.event;
         dispatch({ type: ACTION_TYPES.GALLERY_REQUEST });
-        dispatch({ type: ACTION_TYPES.GALLERY_SUCCESS });
         await s3Upload(images, key, id, uid);
+        dispatch(fetchImages())
         dispatch(createAlert({ message: success.FileUploaded, type: 'success' }));
+        return true
     } catch (error) {
         console.log("addGift error ", error)
         dispatch({ type: ACTION_TYPES.GALLERY_FAILED })
         dispatch(createAlert({ message: errors.CommonApiError, type: 'error' }));
+        return true
     }
 }
 

@@ -20,6 +20,7 @@ export default ({ onImage=()=>{}, value,displayImages=[], multiple=false, label,
         setImages([...images, ...files]);
         onImage([...images, ...files],oldImages);
     }
+    useEffect(()=>{setOldImages(value); setImages(value);},[value])
     const onRemove = (i)=>{
         let imgs = [...images];
         imgs.splice(i,1);
@@ -48,7 +49,7 @@ export default ({ onImage=()=>{}, value,displayImages=[], multiple=false, label,
                     id="upload-photo"
                     name={label}
                     multiple={multiple}
-                    accept="image/png, image/jpeg"
+                    accept="image/png, image/jpeg, video/mp4,video/x-m4v,video/*"
                     onChange={onFile}
                     type="file" />
                     <TextField

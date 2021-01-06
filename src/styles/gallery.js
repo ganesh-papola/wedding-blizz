@@ -39,6 +39,7 @@ export const galleryStyle = makeStyles((theme) => ({
         height: 200,
         width: 250,
         marginRight: 20,
+        marginTop: 20,
         borderRadius: 5,
         cursor:'pointer'
     }

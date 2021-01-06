@@ -27,17 +27,14 @@ export default props => {
     }, [])
     const [delDiag, setDelDiag] = useState(false)
 
-    const onCurrentImageChange = i => {
-
-    }
-    const deleteImage = () => {
-
-    }
     const handleDelete = () => {
 
     }
-    const onSubmit = () => {
-        dispatch(addImage(imges, `event_gallery/${event.id}/`));
+    const onSubmit = async () => {
+       const res = await dispatch(addImage(imges, `event_gallery/${event.id}/`));
+       if(res){
+        setImages([])
+       }
     }
     const viewerModal = ({ src, type = '' }) => {
         mediaToggle(true)
@@ -54,7 +51,7 @@ export default props => {
             <div className={classes.main}>
                 <Grid container className={classes.fileMenu}>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <FilePicker multiple label={common.Images} onImage={value => setImages([...imges, ...value])} />
+                        <FilePicker multiple label={common.Images} value={imges} onImage={value => setImages([...imges, ...value])} />
                     </Grid>
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.buttonV}>
                         <Button variant="contained" disabled={loader} size="large" color='primary' style={commonButtonStyle} onClick={onSubmit}>
@@ -69,7 +66,6 @@ export default props => {
                         ))
                     }
                 </div>
-
                 <Media open={media} toggleModal={handleToggle} url={mediaUrl} type={type}/>
             </div>
             <Confirm open={delDiag} onClose={() => setDelDiag(false)} title={common.DeleteFile}

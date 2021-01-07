@@ -69,6 +69,20 @@ export const fetchCategory = () => async (dispatch, getState) => {
 export const setCategory = (payload) => dispatch => {
     dispatch({ type: ACTION_TYPES.SET_EVENT_CATEGORY, payload });
 }
+// export const fetchVendor = () => async (dispatch, getState) => {
+//     try {
+//         const { category = null } = getState().event;
+//         dispatch({ type: ACTION_TYPES.EVENT_REQUEST });
+//         const snap = await firestore.collection('venders').where('categories', 'array-contains', category.id).get();
+//         dispatch({ type: ACTION_TYPES.EVENT_SUCCESS });
+//         return snap.docs.map(doc => doc.data());
+//     } catch (error) {
+//         console.log("fetchVendors event catch error ", error)
+//         dispatch({ type: ACTION_TYPES.EVENT_FAILED });
+//         dispatch(createAlert({ message: error.message, type: 'error' }));
+//         return null
+//     }
+// }
 export const fetchVendors = () => async (dispatch, getState) => {
     try {
         const { category = null } = getState().event;
@@ -92,6 +106,7 @@ export const setEventVendor = (payload) => async dispatch => {
 export const addProposal = (data, id = null) => async dispatch => {
     try {
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_REQUEST });
+        console.log("datadata ------ ---- ------ data data ",data)
         if (id) await updateOne('proposals', id, data);
         await insert('proposals', data);
         setTimeout(() => {
@@ -108,16 +123,18 @@ export const addProposal = (data, id = null) => async dispatch => {
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_FAILED });
     }
 }
-export const fetchProposal = (eventid, uid, category) => async dispatch => {
+export const fetchProposal = (eventid, uid, category) => async (dispatch, getState) => {
     try {
+        const { id = null } = getState().event?.vendor||{};
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_REQUEST });
         const snap = await firestore.collection('proposals').where('user_id', '==', uid)
             .where('isProposal', '==', false).where('isBooked', '==', false)
-            .where('event_id', '==', eventid).where('category_id', '==', category).get();
+            .where('event_id', '==', eventid).where('category_id', '==', category).where('business_id', '==', id).get();
         setTimeout(() => {
             dispatch({ type: ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         }, 2000);
         const data = snap.docs.map(it => it.data());
+        console.log("dat datdattad ", data)
         return new Promise(res => res(data && data.length ? data[0] : null));
     } catch (error) {
         console.log("fetch proposal catch error ", error);
@@ -190,6 +207,7 @@ export const getEveVendors = id => async dispatch => {
         dispatch({ type: ACTION_TYPES.EVENT_SERVICE_SUCCESS });
         dispatch({ type: ACTION_TYPES.SET_EVENT_CATEGORIES, payload: [] });
         const data = snap.docs.map(it => it.data());
+        console.log("datadatadatadata data ",data)
         const cats = data && data.length ? data.map(it => it.category_id) : [];
         if (cats && cats.length) {
             const cts = await firestore.collection('categories').where('id', 'in', cats).get();

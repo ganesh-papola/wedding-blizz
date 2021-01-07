@@ -125,7 +125,7 @@ export default props => {
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={6} lg={6} className={classes.addNewEventFormGV}>
-                        <FilePicker multiple label={common.Images} onImage={value=>onChange('images', value)} />
+                        <FilePicker multiple label={common.Images} value={state.images} onImage={value=>onChange('images', value)} />
                     </Grid>
                     <Grid item sm={6} xs={6} md={6} lg={6}/>
                     

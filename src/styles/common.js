@@ -321,6 +321,13 @@ export const commonStyle =  makeStyles((theme) => ({
       width: 250,
     height:200,
     }
+  },
+  ratingTV:{
+    padding: 20,
+  },
+  spaceV30:{
+    // paddingTop:30,
+    paddingBottom:30,
   }
       
 }));

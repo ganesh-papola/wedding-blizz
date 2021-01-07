@@ -3,6 +3,8 @@ import { Typography, Grid, Box, Button } from '@material-ui/core'
 import { eventStyle, commonStyle, commonButtonStyle } from 'styles';
 import { strings } from 'constant';
 import { useSelector } from "react-redux";
+import { setEventVendor } from "actions";
+import { useDispatch } from "react-redux";
 import {
     plusIcon, giftIcon, usersIcon,
     venueRoundImage, weddingcateringRoundImage, weddingBandRoundImage
@@ -11,9 +13,14 @@ import {
 const { events, common } = strings;
 export default props => {
     const classes = eventStyle();
+    const dispatch  = useDispatch();
     const commClasses = commonStyle();
-    const { event = {}, categories = [] } = useSelector(({ event }) => event);
+    const { event = {}, categories = [], vendor } = useSelector(({ event }) => event);
     const { guest_count = 150, gifts = 5, totalGifts = 15 } = event;
+    const onBookedVendor = () => {
+        dispatch(setEventVendor(vendor));
+        props.history.push({pathname: '/eventvendordetail', state:{booked:true} });
+    }
     return (
         <Grid container justify="center" className={classes.eventVendorsMain}>
             <Typography component="div" className={classes.eventTV}>
@@ -24,7 +31,7 @@ export default props => {
             <div className={classes.vendorHorV}>
                 {
                     categories.map((item, index) => (
-                        <div className={classes.eventVendorsV} key={Math.round() + '-' + item.title + index + "vend-round"}>
+                        <div onClick={onBookedVendor} className={classes.eventVendorsV} key={Math.round() + '-' + item.title + index + "vend-round"}>
                             <img src={item.image} className={classes.vendorImg} />
                             <Box fontFamily='Gotham' className={classes.vendorImgAlt}>
                                 {item.name}
@@ -67,7 +74,7 @@ export default props => {
                 </div>
 
                 <div className={commClasses.hairline} />
-                <Typography component="div" className={classes.eventTV}>
+                {/* <Typography component="div" className={classes.eventTV}>
                     <Box fontFamily='CormorantBold' className={classes.eventT}>
                         {events.Gifts}
                     </Box>
@@ -79,7 +86,7 @@ export default props => {
                             {`${gifts} ${common.outOf} ${totalGifts}`}
                         </Box>
                     </div>
-                </div>
+                </div> */}
 
                 {/* <div className={commClasses.hairline} />
                 <Typography component="div" className={classes.eventTV}>

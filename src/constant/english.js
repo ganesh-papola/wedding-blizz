@@ -14,7 +14,9 @@ export default {
         'profileUpdateSuccess' : 'Profile updated successfully',
         'businessAdded' : 'Business information added successfully',
         'businessUpdated' : 'Business information updated successfully',
-        'InvitationSending' : 'Event Invitation in being sent, Guest will recieve invitation in mail'
+        'InvitationSending' : 'Event Invitation in being sent, Guest will recieve invitation in mail',
+        'ReviewAdded': 'Review added successfully',
+        'ReviewUpdated': 'Review updated successfully'
     },
     'errors' : {
         'fullname' : 'Please enter valid full name',
@@ -45,7 +47,8 @@ export default {
         'NoGroupAdded' : 'Please add atleast one group to continue',
         'MaxGuestCountExceed' : 'Max no of guests are already added',
         'bookinAmount' : 'Please enter a valid booking amount',
-        'message' : 'Please enter a valid message'
+        'message' : 'Please enter a valid message',
+        'write_review':'Pleaser write a review'
     },
     'auth' : {
         'Login' : 'Login',
@@ -419,7 +422,13 @@ export default {
         'DeleteImageContent': 'Are you sure want to delete this image?',
         'DeleteFileContent': 'Are you sure want to delete this File?',
         'Upload': 'Upload',
-        'Media':'Media'
+        'Media':'Media',
+        'WriteReview':'Write Review',
+        'AddReview':'Add Review',
+        'StartRating':'Start Rating',
+        'WriteYourReview': 'Write Your Review',
+        'Reviews':'Reviews',
+        'MyReviews':'My Reviews'
 
     },
     'notifications':{

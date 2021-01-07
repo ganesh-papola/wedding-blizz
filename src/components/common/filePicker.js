@@ -8,7 +8,7 @@ import {Loader} from "components";
 const { common } = strings;
 
 let uploadRef={};
-export default ({ onImage=()=>{}, value,displayImages=[], multiple=false, label, error }) => {
+export default ({ onImage=()=>{}, value=[],displayImages=[], multiple=false, label, error }) => {
     const classes = commonStyle();
     const dispatch = useDispatch();
     const {imgloader=false} = useSelector(({app})=>app)

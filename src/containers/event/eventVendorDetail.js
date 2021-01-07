@@ -5,14 +5,16 @@ import { Typography, Grid, Box } from '@material-ui/core'
 import { eventStyle, commonStyle, primaryLoaderStyle, btSmallIcon } from 'styles';
 import { strings } from 'constant';
 import Carousel from 'react-material-ui-carousel'
-import { BreadCrumb, Loader, QuoteModal } from "components";
+import { BreadCrumb, Loader, QuoteModal, ReviewModal } from "components";
 import { Chat, Assignment } from '@material-ui/icons';
+import { fetchProposal } from "actions"
 const { events, common } = strings;
 
 export default props => {
     const classes = eventStyle();
     const commClasses = commonStyle();
     const [quote, showQuote] = useState(false);
+    const [review, showReview] = useState(false);
     const breads = [
         { title: common.Home, path: '/' },
         { title: events.WeddingEvent, path: '/eventdetail' },
@@ -20,12 +22,32 @@ export default props => {
         { title: events.Vendors, path: '/eventvendorlist' },
     ];
     const dispatch = useDispatch();
-    const { vendor = {}, loader = false } = useSelector(({ event }) => event);
+    const { vendor = {}, loader = false, event, category } = useSelector(({ event }) => event);
+    const { uid } = useSelector(({ user }) => user.user);
     const { categories = [] } = useSelector(({ app }) => app);
     useEffect(()=>{
-        if(!vendor||vendor&&!vendor.id||!vendor.id)
+        setTimeout(() => {
+            if(!vendor||vendor&&!vendor.id||!vendor.id)
             props.history.push('/');
+        }, 2000);
     },[])
+    const { booked=false } = props.location.state
+    // useEffect(()=>{
+    //     const proposals = async () => {
+    //         const proposal = await dispatch(fetchProposal(event?.id, uid, category.id));
+    //         console.log("proposal proposal",proposal)
+    //     };
+    //     proposals()
+    // },[])
+    const handleQuaoteReview = () => {
+        if(booked){
+            showReview(true)
+            showQuote(false);
+        }else {
+            showQuote(true);
+            showReview(false)
+        }
+    }
     return (
         <Grid container justify="center" className={classes.eventMain}>
             <BreadCrumb breads={breads} current={events.VendorDetail} />
@@ -106,10 +128,10 @@ export default props => {
                                 </div>
                             </Grid>
                             <Grid item sm={12} xs={12} md={6} className={classes.vendorDetailBRV}>
-                                <div className={classes.chatButtonV} onClick={() => showQuote(true)}>
+                                <div className={classes.chatButtonV} onClick={handleQuaoteReview}>
                                     <Box fontFamily='GothamBook' className={classes.vendorDetButT}>
                                         <Assignment style={btSmallIcon} />
-                                        {common.GetAQuote}
+                                        {booked?common.WriteReview:common.GetAQuote}
                                     </Box>
                                 </div>
                             </Grid>
@@ -118,6 +140,7 @@ export default props => {
                 </div>
             }
             {quote && <QuoteModal modal={quote} onClose={() => showQuote(false)} />}
+            {review && <ReviewModal modal={review} onClose={() => showReview(false)} />}
         </Grid>
     )
 }

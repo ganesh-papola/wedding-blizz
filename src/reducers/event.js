@@ -6,7 +6,8 @@ const INITIAL_STATE = {
   event: {},
   category: null,
   categories: [],
-  vendor : null
+  vendor: null,
+  rloader: false
 };
 
 export default function event(state = INITIAL_STATE, action) {
@@ -32,10 +33,18 @@ export default function event(state = INITIAL_STATE, action) {
 
     case ACTION_TYPES.SET_EVENT_CATEGORY:
       return { ...state, category: action.payload }
-      case ACTION_TYPES.SET_EVENT_CATEGORIES:
-        return { ...state, categories: action.payload }
+    case ACTION_TYPES.SET_EVENT_CATEGORIES:
+      return { ...state, categories: action.payload }
     case ACTION_TYPES.EVENT_VENDOR_DETAIL:
-      return { ...state, vendor : action.payload }
+      return { ...state, vendor: action.payload }
+
+    case ACTION_TYPES.REVIEW_REQUEST:
+      return { ...state, rloader: true }
+    case ACTION_TYPES.REVIEW_SUCCESS:
+      return { ...state, rloader: false }
+    case ACTION_TYPES.REVIEW_FAILED:
+      return { ...state, rloader: false }
+
     case ACTION_TYPES.RESET:
       return INITIAL_STATE
 

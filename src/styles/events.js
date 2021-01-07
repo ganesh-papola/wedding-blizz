@@ -434,6 +434,10 @@ export const eventStyle = makeStyles((theme) => ({
         display : 'flex',
         justifyContent:'flex-start',
         alignItems: 'center',
+    },
+    reviewListV:{
+        width: '90%',
+        ...center
     }
 
 }));

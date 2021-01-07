@@ -36,4 +36,5 @@ export { default as GuestLanding } from "./landing-guest";
 export {default as GuestEvent} from "./landing-guest/event-detail";
 
 export {default as Conversation} from "./chat"
+export {default as Reviews} from "./event/reviews"
 

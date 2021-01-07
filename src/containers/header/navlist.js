@@ -142,6 +142,12 @@ const LoggedInUser = ({ setLoginModal = () => { }, setSignupModal = () => { }, o
                                             {common.Vendor}
                                         </Box>
                                     }
+                                    {
+                                        user.type === 3 && user.roles && user.roles.length && user.roles.indexOf(3) > -1 &&
+                                        <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/reviews')}>
+                                            {common.Reviews}
+                                        </Box>
+                                    }
                                     <Box variant="button" fontFamily="Gotham" className={classes.popoverT} onClick={() => handlePopClick(popupState, '/account')}>
                                         {auth.MyAccount}
                                     </Box>
